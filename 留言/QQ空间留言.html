@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    #text {
+        display: none;
+    }
+</style>
+<body>
+<ul>
+    <li>阿斯蒂芬 13:14</li>
+</ul>
+<input type="text" id='txt' value='我也说一句'>
+
+<div id='box'>
+    <textextea id="text" cols="30" rows="20"></textextea>
+    <button id='btn'>发表</button>
+</div>
+<script>
+    var txt = document.getElementById('txt');
+    var btn = document.getElementById('btn');
+    var text = document.getElementById('text');
+    var ul = document.getElementsByTagName('ul');
+    txt.onfocus = function () {
+        txt.style.display = 'none';
+        text.style.display = 'block';
+    }
+    var time = new Date();
+    var hours = time.getHours();
+    var minu = time.getMinutes();
+
+    btn.onclick = function () {
+        if (text.value != '') {
+            var newLi = document.createElement('li');
+            newLi.innerHTML = text.value + ' ' + hours + ':' + minu;
+            ul[0].appendChild(newLi);
+            text.value = null;
+            text.style.display = 'none';
+            txt.style.display = 'block';
+        }
+    }
+
+
+</script>
+</body>
+</html>

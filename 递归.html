@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		function num(txt) {
+			if (txt == 1) {
+				return 1;
+			} else {
+				return txt * num(txt - 1);
+			}
+		}
+
+		var demo = num(5);
+		alert(demo); //15
+
+		var a = 6
+
+		function fn() {
+			var a = 3;
+			return function () {
+				a++;
+				return a
+			}
+		}
+		fn()(); //==>4,4
+		fn()();
+
+		var a = 6
+
+		function fn() {
+			var a = 3;
+			return function () {
+				a++;
+				return a
+			}
+		}
+		var result = fn(); //=== > 4, 5
+		result();
+		result();
+	</script>
+</body>
+
+</html>

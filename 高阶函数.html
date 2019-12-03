@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		//each()  遍历数组每一项，执行重复的函数操作
+		//map()  遍历数组每一项，执行重复的函数操作，把最新生成的结果放到新数组里
+		//reduce() 遍历数组每一项，执行重复的函数操作,产生的结果赋给一个值
+		var arr = [5, 8, 3, 9];
+		//each()函数	
+		function each(fun, array) {
+			for (var i = 0; i < array.length; i++) {
+				fun(array[i])
+			}
+		}
+		//map()函数		
+		function map(fun, array) {
+			var temp = [];
+			each(function (n) {
+				temp.push(fun(n))
+			}, array)
+			return temp;
+		}
+		//操作函数	
+		function add(val) {
+			return "1412B" + val;
+		}
+		console.log(map(add, arr))
+		//reduce()函数
+		function reduce(fun, base, array) {
+			each(function (n) {
+				base = fun(base, n)
+			}, array)
+			return base;
+		}
+		//操作
+		function he(num, val) {
+			return num + val;
+		}
+		console.log(reduce(he, 0, arr))
+		//新建对象计算机;
+		var obj = {
+			"+": function (x, y) {
+				return x + y
+			},
+			"-": function (x, y) {
+				return x + y
+			},
+			"*": function (x, y) {
+				return x + y
+			},
+			"/": function (x, y) {
+				return x + y
+			},
+		}
+		console.log(reduce(obj["+"], 0, arr))
+	</script>
+</body>
+
+</html>

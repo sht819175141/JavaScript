@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input type="text" id="txt" name="txt"><span></span>
+<script>
+   
+   
+  
+
+  
+   var txt=document.getElementById("txt");
+   var tspan=document.getElementsByTagName("span")[0];
+ 
+    try
+    {
+    	var xml=new XMLHttpRequest();
+    }catch(e){
+    	var 	xml=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+   
+
+    txt.onblur=function(){
+	xml.open("post","c.asp",true); 
+    xml.setRequestHeader("content-type","application/x-www-form-urlencoded");
+	xml.send("mz="+txt.value+"&lesson=js");
+}
+	
+    xml.onreadystatechange=function(){
+    	if(xml.readyState==4 && xml.status==200){
+    	
+    	alert(xml.responseText);
+    	
+
+       }
+    }
+   
+	
+
+</script>
+	
+</body>
+</html>

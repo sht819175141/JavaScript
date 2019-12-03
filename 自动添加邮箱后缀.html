@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding: 0}
+		#box{height: auto;width: 300px;}
+		ul{list-style: none;}
+		ul li{line-height: 25px;}
+	</style>
+</head>
+<body>
+	您输入的邮箱是：<input type="text" id="txt"/>
+	<div id="box">
+	</div>
+	<script>
+	var box=document.getElementById("box");
+	var txt=document.getElementById("txt");
+	var arr=["@163.com","@qq.com","@126.com","@baidu.com","@139.com"]
+		txt.onkeyup=function(){
+			box.style.display = "block";
+			var uls = document.createElement("ul");	
+			if(box.firstElementChild==null){
+				box.appendChild(uls);
+			}else{
+				var ul = document.getElementsByTagName("ul");
+				box.removeChild(ul[0]);
+				var uls = document.createElement("ul");
+				box.appendChild(uls);
+			}
+			for(var i=0;i<arr.length;i++){
+				var lis=document.createElement("li");
+				lis.innerHTML=txt.value+arr[i];
+				uls.appendChild(lis);
+			}
+			var li=document.getElementsByTagName("li")
+			for(var i=0;i<li.length;i++){
+				li[i].onclick=function(){
+					txt.value=this.innerHTML;
+					box.style.display="none";
+				}
+			}
+		}
+	</script>
+</body>
+</html>

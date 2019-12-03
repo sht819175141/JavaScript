@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            position: relative;
+            height: 510px;
+            width: 510px;
+            margin: 0 auto;
+            border: 2px solid #f55056;
+            background-color: #FCFBB5;
+        }
+
+        .zhu {
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            background-color: springgreen;
+            border-radius: 40%;
+            left: 100px;
+            top: 100px;
+        }
+
+        .dan {
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            background-color: blueviolet;
+            border-radius: 40%;
+        }
+
+        .over {
+            height: 310px;
+            width: 510px;
+            background-color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-top: 200px;
+            text-align: center;
+            font: 500 30px/50px "微软雅黑";
+            display: none;
+        }
+
+        .shuoming {
+            width: 510px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div id="cho">
+        <div class="zhu"></div>
+        <div class="zhu" style=left:90px;></div>
+        <div class="zhu" style=left:80px;></div>
+    </div>
+    <div class="dan"></div>
+    <div class="over">
+        game over
+        <br/>
+        F5刷新
+    </div>
+</div>
+<div class="shuoming">
+    <p>WASD控制方向，碰到自己游戏结束</p>
+</div>
+<script>
+    //box大盒子
+    var box = document.getElementsByClassName('box')[0];
+    //cho放蛇的盒子
+    var cho = document.getElementById('cho');
+    //dan蛋
+    var dan = document.getElementsByClassName('dan')[0];
+    //x,y记录蛇头坐标
+    var x = 100;
+    var y = 100;
+    //xx，yy记录蛋坐标
+    var xx = 0;
+    var yy = 0;
+    //cont记录进行方向
+    var cont = 4;
+    //t计时器
+    var t = null;
+    //立一个flag，如果游戏结束，就变为false
+    var flag = true;
+
+    //suiji函数，生成一个位置随机的蛋
+    function suiji() {
+        xx = parseInt(Math.random() * 50) * 10;
+        yy = parseInt(Math.random() * 50) * 10;
+        //得到蛇身体每个点的元素，for循环遍历，如果蛋的位置和蛇身体的点重叠，则调用自己重新生成一个蛋
+        var sh = document.getElementsByClassName('zhu');
+        for (var i = 1; i < sh.length; i++) {
+            if (xx === parseInt(sh[i].style.left) && yy === parseInt(sh[i].style.top)) {
+                suiji();
+                return;
+            }
+        }
+        dan.style.top = yy + 'px';
+        dan.style.left = xx + 'px';
+    }
+
+    //调用suiji函数，一开始就生成一个蛋
+    suiji();
+
+    /*W  87
+    D  68
+    S  83
+    A  65*/
+    //获取键盘按下事件，根据键值更改记录行进方向的cont值
+    document.onkeydown = function (e) {
+        var e = e || window.event;
+        if (flag && (e.keyCode == 87 || e.keyCode == 68 || e.keyCode == 83 || e.keyCode == 65)) {
+            if ((e.keyCode == 87) && cont !== 2) {
+                cont = 0;  //向上
+            }
+            if ((e.keyCode == 68) && cont !== 3) {
+                cont = 1;  //向右
+            }
+            if ((e.keyCode == 83) && cont !== 0) {
+                cont = 2;  //向下
+            }
+            if ((e.keyCode == 65) && cont !== 1) {
+                cont = 3;  //向左
+            }
+            //用计时函数每隔一定时间调用contro函数让蛇移动10像素，先清除上一次按键触发的计时
+            clearInterval(t);
+            contro();
+            t = setInterval(function () {
+                contro();
+            }, 130); // 100控制蛇的速度，越大，蛇越慢
+        }
+    }
+
+    //contro函数，控制蛇行进，每次移动10像素
+    function contro() {
+        //先获取蛇身体每个点，遍历循环，如果蛇头坐标和身体重合，调用over函数，游戏结束
+        var sh = document.getElementsByClassName('zhu');
+        for (var i = 1; i < sh.length; i++) {
+            if (i > 4 && x === parseInt(sh[i].style.left) && y === parseInt(sh[i].style.top)) {
+                over();
+            }
+        }
+        //蛇身移动：
+        // 按照进行方向在原来蛇头坐标上移动10像素，得到新的蛇头坐标
+        if (cont === 0) {  //向上
+            if (y > 0) {
+                y -= 10;
+            } else {
+                y = 500;
+            }
+        } else if (cont === 1) {  //向右
+            if (x < 500) {
+                x += 10;
+            } else {
+                x = 0;
+            }
+        } else if (cont === 2) {  //向下
+            if (y < 500) {
+                y += 10;
+            } else {
+                y = 0;
+            }
+        } else {      //向左
+            if (x > 0) {
+                x -= 10;
+            } else {
+                x = 500;
+            }
+        }
+        //获取到蛇身最后一个点，把他揪下来放到蛇头那个点的前面，坐标为刚才所出来的新坐标，倒数第二个点就成了最后一个了
+        var zhu = cho.lastElementChild;
+        zhu.style.top = y + 'px';
+        zhu.style.left = x + 'px';
+        var wei = cho.firstElementChild;
+        cho.insertBefore(zhu, wei);
+        //判断移动后的蛇头坐标是否和蛋的坐标重合，如果重合，调用long函数让蛇变长，再调用suiji函数让蛋的位置重新随机
+        if (x === xx && y === yy) {
+            long();
+            suiji();
+        }
+    }
+
+    //long函数，让蛇变长，把蛇身最后一个点克隆一下，放在盒子最后，位置和最后一个点重合，暂时看不到
+    //下次移动的时候，会把克隆出来的点挪到最前面
+    function long() {
+        var zhi = cho.lastElementChild;
+        var zhizhi = zhi.cloneNode(true);
+        cho.appendChild(zhizhi);
+        contro();
+    }
+
+    //over函数，游戏结束，停止计时器，让结束提示的盒子显示出来
+    function over() {
+        flag = false;
+        clearInterval(t);
+        setTimeout(function () {
+            var gover = document.getElementsByClassName('over')[0];
+            gover.style.display = 'block';
+        }, 500)
+    }
+</script>
+</body>
+</html>

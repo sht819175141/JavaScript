@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	 <p class="abc">aa</p>
+	 <p>bb</p>
+	 <p class="abc">cc</p>
+	 <p>dd</p>
+	 <p>ee</p>
+	 <script>
+	  if(document.getElementsByClassName){
+	  	var ps=document.getElementsByClassName("abc");
+	 	alert(ps.length);
+	  }
+
+	  if("ontouchstart" in window){
+	  	   alert("mobile");
+	  }
+	  else
+	  {
+	  	  alert("pc");
+	  }
+	 	
+	 </script>
+	 
+</body>
+</html>

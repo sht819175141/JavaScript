@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#btn
+	{
+		position:absolute;
+		top:1800px;
+
+	}
+	</style>
+</head>
+<body style="height:2000px;">
+<a href="page.html">page</a>
+<button id="goBottom">bottom</button>
+<a name="top"></a>
+bac
+<button id="btn"> abc</button>
+
+	<script>
+
+		for(var t in location){
+			console.log(t+":"+location[t]);
+		}
+		var objBtn=document.getElementById("btn");
+		var objBottom=document.getElementById("goBottom");
+
+		objBtn.onclick=function(){
+
+			location.hash="#top";
+		}
+		objBottom.onclick=function(){
+			location.hash="#btn";
+
+
+		}
+  
+	</script>
+</body>
+</html>

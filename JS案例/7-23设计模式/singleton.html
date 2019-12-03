@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	/*	var a={
+			xm:"zs",
+			age:18,
+			fun:function(){
+				alert(this.xm);
+			}
+		}
+		
+	  single=(function(){
+	  	  var k="qianduan";
+	  	  function test(){
+	  	  	alert(k);
+	  	  }
+	  	  return{
+	  	  	publicMethod:function(){
+	  	  		test();
+	  	  	},
+	  	  	publicProp:"public info"
+	  	  }
+
+	  })();*/
+	  /*single.publicMethod()
+	  alert(single.publicProp);*/
+	  single=(function(){
+	  	 var ins;
+	  	 function init()
+	  	 {
+	  	 	return{
+	  	 		test:function(){
+	  	 			alert("test method");
+	  	 		},
+	  	 		myprop:"js"
+	  	 	}
+	  	 }
+	  	 return{
+	  	 	 getIns:function(){
+	  	 	 	if(!ins){
+	  	 	 		ins=init();
+	  	 	 	}
+	  	 	 	return ins;
+	  	 	 }
+	  	 }
+
+
+	  })();
+
+	  single.getIns().test();
+	  alert(single.getIns().myprop);
+
+	</script>
+</body>
+</html>

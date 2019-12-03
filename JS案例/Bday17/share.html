@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Book(name,author,isbn){
+			this.name=name;
+			this.author=author;
+			this.isbn=isbn;
+		}
+		Fac=(function(){
+			 var books={};  //没有重复的书
+			 return{
+			 	getBook:function(name,author,isbn){
+			 		 if(books[isbn]){
+			 		 	return books[isbn];
+			 		 }
+			 		 else{
+			 		 	var b=new Book(name,author,isbn);
+			 		 	books[isbn]=b;
+			 		 	return b;
+			 		 }
+			 	}
+			 }
+
+		})();
+
+		Manage=(function(){
+			  var records={};
+			  return{
+			  	 lend:function(name,author,isbn,pid,lendid,lendDate){
+			  	 	   var b=Fac.getBook(name,author,isbn);
+			  	 	   records[lendid]={
+			  	 	   	  pid:pid,
+			  	 	   	  lendid:lendid,
+			  	 	   	  book:b,
+			  	 	   	  lendDate:lendDate
+
+			  	 	   }
+			  	 	   return records[lendid];
+			  	 }
+
+			  }
+		})();
+		var record=Manage.lend("js3","abc","123456","001","201682010592212","2016-8-20");
+		alert(record.lendid+","+record.book.name+","+record.book.author);
+		var record=Manage.lend("js3","abc","123456","003","201682010592212","2016-8-23");
+		alert(record.lendid+","+record.book.name+","+record.book.author);
+	</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		ul,li{list-style: none}
+		#box{width:250px; height:164px; margin:20px auto;border:1px solid red;position: relative;}
+		
+		#box ul li{float: left;width:250px;padding-right:1px;}
+        #left,#right{position: absolute;top:70px;width:50px;height:50px;background: red; line-height: 50px;
+        	text-align: center;}
+        #left{left:20px;}
+        #right{right:20px;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li><img src="pic/1.jpg" alt=""></li>
+			<li><img src="pic/2.jpg" alt=""></li>
+			<li><img src="pic/3.jpg" alt=""></li>
+			<li><img src="pic/4.jpg" alt=""></li>
+		</ul>
+		<div id="left"><</div>
+		<div id='right'>></div>
+	</div>
+	<script src='js/move.js'></script>
+	<script>
+
+//对象 谁     目标       属性  回调函数
+ //startMove(obj,iTarget,attr,callback)
+
+ /*function auto(){
+  startMove(uls[0],-wh*2,'marginLeft',function(){
+  	//链式动画
+  	//把第一个li追加到最后一个
+  	 uls[0].appendChild(lis[0]);
+  	  uls[0].appendChild(lis[0]);
+  	//把uls[0]的  marginLeft=0
+  	 uls[0].style.marginLeft=0;
+  });
+
+ }
+ setInterval(auto,3000)*/
+
+
+var  box=document.getElementById('box'),	
+	 uls=box.getElementsByTagName('ul'),
+	 lis=uls[0].getElementsByTagName('li'),
+	 i=0,
+	 wh=lis[0].offsetWidth;
+	 uls[0].style.width=wh*lis.length+'px'
+	 right=document.getElementById('right'),
+	 left=document.getElementById('left');
+
+	function  auto(){
+   	   i++;
+   	   if(i>lis.length-1)i=0;
+   	// uls[0].style.marginLeft=-i*730+"px"	;
+ 		startMove(uls[0],-wh,'marginLeft',function(){
+			 uls[0].appendChild(lis[0]);
+			 uls[0].style.marginLeft=0;
+		})
+   }
+
+   time=setInterval(auto,500)
+   //
+
+   box.onmouseover=function(){
+			clearInterval(time);
+		}
+	box.onmouseout=function(){
+			time=setInterval(auto,1000);
+		}
+
+	left.onclick=function(){
+		clearInterval(time)
+   		uls[0].appendChild(lis[0]);
+		uls[0].style.marginLeft=0;
+ 		startMove(uls[0],-wh,'marginLeft')
+		//auto()
+	}
+
+	right.onclick=function(){
+		clearInterval(time)
+		//把最后一个li放到最前面
+		uls[0].insertBefore(lis[lis.length-1],lis[0]);
+		//把 marginLeft设置为一张图片的宽度
+		uls[0].style.marginLeft=-wh+'px';
+		startMove(uls[0],0,'marginLeft');
+	}
+
+	</script>
+</body>
+</html>

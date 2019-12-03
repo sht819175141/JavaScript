@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<!-- <img src="star.png" width="50"> -->
+<script>
+    function random(a, b) {
+        time = Math.random() * (a + b);   // 50-100
+        return time;
+    }
+
+    setInterval(chang, 1000);
+
+    function chang() {
+        var imgs = document.createElement("img");
+        imgs.setAttribute("src", "star.png");
+        imgs.setAttribute("width", random(50, 10));
+        imgs.setAttribute("style", "position: absolute;left:" + random(1000, 10) + "px;top:" + random(700, 10) + "px");
+
+        document.body.appendChild(imgs);
+        var img = document.getElementsByTagName("img");
+
+        for (var i = 0; i < img.length; i++) {
+            img[i].onclick = function () {
+                document.body.removeChild(this);
+            }
+        }
+    }
+</script>
+</body>
+</html>

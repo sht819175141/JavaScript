@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		 li
+		 {
+		 	display: none;
+		 }
+		 .show
+		 {
+		 	display: block;
+		 }
+		 .hide{
+		 	display: none;
+		 }
+	</style>
+</head>
+<body>
+	<ul>
+	    <li>abc0</li>
+		<li>abc1</li>
+		<li>abc2</li>
+		<li>abc3</li>
+		<li>abc4</li>
+		<li>abc5</li>
+		<li>abc6</li>
+		<li>abc7</li>
+		<li>abc8</li>
+		<li>abc9</li>
+		<li>abc10</li>
+		<li>abc11</li>
+		<li>abc12</li>
+		<li>abc13</li>
+		<li>abc14</li>
+		<li>abc15</li>
+		<li>abc16</li>
+		<li>abc17</li>
+		<li>abc18</li>
+		<li>abc19</li>
+		<li>abc20</li>
+		<li>abc21</li>
+		<li>abc22</li>
+		<li>abc23</li>
+		<li>abc24</li>
+		<li>abc25</li>
+		<li>abc26</li>
+		<li>abc27</li>
+		<li>abc28</li>
+		<li>abc29</li>
+		<li>abc30</li>
+	</ul>
+	<button id="prev">prev</button>
+	<button id="btn">next</button>
+	
+ <script>
+ 	 var lis=document.getElementsByTagName('li');
+ 	 var btn=document.getElementById("btn");
+ 	 var prev=document.getElementById("prev");
+ 	 var pagesize=5;
+ 	 var num=lis.length;
+ 	 var pageCount=Math.ceil(num/pagesize);
+ 	 function show(page,pagesize){
+ 	 	
+ 	 	var start=(page-1)*pagesize;
+ 	 	var end =start+pagesize;
+ 	 	for(var i=start;i<end;i++){
+ 	 		if(lis[i])
+ 	 		lis[i].className='show';
+ 	   }
+ 	 }
+
+ 	  function getPara(pname)
+ 	 {
+ 	 	  var str=location.search.substring(1);
+ 	 	  var reg=new RegExp("(^|&)"+pname+"=([^&]+)($|&)");
+ 	 	  if(str.match(reg)){
+ 	 	  	 return str.match(reg)[2];
+ 	 	  }
+ 	 	   
+ 	 	   return "";
+ 	 }
+ 	 var page=getPara("p");
+ 	 if(page){
+ 	 	page=getPara("p");
+ 	 	if(page<1 || page>pageCount){
+ 	 	    alert("指定页面不存在");
+ 	 	    location.href="page.html?page=1"
+ 	 	}
+ 	 }
+ 	 else
+ 	 {
+ 	 	page=1;
+ 	 }
+ 	// var page=1;
+ 	 show(page,pagesize);
+ 	 //show(page,pagesize);
+ 	 btn.onclick=function(){
+ 	 	/*for(var i=0;i<lis.length;i++){
+ 	 		lis[i].className="hide";
+ 	 	}*/
+ 	 	if(page<pageCount)
+ 	 		page++;
+ 	    else
+ 	      page=pageCount;
+      
+ 	  
+ 	 	 location.href="page.html?p="+page;
+ 	 }
+
+ 	 prev.onclick=function(){
+ 	 	
+ 	 	if(page>1)
+ 	 		page--;
+ 	    else
+ 	      page=1;
+ 	 	location.href="page.html?p="+page;
+ 	 }
+ 	
+ 	 
+ 	 
+ </script>
+</body>
+</html>

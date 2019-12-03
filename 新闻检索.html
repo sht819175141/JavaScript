@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+        #news div {
+            display: none;
+        }
+
+        #news span {
+            color: #f00
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="txt"/>
+<button id="btn">搜索</button>
+<div id="item">
+
+</div>
+<div id="news">
+    <div>
+        <h2>八维教务楼漏水</h2>
+        <p>八维教务楼漏水导致整个楼的教学中断</p>
+    </div>
+    <div>
+        <h2>教学系统出故障</h2>
+        <P>导致学生日考被推迟</P>
+    </div>
+    <div>
+        <h2>八维就业信息</h2>
+        <P>平均薪资15K</P>
+    </div>
+    <div>
+        <h2>早操大雨暂停</h2>
+        <P>早操大雨暂停同学很happy</P>
+    </div>
+    <div>
+        <h2>周六放假</h2>
+        <P>补考推迟到下周</P>
+    </div>
+</div>
+<script>
+    var objnews = document.getElementById("news");
+    var divs = objnews.getElementsByTagName('div');
+    var ps = objnews.getElementsByTagName('p');
+    var h2s = objnews.getElementsByTagName("h2");
+    var btn = document.getElementById("btn");
+    var txt = document.getElementById("txt");
+    var item = document.getElementById("item");
+    var news = [];
+
+    for (var i = 0; i < divs.length; i++) {
+        obj = {};
+        obj.title = h2s[i].innerHTML;
+        obj.content = ps[i].innerHTML;
+        news.push(obj);
+        //console.log(obj)
+
+        txt.onkeyup = function () {
+            if (this.value == "") {
+                item.innerHTML = "";
+                return "";
+            }
+            item.innerHTML = "";
+            var keywords = this.value;
+            for (var i = 0; i < news.length; i++) {
+
+                if (news[i].title.match(keywords)) {
+                    var temDiv = document.createElement("div")
+                    temDiv.innerHTML = news[i].title;
+                    item.appendChild(temDiv);
+
+                    //console.log(news[i].title)
+
+                    temDiv.onmouseover = function () {
+                        this.style.color = "red";
+                        //console.log(this)
+                    }
+
+                    temDiv.onmouseout = function () {
+                        this.style.color = "#000";
+                    }
+
+                    temDiv.onclick = function () {
+                        item.innerHTML = "";
+                        txt.value = this.innerHTML;
+                    }
+                }
+            }
+        }
+    }
+    btn.onclick = function () {
+        if (txt.value == "") {
+            item.innerHTML = "";
+            return "";
+        }
+        item.innerHTML = "";
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].style.display = "none";
+        }
+        for (var i = 0; i < news.length; i++) {
+            if (news[i].title.indexOf(txt.value) != -1 || news[i].content.indexOf(txt.value) != -1) {
+                divs[i].style.display = "block";
+                divs[i].innerHTML = divs[i].innerHTML.replace(new RegExp(txt.value, "g"), "<span>" + txt.value + "</span>")
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+
+
+
+//arr[0] = 5
+//arr[1] = 5;
+//arr[2] = 5;
+//arr[3] = 5;
+//arr[4] = 5;
+/*function box(){
+
+	var arr = [];
+
+	for(var i =0;i<5;i++){
+		arr[i] = (function(num){  //自我执行函数===》依次把循环体内的i  执行出来
+
+			return num;
+
+		})(i)
+	}
+
+	//普通匿名函数  ====》已经执行完毕
+
+
+	return arr;
+	
+}
+
+var obj = box();
+
+
+for(var i =0;i<obj.length;i++){
+
+	alert(obj[i] );
+}
+*/
+
+
+
+//闭包了解
+function box(){
+
+	var arr = [];
+
+	for(var i =0;i<5;i++){
+		arr[i] = (function (num) {
+					return function () {	
+						return num;				
+				}
+			})(i);
+	}
+
+	//普通匿名函数  ====》已经执行完毕
+
+
+	return arr;
+	
+}
+
+var obj = box();
+
+
+for(var i =0;i<obj.length;i++){
+
+	alert(obj[i]() );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+	
+</body>
+</html>

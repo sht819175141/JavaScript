@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#box{width:100px;height:100px; background:red;position: absolute;}
+
+	
+	</style>
+</head>
+<body>
+	<script>
+		//UI事件 onscroll  onload  onunload onresize  onselect orerror  window
+		//鼠标事件  9个 click dbclick  mousedown mousemove mouseup 
+		// mouseover mouseout  mouseenter mouseleave
+		//键盘事件3   onkeydown onkeyup  onkeypress   keyCode
+		//焦点事件   获取焦点 focus   失去焦点 blur 
+		//focus() 光标聚焦到表单元素中
+		//
+
+  
+		window.onload=function(){
+			var  user=document.getElementById('user');
+			var box=document.getElementById('box');
+			var text=document.getElementById('text');
+			var span=document.getElementsByTagName('span');
+
+			user.focus();
+
+			/*user.onkeyup=function(e){
+				var event=e|| window.event;
+				  console.log(event.keyCode);ut6egdzzs[
+
+				  ]
+
+			}*/
+   	  document.onkeydown=function(e){
+      	var event=e || window.event;
+      	 if(event.keyCode==40){
+      	 	box.style.top=box.offsetTop+2+'px'
+      	 }
+      	 if(event.keyCode==39){
+      	 	box.style.left=box.offsetLeft+2+'px'
+      	 }
+      	  if(event.keyCode==37){
+      	 	box.style.left=box.offsetLeft-2+'px'
+      	 }
+      		   
+      }
+  
+        text.onkeyup=function(){
+          var num=20-text.value.length;
+        	 span[0].innerHTML='您还可以输入'+num+'个字符'
+        }
+
+		}
+
+	</script>
+
+   <input type="text" id='user'>
+   <div id='box'></div>
+  <textarea name="" id="text" cols="30" rows="10" maxlength="20"></textarea>
+  <span>您还可以输入20个字符</span>
+  <input type="text">
+</body>
+</html>

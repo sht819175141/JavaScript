@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+*{margin:0;padding: 0}
+ul{list-style: none}
+ul li{width:300px;height: 150px;background: blue;margin-top: 30px;border: 5px solid #ccc;opacity: 0.3}
+</style>
+<body>
+
+<ul>
+	<li></li>
+	<li></li>
+</ul>
+
+<script>
+var lis = document.getElementsByTagName("li");
+
+for(var i=0;i<lis.length;i++){
+	lis[i].time = null;
+	lis[i].onmouseover = function(){
+
+		//animate(this,400,"width");
+
+		animate(this,{width:400,height:200,opacity:100})
+
+
+	}
+	lis[i].onmouseout = function(){
+
+		//animate(this,300,"width");
+
+		animate(this,{width:300,height:150,opacity:30})
+
+	}
+}
+
+//var time = null;
+function animate(obj,json,fn){   //end attr 
+
+	clearInterval(obj.time);
+	var bool = true;  //后续判断当前动画,是否完成
+	obj.time = setInterval(function(){
+
+		for(var i in json){
+
+		var ciur = "";
+
+		if(i=="opacity"){
+
+			ciur = Math.round(parseFloat(getStyle(obj,i))*100);
+
+		}else{
+
+			ciur = parseInt(getStyle(obj,i));
+		}
+
+
+		var speed =(json[i]-ciur)/8;
+
+		speed=speed>0?Math.ceil(speed):Math.floor(speed);
+
+		if(ciur!=json[i]){
+			bool = false;	
+		}
+
+		if(i=="opacity"){
+
+			obj.style[i] = (ciur + speed)/100;
+		}else{
+			
+			obj.style[i] = ciur + speed +"px";
+		}
+
+		if(bool){
+
+			clearInterval(obj.time);
+				if(fn){
+				fn();
+			}
+		}
+
+		
+	}
+
+	},50)
+
+
+}
+
+
+
+
+
+function getStyle(obj,attr){
+
+	if(obj.currentStyle){
+
+		return obj.currentStyle[attr];
+	}else{
+		return getComputedStyle(obj,null)[attr];
+	}
+
+}
+
+
+
+</script>
+	
+</body>
+</html>

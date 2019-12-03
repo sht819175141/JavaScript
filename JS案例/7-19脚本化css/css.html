@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div
+		{
+			width:260px;
+			background:rgba(255,125,136,0.7);
+		}
+
+	</style>
+
+</head>
+<body>
+   <input type="range" max="2" min="0" value="1" step="0.1" id="myrange">
+	<p class="abc" style="width:200px;padding:10px; border:3px solid red;margin:10px;">abc</p>
+	<div>aaaa</div>
+	<script>
+		var objp=document.getElementsByTagName('p')[0];
+		var objDiv=document.getElementsByTagName('div')[0];
+		var myrange=document.getElementById("myrange");
+		//alert(objp.offsetWidth);
+	var arr=getComputedStyle(objDiv,null)["background"].match(/[\d\.]+/g);
+
+    myrange.onmousemove=function()
+    {
+	     var rv=Math.round(Math.max(Math.min(arr[0]*this.value,255),0));
+	     var rg=Math.round(Math.max(Math.min(arr[1]*this.value,255),0));
+	     var rb=Math.round(Math.max(Math.min(arr[2]*this.value,255),0));
+     
+	     objDiv.style.background="rgb("+rv+","+rg+","+rb+")";
+
+   }
+	</script>
+</body>
+</html>

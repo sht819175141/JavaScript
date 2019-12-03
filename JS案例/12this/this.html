@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//this指向的是上下文相关的对象
+  //全局的this 就是window
+/*	 console.log(this)
+	 var  a=3;
+	 console.log(window.a)
+	 console.log(this.a)*/
+/*  var  a=5
+  function test(){
+  	 console.log(this.a)
+  }
+test();*/
+
+//对象里的this，指的是当前对象
+/*var x=1
+var  json={
+	  x:4,
+	  dbl:function(){
+	  	 return  this.x=this.x*2;
+	  }
+}	*/
+
+//var  a=json.dbl;
+/*var a=function(){
+	return  this.x=this.x*2;
+}
+*/
+//console.log(a())
+
+
+/*console.log(json.dbl());
+console.log(json.x);
+
+*/
+/*
+var x=4;
+function test() {  
+    alert(this.x);  
+}  
+  
+var  o={}
+o.x=1;
+o.m=test;
+test(); 
+o.m();*/
+
+/*function test() {      
+     this.x = 2;  
+}  
+var o = new test();  
+alert(o.x)*/
+
+
+//apply() 应用的
+//apply()和call()。这两个方法的用途都是在特定的作
+//用域中调用函数，实际上等于设置函数体内this对象的值
+//是在其中运行函数的作用域，另一个是参数数组。
+//方法名(函数名).apply(对象，数组[])
+
+/*var  x=4;
+ function test(){
+ 	alert(this.x);
+ }
+
+var  o={
+	  x:6
+}
+test.apply(o)*/
+
+/*var x=5;
+var  o={
+	 x:2,
+	 test:function(){
+	 	alert(this.x)
+	 }
+}*/
+/*o.test();
+o.test.apply(null)*/
+
+
+var  x=4
+var obj = {
+ x: 3,
+ doit: function(){alert('结果1：' + this.x); this.doit2(); },
+
+ doit2: function(){alert('结果是2：' + this.x); }
+};
+obj.doit(); 
+
+var a = function(){
+  alert(this);
+}
+ 
+var b = 55555
+a.apply(b)
+	</script>
+</body>
+</html>

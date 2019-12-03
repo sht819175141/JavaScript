@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box {
+            height: 100px;
+            width: 100px;
+            background-color: #ccc;
+            font-size: 20px;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            text-align: center;
+            line-height: 100px;
+            color: red;
+            display: none;
+        }
+
+        body {
+            height: 10000px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">返回顶部</div>
+<script>
+    var box = document.getElementById("box");
+
+    window.onscroll = function () {
+        if (document.body.scrollTop > 680 || document.documentElement.scrollTop > 680) {
+            box.style.display = "block";
+        } else {
+            box.style.display = "none";
+        }
+    }
+    box.onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+</body>
+</html>

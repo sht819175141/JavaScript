@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#bigbox{width:400px; height:400px; border:1px solid blue; margin:20px auto;
+		position: relative;}
+	#box{width:200px; height:200px; border:1px solid red; padding:10px; position: absolute; background:red; }
+	</style>
+</head>
+<body>
+	<img src="pic/bj.png" alt="">
+	 <div id='box'></div>
+
+	
+	<script>
+	//js盒模型  只能获取，不能赋值 ，没有单位
+
+	//偏移量大小：
+	 //大小  offsetWidth    width+border+padding      offsetHeight 
+	 //位置	 offsetLeft   offsetTop  如果父级元素没有定位的话,距离浏览器窗口的距离 ,如果父级元素有定位的话，那么他是距离有定位的父级元素的距离
+
+	 var box=document.getElementById('box');
+	 	 /*console.log(box.offsetWidth)
+	 	 console.log(box.offsetHeight)
+	 	 console.log(box.offsetLeft)*/
+
+	//客户区大小：
+	//大小   clientWidth  width+padding     clientHeight
+    //获取可视区的大小 
+    //标准模式下 document.documentElement.clientWidth  
+    //混杂模式下 document.body.clientWidth
+    //cWidth=document.documentElement.clientWidth ||  document.body.clientWidth
+	console.log(box.clientWidth);
+	console.log(document.documentElement.clientWidth)
+	console.log(document.documentElement.clientHeight)
+
+	box.style.left=(document.documentElement.clientWidth-box.offsetWidth)/2+'px';
+	box.style.top=(document.documentElement.clientHeight-box.offsetHeight)/2+'px';
+
+	//让一个盒子居中两种方法
+	//div left:50%  margin-left:盒子的一半
+	//js  (可视区宽度-盒子实际的宽度)/2
+
+
+	//滚动大小：
+     // 滚动距离： document.documentElement.scrollTop    // scrollLeft
+     // 			 document.body.scrollTop              //scrollLeft
+     
+   window.onscroll=function(){
+   	  var top=document.documentElement.scrollTop || document.body.scrollTop
+
+   	  console.log(top)
+   }
+    
+
+
+	</script>
+</body>
+</html>

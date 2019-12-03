@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div></div>
+	<input type="text" id="txt"/>
+	<script>
+
+	try{
+		var xml=new XMLHttpRequest() 
+	}catch(e){
+		try{
+			var xmlhttp=new ActiveXobject("Msxml2.XMLHTTP")
+		}catch(e){
+			try{
+				var xmlhttp=new ActiveXobject("Microsofl.XMLHTTP")
+			}catch(e){
+				alert("请问您用的是什么年代的系统？")
+			}
+		}
+		
+	}
+	//创建
+	var divs=document.getElementsByTagName('div');
+	var txt=document.getElementById("txt");
+	var xml=new XMLHttpRequest();
+	txt.onblur=function(){
+		//申请发送目标  //(发送方式：get或post   发送路径及内容    异步还是同步)
+		xml.open("get","Ajax.asp?mz="+txt.value+"&"+new Date().getTime(),true);
+		//发送目标，如果是get可以在send里加上null;
+		xml.send(null);
+		//xml的状态
+		xml.onreadystatechange=function(){
+			//解析数据
+			if(this.readyState==4 && xml.status==200){
+				var a=this.responseText;
+				if(a=="1"){
+					divs[0].innerHTML="用户名已存在";
+				}else{
+					divs[0].innerHTML="ok"
+				}		
+			}
+		}
+	}
+	</script>
+</body>
+</html>

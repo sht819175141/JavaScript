@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+*{margin:0;padding: 0}
+select{width:100px;float:left;}
+#box{float:left;}
+</style>
+<body>
+
+
+<select name="" id="sid1" size="10" multiple="">
+		
+		<option value="">天津</option>
+		<option value="">北京</option>
+		<option value="">山东</option>
+		<option value="">河北</option>
+		<option value="">湖南</option>
+		<option value="">山西</option>
+		<option value="">上海</option>
+
+</select>
+
+
+<div id="box">
+	<input type="button" value="》》" onclick="doMove('sid1','sid2')"><br /><br /><br /><br /><br />
+	<input type="button" value="《《" onclick="doMove('sid2','sid1')">
+</div>
+
+
+<select name="" id="sid2" multiple="" size="10">
+	
+
+</select>
+
+
+
+<script>
+function doMove(m1,m2){
+
+	var select1 = document.getElementById(m1);
+	var select2 = document.getElementById(m2);
+
+	var list = select1.options;
+
+	for(var i=0;i<list.length;i++){
+
+		 if(list[i].selected){
+
+		 	list[i].selected=false;
+
+		 
+		 	select2.add( list[i] )
+
+		 	//这是解决ie问题,ie Bug颇多,可以试试	
+		 	//var ob = list[i];
+			//select2.remove(ob.index);
+			//select2.add(ob); 
+
+
+		 	i--;
+		 }
+
+
+	}
+
+
+}
+</script>
+	
+</body>
+</html>

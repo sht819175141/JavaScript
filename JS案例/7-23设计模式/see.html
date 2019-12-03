@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	   <script>
+	   	       function Publish(name){
+	   	       	  this.name=name;
+	   	       	  this.subscribers=[];
+	   	       }
+
+	   	       Publish.prototype.deliver=function(news){
+	   	       	 var publish=this;
+	   	       	 this.subscribers.forEach(function(f){
+	   	       	 		f(publish,news);
+	   	       	 })
+	   	       	 return this;
+	   	       }
+
+	   	       Function.prototype.subscribe=function(publish){
+	   	       	  var sub=this;
+	   	       	  var isExist=publish.subscribers.some(function(f){
+	   	       	  		return f===sub;
+	   	       	  });
+	   	       	  if(!isExist){
+	   	       	  	publish.subscribers.push(sub);
+	   	       	  }
+	   	       	  return this;
+	   	       }
+
+	   	        Function.prototype.unsubscribe=function(publish){
+	   	       	  var sub=this;
+	   	       	  publish.subscribers=publish.subscribers.filter(function(f){
+	   	       	  		return f!==sub;
+	   	       	  });
+	   	       	  return this;
+	   	       	  
+	   	       }
+               var p=new Publish("xhs");
+               var p1=new Publish('fxs');
+
+	   	       function sub1(pub,info){
+                    alert(pub.name+" "+info);
+
+	   	       }
+	   	       sub1.subscribe(p).subscribe(p1);
+	   	        function sub2(pub,info){
+                    alert(pub.name+" "+info);
+
+	   	       }
+	   	       sub2.subscribe(p1);
+	   	       sub1.unsubscribe(p1);
+	   	       p.deliver("新华社消息：下大雨啦");
+	   	       p1.deliver("法新社消息:爆炸了");
+
+	   </script>
+</body>
+</html>

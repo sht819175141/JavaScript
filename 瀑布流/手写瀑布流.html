@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+        #main {
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .box {
+            padding: 15px 0 0 15px;
+            float: left;
+        }
+
+        .pic {
+            padding: 5px;
+            border: 1px solid red;
+            border-radius: 3px;
+        }
+
+        .pic img {
+            width: 165px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div class="box">
+        <div class="pic"><img src="images/1.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/2.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/3.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/4.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/5.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/6.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/7.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/8.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/9.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/10.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/11.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/12.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/13.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/14.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/15.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/16.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/17.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/18.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/19.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/20.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/21.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/22.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/23.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/24.jpg" alt=""/></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="images/25.jpg" alt=""/></div>
+    </div>
+</div>
+<script>
+    var datasrc = {dataArt: [{"src": '1.jpg'}, {"src": '2.jpg'}, {"src": '3.jpg'}, {"src": '4.jpg'}, {"src": '5.jpg'}]}
+    var main = document.getElementById('main');
+
+    function getClassName(parent, box) {
+        var odiv = document.getElementsByTagName('*');
+        var arr = [];
+        for (var i = 0; i < odiv.length; i++) {
+            if (odiv[i].className == "box") {
+                arr.push(odiv[i])
+            }
+        }
+        return arr
+    }
+
+    function warterFull() {
+        //所有box
+        var obox = getClassName(main, "box");
+        var boxWidth = obox[0].offsetWidth;
+        var clientWidth = document.documentElement.clientWidth || document.body.clientWidth
+        //屏幕的宽度，除以图片的宽度等于一行可以放几张图的数量
+        var cols = Math.floor(clientWidth / boxWidth)
+        main.style.width = cols * boxWidth + 'px';
+        var arr = [];
+        for (var i = 0; i < obox.length; i++) {
+            if (i < cols) {
+                arr.push(obox[i].offsetHeight)
+            } else {
+                //找到数组里的最小高度
+                var minHeight = Math.min.apply(Math, arr);
+                //最小高度所在下标
+                var index = arr.indexOf(minHeight)
+                //BOX定位：　left top
+                obox[i].style.position = 'absolute';
+                //  obox[i].style.left=index*w+'px'
+                obox[i].style.top = minHeight + 'px';
+                obox[i].style.left = obox[index].offsetLeft + 'px'
+                //改变最小高度
+                arr[index] = arr[index] + obox[i].offsetHeight;
+            }
+        }
+
+    }
+
+    warterFull();
+
+    window.onscroll = function () {
+        var obox = getClassName(main, 'box');
+        var lastH = obox[obox.length - 1].offsetTop + obox[obox.length - 1].offsetHeight / 2;
+
+        var cH = document.documentElement.clientHeight;
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+        if (lastH < cH + scrollTop) {
+            for (var i = 0; i < datasrc.dataArt.length; i++) {
+                var newBox = document.createElement('div');
+                newBox.className = 'box';
+                main.appendChild(newBox);
+                var newPic = document.createElement('div');
+                newPic.className = 'pic'
+                newBox.appendChild(newPic);
+                var newImg = document.createElement('img');
+                newImg.src = "img/" + datasrc.dataArt[i].src
+                newPic.appendChild(newImg);
+            }
+            warterFull()
+        }
+    }
+</script>
+</body>
+</html>

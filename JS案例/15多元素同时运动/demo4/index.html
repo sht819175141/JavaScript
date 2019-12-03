@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+*{margin:0;padding: 0}
+#box{width:1000px;height:409px;margin:auto;border:1px solid #ccc;position: relative;}
+
+#imgs{width:1000px;height:409px;overflow: hidden;}
+#left{width:45px;height: 45px;position: absolute;left:10px;top:172px;}
+#right{width:45px;height: 45px;position: absolute;right:10px;top:172px;}
+
+#txt{position: absolute;bottom: 30px;left:300px;}
+#imgs img{float:left;opacity: 0.3;}
+
+#txt span{width:50px;height: 50px;background: #fff;display: inline-block;border-radius: 30px;text-align: center;line-height: 50px;font-size:24px;}
+
+#txt span.bg{background: blue;color:red;}
+</style>
+<body>
+	
+<div id="box">
+	<div id="left"><img src="images/l.png"></div>
+	<div id="imgs">
+		<img src="images/1.jpg">
+		<img src="images/2.jpg">
+		<img src="images/3.jpg">
+		<img src="images/4.jpg">
+		<img src="images/5.jpg">
+		<img src="images/6.jpg">
+	</div>
+	<div id="right"><img src="images/r.png"></div>
+	
+	<div id="txt">
+		<span class="bg">1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+		<span>6</span>
+	</div>
+</div>
+
+<script src="animate.js"></script>
+<script>
+var img = document.getElementById("imgs");
+var imgs = img.getElementsByTagName("img");
+var spans = document.getElementsByTagName("span");
+var box = document.getElementById("box");
+var left = document.getElementById("left");
+var right = document.getElementById("right");
+j=0;
+function one(){
+	j++;
+	if(j>imgs.length-1){
+ 		j=0;
+ 	}
+ 	for(var i =0;i<imgs.length;i++){
+ 		imgs[i].style.display = "none";
+ 		spans[i].className = "";
+ 	}
+ 	imgs[j].style.display = "block";
+ 	spans[j].className = "bg";
+}
+time = setInterval(change,1000);
+
+function change(){
+	one()
+}
+
+box.onmouseover = function(){
+	clearInterval(time);
+}
+box.onmouseout = function(){
+	time = setInterval(change,1000);
+}
+
+right.onclick = function(){	 
+	 one()
+}
+left.onclick = function(){
+	j--;
+ 	if(j<0){
+ 		j=imgs.length-1;
+ 	}
+	for(var i =0;i<imgs.length;i++){
+	 	imgs[i].style.display = "none";
+	 	spans[i].className = "";
+ 	}
+
+ 	imgs[j].style.display = "block";
+ 	spans[j].className = "bg";	
+}
+
+for(var k=0;k<spans.length;k++){
+	spans[k].index = k;
+	spans[k].onmouseover = function(){
+
+		for(var x=0;x<spans.length;x++){
+			spans[x].className = "";
+			imgs[x].style.display = "none";
+		}
+
+		spans[this.index].className = "bg";
+		animate(imgs[this.index],{opacity:100})
+		imgs[this.index].style.display = "block";
+
+	}
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<span>afhkghfkvkkdfnv</span>
+<body>
+<script>
+    var str = 'b123ag456labdk';
+    var reg = new RegExp('(\\d+)', 'g')
+    if (str.replace(reg)) {
+        //alert(RegExp["$1"])
+    }
+
+    //alert('ontouchStart'in window)
+    /*var a;
+    if(!("a" in window)){
+        a=123;
+    };
+    alert(a)*/
+    /*function lowie8(){
+        var o={toString:function(){}};
+        for(var t in o){
+            if(t==toString){
+                return false;
+            }
+        }
+        return true;
+    };
+    lowie8();*/
+    //alert(navigator.userAgent)
+    function isChrome() {//检测谷歌
+        var na = navigator.userAgent;
+        if ((/Chrome\/\S+/).test(na)) {
+            return true
+        } else {
+            return false
+        }
+    };
+    //alert(isChrome())
+
+    /*function isIE(){
+        var na=navigator.userAgent;
+        if(()){
+            return RegExp("$1")
+        }
+    }*/
+</script>
+</body>
+</html>

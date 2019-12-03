@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="box">
+    <ul id="ul">
+        <li>1 JAN</li>
+        <li>2 FER</li>
+        <li>3 MER</li>
+        <li>4 APR</li>
+        <li>5 MAY</li>
+        <li>6 JUM</li>
+        <li>7 JUL</li>
+        <li>8 AUG</li>
+        <li>9 SEP</li>
+        <li>10 OCT</li>
+        <li>11 NOV</li>
+        <li>12 DEC</li>
+    </ul>
+    <ol id="ol">
+        <li><h1>1月</h1>
+            <p>元旦1月1日</p></li>
+        <li><h1>2月</h1>
+            <p>2月1日</p></li>
+        <li><h1>3月</h1>
+            <p>3月1日</p></li>
+        <li><h1>4月</h1>
+            <p>4月1日</p></li>
+        <li><h1>5月</h1>
+            <p>5月1日</p></li>
+        <li><h1>6月</h1>
+            <p>6月1日</p></li>
+        <li><h1>7月</h1>
+            <p>7月1日</p></li>
+        <li><h1>8月</h1>
+            <p>8月1日</p></li>
+        <li><h1>9月</h1>
+            <p>9月1日</p></li>
+        <li><h1>10月</h1>
+            <p>10月1日</p></li>
+        <li><h1>11月</h1>
+            <p>11月1日</p></li>
+        <li><h1>12月</h1>
+            <p>12月1日</p></li>
+    </ol>
+    <p>1</p>月
+    <p>1</p>月<b>1</b>日
+
+</div>
+<script>
+    var box = document.getElementById("box");
+    var con = document.getElementById("con");
+    var ul = document.getElementById("ul");
+    var li = ul.getElementsByTagName("li");
+    var ol = document.getElementById("ol");
+    var li2 = ol.getElementsByTagName("li");
+    setInterval(shi, 1000);
+    var num = 0;
+
+    function shi() {
+        num++;
+        if (num > 12) {
+            num = 1
+        }
+        for (var i = 0; i < li.length; i++) {
+            li[i].style.background = "#000";
+            li[i].style.color = "#fff";
+            li2[i].style.display = "none";
+        }
+        li[num - 1].style.background = "#fff";
+        li[num - 1].style.color = "red";
+        li2[num - 1].style.display = "block";
+
+    }
+</script>
+</body>
+</html>

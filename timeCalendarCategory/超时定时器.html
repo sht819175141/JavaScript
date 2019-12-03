@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box {
+            height: 200px;
+            width: 200px;
+            margin: 0 auto;
+            background-color: #ccc;
+            line-height: 200px;
+            text-align: center;
+            font-size: 80px;
+        }
+
+        input {
+            margin-left: 633px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<input type="button" value="发送验证码" id="fa"/>
+<script>
+    var box = document.getElementById("box");
+    var fa = document.getElementById("fa");
+    var arr = ["A", "B", "C", "D", "E", "F", 'G', "H", "J", "K", "Z", "X", "C", "V", "B", "N", "M", "S", "L", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
+
+    function shi() {
+        var num = [];
+        for (var i = 0; i < 4; i++) {
+            var j = Math.floor(Math.random() * 26 + 1);
+            num += arr[j];
+        }
+        box.innerHTML = num;
+
+    }
+
+    fa.onclick = function () {
+        times = setInterval(shi, 500);
+        setTimeout(ting, 5000);
+    }
+
+    function ting() {
+        clearInterval(times);
+    }
+
+</script>
+</body>
+</html>

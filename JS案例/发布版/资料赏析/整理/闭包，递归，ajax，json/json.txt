@@ -1,0 +1,59 @@
+
+								JSON 
+
+
+JSON 数据格式
+JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。JSON采用完全独立于语言的文本格式，这些特性使JSON成为理想的数据交换语言。易于人阅读和编写，同时也易于机器解析和生成。
+
+JSON：JavaScript 对象表示法（JavaScript Object Notation）。
+JSON 是存储和交换文本信息的语法。类似 XML。
+JSON 比 XML 更小、更快，更易解析。
+
+什么是 JSON ？
+JSON 指的是 JavaScript 对象表示法（JavaScript Object Notation）
+JSON 是轻量级的文本数据交换格式
+JSON 独立于语言 *
+JSON 具有自我描述性，更易理解
+
+2. XML和JSON优缺点
+2.1 XML的优缺点 
+XML的优点
+　　A.格式统一，符合标准；
+　　B.容易与其他系统进行远程交互，数据共享比较方便。
+XML的缺点
+　　A.XML文件庞大，文件格式复杂，传输占带宽；
+　　B.服务器端和客户端都需要花费大量代码来解析XML，导致服务器端和客户端代码变得异常复杂且不易维护；
+　　C.客户端不同浏览器之间解析XML的方式不一致，需要重复编写很多代码；
+　　D.服务器端和客户端解析XML花费较多的资源和时间。
+2.2 JSON的优缺点
+JSON的优点：
+　　A.数据格式比较简单，易于读写，格式都是压缩的，占用带宽小；
+　　B.易于解析，客户端JavaScript可以简单的通过eval()进行JSON数据的读取；
+　　C.支持多种语言，包括ActionScript, C, C#, ColdFusion, Java, JavaScript, Perl, PHP, Python, Ruby等服务器端语言，便于服务器端的解析；
+　　D.在PHP世界，已经有PHP-JSON和JSON-PHP出现了，偏于PHP序列化后的程序直接调用，PHP服务器端的对象、数组等能直接生成JSON格式，便于客户端的访问提取；
+　　E.因为JSON格式能直接为服务器端代码使用，大大简化了服务器端和客户端的代码开发量，且完成任务不变，并且易于维护。
+JSON的缺点
+　　A.没有XML格式这么推广的深入人心和喜用广泛，没有XML那么通用性；
+　　B.JSON格式目前在Web Service中推广还属于初级阶段。
+
+
+
+JSON 值可以是：
+数字（整数或浮点数）
+字符串（在双引号中）
+逻辑值（true 或 false）
+数组（在方括号中）
+对象（在花括号中）
+null
+
+
+JSON 数组
+JSON 数组在方括号中书写：
+数组可包含多个对象：
+{
+"employees": [
+{ "firstName":"John" , "lastName":"Doe" },
+{ "firstName":"Anna" , "lastName":"Smith" },
+{ "firstName":"Peter" , "lastName":"Jones" }
+]
+}

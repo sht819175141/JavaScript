@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#editor
+		{
+				width:300px;
+				height: 200px;
+				border:1px solid red;
+		}
+		#faces
+		{
+			position: absolute;
+			left:150px;
+			display: none;
+			z-index: 5;
+		}
+	</style>
+</head>
+<body>
+    <button value="red">红色</button>
+    <button value="green">绿色</button>
+    <button value="blue">蓝色</button>
+    <img src="img/unbold.gif" id="unbold" />
+    <img src="img/left.jpg" id="left" />
+    <img src="img/center.jpg" id="center" />
+    <img src="img/right.jpg" id="right" />
+    <button>faces</button>
+    <select  id="fontsize">
+    	<option value="3">3</option>
+    	<option value="4">4</option>
+    	<option value="5">5</option>
+    	<option value="6">6</option>
+    	<option value="7">7</option>
+    </select>
+    <button id="view">view code</button>
+    <div id="faces"><Img src="img/cool.png" />
+    <Img src="img/haha.png" /></div>
+	<div id="editor" contenteditable="true">
+		abc
+	</div>
+	<textarea rows="10" cols="100" id="code"></textarea>
+	<script>
+	    var editor=document.getElementById("editor");
+		var btns = document.getElementsByTagName('button');
+		var objFace=document.getElementById("faces");
+		var imgs=objFace.getElementsByTagName("img");
+		var unbold=document.getElementById("unbold");
+		var left=document.getElementById("left");
+		var center=document.getElementById("center");
+		var right=document.getElementById("right");
+		var fontsize=document.getElementById("fontsize");
+		var view=document.getElementById("view");
+		var code=document.getElementById("code");
+
+		for(var i=0;i<btns.length-1;i++){
+			btns[i].onclick=function(){
+				//document.selection.createRange().text
+				if(getSelection().toString().length==0){
+					alert("no select!!");
+					return;
+				}
+				document.execCommand("ForeColor",false,this.value);
+			}
+		}
+		btns[3].onclick=function(){
+			
+			objFace.style.display="block";
+		}
+		for(var i=0;i<imgs.length;i++){
+			imgs[i].onclick=function(){
+				editor.focus();
+				document.execCommand("insertImage",false,this.src);
+				objFace.style.display="none";
+			}
+		}
+		unbold.onclick=function(){
+			if(getSelection().toString().length==0){
+					alert("no select!!");
+					return;
+			}
+			if(document.queryCommandState("bold")){
+				this.src="img/unbold.gif";
+			}
+			else
+			{
+				this.src="img/bold.gif";
+			}
+			document.execCommand("underline");	
+		}
+		left.onclick=function(){
+			if(getSelection().toString().length==0){
+					alert("no select!!");
+					return;
+			}
+			document.execCommand("justifyLeft");
+		}
+			center.onclick=function(){
+			if(getSelection().toString().length==0){
+					alert("no select!!");
+					return;
+			}
+			document.execCommand("justifyCenter");
+		}
+			right.onclick=function(){
+			if(getSelection().toString().length==0){
+					alert("no select!!");
+					return;
+			}
+			document.execCommand("justifyRight");
+		}
+		fontsize.onchange=function(){
+			if(getSelection().toString().length==0){
+					alert("no select!!");
+					return;
+			}
+			document.execCommand("fontSize",false,this.value);
+		}
+		view.onclick=function(){
+			code.value=editor.innerHTML;
+		}
+		code.onblur=function(){
+			editor.innerHTML=code.value;
+		}
+
+		</script>
+</body>
+</html>

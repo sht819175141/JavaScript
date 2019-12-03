@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Person(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		
+		Person.prototype.info=function(){
+			return this.name+","+this.age;
+		}
+
+		function Student(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		Student.prototype=new Person();
+		Student.prototype.constructor=Student;
+	    var s=new Student("lisi",15);
+	    /*alert(s.info());
+	    alert(s.constructor);*/
+	    console.log(Object.getPrototypeOf(s));
+	    console.log(Object.getPrototypeOf(Person.prototype));
+	    //通过实例获取构造函数的原型对象
+        alert(Student.prototype.isPrototypeOf(s));
+        //判断构造函数的原型对象是否是对象的原型
+
+
+		function F(){};
+		F.prototype=Person.prototype;
+        Student.prototype=new F();
+		Student.prototype.constructor=Student;
+
+		function F(){};
+ 	     F.prototype=Scroll.prototype;
+ 	     AdvScroll.prototype=new F();
+ 	     AdvScroll.prototype.constructor=AdvScroll;
+	</script>
+</body>
+</html>

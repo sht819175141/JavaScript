@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+</head>
+<body>
+<p class="aa bb cc"></p>
+<script>
+    var objp = document.getElementsByTagName('p')[0];
+
+    /*console.log(objp.className);
+    console.log(objp.classList)
+    console.log(objp.classList.toggle("aa"));
+    console.log(objp.classList)
+    console.log(objp.classList.contains("kk"))*/
+    function show(obj) {
+        if (obj.classList) {
+            return obj.classList
+        } else {
+            return new classList(obj)
+        }
+    }
+
+    function CssList(obj) {
+        this.obj = obj;
+    }
+
+    CssList.prototype.contains = function (obj) {
+        if (obj.length == 0 || obj.indexOf(" ") != -1) {
+            throw new Error("命名不合法")
+        }
+        var classes = this.obj.className;
+        if (classes == obj) return true;//calss只有一个时的判断
+        return classes.search("\\b" + obj + "\\b") != -1;//calss为多个时的判断
+    }
+    var p = new CssList(objp);
+    alert(p.contains("aa"));
+
+    CssList.prototype.add = function (obj) {
+        if (obj.length == 0 || obj.indexOf(" ") != -1) {
+            throw new Error("命名不合法")
+        }
+
+        if (this.contains(obj)) return;
+        var classes = this.obj.className;
+
+        if (classes) {
+            classes += " " + obj;
+        }
+        this.obj.className = classes;
+    }
+    Csslist(objP).add("eee");
+    alert(objP.className);
+
+
+    <
+    !doctype
+    html >
+    < html
+    lang = "en" >
+        < head >
+        < meta
+    charset = "UTF-8" >
+        < title > Document < /title>
+        < /head>
+        < body >
+        < p
+    class
+    = "aa bb cc" > 啦啦啦 < /p>
+        < script >
+    var p = document.getElementsByTagName('p')[0]
+
+    function csslist(obj) {
+        if (obj.classList) {
+            return obj.classList
+        } else {
+            return new Csslist(obj)
+        }
+    }
+
+    function CssList(obj) {
+        this.obj = obj;
+    }
+
+    CssList.prototype.contanis = function (mz) {
+        if (mz.length == 0 || mz.indexOf(" ") != -1) {
+            throw new Error("名字不合法")
+        }
+        var classes = this.obj.className
+        if (classes == mz) return true;
+        var reg = new RegExp("\\b" + mz + "\\b")
+        return reg.test(classes)
+    }
+    CssList.prototype.add = function (mz) {
+        if (mz.length == 0 || mz.indexOf(" ") != -1) {
+            throw new Error("名字不合法")
+        }
+        if (this.contanis(mz)) {
+            this.obj.className += " " + mz
+        }
+    }
+    CssList.prototype.remove = function (mz) {
+        if (mz.length == 0 || mz.indexOf(" ") != -1) {
+            throw new Error("名字不合法")
+        }
+        if (this.contanis(mz)) {
+            this.obj.className += " " + mz
+        }
+
+    }
+    CssList.prototype.toggle = function (mz) {
+        if (mz.length == 0 || mz.indexOf(" ") != -1) {
+            throw new Error("名字不合法")
+        }
+        if (this.contanis(mz)) {
+            this.remove(mz)
+        } else {
+            this.add(mz)
+        }
+    }
+    var ins = csslist(p)
+    ins.remove("cc")
+    alert(ins.obj.className)
+</script>
+</body>
+</html>
+
+</script>
+<
+/body>
+< /html>

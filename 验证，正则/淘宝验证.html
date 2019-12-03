@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+        div {
+            height: 20px;
+            width: 80px;
+            float: left;
+            margin-right: 30px;
+            line-height: 20px;
+            text-align: center;
+            background: #ccc;
+        }
+
+        .bg {
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<table action="login.php" method="post" width="700" height="200" style="margin: 0 auto">
+    <tr>
+        <td>会员名：<input type="text"/><b style="display:none">5-25个字符，一个汉字为两个字符，推荐使用中文会员名</b></td>
+    </tr>
+    <tr>
+        <td>登陆密码：<input type="password"/><b style="display:none">5-25个字符</b></td>
+    </tr>
+    <tr>
+        <td>
+            <div>弱</div>
+            <div>中</div>
+            <div>强</div>
+        </td>
+    </tr>
+    <tr>
+        <td>确认密码：<input type="password"/><b style="display:none">请再输入一次</b></td>
+    </tr>
+</table>
+
+<script>
+    var inp = document.getElementsByTagName("input");
+    var b = document.getElementsByTagName("b");
+    var div = document.getElementsByTagName("div");
+
+    //用户名输入
+    inp[0].onfocus = function () {
+        b[0].style.display = 'block'
+    }
+    inp[0].onblur = function () {
+        var reg = /[^\w\u4e00-\u9fa5]/   //双字符
+        var reg1 = /[\w\w4400-\u9fa5]{6,25}/   //6-25位的汉字
+        if (inp[0].value == "") {
+            b[0].innerHTML = '不能为空';
+        } else if (!reg1.test(inp[0].value)) {
+            b[0].innerHTML = '不在长度范围内'
+        } else if (reg.test(inp[0].value)) {
+            b[0].innerHTML = '存在非法字符'
+        } else {
+            b[0].innerHTML = 'ok!'
+        }
+    }
+
+    //第一次输入密码
+    inp[1].onfocus = function () {
+        b[1].style.display = 'block'
+    }
+    inp[1].onblur = function () {
+        var reg1 = /[0-9]/g;
+        var reg2 = /[a-zA-Z]/g;
+
+        if (inp[1].value == "") {
+            b[1].innerHTML = '不能为空';
+        } else if (inp[1].value.length < 6 || inp[1].value.length > 25) {
+            b[1].innerHTML = '不在长度范围内';
+        } else if (!reg2.test(inp[1].value)) {
+            b[1].innerHTML = '不能全是数字';
+        } else if (!reg1.test(inp[1].value)) {
+            b[1].innerHTML = '不能全是字母';
+        } else {
+            b[1].innerHTML = "OK!"
+        }
+
+    }
+
+    inp[1].onkeyup = function () {
+        if (inp[1].value.length > 5) {
+            div[0].className = 'bg'
+        } else {
+            div[1].className = '';
+        }
+
+        if (inp[1].value.length > 10) {
+            div[1].className = 'bg'
+        } else {
+            div[1].className = ""
+        }
+
+        if (inp[1].value.length > 15) {
+            div[2].className = 'bg'
+        } else {
+            div[2].className = ""
+        }
+    }
+
+    //确认密码框
+    inp[2].onfocus = function () {
+        b[2].style.display = 'block';
+        b[2].innerHTML = '请再输入一次';
+    }
+    inp[2].onblur = function () {
+        if (inp[2].value == '') {
+            b[2].innerHTML = '不能为空';
+        } else if (inp[1].value != inp[2].value) {
+            b[2].innerHTML = '两次密码不一致'
+        } else {
+            b[2].innerHTML = 'ok!!!'
+        }
+    }
+
+</script>
+</body>
+</html>

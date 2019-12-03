@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #box {
+            height: 400px;
+            width: 400px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #box img {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <img src="images/1.gif" id="fly"/>
+    <img src="images/2.png" id="img0" style="display:none"/>
+    <img src="images/2.png" id="img1" style="display:none"/>
+    <img src="images/2.png" id="img2" style="display:none"/>
+    <img src="images/2.png" id="img3" style="display:none"/>
+    <img src="images/2.png" id="img4" style="display:none"/>
+    <img src="images/2.png" id="img5" style="display:none"/>
+    <img src="images/2.png" id="img6" style="display:none"/>
+    <img src="images/2.png" id="img7" style="display:none"/>
+    <img src="images/2.png" id="img8" style="display:none"/>
+    <img src="images/2.png" id="img9" style="display:none"/>
+</div>
+<script>
+    var box = document.getElementById("box");
+    var fly = document.getElementById("fly");
+    document.onkeydown = function (event) {
+        switch (event.keyCode) {
+            case 37:
+                fly.style.left = Math.max(0, fly.offsetLeft - 10) + "px";
+                break;
+            case 38:
+                fly.style.top = Math.max(0, fly.offsetTop - 10) + "px";
+                break;
+            case 39:
+                fly.style.left = Math.min(334, fly.offsetLeft + 10) + "px";
+                break;
+            case 40:
+                fly.style.top = Math.min(320, fly.offsetTop + 10) + "px";
+                break;
+            case 32:
+                shot(parseInt(fly.style.left) + 33, fly.style.top);
+                break;
+        }
+    }
+
+    function shot(x, y) {
+        for (var i = 0; i < 10; i++) {
+            var img0 = document.getElementById("img" + i);
+            if (img0.style.display == "none") {
+                img0.style.display = "block";
+                img0.style.left = x + "px";
+                img0.style.top = y;
+                return img0;
+            }
+        }
+    }
+
+    setInterval(show, 50)
+
+    function show() {
+        for (var i = 0; i < 10; i++) {
+            var img0 = document.getElementById("img" + i);
+            if (img0.style.display == "block") {
+                img0.style.top = parseInt(img0.style.top) - 40 + "px";
+                if (parseInt(img0.style.top) < -15) {
+                    img0.style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

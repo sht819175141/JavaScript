@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	 //高阶函数：可以调用其它函数的函数
+	 //each()遍历数组
+
+ var  arr=[3,1,5]
+ var  arr1=['张三','李四','王五']
+
+  function  addOne(n){
+  	  console.log(n+1)
+  }
+
+  function  cf(m){
+  	  console.log(m*2)
+  }
+
+  function  each(fun,array){
+  		for(var i=0;i<array.length;i++){
+  			 fun(array[i]);
+  		}
+  }
+//each(函数名,数组名)
+//each(匿名函数,数组名)
+each(addOne,arr);
+each(function(n){console.log(n-2)},arr)
+each(function(n){console.log("1412B"+n)},arr1)
+
+//映射函数
+//map 函数  通过遍历数组， 对数组进行某种运算(函数执行的)生成一个新数组
+ /*var  arr=[2,1,5,6]
+// map(函数名,数组名)
+
+ function map(fun,array){
+ 	var temp=[];*/
+ 	//遍历数组的每一项，并且执行addTwo函数，把结果push到temp里去
+ 
+/* for(var i=0;i<array.length;i++){
+ 	  temp.push( fun(array[i]))
+ }*/
+// each(function(m){
+// 	temp.push(fun(m))
+//   },array)
+//  	return  temp
+//  }
+// function   addTwo(val){
+// 	return val+2
+// }
+// console.log(map(addTwo,arr))*/
+
+//规约函数
+//reduce() 是通过重复调用一个函数，将数组转化为单一的值
+//求奇数的个数
+//求数组中各项的和
+//reduce(函数名，变量初始值，数组名)
+
+/*var arr1=[2,4,1,1,1]  //几个奇数
+function  reduce(fun,base,array){
+ 	 each(function(n){
+ 	//变量初始值     值
+		base=fun(base,n)
+ 	 },array)
+return base
+}
+           //     个数  值
+function oddCount(count,val){
+	 if(val%2!=0){
+	 	count++;
+	 }
+	return count 
+}
+
+function  sum(num,val){
+	 return  num*val
+}
+console.log(reduce(oddCount,0,arr1))
+console.log(reduce(sum,1,arr1))*/
+
+	</script>
+</body>
+</html>

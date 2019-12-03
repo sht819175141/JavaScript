@@ -1,0 +1,139 @@
+ <!doctype html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Document</title>
+ 	<style>
+ 		#news div
+ 		{
+ 			display: none;
+ 		}
+ 		.selectColor
+ 		{
+ 			background: #ccc;
+ 			width:300px;
+
+ 		}
+        #news span
+        {
+            color:red;
+        }
+ 	</style>
+ </head>
+ <body>
+     <input type="text" id="search"><button id="btn">搜索</button>
+     <div id="item"></div>
+ 	 <div id="news">
+	   <div>
+    		<h2>八维教务楼漏水</h2>
+			<p>八维教务楼漏水导致整个楼的教学中断</p>
+    	</div>
+    	<div>
+    		<h2>教学系统出故障</h2>
+			<P>导致学生日考被推迟</P>
+    	</div>
+    	<div>
+    		<h2>八维就业信息</h2>
+			<P>平均薪资15K</P>
+    	</div>
+    	<div>
+    		<h2>早操大雨暂停</h2>
+			<P>早操大雨暂停同学很happy</P>
+    	</div>
+    	<div>
+    		<h2>周六放假</h2>
+			<P>补考推迟到下周</P>
+    	</div>
+    </div>
+    <script>
+
+    	var objNews=document.getElementById('news');
+    	var divs=objNews.getElementsByTagName("div");
+    	var h2s=objNews.getElementsByTagName("h2");
+    	var ps=objNews.getElementsByTagName("p");
+    	var txt=document.getElementById("search");
+    	var btn=document.getElementById("btn");
+    	var item=document.getElementById("item");
+    	var news=[];
+    	for(var i=0;i<divs.length;i++){
+    		obj={};
+    		obj.title=h2s[i].innerHTML;
+    		obj.content=ps[i].innerHTML;
+    		news.push(obj);
+    	}
+    	console.log(news);
+    	txt.onkeyup=function(){
+    		if(this.value==""){
+    			item.innerHTML="";
+    			return;
+    		}
+    		item.innerHTML="";
+    		var keywords=this.value;
+    		for(var i=0;i<news.length;i++){
+    			if(news[i].title.match(keywords)){
+    				var temDiv=document.createElement("div");
+    				 			
+    				temDiv.innerHTML=news[i].title;
+    				temDiv.onclick=function(){
+    					item.innerHTML="";
+    					txt.value=this.innerHTML;
+    				}
+    				temDiv.onmouseover=function(){
+    					this.className="selectColor";
+    				}
+    				temDiv.onmouseout=function(){
+    					this.className="";
+    				}
+    				item.appendChild(temDiv);
+
+    			}
+    		}
+    	}
+    	btn.onclick=function(){
+            if(txt.value=="") return;
+            //把news区块span标记清除掉，而且全局匹配
+            objNews.innerHTML=objNews.innerHTML.replace(new RegExp("<(span|\\/span)>","g"),"");
+    		item.innerHTML="";
+    		for(var i=0;i<divs.length;i++){
+    			divs[i].style.display="none";
+    		}
+    		for(var i=0;i<news.length;i++){
+    		if(news[i].title.indexOf(txt.value)!=-1 || 
+    			news[i].content.indexOf(txt.value)!=-1 ){
+    			divs[i].style.display="block";
+                divs[i].innerHTML=divs[i].innerHTML.replace(new RegExp(txt.value,"g"),"<span>"+txt.value+"</span>");
+
+    		}
+    		}
+
+    	}
+        function isLowIE8(){
+            var o={toString:function(){}};
+            for(var t in o){
+                if(t=="toString"){
+                    return false;
+                }
+            }
+            return true;
+
+        }
+        alert(isLowIE8());
+
+        var ua=navigator.userAgent;  //用户代理信息
+        if(/Firefox\/(\d+\.\d+)/.test(ua))  // run at firefox
+        {
+            alert(RegExp["$1"])
+        }
+
+       if(!/OPR/.test(ua)){
+        if(/Chrome\/(\d+\.\d+)/.test(ua))  // run at chrome
+        {
+            alert(RegExp["$1"])
+        }
+    }
+
+
+
+    </script>
+ </body>
+ </html>

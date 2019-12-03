@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	  //构造函数法
+       var str='134afdsd我们'
+       //正则
+	 //  var  reg=new RegExp('B','i');
+
+	   //正则.test(字符串)
+	 //  var reg=/B/i 
+	// var reg=/[a-z]/i   
+	//var reg=/[^0-9]/
+	//邮政密码  6
+	//字母数字 下划线  5  12之间   至少5位
+	//数字 6 12之间
+	//var  reg=/\d{6}/
+	//var  reg=/[a-zA-Z0-9_]{5,}/
+	//手机号 11位数字  1 34578 9位置无限制
+	//var reg=/^1[34578]\d{9}$/
+	//电话号码的：
+	//7到8位数字82157034         5056776
+	//010-82157034     0311-5056776      011- 0311-  3-4位的数字 - 
+	//+\(86\)010-82157034   +(86)0311-5056776  
+	//var  reg=/((\+\(86\))?\d{3,4}-)?\d{7,8}/
+
+	//IP地址：
+	//172.28.1.3
+	//32.4.124.223
+	//1.255.23.12
+	//1到3位的数字.1到3位的数字.1到3位的数字.1到3位的数字
+  	//var reg=/^(\d{1,3}\.){3}\d{1,3}$/
+	    //邮箱：
+   //   admin_a3@ qq  . com
+    //  abc     @ 163 . net
+     // _a      @ sina. com.cn
+     //字母数字下滑线至少1位@字母数字下划线2位 .  com|net|com.cn
+   //var  reg=/^\w+@\w{2,}\.(com|net|com\.cn)$/
+	//url
+	/*
+	baidu_23.com
+	www.baidu.com    (www\.)?
+	http://www.163.net    ((http:\/\/)?www\.)? 
+	https://www.baidu.com
+	http://www.baidu.com  /index.html
+	http://www.baidu.com  /admin       /bbs.html
+	http://www.taobao.com /show        /test        /cc.php
+        
+        /[\w\.]+
+
+    字母数字下划线至少1位  .  com net  com.cn
+	*/
+	//var reg=/^((http(s)?:\/\/)?www\.)?\w+\.(com|net|com\.cn)(\/[\w\.]+)*$/
+	//汉字
+var reg=/[\u4e00-\u9fa5]{3}/
+	 console.log(reg.test(str));
+     
+     //身份证号的验证 18位  17位是数字 0-9X
+     //yyyy-mm-dd  yyyy/mm/dd   
+     //border-left-color borderLeftColor 试着用正则里的替换写
+
+
+	</script>
+</body>
+</html>

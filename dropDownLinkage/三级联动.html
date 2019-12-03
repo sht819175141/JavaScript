@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        select {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<select name="sheng" id="sheng"></select>
+<select name="shi" id="shi"></select>
+<select name="xian" id="xian"></select>
+<script>
+
+    var daList = [
+        {
+            name: "河南省", shiList: [
+                {name: "济源市", xianList: ["邵原镇", "思礼镇", "职城镇"]},
+                {name: "洛阳市", xianList: ["关林区", "洛南区", "郊区"]},
+            ]
+        },
+    ]
+    var sheng = document.getElementById('sheng');
+    var shi = document.getElementById('shi');
+    var xian = document.getElementById('xian');
+
+    sheng.onchange = function () {
+        var shengIndex = this.selectedIndex;
+        shi.options.length = 0;
+        auto(daList[shengIndex].shiList, shi);
+        shi.onchange()
+    }
+    shi.onchange = function () {
+        var shengIndex = this.selectedIndex;
+        xian.options.length = 0;
+        for (var i = 0; i < daList[sheng.selectedIndex].shiList[shengIndex].xianList.length; i++) {
+            xian.options[xian.options.length] = new Option(daList[sheng.selectedIndex].shiList[shengIndex].xianList[i]);
+        }
+    }
+
+    function auto(arr, obj) {
+        for (var i = 0; i < arr.length; i++) {
+            obj.options[obj.options.length] = new Option(arr[i].name)
+        }
+    }
+
+    auto(daList, sheng)
+    sheng.selectedIndex = 0;
+    sheng.onchange();
+</script>
+</body>
+</html>

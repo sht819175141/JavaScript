@@ -1,0 +1,713 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="张鑫旭的个人博客_web前端技术文章_我熟知的三种三栏网页宽度自适应布局方法" />
+<meta name="keywords" content="张鑫旭,zhangxinxu,web前端,HTML5,CSS3,jQuery,SVG, canvas" />
+<meta name="author" content="张鑫旭,zhangxinxu" />
+<title>我熟知的三种三栏网页宽度自适应布局方法 &laquo;  张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="/wordpress/wp-content/themes/default/style.css?v=20130505" media="screen" />
+<link rel="stylesheet" href="/wordpress/wp-content/themes/default/print.css?v=4" media="print" />
+<link rel="pingback" href="http://www.zhangxinxu.com/wordpress/xmlrpc.php" />
+ 
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 &raquo; Feed" href="http://www.zhangxinxu.com/wordpress/feed/" />
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 &raquo; 评论 Feed" href="http://www.zhangxinxu.com/wordpress/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 &raquo; 我熟知的三种三栏网页宽度自适应布局方法 评论 Feed" href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/feed/" />
+<link rel='stylesheet' id='wp-pagenavi-css'  href='http://www.zhangxinxu.com/wordpress/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.zhangxinxu.com/wordpress/wp-includes/js/comment-reply.min.js?ver=3.5.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.zhangxinxu.com/wordpress/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.zhangxinxu.com/wordpress/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='jQuery照片图像剪裁插件Jcrop中文翻译详解' href='http://www.zhangxinxu.com/wordpress/2009/11/jquery%e7%85%a7%e7%89%87%e5%9b%be%e5%83%8f%e5%89%aa%e8%a3%81%e6%8f%92%e4%bb%b6jcrop%e4%b8%ad%e6%96%87%e7%bf%bb%e8%af%91%e8%af%a6%e8%a7%a3/' />
+<link rel='next' title='CSS实现圆角六色渐变自适应按钮详解' href='http://www.zhangxinxu.com/wordpress/2009/11/css%e5%ae%9e%e7%8e%b0%e5%9c%86%e8%a7%92%e5%85%ad%e8%89%b2%e6%b8%90%e5%8f%98%e8%87%aa%e9%80%82%e5%ba%94%e6%8c%89%e9%92%ae%e8%af%a6%e8%a7%a3/' />
+<meta name="generator" content="WordPress 3.5.1, fitted with the WordPress Mobile Pack 1.2.4" />
+<link rel='canonical' href='http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/' />
+<link rel='shortlink' href='http://www.zhangxinxu.com/wordpress/?p=370' />
+</head>
+<body class="single single-post postid-370 single-format-standard">
+<div id="page">
+<script>
+var isSlideHide = false;
+if (window.localStorage) {
+	isSlideHide = localStorage.getItem("isSlideHide");
+	if (isSlideHide == "true") {
+		document.getElementById("page").className = "slide_hide";
+	}
+}
+</script>
+<div id="header" role="banner">
+	<div id="headerimg">
+		<a href="/" class="page_logo">张鑫旭-鑫空间-鑫生活</a>
+		<div class="description">it&#039;s my whole life!</div>
+	</div>
+    <div id="menubar">
+    	<ul class="menu_tab">
+        	<li>
+            	<a class="boss" href="/">网站首页</a>
+                <a href="/php/question.php">提问交流</a>
+                <a href="/php/vote.php?id=1">前端调查</a>
+            </li>
+        	<li class="on">
+            	<a class="boss" href="/wordpress/">前端技术</a>
+                <a href="/wordpress/?cat=3">css</a>
+                <a href="/wordpress/?cat=5">js/jQuery</a>
+                <a href="/wordpress/?cat=198">翻译</a>
+            </li>
+            <li>
+            	<a class="boss" href="/life/">生活与创作</a>
+                <a href="/life/?cat=3">生活</a>
+                <a href="/life/?cat=5">散文</a>
+                <a href="/life/?cat=4">小说</a>
+            </li>
+            <li>
+            	<span class="boss">前端在线资源</span>
+                <a href="/css3/">CSS3参考</a>
+                <a href="/jq/api14/">jQuery1.4参考</a>
+            </li>         
+        </ul>
+    	<form method="get" id="searchform" action="http://www.zhangxinxu.com/wordpress/">
+<label class="hidden" for="s">Search for:</label>
+<div><input type="search" value="" name="s" id="s" />
+<input type="submit" id="searchsubmit" value="Search" />
+</div>
+</form>
+    </div>
+</div>
+<div class="the_main">
+	<div id="content" class="widecolumn" role="main">
+    <div class="shink_rel"><a href="javascript:" id="shinkSlide" class="shink_a" title="收起右边栏">►</a></div>
+<script>if (window.localStorage && window.isSlideHide) {
+	(function() {
+		var eleShink = document.getElementById("shinkSlide");	
+		eleShink.title = "展开右边栏";
+		eleShink.innerHTML = "◄";
+	})();
+}</script>
+	
+		<div class="navigation">
+			<div class="alignleft">&laquo; <a href="http://www.zhangxinxu.com/wordpress/2009/11/jquery%e7%85%a7%e7%89%87%e5%9b%be%e5%83%8f%e5%89%aa%e8%a3%81%e6%8f%92%e4%bb%b6jcrop%e4%b8%ad%e6%96%87%e7%bf%bb%e8%af%91%e8%af%a6%e8%a7%a3/" rel="prev">jQuery照片图像剪裁插件Jcrop中文翻译详解</a></div>
+			<div class="alignright"><a href="http://www.zhangxinxu.com/wordpress/2009/11/css%e5%ae%9e%e7%8e%b0%e5%9c%86%e8%a7%92%e5%85%ad%e8%89%b2%e6%b8%90%e5%8f%98%e8%87%aa%e9%80%82%e5%ba%94%e6%8c%89%e9%92%ae%e8%af%a6%e8%a7%a3/" rel="next">CSS实现圆角六色渐变自适应按钮详解</a> &raquo;</div>
+		</div>
+
+		<div class="post-370 post type-post status-publish format-standard hentry category-css tag-css tag-html tag-140 tag-230 tag-234 tag-231 tag-194 tag-233 tag-144 tag-232" id="post-370">
+			<h2>我熟知的三种三栏网页宽度自适应布局方法</h2>
+			<div class="entry">
+				<p>by <a href="http://www.zhangxinxu.com/">zhangxinxu</a> from <a href="http://www.zhangxinxu.com/">http://www.zhangxinxu.com</a><br />
+本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=370">http://www.zhangxinxu.com/wordpress/?p=370</a></p>
+<p><strong>一、前言</strong><br />
+在如今各个分辨率显示器N足鼎立的时期，页面采用流动性布局（亦可称自适应布局）不失为一个好选择。当然，具体实现不是那么容易，需要一定的css功力和实践经验。本文不讲细节，只讲外部的自适应架构，这也是实现整个页面自适应的前提。目前为止，我所熟知的左中右三栏宽度自适应于浏览器的方法有三个：<a href="#m1">绝对定位法</a>，<a href="#m2">margin负值法</a>以及<a href="#m3">自身浮动法</a>。这些方法简洁实用，且无兼容性问题。如果您想在您的页面上使用流动性布局，相信本文给您一些启示的。</p>
+<p><strong>二、三种方法</strong><br />
+为了演示的需要，首先限定下示例的布局结构：左中右三栏布局，左右两栏宽度固定（要想不固定将宽度值改为百分值即可），中间栏宽度自适应。左右两栏的宽度为200像素。</p>
+<p><strong id="m1">1、绝对定位法</strong><br />
+这或许是三种方法里最直观，最容易理解的：左右两栏采用绝对定位，分别固定于页面的左右两侧，中间的主体栏用左右margin值撑开距离。于是实现了三栏自适应布局。</p>
+<p>您可以狠狠地点击这里：<a class="a_link" target="_blank" href="http://www.zhangxinxu.com/study/200911/three-column-width-auto-1.html">绝对定位法演示demo</a></p>
+<p>css代码如下（为截图）：<br />
+<img class="mt10" alt="绝对定位法下的css代码" data-src="http://image.zhangxinxu.com/image/blog/200911/2009-11-17_192909.png" title="绝对定位法下的css代码" class="alignnone" width="528" height="114" /></p>
+<p>HTML代码为（图片）：<br />
+<img class="mt5" alt="绝对定位法的HTML代码" data-src="http://image.zhangxinxu.com/image/blog/200911/2009-11-17_192929.png" title="绝对定位法的HTML代码" class="alignnone" width="271" height="87" /></p>
+<p>这里的左中右三个div的顺序是可以任意调整的，这与剩下的两中方法就不一样了，需要注意一下。</p>
+<p>此方法的优点是，理解容易，上手简单，受内部元素影响而破坏布局的概率低，就是比较经得起折腾。<br />
+缺点在于：如果中间栏含有最小宽度限制，或是含有宽度的内部元素，当浏览器宽度小到一定程度，会发生层重叠的情况。然而，一般情况下，除非用户显示器分辨率宽度>=1600像素，否则用户不会把浏览器缩小到1000像素以下的，所以该缺陷危害指数3.</p>
+<p><strong id="m2">2、margin负值法</strong><br />
+这种方法是在实际的网站中应用的最多的，我个人感觉多少有些跟风的嫌疑。此方法很难用一句话概括。首先，中间的主体要使用双层标签。外层div宽度100%显示，并且浮动（本例左浮动，下面所述依次为基础），内层div为真正的主体内容，含有左右210像素的margin值。左栏与右栏都是采用margin负值定位的，左栏左浮动，margin-left为-100%，由于前面的div宽度100%与浏览器，所以这里的-100%margin值正好使左栏div定位到了页面的左侧；右侧栏也是左浮动，其margin-left也是负值，大小为其本身的宽度即200像素。</p>
+<p>见下面的css代码：<br />
+<img class="mt10" alt="margin负值定位方法的css代码图片版" data-src="http://image.zhangxinxu.com/image/blog/200911/2009-11-17_194544.png" title="margin负值定位方法的css代码图片版" class="alignnone" width="535" height="128" /></p>
+<p>HTML代码：<br />
+<img alt="margin负值法HTML代码部分" data-src="http://image.zhangxinxu.com/image/blog/200911/2009-11-17_194614.png" title="margin负值法HTML代码部分" class="alignnone" width="235" height="128" /></p>
+<p>您可以狠狠地点击这里：<a class="a_link" target="_blank" href="http://www.zhangxinxu.com/study/200911/three-column-width-auto-2.html">margin负值法演示demo</a></p>
+<p>您需要注意几个div的顺序，无论是左浮动还是右浮动，先是主体部分div，这是肯定的，至于左右两栏谁先谁后，都无所谓，我测试了IE6，Firefox，以及chrome浏览器，表现一致。</p>
+<p>此方法的优点：三栏相互关联，可谓真正意义上的自适应，有一定的抗性——布局不易受内部影响。<br />
+缺点在于：相对比较难理解些，上手不容易，代码相对复杂。出现百分比宽度，过多的负值定位，如果出现布局的bug，排查不易。</p>
+<p><strong id="m3">3、自身浮动法</strong><br />
+此方法代码最简单。应用了标签浮动跟随的特性。左栏左浮动，右栏右浮动，主体直接放后面，就实现了自适应。</p>
+<p>您可以狠狠地点击这里：<a class="a_link" target="_blank" href="http://www.zhangxinxu.com/study/200911/three-column-width-auto-3.html">自身浮动法演示demo</a></p>
+<p>css代码如下：<br />
+<img class="mt10" alt="自身浮动法css代码" data-src="http://image.zhangxinxu.com/image/blog/200911/2009-11-17_201133.png" title="自身浮动法css代码" class="alignnone" width="428" height="116" /></p>
+<p>HTML代码：<br />
+<img alt="自身浮动法的HTML代码" data-src="http://image.zhangxinxu.com/image/blog/200911/2009-11-17_201152.png" title="自身浮动法的HTML代码" class="alignnone" width="175" height="92" /></p>
+<p>这里三个div标签的顺序的关键是要把主体div放在最后，左右两栏div顺序任意。</p>
+<p>此方法的优点是：代码足够简洁与高效<br />
+不足在于：中间主体存在克星，clear:both属性。如果要使用此方法，需避免明显的clear样式。</p>
+<p><strong>三、下载</strong><br />
+您可以狠狠地单击这里：<a class="a_link" href="http://www.zhangxinxu.com/study/down/three_column_width_auto.zip">demo打包下载</a>（zip ）</p>
+<p><strong>四、结语</strong><br />
+table表格可谓是自适应布局的利器，如今Google的产品页面，yahoo等自适应页面都还是使用的table技术，原因在于table本身的自适应能力。然而，虽然它是Google，它是yahoo，但是我依然很鄙视，您可以试试用firebug去看一下Google页面的HTML代码，unbelievable！层级多的惊人，代码真是多，臃肿！我过去觉得可能是某些功能之需，现在发现是追求技术，可扩展，自适应的副产物。我多次实践，可以非常肯定的说：div完全可以取代table实现自适应布局。</p>
+<p>本文提供的仅仅是我个人知道的几种自适应方法，其实，我相信，肯定还有其他的方法，这就需要你我对其关注思考并发现了。</p>
+<p>原创文章，转载请注明来自<a href="http://www.zhangxinxu.com/">张鑫旭-鑫空间-鑫生活</a>[<a href="http://www.zhangxinxu.com/">http://www.zhangxinxu.com</a>]<br />
+本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=370">http://www.zhangxinxu.com/wordpress/?p=370</a></p>
+<p>（本文完）</p>
+<div class="similarity"><div class="similar_title">相关文章</div><ul><li><a href="http://www.zhangxinxu.com/wordpress/2009/12/%e5%83%8f%e7%b4%a0%e7%9a%84%e4%b8%96%e7%95%8c%e5%8f%8a%e5%85%b6%e5%9c%a8web%e5%bc%80%e5%8f%91%e5%88%b6%e4%bd%9c%e4%b8%ad%e7%9a%84%e5%ba%94%e7%94%a8/">像素的世界及其在web开发制作中的应用</a> (0.585)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/10/%e5%85%b3%e4%ba%8egoogle%e5%9c%86%e8%a7%92%e9%ab%98%e5%85%89%e9%ab%98%e5%ae%bd%e8%87%aa%e9%80%82%e5%ba%94%e6%8c%89%e9%92%ae%e5%8f%8a%e5%85%b6%e6%8b%93%e5%b1%95/">关于Google圆角高光高宽自适应按钮及其拓展</a> (0.385)</li><li><a href="http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/">设备像素比devicePixelRatio简单介绍</a> (0.328)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/03/%e4%b8%ad%e5%9b%bd%e5%8f%a4%e4%bb%a3%e9%81%93%e5%ae%b6%e6%80%9d%e6%83%b3%e4%b8%8e%e7%bd%91%e9%a1%b5%e9%87%8d%e6%9e%84%e7%9a%84%e6%80%9d%e8%80%83/">中国古代道家思想与网页重构的思考</a> (0.250)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/10/%e6%88%91%e6%89%80%e7%9f%a5%e9%81%93%e7%9a%84%e5%87%a0%e7%a7%8ddisplaytable-cell%e7%9a%84%e5%ba%94%e7%94%a8/">我所知道的几种display:table-cell的应用</a> (0.249)</li><li><a href="http://www.zhangxinxu.com/wordpress/2012/02/responsive-images-introduce/">热门：响应图片(Responsive Images)技术简介</a> (0.246)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/11/%e6%8b%9c%e6%8b%9c%e4%ba%86%e6%b5%ae%e5%8a%a8%e5%b8%83%e5%b1%80-%e5%9f%ba%e4%ba%8edisplayinline-block%e7%9a%84%e5%88%97%e8%a1%a8%e5%b8%83%e5%b1%80/">拜拜了,浮动布局-基于display:inline-block的列表布局</a> (0.179)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/08/css%e9%a1%b5%e9%9d%a2%e9%87%8d%e6%9e%84%e4%b9%8b%e2%80%9c%e9%97%a8%e6%b4%be%e2%80%9d%e4%b9%8b%e5%88%86/">CSS页面重构之“门派”之分</a> (0.178)</li><li><a href="http://www.zhangxinxu.com/wordpress/2011/08/css3-media-queries%e7%9a%84%e4%ba%9b%e9%87%8e%e5%8f%b2%e5%a4%96%e4%bc%a0/">CSS3 Media Queries的些野史外传</a> (0.160)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/12/html-css%e5%88%97%e8%a1%a8%e5%85%83%e7%b4%a0uloldl%e7%9a%84%e7%a0%94%e7%a9%b6%e4%b8%8e%e5%ba%94%e7%94%a8/">HTML CSS列表元素ul,ol,dl的研究与应用</a> (0.158)</li><li><a href="http://www.zhangxinxu.com/wordpress/2011/05/css%e9%a1%b5%e9%9d%a2%e9%87%8d%e6%9e%84%e9%91%ab%e4%b8%89%e6%97%a0%e5%87%86%e5%88%99%e4%b9%8b%e6%97%a0%e5%9b%be%e7%89%87%e5%87%86%e5%88%99/">CSS页面重构“鑫三无准则”之“无图片”准则</a> (RANDOM - 0.109)</li></ul></div><!-- Tag -->				<div class="wp_share_box">
+                	<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<span class="bds_more">分享到：</span>
+<a class="bds_tsina"></a>
+<a class="bds_qzone"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<a class="bds_douban"></a>
+<a class="bds_tsohu"></a>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1954626" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END --> 
+                </div>
+								<p>标签： <a href="http://www.zhangxinxu.com/wordpress/tag/css/" rel="tag">css相关</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/html/" rel="tag">html</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%85%bc%e5%ae%b9%e6%80%a7/" rel="tag">兼容性</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%88%86%e8%be%a8%e7%8e%87/" rel="tag">分辨率</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%ae%9a%e4%bd%8d/" rel="tag">定位</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%b8%83%e5%b1%80/" rel="tag">布局</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e6%98%be%e7%a4%ba%e5%99%a8/" rel="tag">显示器</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e6%b5%ae%e5%8a%a8/" rel="tag">浮动</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e8%87%aa%e9%80%82%e5%ba%94/" rel="tag">自适应</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e9%a1%b5%e9%9d%a2%e9%87%8d%e6%9e%84/" rel="tag">页面重构</a></p>
+				<p class="postmetadata alt">
+					<small>
+												这篇文章发布于 2009年11月17日，星期二，20:50，归类于 <a href="http://www.zhangxinxu.com/wordpress/category/css/" title="查看 css相关 的全部文章" rel="category tag">css相关</a>。                        阅读 29522 次, 今日 36 次					</small>
+				</p>
+
+			</div>
+		</div>
+
+	﻿
+<div id="respond">
+<h3 class="respond_title">发表评论（目前16 条评论）</h3>
+<div id="cancel-comment-reply"> 
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/#respond" style="display:none;">点击这里取消回复</a></small>
+</div> 
+
+
+<form action="http://www.zhangxinxu.com/wordpress/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required='true' required />
+<label for="author"><small>名称 (必须)</small></label></p>
+
+<p><input type="email" name="email" id="email" value="" size="22" tabindex="2" aria-required='true' required />
+<label for="email"><small>邮件地址(不会被公开) (必须)</small></label></p>
+
+<p><input type="url" name="url" id="url" value="" size="22" tabindex="3" />
+<label for="url"><small>网站</small></label></p>
+
+
+<!--<p><small><strong>XHTML：</strong>您可以使用这些标签：<code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="提交评论" />
+<input type='hidden' name='comment_post_ID' value='370' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+ 
+</p>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="ab2870c01b" /></p>
+</form>
+
+</div>
+
+
+<!-- You can start editing here. -->
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1" id="comment-64552">
+				<div id="div-comment-64552" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/4552cda8071e9607eb6b6c89cb4638d1?s=32&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn">名将</cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-64552">
+			2014年03月30日于21:27</a>		</div>
+
+		<p>学习了，谢谢</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=64552#respond' onclick='return addComment.moveForm("div-comment-64552", "64552", "respond", "370")'>回复</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-42097">
+				<div id="div-comment-42097" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/524580647e24ddfa8aa4ad6ee6e2baed?s=32&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn">想去看嗨</cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-42097">
+			2013年09月27日于17:21</a>		</div>
+
+		<p>在ie6下，页面缩到最小的时候left部分被撑到右边了啊，这个怎么破啊？</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=42097#respond' onclick='return addComment.moveForm("div-comment-42097", "42097", "respond", "370")'>回复</a>		</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-42090">
+				<div id="div-comment-42090" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/9856722d3aab4943e29f9062cc5bf3c1?s=32&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn">自适应高度只是适应当前窗口的高度不包含滚动条产生多出来的高度</cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-42090">
+			2013年09月27日于15:58</a>		</div>
+
+		<p>第一种跟第二种方法都尝试过  当内容增多产生滚动条时 滚动条往下拖 下面背景会缺一块 自适应高度只是适应当前窗口的高度不包含滚动条产生多出来的高度 高手 这个问题怎么解决？</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=42090#respond' onclick='return addComment.moveForm("div-comment-42090", "42090", "respond", "370")'>回复</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-41399">
+				<div id="div-comment-41399" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/a0e34c264741a6059012abc3481c1f8e?s=32&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn">morning</cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-41399">
+			2013年09月23日于16:33</a>		</div>
+
+		<p>1、我多次实践，可以非常肯定的说：div完全可以取代table实现自适应布局。<br />
+2、Google是目前互联网领域的老大，技术很牛叉，毋庸置疑，但是，当我发现它所有的页面几乎都是表格布局的时候，很诧异；还有twitter，也是表格布局的；<br />
+感觉这句话跟你之前讲的有些矛盾哈，这两句话都是你讲过的</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=41399#respond' onclick='return addComment.moveForm("div-comment-41399", "41399", "respond", "370")'>回复</a>		</div>
+				</div>
+		<ul class='children'>
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2 parent" id="comment-41411">
+				<div id="div-comment-41411" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/3e58242902fa8f33162f3f10df892c68?s=32&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://www.zhangxinxu.com' rel='external nofollow' class='url'>张 鑫旭</a></cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-41411">
+			2013年09月23日于20:18</a>		</div>
+
+		<p>@morning 上面两句话都表明了自己之前眼界的狭隘~</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=41411#respond' onclick='return addComment.moveForm("div-comment-41411", "41411", "respond", "370")'>回复</a>		</div>
+				</div>
+		<ul class='children'>
+		<li class="comment odd alt depth-3 parent" id="comment-41522">
+				<div id="div-comment-41522" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/a0e34c264741a6059012abc3481c1f8e?s=32&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn">morning</cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-41522">
+			2013年09月24日于11:54</a>		</div>
+
+		<p>那以你现在来看，怎么样的布局使用性会更好一些呢？div还是table</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=41522#respond' onclick='return addComment.moveForm("div-comment-41522", "41522", "respond", "370")'>回复</a>		</div>
+				</div>
+		<ul class='children'>
+		<li class="comment byuser comment-author-admin bypostauthor even depth-4" id="comment-41552">
+				<div id="div-comment-41552" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/3e58242902fa8f33162f3f10df892c68?s=32&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://www.zhangxinxu.com' rel='external nofollow' class='url'>张 鑫旭</a></cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-41552">
+			2013年09月24日于14:17</a>		</div>
+
+		<p>@morning 花瓶虽好，嫣有用之？好与不好，扪心自知。高瞻远瞩，脚落实地，勿执于好坏对错。</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-36997">
+				<div id="div-comment-36997" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/f764e385de9648f8e55486b80ed26011?s=32&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn">a</cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-36997">
+			2013年07月28日于16:43</a>		</div>
+
+		<p>哥你这博客样式做的很好。最喜欢这种简洁风格。</p>
+<p>我是个人站长，每次做新站都被网页配色所困。怎么改都觉得刺眼。看别人做的页面怎么看怎么对，自己做的页面怎么看怎么别扭。</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=36997#respond' onclick='return addComment.moveForm("div-comment-36997", "36997", "respond", "370")'>回复</a>		</div>
+				</div>
+		<ul class='children'>
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-37020">
+				<div id="div-comment-37020" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/3e58242902fa8f33162f3f10df892c68?s=32&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://www.zhangxinxu.com' rel='external nofollow' class='url'>张 鑫旭</a></cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-37020">
+			2013年07月29日于10:20</a>		</div>
+
+		<p>@a 可以借助一些配色工具配色。</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=37020#respond' onclick='return addComment.moveForm("div-comment-37020", "37020", "respond", "370")'>回复</a>		</div>
+				</div>
+		</li>
+</ul>
+</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-16721">
+				<div id="div-comment-16721" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/1836c31826b2a42924e40954f0c9a197?s=32&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://www.esli-zz.com/' rel='external nofollow' class='url'>英思力</a></cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-16721">
+			2012年03月22日于14:17</a>		</div>
+
+		<p>认真读了下，谢谢你的文章。</p>
+<p>我也准备用层做自适应，就搜索过来了。呵呵</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=16721#respond' onclick='return addComment.moveForm("div-comment-16721", "16721", "respond", "370")'>回复</a>		</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-6133">
+				<div id="div-comment-6133" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/cf1bc5c276af433b2367689f2abb7f75?s=32&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://www.hicss.net' rel='external nofollow' class='url'>海玉</a></cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-6133">
+			2011年06月2日于15:36</a>		</div>
+
+		<p>第一种方法可用在大模块，第二种方法可用在小模块里。第三种方法个人认为不能用来精密布局，一旦使用清除浮动clearfix会很蛋疼。。。。。。</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=6133#respond' onclick='return addComment.moveForm("div-comment-6133", "6133", "respond", "370")'>回复</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-5321">
+				<div id="div-comment-5321" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/869fb3c995c42b218b73002360b6d965?s=32&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn">hackxiaozhu</cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-5321">
+			2011年05月4日于17:55</a>		</div>
+
+		<p>张哥 有点问题 想请教你 希望可以给小弟发邮件 谢谢了 +张哥的QQ号也行 谢谢了</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=5321#respond' onclick='return addComment.moveForm("div-comment-5321", "5321", "respond", "370")'>回复</a>		</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-3912">
+				<div id="div-comment-3912" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/c17df6ab5e761b25a80fb85e93b7c934?s=32&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://www.ylkb.net' rel='external nofollow' class='url'>一路狂飙</a></cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-3912">
+			2011年03月2日于15:28</a>		</div>
+
+		<p>如果头上还有一个header呢？该怎么处理这个问题？</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=3912#respond' onclick='return addComment.moveForm("div-comment-3912", "3912", "respond", "370")'>回复</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-1007">
+				<div id="div-comment-1007" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/909b4c582128c31358547e28e94155b6?s=32&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn">sai</cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-1007">
+			2010年08月25日于11:08</a>		</div>
+
+		<p>lz你好，你的最后一种方法，在ie6下会有3px的bug，但是我通过hack指定左边div的margin-right:-3px和右边div的margin-left:-3px为何还是不行呢？</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=1007#respond' onclick='return addComment.moveForm("div-comment-1007", "1007", "respond", "370")'>回复</a>		</div>
+				</div>
+		<ul class='children'>
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-1009">
+				<div id="div-comment-1009" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/3e58242902fa8f33162f3f10df892c68?s=32&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://www.zhangxinxu.com' rel='external nofollow' class='url'>张 鑫旭</a></cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-1009">
+			2010年08月25日于16:59</a>		</div>
+
+		<p>使用hack指定main的margin:0 207px试试。</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=1009#respond' onclick='return addComment.moveForm("div-comment-1009", "1009", "respond", "370")'>回复</a>		</div>
+				</div>
+		</li>
+</ul>
+</li>
+		<li class="comment odd alt thread-even depth-1" id="comment-416">
+				<div id="div-comment-416" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/55dcfed07a6c932a5d3671570664e00c?s=32&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://www.baidudalaopo.cn' rel='external nofollow' class='url'>中文搜索引擎大全</a></cite> <span class="says">说：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e6%88%91%e7%86%9f%e7%9f%a5%e7%9a%84%e4%b8%89%e7%a7%8d%e4%b8%89%e6%a0%8f%e7%bd%91%e9%a1%b5%e5%ae%bd%e5%ba%a6%e8%87%aa%e9%80%82%e5%ba%94%e5%b8%83%e5%b1%80%e6%96%b9%e6%b3%95/comment-page-1/#comment-416">
+			2010年04月9日于20:41</a>		</div>
+
+		<p>原来是个技术高手啊。</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?replytocom=416#respond' onclick='return addComment.moveForm("div-comment-416", "416", "respond", "370")'>回复</a>		</div>
+				</div>
+		</li>
+	</ol>
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+ 
+
+
+
+	
+	</div>
+</div>
+	<div id="sidebar" role="complementary">
+         <div id="zxx_intro" class="sldebar_out">
+            <div class="silebar_inner" itemscope itemtype="http://data-vocabulary.org/Person">
+                <img src="http://image.zhangxinxu.com/image/blog/zxx_90_0824.jpg" itemprop="photo" class="zxx_head_image">
+                <div class="zxx_some_info">
+                    <p class="mb10"><span itemprop="name" class="fn">张鑫旭</span><sup><a itemprop="url" href="/life/about/">more</a></sup>，09年<a href="http://www.hust.edu.cn/">华中科技大学</a>毕业，目前<span itemprop="location">上海</span>，现就职<a href="http://isux.tencent.com/" itemprop="organization">ISUX</a><a href="/wordpress/?page_id=3720">上海设计中心</a>，热爱<span itemprop="role">web前端</span>，喜爱钓鱼。</p>
+
+                    <p>邮箱：<span style="font-family:arial;">zhangxinxu@zhangxinxu.com</span></p>
+                    <p>微博：<a href="//weibo.com/zhangxinxu">新浪</a>  <a href="//t.qq.com/iamzhangxinxu">腾讯</a>(<a href="/wordpress/?page_id=3720" style="color:#cd0000;">工作机会</a>)</p>
+                </div>
+                <div class="clear"></div>                
+            </div>
+        </div>
+        
+        <div class="sldebar_out">
+            <div class="silebar_inner top_ad">
+            	<div class="ad_inner">
+				<script type="text/javascript"><!--
+                google_ad_client = "pub-0090627341039040";
+                /* 300x250, 纯图片广告 */
+                google_ad_slot = "2939854193";
+                google_ad_width = 300;
+                google_ad_height = 250;
+                //-->
+                </script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+                </div>
+            </div>
+        </div>
+    	<div class="sldebar_out">
+            <div class="silebar_inner slide_list">
+                <ul>
+                    <li id="categories-4" class="widget widget_categories"><h2 class="widgettitle">文章分类</h2>		<ul>
+	<li class="cat-item cat-item-3"><a href="http://www.zhangxinxu.com/wordpress/category/css/" title="查看 css相关 下的所有文章">css相关</a> (178)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/" title="查看 graphic相关 下的所有文章">graphic相关</a> (50)
+<ul class='children'>
+	<li class="cat-item cat-item-81"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/as3%e8%8f%9c%e5%8d%95/" title="查看 as3菜单 下的所有文章">as3菜单</a> (32)
+</li>
+	<li class="cat-item cat-item-896"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/canvas-graphic/" title="查看 canvas相关 下的所有文章">canvas相关</a> (6)
+</li>
+	<li class="cat-item cat-item-895"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/svg-graphic/" title="查看 SVG相关 下的所有文章">SVG相关</a> (9)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.zhangxinxu.com/wordpress/category/js/" title="查看 js相关 下的所有文章">js相关</a> (104)
+<ul class='children'>
+	<li class="cat-item cat-item-60"><a href="http://www.zhangxinxu.com/wordpress/category/js/jquery-about/" title="查看 jquery相关 下的所有文章">jquery相关</a> (43)
+</li>
+	<li class="cat-item cat-item-180"><a href="http://www.zhangxinxu.com/wordpress/category/js/js%e5%ae%9e%e4%be%8b/" title="查看 js实例 下的所有文章">js实例</a> (46)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-648"><a href="http://www.zhangxinxu.com/wordpress/category/mobile%e7%9b%b8%e5%85%b3/" title="查看 mobile相关 下的所有文章">mobile相关</a> (10)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.zhangxinxu.com/wordpress/category/ps/" title="查看 ps相关 下的所有文章">ps相关</a> (10)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.zhangxinxu.com/wordpress/category/web/" title="查看 web综合 下的所有文章">web综合</a> (29)
+</li>
+	<li class="cat-item cat-item-198"><a href="http://www.zhangxinxu.com/wordpress/category/%e5%a4%96%e6%96%87%e7%bf%bb%e8%af%91/" title="查看 外文翻译 下的所有文章">外文翻译</a> (35)
+</li>
+		</ul>
+</li><li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">文章存档</h2>		<ul>
+			<li><a href='http://www.zhangxinxu.com/wordpress/2014/04/' title='2014年四月'>2014年四月</a>&nbsp;(2)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/03/' title='2014年三月'>2014年三月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/02/' title='2014年二月'>2014年二月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/01/' title='2014年一月'>2014年一月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/12/' title='2013年十二月'>2013年十二月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/11/' title='2013年十一月'>2013年十一月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/10/' title='2013年十月'>2013年十月</a>&nbsp;(1)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/09/' title='2013年九月'>2013年九月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/08/' title='2013年八月'>2013年八月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/07/' title='2013年七月'>2013年七月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/06/' title='2013年六月'>2013年六月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/05/' title='2013年五月'>2013年五月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/04/' title='2013年四月'>2013年四月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/03/' title='2013年三月'>2013年三月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/02/' title='2013年二月'>2013年二月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/01/' title='2013年一月'>2013年一月</a>&nbsp;(10)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/12/' title='2012年十二月'>2012年十二月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/11/' title='2012年十一月'>2012年十一月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/10/' title='2012年十月'>2012年十月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/09/' title='2012年九月'>2012年九月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/08/' title='2012年八月'>2012年八月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/07/' title='2012年七月'>2012年七月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/06/' title='2012年六月'>2012年六月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/05/' title='2012年五月'>2012年五月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/04/' title='2012年四月'>2012年四月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/03/' title='2012年三月'>2012年三月</a>&nbsp;(9)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/02/' title='2012年二月'>2012年二月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/01/' title='2012年一月'>2012年一月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/12/' title='2011年十二月'>2011年十二月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/11/' title='2011年十一月'>2011年十一月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/10/' title='2011年十月'>2011年十月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/09/' title='2011年九月'>2011年九月</a>&nbsp;(9)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/08/' title='2011年八月'>2011年八月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/07/' title='2011年七月'>2011年七月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/06/' title='2011年六月'>2011年六月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/05/' title='2011年五月'>2011年五月</a>&nbsp;(8)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/04/' title='2011年四月'>2011年四月</a>&nbsp;(8)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/03/' title='2011年三月'>2011年三月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/02/' title='2011年二月'>2011年二月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/01/' title='2011年一月'>2011年一月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/12/' title='2010年十二月'>2010年十二月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/11/' title='2010年十一月'>2010年十一月</a>&nbsp;(8)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/10/' title='2010年十月'>2010年十月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/09/' title='2010年九月'>2010年九月</a>&nbsp;(10)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/08/' title='2010年八月'>2010年八月</a>&nbsp;(10)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/07/' title='2010年七月'>2010年七月</a>&nbsp;(10)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/06/' title='2010年六月'>2010年六月</a>&nbsp;(8)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/05/' title='2010年五月'>2010年五月</a>&nbsp;(11)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/04/' title='2010年四月'>2010年四月</a>&nbsp;(14)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/03/' title='2010年三月'>2010年三月</a>&nbsp;(11)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/02/' title='2010年二月'>2010年二月</a>&nbsp;(1)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/01/' title='2010年一月'>2010年一月</a>&nbsp;(16)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2009/12/' title='2009年十二月'>2009年十二月</a>&nbsp;(14)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2009/11/' title='2009年十一月'>2009年十一月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2009/10/' title='2009年十月'>2009年十月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2009/09/' title='2009年九月'>2009年九月</a>&nbsp;(36)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2009/08/' title='2009年八月'>2009年八月</a>&nbsp;(12)</li>
+		</ul>
+</li>		<li id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widgettitle">最新文章</h2>		<ul>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2014/04/%e8%87%aa%e9%80%82%e5%ba%94%e8%a1%a8%e6%a0%bc-%e5%ad%97%e7%ac%a6%e6%8d%a2%e8%a1%8c-%e6%ba%a2%e5%87%ba%e7%82%b9%e7%82%b9%e7%82%b9-table-text-overflow-ellipsis-word-wrap-break-all/" title="自适应表格连续字符换行及单行溢出点点点显示">自适应表格连续字符换行及单行溢出点点点显示</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2014/04/animateion-line-drawing-svg-path-%e5%8a%a8%e7%94%bb-%e8%b7%af%e5%be%84/" title="纯CSS实现帅气的SVG路径描边动画效果">纯CSS实现帅气的SVG路径描边动画效果</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2014/03/css-input-clear-button-show-hide/" title="小tip: CSS动态实现文本框清除按钮的隐藏与显示">小tip: CSS动态实现文本框清除按钮的隐藏与显示</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2014/03/phonegap-cordova-ios-statusbar-style/" title="PhoneGap/Cordova控制iOS7状态栏的显隐/颜色">PhoneGap/Cordova控制iOS7状态栏的显隐/颜色</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2014/03/quicklayout-css-%e5%bf%ab%e9%80%9f%e6%9e%84%e5%bb%ba%e7%bb%93%e6%9e%84%e5%85%bc%e5%ae%b9%e7%9a%84web%e9%a1%b5%e9%9d%a2/" title="quickLayout.css-快速构建结构兼容的web页面">quickLayout.css-快速构建结构兼容的web页面</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2014/02/css3%e4%b8%8e%e6%96%87%e5%ad%97%e6%b8%90%e5%8f%98%e6%b0%b4%e7%ba%b9%e6%b3%a2%e5%8a%a8%e6%95%88%e6%9e%9c/" title="小tip: CSS3与文字渐变光影流动动画效果实现">小tip: CSS3与文字渐变光影流动动画效果实现</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2014/02/snap-svg-fishing-css3/" title="Snap.svg.js实现的钓鱼知识分享及周边">Snap.svg.js实现的钓鱼知识分享及周边</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2014/02/es6-javascript-promise-%e6%84%9f%e6%80%a7%e8%ae%a4%e7%9f%a5/" title="ES6 JavaScript Promise的感性认知">ES6 JavaScript Promise的感性认知</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2014/01/an-overview-of-html5-battery-api/" title="HTML5 Battery电池状态相关API简介">HTML5 Battery电池状态相关API简介</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2014/01/snap-svg-study-demo-docs/" title="Snap.svg-SVG实战学习必修课-实例与文档讲解">Snap.svg-SVG实战学习必修课-实例与文档讲解</a>
+						</li>
+				</ul>
+		</li><li id="overall-top-10-posts" class="widget widget_dailytopten_overall"><h2 class="widgettitle">热门总排行</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/jquery-powerfloat%e4%b8%87%e8%83%bd%e6%b5%ae%e5%8a%a8%e5%b1%82%e4%b8%8b%e6%8b%89%e5%b1%82%e6%8f%92%e4%bb%b6/">jQuery powerFloat万能浮动层下拉层插件</a> (140600)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/01/jquery-pagination-ajax%e5%88%86%e9%a1%b5%e6%8f%92%e4%bb%b6%e4%b8%ad%e6%96%87%e8%af%a6%e8%a7%a3/">jQuery Pagination Ajax分页插件中文详解</a> (97781)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2009/08/ie6%e4%b8%8bpng%e8%83%8c%e6%99%af%e4%b8%8d%e9%80%8f%e6%98%8e%e9%97%ae%e9%a2%98%e7%9a%84%e7%bb%bc%e5%90%88%e6%8b%93%e5%b1%95/">IE6下png背景不透明问题的综合拓展</a> (86312)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2009/08/jquery-%e5%be%88%e9%85%b7%e7%9a%84%e5%bc%b9%e5%87%ba%e5%b1%82%e6%95%88%e6%9e%9cjs%e6%8f%92%e4%bb%b6/">jQuery-很酷的弹出层效果js插件</a> (84891)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/%e6%8b%9c%e6%8b%9c%e4%ba%86%e6%b5%ae%e5%8a%a8%e5%b8%83%e5%b1%80-%e5%9f%ba%e4%ba%8edisplayinline-block%e7%9a%84%e5%88%97%e8%a1%a8%e5%b8%83%e5%b1%80/">拜拜了,浮动布局-基于display:inline-block的列表布局</a> (78730)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/04/%e8%ae%a9ie6ie7ie8%e6%b5%8f%e8%a7%88%e5%99%a8%e6%94%af%e6%8c%81css3%e5%b1%9e%e6%80%a7/">让IE6/IE7/IE8浏览器支持CSS3属性</a> (71183)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2009/11/ajax-upload%e5%a4%9a%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0%e6%8f%92%e4%bb%b6%e7%bf%bb%e8%af%91%e5%8f%8a%e4%b8%ad%e6%96%87%e6%bc%94%e7%a4%ba/">Ajax Upload多文件上传插件翻译及中文演示</a> (69466)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/jquery%e9%a1%b5%e9%9d%a2%e5%9b%be%e7%89%87%e7%ad%89%e5%85%83%e7%b4%a0%e6%bb%9a%e5%8a%a8%e5%8a%a8%e6%80%81%e5%8a%a0%e8%bd%bd%e5%ae%9e%e7%8e%b0/">jQuery页面滚动图片等元素动态加载实现</a> (68056)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/%e5%9f%ba%e4%ba%8ehtml5%e7%9a%84%e5%8f%af%e9%a2%84%e8%a7%88%e5%a4%9a%e5%9b%be%e7%89%87ajax%e4%b8%8a%e4%bc%a0/">基于HTML5的可预览多图片Ajax上传</a> (67008)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2009/09/%e5%85%b3%e4%ba%8e%e6%96%87%e5%ad%97%e5%86%85%e5%ae%b9%e6%ba%a2%e5%87%ba%e7%94%a8%e7%82%b9%e7%82%b9%e7%82%b9-%e7%9c%81%e7%95%a5%e5%8f%b7%e8%a1%a8%e7%a4%ba/">关于文字内容溢出用点点点(...)省略号表示</a> (64670)</li>
+</ul>
+</li><li id="daily-top-10-posts" class="widget widget_dailytopten"><h2 class="widgettitle">今日热门</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/jquery-powerfloat%e4%b8%87%e8%83%bd%e6%b5%ae%e5%8a%a8%e5%b1%82%e4%b8%8b%e6%8b%89%e5%b1%82%e6%8f%92%e4%bb%b6/">jQuery powerFloat万能浮动层下拉层插件</a> (206)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2013/10/understand-domstring-document-formdata-blob-file-arraybuffer/">理解DOMString、Document、FormData、Blob、File、ArrayBuffer数据类型</a> (184)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/01/jquery-pagination-ajax%e5%88%86%e9%a1%b5%e6%8f%92%e4%bb%b6%e4%b8%ad%e6%96%87%e8%af%a6%e8%a7%a3/">jQuery Pagination Ajax分页插件中文详解</a> (142)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/%e5%9f%ba%e4%ba%8ehtml5%e7%9a%84%e5%8f%af%e9%a2%84%e8%a7%88%e5%a4%9a%e5%9b%be%e7%89%87ajax%e4%b8%8a%e4%bc%a0/">基于HTML5的可预览多图片Ajax上传</a> (130)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">好吧，CSS3 3D transform变换，不过如此！</a> (104)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2011/11/%e6%89%8b%e6%9c%ba%e7%bd%91%e9%a1%b5ui%e6%a1%86%e6%9e%b6jquery-mobile%e4%bb%8b%e7%bb%8d%e4%b9%8b%e6%8c%89%e9%92%ae%e7%af%87/">手机网页UI框架jQuery Mobile介绍之按钮篇</a> (101)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/04/%e8%ae%a9ie6ie7ie8%e6%b5%8f%e8%a7%88%e5%99%a8%e6%94%af%e6%8c%81css3%e5%b1%9e%e6%80%a7/">让IE6/IE7/IE8浏览器支持CSS3属性</a> (97)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2014/04/animateion-line-drawing-svg-path-%e5%8a%a8%e7%94%bb-%e8%b7%af%e5%be%84/">纯CSS实现帅气的SVG路径描边动画效果</a> (94)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2009/08/ie6%e4%b8%8bpng%e8%83%8c%e6%99%af%e4%b8%8d%e9%80%8f%e6%98%8e%e9%97%ae%e9%a2%98%e7%9a%84%e7%bb%bc%e5%90%88%e6%8b%93%e5%b1%95/">IE6下png背景不透明问题的综合拓展</a> (83)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2013/12/iebetter-js-make-ie6-ie8-like-modern-browser-ie9-chrome/">ieBetter.js-让IE6-IE8拥有IE9+,Chrome等浏览器特性</a> (81)</li>
+</ul>
+</li><li id="most_commented_widget-3" class="widget widget_most_commented_widget"><h2 class="widgettitle">评论最多文章</h2><ul><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/jquery-powerfloat%e4%b8%87%e8%83%bd%e6%b5%ae%e5%8a%a8%e5%b1%82%e4%b8%8b%e6%8b%89%e5%b1%82%e6%8f%92%e4%bb%b6/" title="jQuery powerFloat万能浮动层下拉层插件">jQuery powerFloat万能浮动层下拉层插件</a> (227)</li><li><a href="http://www.zhangxinxu.com/wordpress/2011/09/%e5%9f%ba%e4%ba%8ehtml5%e7%9a%84%e5%8f%af%e9%a2%84%e8%a7%88%e5%a4%9a%e5%9b%be%e7%89%87ajax%e4%b8%8a%e4%bc%a0/" title="基于HTML5的可预览多图片Ajax上传">基于HTML5的可预览多图片Ajax上传</a> (104)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/09/%e6%96%b0%e5%86%99%e7%9a%84%e6%97%a0%e5%9b%be%e7%89%87%e7%89%88zxxbox-jquery%e5%bc%b9%e5%87%ba%e6%a1%86%e6%8f%92%e4%bb%b6/" title="新版无图片版zxxbox jQuery弹出框插件">新版无图片版zxxbox jQuery弹出框插件</a> (92)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/07/%e6%88%91%e6%98%af%e5%a6%82%e4%bd%95%e5%af%b9%e7%bd%91%e7%ab%99css%e8%bf%9b%e8%a1%8c%e6%9e%b6%e6%9e%84%e7%9a%84/" title="我是如何对网站CSS进行架构的">我是如何对网站CSS进行架构的</a> (80)</li><li><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/" title="好吧，CSS3 3D transform变换，不过如此！">好吧，CSS3 3D transform变换，不过如此！</a> (77)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/09/%e7%b2%be%e7%ae%80%e9%ab%98%e6%95%88%e7%9a%84css%e5%91%bd%e5%90%8d%e5%87%86%e5%88%99%e6%96%b9%e6%b3%95/" title="精简高效的CSS命名准则/方法">精简高效的CSS命名准则/方法</a> (71)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/09/%e5%85%b3%e4%ba%8e%e6%96%87%e5%ad%97%e5%86%85%e5%ae%b9%e6%ba%a2%e5%87%ba%e7%94%a8%e7%82%b9%e7%82%b9%e7%82%b9-%e7%9c%81%e7%95%a5%e5%8f%b7%e8%a1%a8%e7%a4%ba/" title="关于文字内容溢出用点点点(&#8230;)省略号表示">关于文字内容溢出用点点点(&#8230;)省略号表示</a> (71)</li><li><a href="http://www.zhangxinxu.com/wordpress/2012/07/bottleneck-css-study/" title="说说CSS学习中的瓶颈">说说CSS学习中的瓶颈</a> (61)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/11/jquery%e9%a1%b5%e9%9d%a2%e5%9b%be%e7%89%87%e7%ad%89%e5%85%83%e7%b4%a0%e6%bb%9a%e5%8a%a8%e5%8a%a8%e6%80%81%e5%8a%a0%e8%bd%bd%e5%ae%9e%e7%8e%b0/" title="jQuery页面滚动图片等元素动态加载实现">jQuery页面滚动图片等元素动态加载实现</a> (61)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/04/%e8%ae%a9ie6ie7ie8%e6%b5%8f%e8%a7%88%e5%99%a8%e6%94%af%e6%8c%81css3%e5%b1%9e%e6%80%a7/" title="让IE6/IE7/IE8浏览器支持CSS3属性">让IE6/IE7/IE8浏览器支持CSS3属性</a> (59)</li></ul></li>                </ul>
+                
+            </div>
+        </div>
+	</div>
+<div id="footer" role="contentinfo">
+	<p>
+    	Powerd by <a href="http://wordpress.org/">WordPress</a> | Designed by <a href="/">zhangxinxu</a>
+        <br />
+		Copyright© 2009-<span id="thisYear">2013</span> 张鑫旭-鑫空间-鑫生活
+        <br /><a target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备09015569号</a>
+	</p>
+</div>
+
+</div>
+
+
+
+
+
+
+<p><a onclick='document.cookie="wpmp_switcher=mobile;path=/;expires=Tue, 01-01-2030 00:00:00 GMT";' href='http://www.zhangxinxu.com/wordpress/2009/11/%E6%88%91%E7%86%9F%E7%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E4%B8%89%E6%A0%8F%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95/?wpmp_switcher=mobile'>Switch to our mobile site</a></p>
+<div id="footbar">
+	<div class="foot_yy_x hidden" id="footYyX">
+    	<div class="foot_yy_title">
+        	<span class="l">我的应用</span>
+            <a href="javascript:" class="r" id="footYYClose">-</a>
+        </div>
+
+        <div class="ml10 mr10 foot_yy_dv">小应用</div>
+
+        <div class="mt5">
+        	<a class="foot_yy_a" href="/s/">全能搜索 - 鑫搜索</a>
+			<a class="foot_yy_a" href="/jq/php_search.php">php函数智能搜索</a>
+            <a class="foot_yy_a" href="/sp/css-compress-mini.html">CSS在线压缩工具</a>
+            <a class="foot_yy_a" href="/sp/calculator.html">简易在线计算器</a>
+        </div>
+
+        <div class="ml10 mr10 foot_yy_dv">在线资源</div>
+
+        <div class="mt5">
+        	<a class="foot_yy_a" href="/jq/api14/">jQuery 1.4 API中文版</a>
+            <a class="foot_yy_a" href="/jq/api13/">jQuery 1.3 API中文版</a>
+            <a class="foot_yy_a" href="/css3/">CSS3中文共享参考指南</a>
+            <a class="foot_yy_a" href="/sp/character.html">非主流字符及字符图案</a>
+            <a class="foot_yy_a" href="/jq/mt/">MooTools 1.2中文文档</a>
+        </div>
+
+        <div>&nbsp;</div>
+
+        <a href="javascript:" class="foot_yy foot_yy_on nowrap" id="footYYOff"><img src="/zxx_ico.png" class="vimg" /> 我的应用</a>
+    </div>
+    <a href="javascript:" class="foot_yy nowrap" id="footYYShow"><img src="/zxx_ico.png" class="vimg" /> 我的应用</a>
+    <span class="foot_rss l">
+    	<a class="foot_rss_a" href="/wordpress/?feed=rss2">文章(RSS)</a>
+        <a class="foot_rss_a" href="/wordpress/?feed=comments-rss2" style="display:none;">评论(RSS)</a>
+    </span>
+    <a href="#" id="backToTop" class="foot_top">返回顶部↑</a>
+	<a href="/wordpress/wp-login.php" class="foot_login">登录</a>
+</div>
+
+<script src="/wordpress/wp-content/themes/default/script-min.js?v=20130228"></script>
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-11205167-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body>
+</html>

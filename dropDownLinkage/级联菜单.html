@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<select>
+    <option>北京</option>
+    <option selected>天津</option>
+    <option>上海</option>
+
+</select>
+<select name="" id="">
+
+</select>
+<script>
+    //select.value  默认情况下是，选中的option的value 值，如果没有 value值，是option中间text 文本。
+    //select.selectedIndex选中option选中项的下标
+    var arr = []
+    arr[0] = ['海淀区', '朝阳区', '东城区', '西城区', '昌平区']
+    arr[1] = ['大港区', "南开区", '红桥区', '塘沽区']
+    arr[2] = ['黄埔区', '长宁区', '静安区', '徐家汇']
+    var sl = document.getElementsByTagName('select');
+    sl[0].onchange = function () {
+        sl[1].innerHTML = ''
+        var index = sl[0].selectedIndex
+
+        for (var i = 0; i < arr[index].length; i++) {
+            var newOption = document.createElement('option');
+            newOption.text = arr[index][i]
+            sl[1].appendChild(newOption)
+        }
+
+    }
+
+
+</script>
+</body>
+</html>

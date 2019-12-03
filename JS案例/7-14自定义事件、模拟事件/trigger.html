@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt" onkeydown="alert('key')" />
+	<input type="button" id="btn" value="click" />
+	<a href="#" id="mylink" onclick="alert('link click')">link</a>
+	<div id="my"></div>
+	<script>
+		var txt=document.getElementById("txt");
+		var btn=document.getElementById("btn");
+		var mylink=document.getElementById("mylink");
+		var my=document.getElementById("my");
+		my.addEventListener("myevent",function(ev){
+			alert("hello event"+ev.detail);
+		},false);
+		btn.onclick=function(){
+			/*var e=document.createEvent("MouseEvents");
+			e.initMouseEvent("click",true,true,window);
+			mylink.dispatchEvent(e);
+           if(document.implementation.hasFeature("KeyboardEvents","3.0")){
+			var e=document.createEvent("KeyboardEvent");
+			e.initKeyboardEvent("keydown",true,true,window,'c',0,"shift",0);
+			txt.dispatchEvent(e);
+		   }*/
+		    if(document.implementation.hasFeature("CustomEvent","3.0")){
+		    	var e=document.createEvent("CustomEvent");
+		    	e.initCustomEvent("myevent",true,true,"hello world");
+		    	my.dispatchEvent(e);
+		    }
+		}
+
+	</script>
+	</body>
+</html>

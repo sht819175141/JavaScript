@@ -1,0 +1,17 @@
+兼容问题(5)
+			
+			
+(2)IE6双边距bug: 块属性标签添加了浮动float之后，若在浮动方向上也有margin值，则margin值会加倍。其实这种问题主要就是会把某些元素挤到了第二行
+
+
+解决方法：
+	1.给float元素添加display：inline 即可正常显示
+
+	2.就是hack处理了，对IE6进行 _margin-left:5px;
+
+	(3)跟上述差不多，也属于IE6双边距bug: 行内属性标签，为了设置宽高，我们经常就会设置成display：block; 这样一来就产生上述的问题。
+
+	解决办法也是天津display：inline; 但是这样一来我们就不能设置宽高了，所以呢需要再加个 display:table.
+
+所以你设置display:block后，再添上display:inline和display:table
+

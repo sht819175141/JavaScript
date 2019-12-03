@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Book(name,author,isbn){
+			this.name=name;
+			this.author=author;
+			this.isbn=isbn;
+		}
+
+		Fac=(function(){//查询是否有某本书
+			var books={};
+			return{
+
+				getBook:function(name,author,isbn){
+					if(books[isbn]){
+						return books[isbn];//有某本书的话直接返回本书
+				    }
+				    else
+				     {
+				     		var b=new Book(name,author,isbn);//没有本书，添加新书
+				     		books[isbn]=b;
+				     		return b;
+				     }
+				}
+
+
+			}
+
+		})();
+
+        function BookManage()
+        {
+        	var records={};
+            this.lend=function(name,author,isbn,pid,lendid,lendDate){
+            	var b=Fac.getBook(name,author,isbn);  //不会有重复的书 内部状态
+            	 records[lendid]={
+            		person:pid,
+            		id:lendid,
+            		lendDate:lendDate,
+            		book:b
+
+            	}
+            	return records;
+
+            }
+
+
+
+        }
+       var m= new BookManage();
+       alert(m.lend("whkl","yqy","12345","100","201607230927123","2016-7-23")["201607230927123"].book.name);
+        
+
+
+	</script>
+</body>
+</html>

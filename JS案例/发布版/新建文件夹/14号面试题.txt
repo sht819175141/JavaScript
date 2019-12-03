@@ -1,0 +1,62 @@
+1、给Array原型添加一个方法，这个方法接受一个参数，如果这个参数在数组中存在，那么就把它从数组中删除
+
+2、编写一个方法，求一个字符串的字节长度
+
+3、控制alert中的换行
+
+4、解释  document.getElementById("ElementID").style.fontSize="1.5em"
+
+5、编写一个方法，去掉一个数组中的重复元素。
+
+6、说出3条以上 ff 和 IE 的脚本兼容问题。
+
+7、写一个函数，验证email的有效性。
+
+8、谈谈js数组排序方法sort（）的使用，重点介绍sort（）参数的使用及其内部机制。
+
+9、三列布局   左边列固定宽高左对齐，右边列固定宽高右对齐，中间不固定，可以随着窗口改变而变。请写出html代码。 
+
+10、下面代码中两个alert的结果是什么？
+	var foo="Hello";
+	(function(){
+	        var  bar="World";
+	        alert(foo+bar);
+	})();
+	alert(foo+bar);
+
+11、下面三个alert的执行顺序是怎么样的？结果是什么？
+      function test(){
+      var a=1;
+      setTimeout(function(){
+          alert(a);
+          a=3;
+      },1000);
+      a=2;
+      setTimeout(function(){
+          alert(a);
+          a=4;
+      },3000)
+    }
+    test();
+    alert(0)
+
+12、请书写你所掌握的html5标签，并对html5标签进行说明。
+
+13、html5表单类型和属性的浏览器支持度，请说明。
+
+14、请问有哪些手机Web浏览器，他们的区别在哪，怎样把握html5兼容性。
+
+15、请书写对手机端html5代码头文件声明，来保证页面在不同的设备显示正确。
+
+16、iframe有哪些缺点？
+
+17、如何实现浏览器内多个标签页之间的通信。
+
+18、如果需要手动写动画，你认为最小时间间隔是多久，为什么？
+
+19、请用匿名函数实现一个递归，完成从n到m。
+
+20、请实现一个自动根据class或id选择dom的方法。
+用法举例：
+var dom1=getElementByIdOrClass(".abc");
+var dom2=getElementByIdOrClass("#bcd");

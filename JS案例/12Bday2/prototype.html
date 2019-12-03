@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Person(){
+
+		}
+		Person.prototype={
+			constructor:Person,
+			name:"zs",
+			age:15,
+			friends:["a","b"],   //如果是引用类型，更改一个，其他也会更改
+			info:function(){
+				return this.name+","+this.age;
+			}
+		}
+		var p=new Person();
+		//alert(p.constructor);
+		var p1=new Person(); 
+		p1.name="ls";
+		p1.age=18;
+		
+		
+		//alert(p1.info==p.info);
+		//alert(p1.info());
+		//alert(p.info());
+		p1.friends.push("sunalsohi");
+		alert(p1.friends);
+		alert(p.friends);
+
+		
+
+
+	</script>
+</body>
+</html>

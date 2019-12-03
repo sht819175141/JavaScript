@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	//节点操作
+    创建节点:  文本节点  元素节点
+     创建文本节点：document.createTextNode('文本')
+     创建元素节点 document.createElement('标签名或者元素名')  ul  li  div
+    追加节点  作为父节点的最后一个孩子节点存在
+      父节点.appendChild(子节点)
+      ul.appendChild(li)
+    删除节点：
+    父节点.removeChild(子节点)
+    插入节点：插入在哪个节点之前
+    父节点.insertBefore(新节点，哪个节点之前)
+    ul[0].insertBefore(newLi，lis[1])
+
+
+
+	<ul>
+		<li>1111111<a href="#">删除</a></li>
+		<li>2222222<a href="#">删除</a></li>
+		<li>3333333<a href="#">删除</a></li>
+		<li>44444444<a href="#">删除</a></li>
+	</ul>
+	<button id='btn1'>添加</button>
+	<button id='btn2'>删除</button>
+	<script>
+	// <li>5555555</li>
+
+	/*创建文本节点  5555
+	创建元素节点   li
+	把文本追加到元素  li  555555
+	把元素节点追加到ul里去*/
+
+   var  text=document.createTextNode('555555');
+   var  uls=document.getElementsByTagName('ul');
+   var  lis=uls[0].getElementsByTagName('li');
+   var  btns=document.getElementsByTagName('button');
+   var  a=document.getElementsByTagName('a');
+  
+  	//单击删除的时候，删除最后一个li节点 
+	btns[1].onclick=function(){
+		uls[0].removeChild(lis[lis.length-1])
+	}
+	// 单击添加的时候，创建一个li，追加
+     
+    btns[0].onclick=function(){
+    	//创建li 
+	    var  newLi=document.createElement('li');
+	    //li里的内容  
+	      newLi.innerHTML=lis.length+1+'<a href="#">删除</a>'
+    	  uls[0].appendChild(newLi)   
+
+    	   removeLi();
+      	
+       
+
+      }
+
+      	//单击a 删除a所在行
+function  removeLi(){ 
+   for(var i=0;i<a.length;i++){
+   		a[i].onclick=function(){
+      		uls[0].removeChild(this.parentNode)
+      	}
+   }
+      	
+  }     
+
+removeLi()
+       
+     //newLi.appendChild(text);
+    // <li>322</li>
+    /* newLi.innerHTML='5555'
+ 	 uls[0].appendChild(newLi);*/
+     
+    /* uls[0].removeChild(lis[lis.length-1])
+     uls[0].removeChild(lis[lis.length-1])
+*/
+
+
+	</script>
+</body>
+</html>

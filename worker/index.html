@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width">
+<body>
+	<p>计数: <output id="result"></output></p>
+	<button onclick="startWorker()">开始 Worker</button> 
+	<button onclick="stopWorker()">停止 Worker</button>
+	<br /><br />
+<script>
+	var w;
+
+	function startWorker(){
+		//检测浏览器是否支持webworker
+		if(typeof(Worker)!=="undefined"){
+			//检测是否存在 worker，如果不存在，- 它会创建一个新的 web worker 对象
+			if(typeof(w)=="undefined"){
+				//创建 Web Worker 对象   
+				w=new Worker("workers.js"/*要执行的子进程的js文件路径*/);
+			}
+			//向web worker添加一个"onmessage"事件监听器,当web worker 传递消息时，会执行事件监听器中的代码。event.data中存有来自event.data的数据。
+			w.onmessage = function (event) {
+				document.getElementById("result").innerHTML=event.data;
+			};
+		}
+		else{
+			document.getElementById("result").innerHTML="Sorry, your browser does not support Web Workers...";
+		}
+	}
+
+	function stopWorker(){ 
+		//终止 Web Worker，注意：一旦terminate后，无法重新启用，只能另外创建。
+		w.terminate();
+	}
+
+</script>
+
+</body>
+</html>

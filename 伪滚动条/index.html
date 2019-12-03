@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    #box1 {
+        width: 700px;
+        height: 30px;
+        background: blue;
+        position: relative;
+        margin: auto;
+    }
+
+    #box2 {
+        width: 30px;
+        height: 30px;
+        background: red;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    #dv1 {
+        width: 300px;
+        height: 200px;
+        border: 1px solid #ccc;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #dv2 {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+</style>
+<body>
+<div id="box1">
+    <div id="box2"></div>
+</div>
+<div id="dv1">
+    <div id="dv2">
+        在 w3school，你可以找到你所需要的所有的网站建设教程。
+
+        从基础的 HTML 到 CSS，乃至进阶的XML、SQL、JS、PHP 和 ASP.NET。
+
+        从左侧的菜单选择你需要的教程！
+        完整的网站技术参考手册
+        完整的网站技术参考手册
+        我们的参考手册涵盖了网站技术的方方面面。
+
+        其中包括W3C的标准技术：HTML、CSS、XML 。以及其他的技术，诸如JavaScript、PHP、SQL等等。
+        在线实例测试工具
+        在线实例测试工具
+        在w3school，我们提供上千个实例。
+
+        通过使用我们的在线编辑器，你可以编辑这些例子，并对代码进行实验。
+        快捷易懂的学习方式
+        快捷易懂的学习方式
+
+        在 w3school，你可以找到你所需要的所有的网站建设教程。
+
+        从基础的 HTML 到 CSS，乃至进阶的XML、SQL、JS、PHP 和 ASP.NET。
+
+        从左侧的菜单选择你需要的教程！
+        完整的网站技术参考手册
+        完整的网站技术参考手册
+        我们的参考手册涵盖了网站技术的方方面面。
+
+        其中包括W3C的标准技术：HTML、CSS、XML 。以及其他的技术，诸如JavaScript、PHP、SQL等等。
+        在线实例测试工具
+        在线实例测试工具
+        在w3school，我们提供上千个实例。
+
+        通过使用我们的在线编辑器，你可以编辑这些例子，并对代码进行实验。
+        快捷易懂的学习方式
+        快捷易懂的学习方式
+    </div>
+</div>
+<script>
+    var box2 = document.getElementById("box2");
+    var box1 = document.getElementById("box1");
+    var dv1 = document.getElementById("dv1");
+    var dv2 = document.getElementById("dv2");
+    box2.onmousedown = function (evt) {
+        var evt = evt || window.event;
+        var x = evt.clientX - box2.offsetLeft;
+        document.onmousemove = function (evt) {
+            var evt = evt || window.event;
+            var _x = evt.clientX - x;
+            if (_x < 0) {
+                _x = 0;
+            } else if (_x > box1.offsetWidth - box2.offsetWidth) {
+                _x = box1.offsetWidth - box2.offsetWidth;
+            }
+            var l = _x / (box1.offsetWidth - box2.offsetWidth);
+            dv2.style.top = -l * (dv2.offsetHeight - dv1.offsetHeight) + "px";
+            box2.style.left = _x + "px";
+        }
+        document.onmouseup = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+</script>
+
+
+</body>
+</html>

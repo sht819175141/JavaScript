@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form id="h" action="a.php" name="my" method="get">
+		<input type="text" name="user">
+		<input type="password" name="password">
+		<input type="password" name="conPass">
+		
+		<input type="radio" name="sex" value="男">男
+		<input type="radio" name="sex" value="女" >女
+		
+		<input type="checkbox" name="fav1" value="dance" >跳舞
+		<input type="checkbox" name="fav2" value="sing" >唱歌
+		<input type="checkbox" name="fav3" value="paly" >玩
+
+		<select name="city" id="" multiple >
+			<option name="subcity" value="hebei">河北</option>
+			<option name="subcity" value="taijing">天津</option>
+			<option name="subcity" value="henan">河南</option>
+			<option name="subcity" value="shanxi">山西</option>
+			<option name="subcity" value="shandong">山东</option>
+		</select>
+
+		<input type="submit" name="button" value="提交" >
+		<br/>
+	</form>
+	<script>
+
+		//表单序列化：将表单里面的内容转换成字符串；便于传递。
+		var user=document.getElementsByName('user')[0];
+		var password=document.getElementsByName('password')[0];
+		var conPass=document.getElementsByName('conPass')[0];
+		var btn=document.getElementsByName("button")[0];
+		var myform=document.forms['my']
+
+		function fun(form){
+			 arr=[];
+			for(var i=0;i<form.elements.length;i++){
+				var ele=form.elements[i];
+				switch(ele.type){
+					case "select-one":
+					case "select-multiple":
+					    for(var j=0;j<form.city.options.length;j++){
+					    	var cur=form.city.options[j];
+					    	if(cur.selected){
+					    		arr.push(cur.value+"="+cur.text);
+					    	}
+					    } 
+					    break; 
+					case 'button':
+					case 'file'  :
+					case 'submit':
+					break;
+					case 'radio':	
+					case 'checkbox':
+						if(!ele.checked){
+							break;
+						}
+
+					default: arr.push(form.elements[i].name+"="+form.elements[i].value)
+				}
+			}
+			return arr.join('&'); 
+		}
+
+
+		var xml=null
+		xml=new XMLHttpRequest();
+		myform.onsubmit=function(){
+
+			
+			xml.open('post','c.asp',true);
+			xml.setRequestHeader("content-type","application/x-www-form-urlencoded")
+			xml.send("name="+tex.value);
+
+		}
+		xml.onreadystatechange=function(){
+				if(xml.readyState==4 && xml.status==200){
+					alert(xml.responseText)
+				}
+			}
+
+		
+
+
+	</script>
+</body>
+</html>

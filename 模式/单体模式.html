@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var obj = {
+        name: "大臭",
+        age: 23
+    }
+    var a = obj;
+    var b = obj;
+    console.log(a == b);   //==>true;
+    function Person() {
+        /*if(Person.ins!=undefined){
+            return Person.ins
+        }*/
+        this.name = "张三";
+        this.age = 23;
+        Person.ins = this;
+    }
+
+    var p = new Person;
+    var p1 = new Person;
+    console.log(p == p1)   //==>false
+
+    function Person() {
+        if (Person.ins != undefined) {
+            return Person.ins
+        }
+        this.name = "张三";
+        this.age = 23;
+        Person.ins = this;
+    }
+
+    var p = new Person;
+    var p1 = new Person;
+    console.log(p == p1)   //==>true;
+
+
+    Single = (function () {
+        var ins;
+
+        function init() {
+            return {
+                "test": "hello javascript"
+            }
+        }
+
+        return {
+            getIns: function () {
+                if (!ins) {
+                    ins = init();
+                }
+                return ins
+            }
+        }
+    })()
+    alert(Single.getIns() == Single.getIns())
+
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//函数式编程
+		 // (3+4)*2-6          7-2*2                 5+2/3-6
+		//  jf(cj(add(3,4),2),6)   jf(7,cj(2,2))      jf(add(5,cf(2,3)),6)
+		//   add(3,4).cf(2).jf(6)
+
+// 高阶函数；可以调用其他函数的函数
+var arr=[3,4,1,6]
+	function  addOne(n){
+		 console.log(n*2);
+	}
+ //each函数: 遍历整个数组，对数组里的每一项执行一个操作。
+ function each(fun,array){
+ 		for(var i=0;i<array.length;i++){
+ 				fun(array[i]);
+ 		}
+
+ }
+ each(addOne,arr)  //each(函数名，数组名)
+
+ each(function(n){console.log(n)},arr) //each(匿名函数,数组名)
+
+//map函数  通过遍历数组,对数组进行某种运算,生成一个新数组
+ 
+ function  map(fun,array){
+ 	 var temp=[];
+
+	return  temp
+
+ }
+	</script>
+</body>
+</html>

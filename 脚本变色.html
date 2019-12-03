@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+        #box {
+            background: rgba(1, 1, 1, 1)
+        }
+    </style>
+</head>
+<body>
+<div id="box">水电费三分 士大夫阿士大夫士大夫阿道夫暗室逢灯阿斯蒂芬</div>
+<input type="range" min="0" max="255" tep="0.1" value="1" id="range"/>
+<input type="range" min="0" max="255" tep="0.1" value="1" id="range"/>
+<input type="range" min="0" max="255" tep="0.1" value="1" id="range"/>
+<script>
+    var box = document.getElementById("box");
+    var ranges = document.getElementsByTagName('input')
+    var reg = /[\d+\.]+/g
+    var color = getComputedStyle(box, null).background;
+    var colors = color.match(reg);
+    var r = colors[0]
+    var g = colors[1]
+    var b = colors[2]
+
+    for (var i = 0; i < ranges.length; i++) {
+        ranges[i].index = i;
+        ranges[i].onchange = function () {
+            var v = this.value;
+            switch (this.index) {
+                case 0:
+                    r = Math.round(this.value);
+                    break;
+                case 1:
+                    g = Math.round(this.value);
+                    break;
+                case 2:
+                    b = Math.round(this.value);
+                    break;
+            }
+            box.style.background = "rgb(" + r + "," + g + "," + b + ")";
+        }
+    }
+</script>
+</body>
+</html>

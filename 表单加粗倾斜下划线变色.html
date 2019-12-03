@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .div {
+        position: relative;
+    }
+
+    .nvdiv button, p {
+        float: left;
+        width: 30px;
+        height: 20px;
+        margin: 10px;
+        background: #ccc;
+        text-align: center;
+        line-height: 20px;
+        border: 1px solid #000;
+        cursor: pointer;
+    }
+
+    #box {
+        width: 550px;
+        height: 300px;
+        border: 2px solid #000;
+        clear: both;
+        margin-left: 10px;
+    }
+
+    #faceBox {
+        width: 250px;
+        border: 1px solid #000;
+        clear: both;
+        position: absolute;
+        top: 30px;
+        left: 300px;
+        display: none;
+    }
+</style>
+<div class='div'>
+    <div class='nvdiv'>
+        <p><img id='blo' src='icon/noblod.jpg'/></p>
+        <p><img id='it' src='icon/italic.jpg'/></p>
+        <p><img id='under' src='icon/nounderline.jpg'></p>
+        <p><img id='red' src='icon/red.jpg'></p>
+        <p><img id='green' src='icon/green.jpg'></p>
+        <p><img id='blue' src='icon/bule.jpg'></p>
+        <button id='face'>表情</button>
+        <p><img id='left' src='icon/unleft.jpg'></p>
+        <p><img id='center' src='icon/uncenter.jpg'></p>
+        <p><img id='right' src='icon/unright.jpg'></p>
+
+
+    </div>
+    <div id='faceBox'>
+        <img src="faces/1.gif" alt="">
+        <img src="faces/2.gif" alt="">
+        <img src="faces/3.gif" alt="">
+        <img src="faces/4.gif" alt="">
+        <img src="faces/5.gif" alt="">
+        <img src="faces/6.gif" alt="">
+        <img src="faces/7.gif" alt="">
+    </div>
+</div>
+
+
+<div id='box' contenteditable='true'>
+    sg
+</div>
+<textarea name="" id="text" cols="78" rows="10"></textarea>
+<script>
+    //var blo=document.getElementById('blo');
+    var it = document.getElementById('it');
+    var under = document.getElementById('under');
+    var red = document.getElementById('red');
+    var green = document.getElementById('green');
+    var blue = document.getElementById('blue');
+    var face = document.getElementById('face');
+    var faceBox = document.getElementById('faceBox');
+    var imgs = faceBox.getElementsByTagName('img');
+    var left = document.getElementById('left');
+    var center = document.getElementById('center');
+    var right = document.getElementById('right');
+    var text = document.getElementById('text');
+
+    function $(id) {
+        return document.getElementById(id)
+    }
+
+    $('box').onblur = function () {
+        text.value = $('box').innerHTML;
+    }
+    text.onblur = function () {
+        $('box').innerHTML = text.value;
+    }
+    //左对齐
+    left.onclick = function () {
+        if (document.queryCommandState('justifyLeft')) {
+            this.src = 'icon/unleft.jpg'
+        } else {
+            this.src = 'icon/left.jpg'
+            center.src = 'icon/uncenter.jpg';
+            right.src = 'icon/unright.jpg';
+        }
+        MyExec('justifyLeft', null)
+    }
+
+    center.onclick = function () {
+        if (document.queryCommandState('justifyCenter')) {
+            MyExec('justifyLeft', null)
+            this.src = 'icon/uncenter.jpg';
+
+        } else {
+            MyExec('justifyCenter', null)
+            this.src = 'icon/center.jpg'
+            left.src = 'icon/unleft.jpg';
+            right.src = 'icon/unright.jpg'
+
+        }
+
+    }
+
+
+    right.onclick = function () {
+        if (document.queryCommandState('justifyRight')) {
+            MyExec('justifyLeft', null)
+            this.src = 'icon/unright.jpg'
+
+        } else {
+            MyExec('justifyRight', null)
+            this.src = 'icon/right.jpg';
+            left.src = 'icon/unleft.jpg';
+            center.src = 'icon/uncenter.jpg';
+
+        }
+
+    }
+
+    //添加表情
+    face.onclick = function () {
+        faceBox.style.display = 'block';
+    }
+    for (var i = 0; i < imgs.length; i++) {
+        imgs[i].onclick = function () {
+            $('box').focus();
+            MyExec('insertImage', this.src);
+            faceBox.style.display = 'none';
+        }
+    }
+
+    function MyExec(exec, attr) {
+        document.execCommand(exec, false, attr);
+    };
+
+    function Quer(bold, noblod, blod) {
+        if (document.queryCommandState(bold)) {
+            this.src = noblod
+        } else {
+            this.src = blod
+        }
+    };
+    //加粗
+    $('blo').onclick = function () {
+        Quer.call(this, 'bold', 'icon/noblod.jpg', 'icon/blod.jpg')
+        /*if(document.queryCommandState('bold')){
+            blo.src='icon/noblod.jpg';
+        }else{
+            blo.src='icon/blod.jpg';
+        }*/
+
+        MyExec('bold', null)
+
+    }
+
+    it.onclick = function () {
+        if (document.queryCommandState('italic')) {
+            it.src = 'icon/italic.jpg';
+        } else {
+            it.src = 'icon/noitalic.jpg';
+        }
+        MyExec('italic', null);
+    }
+
+    under.onclick = function () {
+        if (document.queryCommandState('underline')) {
+            under.src = 'icon/nounderline.jpg';
+        } else {
+            under.src = 'icon/underline.jpg';
+        }
+        MyExec('underline', null);
+    }
+
+
+    red.onclick = function () {
+        MyExec("ForeColor", "red")
+    }
+
+    green.onclick = function () {
+        MyExec("ForeColor", "green")
+    }
+
+    blue.onclick = function () {
+        MyExec("ForeColor", "blue")
+    }
+</script>
+</body>
+</html>

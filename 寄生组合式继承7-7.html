@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寄生组合式继承</title>
+</head>
+<body>
+<script>
+    function Object(o) {
+        function F() {
+        };
+        F.prototype = o;
+        return new F();
+    };
+
+    function inheritPrototype(subType, superType) {
+        var prototype = Object(superType.prototype);
+        //prototype.constructor=subType;
+        subType.prototype = prototype;
+    };
+
+
+    function superType(name) {
+        this.name = name;
+        this.colors = ['red', 'pink', 'blue'];
+    };
+    superType.prototype.sayName = function () {
+        return this.name;
+    }
+
+    function subType(name, age) {
+        superType.call(this, name);
+        this.age = age;
+    };
+    inheritPrototype(subType, superType);
+    subType.prototype.sayAge = function () {
+        return this.age
+    };
+
+    var sub = new subType('zs', 20);
+    alert(sub.colors)
+
+</script>
+</body>
+</html>

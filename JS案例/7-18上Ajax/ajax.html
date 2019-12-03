@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+     <input type="text" id="txt" name="txt" /><span></span>
+	<script type="text/javascript">
+     var txt=document.getElementById("txt");
+     var tspan=document.getElementsByTagName("span")[0];
+		//ajax  异步的javascript and xml
+/*	 if(window.XMLHttpRequest){
+     var xmlhttp=new XMLHttpRequest();}//	创建一个Ajax对象 
+     else
+     {
+     	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+     }*/
+     try
+     {
+		var xmlhttp=new XMLHttpRequest();
+     }catch(e){
+     	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+     }
+     txt.onblur=function(){
+     xmlhttp.open("get","a.asp?info="+encodeURI(txt.value)+"&"+new Date().getTime(),true);  //默认是异步的 
+     // get 请求方式 url true 异步 false 同步 清缓存
+    
+     xmlhttp.send(); //发送请求
+     }
+     xmlhttp.onreadystatechange=function(){
+          if(xmlhttp.readyState==4 && xmlhttp.status==200)
+
+     	
+          alert(xmlhttp.responseText);
+     	 /* if(v==1){
+               tspan.innerHTML="用户名已存在";
+            }
+            else
+            {
+               tspan.innerHTML="ok";
+            }*/
+     	
+     }
+    
+        
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		 ul li{display: none;}
+		.show{display: block;} 
+	</style>
+</head>
+<body>
+	<ul>
+		<li>樊玉1</li>
+		<li>樊玉2</li>
+		<li>樊玉3</li>
+		<li>樊玉4</li>
+		<li>樊玉5</li>
+		<li>樊玉6</li>
+		<li>樊玉7</li>
+		<li>樊玉8</li>
+		<li>樊玉9</li>
+		<li>樊玉10</li>
+		<li>樊玉11</li>
+		<li>樊玉12</li>
+		<li>樊玉13</li>
+		<li>樊玉14</li>
+		<li>樊玉15</li>
+		<li>樊玉16</li>
+		<li>樊玉17</li>
+		<li>樊玉18</li>
+		<li>樊玉19</li>
+		<li>樊玉20</li>
+		<li>樊玉21</li>
+		<li>樊玉22</li>
+		<li>樊玉23</li>
+		<li>樊玉24</li>
+		<li>樊玉25</li>
+		<li>樊玉26</li>
+		<li>樊玉27</li>
+		<li>樊玉28</li>
+		<li>樊玉29</li>
+		<li>樊玉30</li>
+		<li>樊玉31</li>
+	</ul>
+	ul>li{abc$}*30
+	<button id='btn2'>上一页</button>
+	<button id='btn'>下一页</button>
+	<script>
+
+		var lis=document.getElementsByTagName('li');
+		var btn=document.getElementById('btn');
+		var btn2=document.getElementById('btn2');
+		var pagesize=5;
+		var num=Math.ceil(lis.length/pagesize);
+		
+		function show(page,pagesize){
+			var start=(page-1)*pagesize;
+			var end=start+pagesize;
+			if(end>lis.length){
+				end=lis.length
+			}
+			for(var i=start;i<end;i++){
+				lis[i].className='show'
+			}
+		}
+		function getPara(p){
+			var str=location.search.substring(1);
+			var reg=new RegExp('(^|$)'+p+'=([^&]+)($|&)');
+			if(str.match(reg)){
+				return str.match(reg)[2]
+			}
+			return '';
+		}
+		var page=getPara('p');
+		if(page){
+			page=getPara('p')
+		}else{
+			page=1
+		}
+		btn.onclick=function(){
+			if(page<num){
+				page++;
+			}else{
+				page=num
+			}
+
+			location.href='?p='+page
+			
+		}
+		btn2.onclick=function(){
+			if(page>1){
+				page--;
+			}else{
+				page=1
+			}
+			
+			location.href='分页2.html?p='+page
+		}
+		show(page,pagesize)
+	</script>
+</body>
+</html>

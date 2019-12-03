@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+  <div id="result"></div>
+	<form action="a.php" method="post" name="my">
+
+		
+		<input type="text" id="user" name="user"><br />
+		<input type="password" id="password" name="password"><br />
+		<input type="checkbox" name="Fav1" value="跳舞" />跳舞
+		<input type="checkbox" name="Fav2" value="购物" />购物
+		<input type="checkbox" name="Fav3" value="上网" />上网
+		<input type="radio" name="sex" value="famale" checked> 女
+		<input type="radio" name="sex" value="male"> 男
+		<!-- <input type="submit" name="sub" value="提交" > -->
+		<select id="city" name="city" multiple>
+			<option value="beijing">北京</option>
+			<option>上海</option>
+			<option >广州</option>
+			<option value="shenzhen">深圳</option>
+		</select>
+		<input type="submit" value="提交"  id="submit1">
+	</form>
+	<p id="test" data-lesson="js">abc</p>
+
+	<script type="text/javascript">
+/*	alert(document.getElementById("test").attributes["data-lesson"].specified);*/
+    alert(isNaN(undefined))
+		var objForm=document.forms["my"];
+ 		var objDiv=document.getElementById("result");
+		function serialForm(form){
+			var arr=[];
+		   for(var i=0;i<form.elements.length;i++)
+		   {
+		   		var elemnt=form.elements[i];
+		   		switch(elemnt.type)
+		   		{
+		   			case "select-one":
+		   			case 'select-multiple':
+		   	  				for(var j=0;j<elemnt.options.length;j++){
+		   					if(elemnt.options[j].selected){
+		   						if(elemnt.options[j].hasAttribute){
+		   							var optValue=elemnt.options[j].hasAttribute("value")?elemnt.options[j].value:elemnt.options[j].text;
+		   						}
+		   						else
+		   						{
+		   							var optValue=elemnt.options[j].attributes["value"].specified?elemnt.options[j].value:elemnt.options[j].text;
+		   						}
+		   						arr.push(elemnt.name+"="+encodeURI(optValue));
+		   					}
+		   				}
+		   				 break;
+		   			case "submit":
+		   			case "reset":
+		   			case "file":
+		   			case "button":
+
+		   			break;
+		   			case "radio":
+		   			case "checkbox":
+		   			   if(!elemnt.checked)
+		   			   	break;
+		   			default:
+		   			   if(elemnt.name.length){
+		   			   		arr.push(elemnt.name+"="+elemnt.value);
+		   			   }
+		   		}
+		   }
+		   return arr.join("&");
+		}
+
+		 var xml=null;
+		 try
+    {
+    	 xml=new XMLHttpRequest();
+    }catch(e){
+    		xml=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+		objForm.onsubmit=function(){
+
+    xml.open("post","d.asp",true); 
+    xml.setRequestHeader("content-type","application/x-www-form-urlencoded");
+   
+	xml.send(serialForm(objForm));
+		
+		return false;
+	}
+
+
+	 xml.onreadystatechange=function(){
+    	if(xml.readyState==4 && xml.status==200){
+    	
+    	objDiv.innerHTML=xml.responseText;
+    	
+
+       }
+    }
+
+	</script>
+</body>
+</html>

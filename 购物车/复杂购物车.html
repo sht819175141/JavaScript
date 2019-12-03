@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+        #tab {
+            width: 600px;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        #tab tr td {
+            border: 1px solid #ccc;
+            height: 30px;
+        }
+
+        #tab tr th {
+            border: 1px solid #ccc;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<table border="1" width="500" id="tab">
+    <thead>
+    <tr>
+        <th colspan="5">购物车</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox" "checked"="checked" name="che"/></td>
+        <td>26.8</td>
+        <td><input type="button" value="-" class="jian"/><input type="text" value="1"/><input type="button" value="+"
+                                                                                              class="jia"/></td>
+        <td>26.8</td>
+        <td>
+            <button>删除</button>
+        </td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" "checked"="checked" name="che"/></td>
+        <td>26.8</td>
+        <td><input type="button" value="-" class="jian"/><input type="text" value="1"/><input type="button" value="+"
+                                                                                              class="jia"/></td>
+        <td>26.8</td>
+        <td>
+            <button>删除</button>
+        </td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" "checked"="checked" name="che"/></td>
+        <td>26.8</td>
+        <td><input type="button" value="-" class="jian"/><input type="text" value="1"/><input type="button" value="+"
+                                                                                              class="jia"/></td>
+        <td>26.8</td>
+        <td>
+            <button>删除</button>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td><input type="checkbox" "checked"="checked" id="quan"/>全选</td>
+        <td colspan='1'>已选择<span id="geshu">0</span>件商品</td>
+        <td colspan='3'>总价：<span id="jiage">26.9</span>元</td>
+    </tr>
+    </tfoot>
+</table>
+<script>
+    var quan = document.getElementById("quan");
+    var che = document.getElementsByName("che");
+    var tab = document.getElementById("tab");
+    var geshu = document.getElementById("geshu");
+    var jiage = document.getElementById("jiage");
+    var tbody = tab.tBodies
+    var Rows = tbody[0].rows
+    var cells = Rows[0].cells
+
+    quan.onclick = function () {
+        for (var i = 0; i < che.length; i++) {
+            che[i].checked = quan.checked;
+            huan(i);
+        }
+    }
+
+    function huan(num) {
+        if (che[num].checked) {
+            che[num].parentNode.parentNode.style.background = "pink";
+        } else {
+            che[num].parentNode.parentNode.style.background = "";
+        }
+    }
+
+    for (var i = 0; i < che.length; i++) {
+        che[i].index = i;
+        che[i].onclick = function () {
+            huan(this.index)
+        }
+    }
+
+    for (var i = 0; i < Rows.length; i++) {
+        Rows[i].onclick = function (e) {
+            var event = e || window.event;
+            var target = event.target || event.srcElement;
+
+            if (target.nodeName == 'BUTTON') {
+                tbody[0].removeChild(this)
+            }
+
+            var text = this.getElementsByTagName('input')[2];
+            if (target.className == 'jian') {
+                if (text.value > 0) {
+                    text.value--;
+                }
+            }
+            if (target.className == 'jia') {
+                text.value++
+            }
+
+            var danjia
+            danjia = parseFloat(this.cells[1].innerHTML) * parseInt(text.value)
+            this.cells[3].innerHTML = danjia.toFixed(2)
+
+            getTotel();
+        }
+    }
+
+    function getTotel() {
+        var c = 0;
+        var pic = 0;
+        var rs = tbody[0].rows;
+        for (var i = 0; i < rs.length; i++) {
+            if (rs[i].getElementsByTagName('input')[0].checked) {
+                c = c + parseInt(rs[i].getElementsByTagName('input')[2].value);
+                pic = pic + parseFloat(rs[i].cells[3].innerHTML);
+            }
+
+        }
+        geshu.innerHTML = c;
+        jiage.innerHTML = pic;
+    }
+
+</script>
+</body>
+</html>

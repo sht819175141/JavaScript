@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function MyEvent(){
+			this.handler={};
+		};
+		MyEvent.prototype.addEvent=function(eventName,func){
+			if(typeof this.handler[eventName]=='undefined'){
+				this.handler[eventName]=[];
+			}
+			this.handler[eventName].push(func)  //func==>数组,把数组添加进去
+		};
+		MyEvent.prototype.doEvent=function(str){
+			var arr=this.handler[str]
+			if(arr instanceof Array){
+				for(var i=0;i<arr.length;i++){
+					arr[i]()
+				}
+			}
+		}
+		var e=new MyEvent()
+		e.addEvent('abc',function(){
+			alert('abc mothed')
+		})
+		e.doEvent('abc')
+		//
+	</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #com ul {
+            list-style: none;
+            height: 100px;
+            width: 100px;
+            background-color: #ccc;
+            display: none;
+        }
+
+        #com #ip {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="com">
+    <input type="button" value="一"/>
+    <input type="button" value="二"/>
+    <input type="button" value="三"/>
+    <input type="button" value="四"/>
+    <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+    </ul>
+    <ul>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+    </ul>
+    <ul>
+        <li>3</li>
+        <li>3</li>
+        <li>3</li>
+        <li>3</li>
+    </ul>
+    <ul>
+        <li>4</li>
+        <li>4</li>
+        <li>4</li>
+        <li>4</li>
+    </ul>
+</div>
+<script>
+    var com = document.getElementById("com");
+    var ul = com.getElementsByTagName("ul");
+    var ip = com.getElementsByTagName("input");
+    for (var i = 0; i < ip.length; i++) {
+        ip[i].index = i;
+        ip[i].onmouseover = function () {
+            for (var j = 0; j < ul.length; j++) {
+                ul[j].style.display = "none";
+                ip[j].style.background = "";
+            }
+            ul[this.index].style.display = "block";
+            ip[this.index].style.background = "yellow";
+        }
+        ip[i].onmouseout = function () {
+            for (var j = 0; j < ul.length; j++) {
+                ul[j].style.display = "none";
+                ip[j].style.background = "";
+            }
+        }
+    }
+</script>
+</body>
+</html>

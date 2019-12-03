@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../jquery-1.11.3.js" ></script>
+		<style>
+			.inputGood_radio{
+				width: 16px;
+				height: 16px;
+				border: 1px solid #000000;
+				border-radius: 100%;
+				position: relative;
+			}
+			.inputGood_radio span{
+				width: 10px;
+				height: 10px;
+				
+				display: block;
+				border-radius: 100%;
+				margin-top: 3px;
+				margin-left: 3px;
+			}
+			.inputGood_radio span.on{
+				background: #000;
+			}
+			
+			
+			.inputGood_checkbox{
+				width: 16px;
+				height: 16px;
+				border: 1px solid #000000;
+				position: relative;
+			}
+			.inputGood_checkbox span{
+				width: 10px;
+				height: 10px;
+				
+				display: block;
+				margin-top: 3px;
+				margin-left: 3px;
+			}
+			.inputGood_checkbox span.on{
+				background: #000;
+			}
+			
+			.inputGood_select{
+				width: 200px;
+				height: 30px;
+				position: relative;
+				border: 1px solid #000000;
+				
+			}
+			.inputGood_select h1{
+				display: block;
+				width: 100%;
+				height: 100%;
+				font-size: 14px;
+				line-height: 30px;
+				padding: 0;
+				margin: 0;
+			}
+			.inputGood_select h1 span{
+				padding-left: 10px;
+			}
+			.inputGood_select h1 i{
+				border: 5px solid #000000;
+				border-left-color:#fff;
+				border-right-color:#fff;
+				border-bottom: 0;
+				position: absolute;
+				right: 10px;
+				top: 13px;
+			}
+			.inputGood_select ul{
+				  width: 100%;
+				  height: auto;
+				  position: absolute;
+				  top: 100%;
+				  border: 1px solid #000;
+				  padding: 0;
+				  margin: 0;
+				  left: -1px;
+				  display: none;
+			}
+			.inputGood_select ul li{
+				height: 25px;
+				padding: 0 10px;
+				line-height: 25px;
+				cursor: pointer;
+			}
+			.inputGood_select ul li:hover{
+				background: #0000FF;
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			
+			<input type="radio" name="aa" />
+			<input type="radio" name="aa" />
+			<input type="radio" name="aa" />
+			<input type="radio" name="aa" />
+			
+			<input type="checkbox" name="ch[]" />
+			<input type="checkbox" name="ch[]" />
+			<input type="checkbox" name="ch[]" />
+			<input type="checkbox" name="ch[]" />
+			
+			
+			<select>
+				<option>啊啊啊啊1</option>
+				<option>啊啊啊啊2</option>
+				<option>啊啊啊啊3</option>
+				<option>啊啊啊啊4</option>
+				<option>啊啊啊啊5</option>
+			</select>
+			
+		</form>
+		
+		
+		<form>
+			
+			<input type="radio" name="aa" />
+			<input type="radio" name="aa" />
+			<input type="radio" name="aa" />
+			<input type="radio" name="aa" />
+			
+			<input type="checkbox" name="ch[]" />
+			<input type="checkbox" name="ch[]" />
+			<input type="checkbox" name="ch[]" />
+			<input type="checkbox" name="ch[]" />
+			
+			
+			<select>
+				<option>啊啊啊啊1</option>
+				<option>啊啊啊啊2</option>
+				<option>啊啊啊啊3</option>
+				<option>啊啊啊啊4</option>
+				<option>啊啊啊啊5</option>
+			</select>
+			
+		</form>
+		
+		<script>
+			
+			var inputGood = function( taget ){
+				this._taget = taget; //元素  radio|checkbox|select
+			};
+			
+			inputGood.prototype = {
+				
+				init : function(){
+					switch( this._taget.type ){
+						case "radio" :
+							this.creatRadio();
+						break;
+						case "checkbox" : 
+							this.creatCheckbox();
+						break;
+							
+					}
+					if( this._taget.nodeName.toLocaleLowerCase() == "select" ){
+						
+						this.creatSelect();
+					}
+					
+				},
+				
+				creatRadio : function(){
+					var name = $( this._taget ).attr( "name" );
+					var radioEle = $("<div class='inputGood_radio' name='"+name+"'><span></span></div>");
+					
+					$( this._taget ).after( radioEle );
+					
+					radioEle.click(function(){
+						$(this).find("span").addClass("on");
+						$(this).prev().prop("checked",true)
+						$(this).parents("form").find( ".inputGood_radio[name="+name+"]" ).each(function(){
+							if( $(this)[0] != radioEle[0] ){
+								$(this).find("span").removeClass("on");
+								$(this).prev().prop("checked",false)
+							}
+						})
+					})
+				},
+				
+				creatCheckbox : function(){
+					var name = $( this._taget ).attr( "name" );
+					var checkboxEle = $("<div class='inputGood_checkbox' name='"+name+"'><span></span></div>");
+					
+					$( this._taget ).after( checkboxEle );
+					
+					checkboxEle.click(function(){
+						$(this).find("span").toggleClass("on");
+						var checked = $(this).prev().prop("checked");
+						
+						if( checked ){
+							
+							 $(this).prev().prop("checked",false)
+						}else{
+							
+							 $(this).prev().prop("checked",true)
+						}
+					
+					})
+				},
+				
+				creatSelect : function(){
+					var that = this;
+					var name = $( this._taget ).attr( "name" );
+					var html = '<div class="inputGood_select">\
+									<h1><span></span><i></i></h1>\
+									<ul style="display:none;"></ul>\
+								</div>'
+					var selectEle = $(html);
+					
+					
+					$( this._taget ).find( "option" ).each(function(i){
+						if( i==0 ) selectEle.find( "span" ).text( $(this).text() );
+						
+						selectEle.find( "ul" ).append( "<li>"+$(this).text()+"</li>" )
+					})
+					
+					$( this._taget ).after( selectEle );
+					
+					selectEle.find( "h1" ).on("click",function(e){
+						e.stopPropagation();
+						$(this).next( "ul" ).toggle();
+					})
+					
+					selectEle.find( "ul li" ).on("click",function(e){
+						var val = $(this).text();
+						var index = $(this).index();
+						selectEle.find( "span" ).text( val );
+						
+						$(  that._taget ).find( "option" ).eq(index).prop("selected",true)
+					})
+					
+					$( document ).click(function(){
+						selectEle.find( "ul" ).hide();
+					})
+					
+					/*checkboxEle.click(function(){
+						$(this).find("span").toggleClass("on");
+						var checked = $(this).prev().prop("checked");
+						
+						if( checked ){
+							
+							 $(this).prev().prop("checked",false)
+						}else{
+							
+							 $(this).prev().prop("checked",true)
+						}
+					
+					})*/
+				}
+				
+			}
+			
+			
+			$.fn.formGood = function(){
+				
+				this.each(function(){
+					
+					$(this).find( "input" ).each(function(){
+						$(this).hide();
+						var type = $(this).attr("type");
+						if( type == "radio" || type == "checkbox" || type == "select"){
+							
+							this.input = new inputGood( this );
+							this.input.init();
+						}
+					})
+					
+					$(this).find( "select" ).each(function(){
+						$(this).hide();
+						this.input = new inputGood( this );
+						this.input.init();
+					})
+					
+					
+					
+				})
+				
+			}
+			
+			$( "form" ).formGood();
+			
+			
+		</script>
+	</body>
+</html>

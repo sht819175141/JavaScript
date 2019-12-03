@@ -1,0 +1,38 @@
+宋晓东 14:57:49
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function MyEvent(){
+			this.handle={}
+		}
+		MyEvent.prototype.addEvent=function(eventName,fun){
+			if(typeof this.handle[eventName]=='undefined'){
+				this.handle[eventName]=[];
+			}
+			this.handle[eventName].push(fun)
+		}
+		MyEvent.prototype.doEvent=function(event){
+			var arr=this.handle[event.name];
+			if(arr instanceof Array){
+				for(var i=0;i<arr.length;i++){
+					arr[i]()
+				}
+			}
+		}
+
+		var e=new MyEvent();
+		e.addEvent('abc',function(){
+			alert('abc method')
+		})
+		e.addEvent('abc',function(){
+			alert('1')
+		})
+		e.doEvent({name:'abc',age:'bcd'})
+	</script>
+</body>
+</html>

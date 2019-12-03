@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<textarea id="txt1" rows="10"></textarea>
+ 
+<input type="button" value="替换" id="btn1">
+
+<textarea id="txt2" rows="10"></textarea>
+
+<script>
+var txt1 = document.getElementById("txt1");
+var txt2 = document.getElementById("txt2");
+var btn1 = document.getElementById("btn1");
+
+btn1.onclick = function(){
+
+	var reg = /<[^<>]+>/g;
+	///<.+>/g
+
+	txt2.value= txt1.value.replace(reg,"");
+
+}
+
+</script>
+	
+</body>
+</html>

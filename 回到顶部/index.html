@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    #box {
+        width: 91px;
+        height: 177px;
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        display: none;
+    }
+</style>
+<body>
+<img src="img/1.gif">
+<div id="box"><a href="a. html"><img src="img/2.png"></a></div>
+<script>
+    var box = document.getElementById("box");
+    window.onscroll = function () {
+        var wi = window.innerHeight;//可视区域高度
+        var di = document.body.scrollTop || document.documentElement.scrollTop;
+        if (di > wi) {
+            box.style.display = "block";
+        } else {
+            box.style.display = "none";
+        }
+    }
+    box.onclick = function (eve) {
+        eve.preventDefault();
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
+</body>
+</html>

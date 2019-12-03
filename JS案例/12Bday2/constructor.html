@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//构造函数的方式每个对象上的方法独立的
+		function Person(name,age){
+			var test="abc";
+			this.name=name;
+			this.age=age;
+			this.info=function(){     
+				return this.name+","+this.age;
+			}
+			this.getTest=function(){
+				return test;
+			}
+
+		}
+		//new 新建一个对象
+		//改变作用域 this指向新建的对象  类的实例(instance)
+		//运行构造函数
+		//返回这个新对象
+		var p=new Person("zs",20);
+		alert(p.getTest());
+		var p1=new Person("ls",18);
+		alert(p1.info==p.info);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+知识点：
+		
+	一、
+
+	 innerHTML    ====》 HTML所有内容(包括标签)
+
+	 innerText    ====》提取文本内容(不包括标签)
+
+	 	***有兼容问题   
+
+	 		1>火狐不兼容
+
+	 			textContent
+
+	二、DOM属性
+
+		document.title  ===>获取页面title信息
+
+		document.URL    ===>物理路径
+
+		获取元素属性例如(.id  、.title  、 .class....)
+
+		nodeValue        ====》获取内容
+
+	方法===》
+
+		createTextNode   ====》创建文本
+
+		normalize()      ====》合并文本节点
+	
+	三、获取非行间样式
+		
+		box.style.width  ===》获取不到
+
+		****cssRules ===》IE8以下不兼容
+
+		****rules    ===》火狐不兼容
+
+		document.styleSheets[0];      ====》第一个样式表
+  
+		sheet.cssRules||sheet.rules;  ====》解决兼容
+
+		rule[0];     				  ====》获取第几个样式
+		
+	四、非行间添加样式
+		
+		addRule("#box","background:pink",0);
+
+			**参数1》样式名称(全名称 例如：.box  #box ) 
+			**参数2》属性 
+			**参数3》位置 
+			
+			****火狐不兼容
+		
+		insertRule("#box{background:red}",0); 
+
+			**参数1》样式名称+属性
+			**参数2》位置
+						
+			****IE8以下不兼容
+
+	五、删除非常见样式内容
+		
+		sheet.removeRule(0);  ===>火狐不兼容
+
+		sheet.deleteRule(0);
+
+	六、DOM(偏移量、大小、位置)
+			
+		1》鼠标位置
+
+		clientX
+
+		clientY  
+
+			***鼠标当前位置,到浏览器左侧(顶部)的距离
+	
+		2》偏移量  ?????
+ 
+			offsetLeft
+			offsetTop 
+				
+			*****元素距离左侧(顶部)偏移距离
+		
+		3》大小
+
+			clientWidth
+
+			clientHeight 
+
+				****获取元素大小

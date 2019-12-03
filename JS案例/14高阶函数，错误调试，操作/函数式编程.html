@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//each()    遍历数组每一项，执行重复的函数操作
+	//map()    遍历数组每一项，执行重复的函数操作，把最新生成的结果放到新数组里
+	//reduce() 遍历数组每一项，执行重复的函数操作,产生的结果赋给一个值
+	//数组中奇数的个数
+	//数组中各项的和
+	var  arr=[3,4,1]
+	function each(fun,array){
+		 for(var i=0;i<array.length;i++){
+		 	  fun(array[i])
+		 }
+	}
+	function  addOne(m){
+		return m+1
+	}
+   function  addTwo(n){
+       return  n+2
+   }
+function  map(fun,array){
+	var temp=[]
+	each(function(n){
+		  temp.push(fun(n))
+	},array)
+
+return temp
+}
+console.log(map(addTwo,arr))
+
+//reduce()
+/*var count=0
+for(var i=0;i<arr.length;i++){
+	  if(arr[i]%2==1){
+         count++
+	  }
+}
+console.log(count);*/
+
+
+function  oddCount(count,val){
+	  if(val%2==1){
+           count++;
+	  }
+
+	  return count;
+}
+
+function  sum(sum,val){
+	sum= sum+val
+	return sum
+}
+var arr=[2,5,1,6]
+function reduce(fun,base,array){
+
+    /* for(var i=0;i<array.length;i++){
+     	       base=fun(base,array[i])
+     }*/
+     each(function(n){
+     		base=fun(base,n)
+     },array)
+return  base
+}
+console.log(reduce(oddCount,0,arr))
+console.log(reduce(sum,0,arr))
+
+
+function   oddSum(sum,val){
+          if(val%2==1){
+          	sum=sum+val
+          }
+          return sum
+}
+console.log(reduce(oddSum,0,arr))
+	</script>
+</body>
+</html>

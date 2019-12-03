@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+</head>
+<body>
+<script>
+    Object.prototype.info = function () {
+        console.log(this)
+    }
+    var arr = [1, 2, 3]
+    console.log(arr.info());
+    var a = "hello";
+    console.log(a.info());
+    Object.prototype.tocame = function () {
+        var reg = /-(\w)/g;
+        return this.replace(reg, function () {
+            return arguments[1].toUpperCase();
+        })
+    }
+    console.log("hello-world-bawei".tocame())
+</script>
+</body>
+</html>

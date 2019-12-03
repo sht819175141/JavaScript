@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>1111</li>
+		<li>2222</li>
+		<li>3333</li>
+		<li>4444</li>
+	</ul>
+	<script>
+		var uls=document.getElementsByTagName('ul'),
+		    lis=document.getElementsByTagName('li');
+
+		uls[0].onclick=function(e){
+			var event=e || window.event;
+			var target=event.target ||  event.srcElement;
+			if(target.style.background==''){ 
+				target.style.background='red'
+			}else{
+				target.style.background=''
+			}
+		}
+
+/*	for(var i=0;i<lis.length;i++){
+			lis[i].onclick=function(){
+				 this.style.background='red'
+			}
+	}
+*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<html>
+<head>
+<title>浅析网页Transitional和Strict的文档声明的区别</title>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style type="text/css">
+<!--
+.style1 {color: #0099cc}
+-->
+</style>
+<link href='/info/Skin/DefaultSkin.css' rel='stylesheet' type='text/css'> <script language='JavaScript' type='text/JavaScript' src='/info/js/menu.js'></script>
+<script type='text/javascript' language='JavaScript1.2' src='/info/js/stm31.js'></script>
+<script language="JavaScript" type="text/JavaScript">
+//改变图片大小
+function resizepic(thispic)
+{
+if(thispic.width>700){thispic.height=thispic.height*700/thispic.width;thispic.width=700;} 
+}
+//无级缩放图片大小
+function bbimg(o)
+{
+  var zoom=parseInt(o.style.zoom, 10)||100;
+  zoom+=event.wheelDelta/12;
+  if (zoom>0) o.style.zoom=zoom+'%';
+  return false;
+}
+//双击鼠标滚动屏幕的代码
+var currentpos,timer;
+function initialize()
+{
+timer=setInterval ("scrollwindow ()",30);
+}
+function sc()
+{
+clearInterval(timer);
+}
+function scrollwindow()
+{
+currentpos=document.body.scrollTop;
+window.scroll(0,++currentpos);
+if (currentpos !=document.body.scrollTop)
+sc();
+}
+document.onmousedown=sc
+document.ondblclick=initialize
+
+//更改字体大小
+var status0='';
+var curfontsize=10;
+var curlineheight=18;
+function fontZoomA(){
+  if(curfontsize>8){
+    document.getElementById('fontzoom').style.fontSize=(--curfontsize)+'pt';
+	document.getElementById('fontzoom').style.lineHeight=(--curlineheight)+'pt';
+  }
+}
+function fontZoomB(){
+  if(curfontsize<64){
+    document.getElementById('fontzoom').style.fontSize=(++curfontsize)+'pt';
+	document.getElementById('fontzoom').style.lineHeight=(++curlineheight)+'pt';
+  }
+}
+</script>
+</head>
+<body  oncontextmenu='return false' ondragstart='return false' onselectstart ='return false' onselect='document.selection.empty()' oncopy='document.selection.empty()' onbeforecopy='return false' onmouseup='document.selection.empty()'>
+<div id=menuDiv style="Z-INDEX: 1000; VISIBILITY: hidden; WIDTH: 1px; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: #9cc5f8">
+</div>
+<table cellSpacing=0 cellPadding=0 width=950 align=center border=0>
+    <tr>
+      <td colSpan=3 height=70>
+        <table cellSpacing=0 cellPadding=0 width=950 border=0>
+          <tr>
+            <td align=middle height=90>
+              <table cellSpacing=0 cellPadding=0 width="100%" border=0>
+                <tr>
+                  <td width=258 height=90>
+<OBJECT codeBase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0 height=70 width=220 classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000><PARAM NAME="_cx" VALUE="5821"><PARAM NAME="_cy" VALUE="1852"><PARAM NAME="FlashVars" VALUE=""><PARAM NAME="Movie" VALUE="/info/Skin/sealove/lg.swf"><PARAM NAME="Src" VALUE="/info/Skin/sealove/lg.swf"><PARAM NAME="WMode" VALUE="Window"><PARAM NAME="Play" VALUE="0"><PARAM NAME="Loop" VALUE="-1"><PARAM NAME="Quality" VALUE="High"><PARAM NAME="SAlign" VALUE=""><PARAM NAME="Menu" VALUE="-1"><PARAM NAME="Base" VALUE=""><PARAM NAME="AllowScriptAccess" VALUE=""><PARAM NAME="Scale" VALUE="ShowAll"><PARAM NAME="DeviceFont" VALUE="0"><PARAM NAME="EmbedMovie" VALUE="0"><PARAM NAME="BGColor" VALUE=""><PARAM NAME="SWRemote" VALUE=""><PARAM NAME="MovieData" VALUE=""><PARAM NAME="SeamlessTabbing" VALUE="1"><PARAM NAME="Profile" VALUE="0"><PARAM NAME="ProfileAddress" VALUE=""><PARAM NAME="ProfilePort" VALUE="0"><PARAM NAME="AllowNetworking" VALUE="all"><PARAM NAME="AllowFullScreen" VALUE="false">
+                              <embed src="/info/Skin/sealove/lg.swf" quality="high" 
+pluginspage="http://www.macromedia.com/go/getflashplayer" 
+type="application/x-shockwave-flash" width="220" height="70"></embed>        
+                                                                        </OBJECT></td>
+                  <td align=middle><A href="http://www.cnspeed.com/pdtshw/hstshw/index.asp?pcid=52" target=_blank><IMG height=80 src="/info/Skin/sealove/390x60.gif" width=440 border=0></A></td>
+                </tr>
+              </table>
+            </td>
+            <td align=right width=238>
+              <table class=txstcolor3 height=80 cellSpacing=0 cellPadding=0 width="100%" border=0>
+                <tr>
+                  <td align=right colSpan=3 height=20><A href="http://www.cnspeed.com/agent/" target=_blank>代理商专区</A> | <A href="http://www.cnspeed.com/help/contact.asp" target=_blank>客服中心</A> | <A href="http://www.cnspeed.com/pay.asp" target=_blank>付款方式</A> </td>
+                </tr>
+                <tr>
+                  <td width="3%" height=20></td>
+                  <td align=right colSpan=2><A href="http://www.cnspeed.com/sysmod/index.html" target=_blank><FONT color=#ff0000>联合服务--你服务 我给钱</FONT></A> <A href="http://www.cnspeed.com/cn/board.htm" target=_blank>综合控制面板</A> </td>
+                </tr>
+                <tr>
+                  <td height=20></td>
+                  <td align=middle colSpan=2>
+                    <table cellSpacing=0 cellPadding=0 width=218>
+                      <tr>
+                        <td align=right>
+                          <table class=txstcolor3 cellSpacing=0 cellPadding=0>
+                            <tr>
+                              <td align=right height=20><A href="http://www.cnspeed.com/cn/fast.asp" target=_blank>FastHTTP加速引擎</A> | <A href="http://www.cnspeed.com/cn/data.asp">数据库加速引擎 </A></td>
+                            </tr>
+                            <tr>
+                              <td></td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td height=20></td>
+                  <td align=right width="55%"><A href="http://tele.cnspeed.com/">电信加速站点</A> |</td>
+                  <td width="42%"><A href="http://cnc.cnspeed.com/">网通加速站点</A></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td width=8><IMG height=37 src="http:/www.cnspeed.com/cn/imagestest/index_2_1.gif" width=8></td>
+      <td width=934 background=/cn/imagestest/index_3_1.gif>
+        <table cellSpacing=0 cellPadding=0 width=830 align=center border=0>
+          <tr>
+            <td class=topmenutd width=50><A class=menutop href="http://www.cnspeed.com/">首 页</A></td>
+            <td width=2><IMG height=32 src="http:/www.cnspeed.com/cn/imagestest/index_line.gif" width=2></td>
+            <td class=topmenutd><A class=menutop href="http://www.cnspeed.com/pdtshw/hstshw/indextd.asp">虚拟主机</A></td>
+            <td width=2><IMG height=32 src="http:/www.cnspeed.com/cn/imagestest/index_line.gif" width=2></td>
+            <td class=topmenutd><A class=menutop href="http://www.cnspeed.com/pdtshw/dmeshw/index.asp">域名注册</A></td>
+            <td width=2><IMG height=32 src="http:/www.cnspeed.com/cn/imagestest/index_line.gif" width=2></td>
+            <td class=topmenutd><A class=menutop href="http://www.cnspeed.com/pdtshw/emlshw/indextd.asp">企业邮局</A></td>
+            <td width=2><IMG height=32 src="http:/www.cnspeed.com/cn/imagestest/index_line.gif" width=2></td>
+            <td class=topmenutd><A class=menutop href="http://www.cnspeed.com/pdtshw/sqlshw/index.asp">数据库</A></td>
+            <td width=2><IMG height=32 src="http:/www.cnspeed.com/cn/imagestest/index_line.gif" width=2></td>
+            <td class=topmenutd><A class=menutop href="http://www.cnspeed.com/pdtshw/svrshw/index.asp">整机租用</A></td>
+            <td width=2><IMG height=32 src="http:/www.cnspeed.com/cn/imagestest/index_line.gif" width=2></td>
+            <td class=topmenutd><A class=menutop href="http://www.cnspeed.com/pdtshw/ot1shw/index.asp">虚拟服务器</A></td>
+            <td width=2><IMG height=32 src="http:/www.cnspeed.com/cn/imagestest/index_line.gif" width=2></td>
+            <td class=topmenutd><A class=menutop href="http://www.cnspeed.com/pdtshw/ot2shw/index.asp">增值服务产品</A></td>
+            <td width=2><IMG height=32 src="http:/www.cnspeed.com/cn/imagestest/index_line.gif" width=2></td>
+            <td class=topmenutd><A class=menutop href="http://www.cnspeed.com/help/index.asp">帮助中心</A></td>
+            <td width=2><IMG height=32 src="http:/www.cnspeed.com/cn/imagestest/index_line.gif" width=2></td>
+            <td class=topmenutd width=50><A class=menutop href="http://www.cnspeed.com/pdtshw/hstshw/index.asp?pcid=52">网店</A></td>
+            <td width=2><IMG height=32 src="http:/www.cnspeed.com/cn/imagestest/index_line.gif" width=2></td>
+            <td class=topmenutd><A class=menutop href="http://www.8849vip.com/" target=_blank>智能建站</A></td>
+<td width=2><IMG height=32 src="http:/www.cnspeed.com/cn/imagestest/index_line.gif" width=2></td>
+            <td class=topmenutd><A class=menutop href="http://www.cnspeed.com/info/Article/Index.html" target=_blank>资讯中心</A></td>
+
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan=3>
+        <table cellSpacing=0 cellPadding=0 width="100%" border=0>
+          <tr>
+            <td vAlign=top>
+              <table borderColor=#7accee cellSpacing=0 cellPadding=0 width="100%" align=center border=1>
+                <tr>
+                  <td>
+                  <script language='JavaScript1.2' type='text/JavaScript' src='/info/Article/JS/ShowClass_Menu.js'></script></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td background=/info/Skin/Ocean/addr.jpg colSpan=2 height=21>
+        <table cellSpacing=0 cellPadding=0 width="100%" border=0>
+          <tr>
+            <td align=middle width="5%"><IMG height=17 src="/info/Skin/Ocean/arrows2.gif" width=16></td>
+            <td width="95%">您现在的位置：&nbsp;<a class='LinkPath' href='http://www.cnspeed.com'>数字引擎</a>&nbsp;>>&nbsp;<a class='LinkPath' href='/info/Article/Index.html'>文章中心</a>&nbsp;>>&nbsp;<a class='LinkPath' href='/info/Article/dhtml/Index.html'>HTML</a>&nbsp;>>&nbsp;正文</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table> 
+<!-- ********网页顶部代码结束******** -->
+<!-- ********网页中部代码开始******** -->
+  <table class=center_tdbgall style="WORD-BREAK: break-all" cellSpacing=0 cellPadding=0 width=1000 align=center border=0>
+    <tr>
+      <td class=main_tdbgall vAlign=top>
+      <!--网页中部左栏文章内容代码开始-->
+        <table class=main_title_760 style="WORD-BREAK: break-all" cellSpacing=0 cellPadding=0 width=760 align=center border=0>
+          <tr>
+            <td vAlign=center>　　<STRONG>浅析网页Transitional和Strict的文档声明的区别</STRONG></td>
+            <td align=right>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#009999'></font></td>
+          </tr>
+        </table>
+        <table class=main_tdbg_575 style="WORD-BREAK: break-all" cellSpacing=0 cellPadding=0 width=760 align=center border=0>
+          <tr vAlign=center align=middle>
+            <td class=main_ArticleTitle style="WORD-BREAK: break-all" colSpan=2 height=30>浅析网页Transitional和Strict的文档声明的区别</td>
+          </tr>
+          <tr vAlign=center align=middle>
+            <td class=main_ArticleSubheading style="WORD-BREAK: break-all" colSpan=2></td>
+          </tr>
+          <tr class=Article_tdbgall align=middle>
+            <td colSpan=2>作者：佚名 文章来源：互联网 更新时间：2009-9-4 10:23:16 </td>
+          </tr>
+          <tr>
+            <td id=fontzoom style="WORD-BREAK: break-all" vAlign=top colSpan=2 height=300>
+              <table cellSpacing=0 cellPadding=10 align=left border=0>
+                <tr>
+                  <td>
+                  <!--插入广告JS代码--></td>
+                </tr>
+              </table>
+<!--内容开始-->
+			<div class="AdZoneLc"><script src='http://www.it86.cc/plus/ad_js.php?aid=22' language='javascript'></script></div>
+			&gt;&gt;  &gt;&gt;   浅析网页Transitional和Strict的文档声明的区别
+      
+        
+        2009-2-17    
+			
+			
+      
+
+<P>在推广Web标准的今天，那些崇尚的人经常说XHTML比HTML更加严格，当然从某种意义上说是的，比如它要求所有的标签关闭并且所有的属性都用引号。但其实XHTML 1.0还分两种（加上Frameset DOCTYPE的话算三种，本文不讨论），Transitional（过渡型）和Strict（严格）DOCTYPEs。并且HTML 4.01也有同样的文档声明。</P>
+<P>从字面上就可以看出来意思：Transitional DOCTYPEs只是为了实现从旧时代到新时代的过渡，而且Strict DOCTYPEs是默认的文档声明， 对构造HTML 4.01和XHTML 1.0都适用。</P>
+<P>使用Transitional DOCTYPE一般是由于代码中含有过多陈旧的写法，并且一下子很难完全转换到Strict DOCTYPE来。但是Strict DOCTYPE才应该是你的目标。它鼓励甚至有时是强迫你把结构与表现区分开来，把表现层的代码都写在CSS里。：</P>
+
+<P>本HTML 4.01 Strict DTD不包括表现层属性和标签，W3C将逐渐淘汰这些属性和标签，您完全可以使用样式表来实现。您应该使用Strict DTD，如需获得表现层属性和标签的支持，请使用Transitional DTD。</P>
+<P>用Strict DOCTYPE还有一个好处，即可以让使用它们最严格、（一定程度上）最符合标准的模式来渲染页面。</P>
+<P>Tommy Olsson在Web Standards Group的一文中很好的阐述了使用Strict的好处：</P>
+
+<P>我觉得，使用Strict DTD，无论是HTML 4.01 Strict还是XHTML 1.0 Strict，远比讨论是用HTML还是XHTML重要的多。它代表了未来互联网的质量。它将结构和表现分开，使得维护一个站点非常容易。</P>
+<P>对于刚开始接触web standards和正确的、语义化的结构的人，认清Transitional和Strict DOCTYPEs的区别非常重要。更多详细列表请参考：、和。</P>
+<P>对于准备向Strict进发的人来说，两者的有些区别很可能会使开发者犯，接下来我将会谈到。</P>
+<H3>在Strict DOCTYPEs下不支持的标签</H3>
+<UL>
+<LI>center 
+<LI>font 
+<LI>iframe 
+<LI>srike 
+<LI>u </LI></UL>
+<H3>在Strict DOCTYPEs下不支持的属性</H3>
+<UL>
+<LI>align (表格相关的支持：col, colgroup, tbody, td, tfoot, th, thead, and tr) 
+<LI>language 
+<LI>background 
+<LI>bgcolor 
+<LI>border (table支持) 
+<LI>height (img和object支持) 
+<LI>hspace 
+<LI>name (在HTML 4.01 Strict中支持，XHTML 1.0 Strict中的form和img不支持) 
+<LI>noshade 
+<LI>nowrap 
+<LI>target 
+<LI>text, link, vlink, 和alink 
+<LI>vspace 
+<LI>width (img, object, table, col, 和 colgroup都支持) </LI></UL>
+<H3>内容模型的区别</H3>
+<P>元素类型的模型描述了什么样的元素类型实例可以被包含。这一点上，两种文档声明的最大区别在于blockquote, body, 和form元素仅能够包含块级元素，如：</P>
+<UL>
+<LI>文本和图像不允许直接包含在body中，必须被p或者div等块级元素包含 
+<LI>input元素不能直接是form元素的下一层 
+<LI>blockquote元素内的文本，必须被p或者div等块级元素包含 </LI></UL>
+<H3>将所有的表现都交给CSS，恪守Strict标准</H3>
+<P>在向Strict DOCTYPEs过渡的过程中，了解每个元素是做什么的比知道每个元素长啥样有效的多。</P>
+<P>首先考虑结构和语义，然后再担心表现。</P>
+			 
+            <CENTER></CENTER></td>
+            <td height=25></td>
+          </tr>
+          <tr>
+            <td class=Article_tdbgall align=left colSpan=2>
+<P>以上内容由 <A href="http://www.cnspeed.com/">厦门市数字引擎</A> 搜集整理，如转载请注明原文出处，并保留这一部分内容。</P>
+              <table style="BORDER-COLLAPSE: collapse" borderColor=#333333 cellSpacing=0 cellPadding=4 width="98%" border=1>
+                <tr>
+                  <td bgColor=#eeeeee>　　“厦门市数字引擎”<A href="http://www.cnspeed.com/">http://www.cnspeed.com</A> 厦门数字引擎是国内知名的、最专业的互联网平台服务商。自成立以来,它致力于为广大企业及个人用户提供专业的虚拟主机服务,并率先在全国掀起互联网平民化运动,主张让更多人以“更低成本的付出,享受更高品质的网络服务!”,让企业及个人实实在在享受到互联网带来的商机与便利。</td>
+                </tr>
+              </table>
+            <P>厦门市数字引擎网址导航: <A href="http://www.cnspeed.com/pdtshw/hstshw/indextd.asp">虚拟主机</A> <A href="http://www.cnspeed.com/pdtshw/dmeshw/index.asp">域名注册</A> <A href="http://www.cnspeed.com/pdtshw/emlshw/indextd.asp">企业邮局</A> <A href="http://www.cnspeed.com/pdtshw/sqlshw/index.asp">数据库</A> <A href="http://www.cnspeed.com/pdtshw/svrshw/index.asp">整机租用</A> <A href="http://www.cnspeed.com/pdtshw/ot1shw/index.asp">虚拟服务器</A> <A href="http://www.cnspeed.com/pdtshw/ot2shw/index.asp">增值服务产品</A> <A href="http://www.cnspeed.com/help/index.asp">帮助中心</A> <A href="http://www.cnspeed.com/pdtshw/hstshw/index.asp?pcid=52">网店</A> <A href="http://www.8849vip.com/">智能建站</A></P></td>
+          </tr>
+          <tr>
+            <td width=5></td>
+            <td width=995><li>上一篇文章： <a class='LinkPrevArticle' href='/info/Article/dhtml/200909/4039.html' title='文章标题：CSS3的五个使用技巧[译]
+作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名
+更新时间：2009-9-4 10:23:15'>CSS3的五个使用技巧[译]</a></li><BR><li>下一篇文章： <a class='LinkNextArticle' href='/info/Article/dhtml/200909/4041.html' title='文章标题：position两三事
+作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名
+更新时间：2009-9-4 10:23:16'>position两三事</a></li></td>
+          </tr>
+          <tr class=left_tdbgall align=right>
+            <td colSpan=2>【字体：<A class=top_UserLogin href="javascript:fontZoomA();">小</A> <A class=top_UserLogin href="javascript:fontZoomB();">大</A>】</td>
+          </tr>
+        </table>
+      <!--网页中部左栏文章内容代码结束--></td>
+      <td width=3></td>
+      <td class=Article_tdbgall vAlign=top width=181>
+      <!--网页中部右栏代码开始-->
+        <table style="WORD-BREAK: break-all" cellSpacing=0 cellPadding=0 width="100%" border=0>
+          <tr>
+            <td class=left_title align=middle>最 新 推 荐</td>
+          </tr>
+          <tr>
+            <td class=left_tdbg1>
+            <script language='javascript' src='/info/Article/JS/Article_Elite2.js'></script></td>
+          </tr>
+          <tr>
+            <td class=left_tdbg2></td>
+          </tr>
+          <tr>
+            <td class=left_title align=middle>相 关 文 章</td>
+          </tr>
+          <tr>
+            <td class=left_tdbg1><a class='LinkArticleCorrelative' href='/info/Article/JSP/200909/5447.html' title='文章标题：浅析JSP开发中的对象和范围属性
+作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名
+更新时间：2009-9-4 10:31:10' target="_self">浅析JSP开发中的对象和范</a><br><a class='LinkArticleCorrelative' href='/info/Article/JSP/200909/5414.html' title='文章标题：用XML+JSP实现网页内容动态显示的方案
+作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名
+更新时间：2009-9-4 10:31:01' target="_self">用XML+JSP实现网页内容动</a><br><a class='LinkArticleCorrelative' href='/info/Article/JSP/200909/5413.html' title='文章标题：JSP的特点和其它动态网页开发技术比较
+作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名
+更新时间：2009-9-4 10:31:01' target="_self">JSP的特点和其它动态网页</a><br><a class='LinkArticleCorrelative' href='/info/Article/JSP/200909/5409.html' title='文章标题：JSP动态网页入门：表单输入例子
+作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名
+更新时间：2009-9-4 10:31:00' target="_self">JSP动态网页入门：表单输</a><br><a class='LinkArticleCorrelative' href='/info/Article/JSP/200909/5377.html' title='文章标题：JavaScript＋PHP 应用一：网页制作中双下拉菜单的动态实现
+作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名
+更新时间：2009-9-4 10:30:51' target="_self">JavaScript＋PHP&nbsp;应用一</a><br><a class='LinkArticleCorrelative' href='/info/Article/JSP/200909/5373.html' title='文章标题：JavaScript + PHP 应用二：网页设计中树形菜单的动态实现
+作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名
+更新时间：2009-9-4 10:30:50' target="_self">JavaScript&nbsp;+&nbsp;PHP&nbsp;应用二</a><br><a class='LinkArticleCorrelative' href='/info/Article/JSP/200909/5369.html' title='文章标题：为网页添加活动的背景音乐
+作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名
+更新时间：2009-9-4 10:30:49' target="_self">为网页添加活动的背景音</a><br><a class='LinkArticleCorrelative' href='/info/Article/JSP/200909/5344.html' title='文章标题：jsp 内嵌网页内容--iframe
+作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名
+更新时间：2009-9-4 10:30:42' target="_self">jsp&nbsp;内嵌网页内容--ifra</a><br><a class='LinkArticleCorrelative' href='/info/Article/systemSecurity/200909/5289.html' title='文章标题：网页“黑手”如何攻击你的Windows系统
+作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名
+更新时间：2009-9-4 10:30:21' target="_self">网页“黑手”如何攻击你</a><br><a class='LinkArticleCorrelative' href='/info/Article/networkSecurity/200909/5124.html' title='文章标题：网页被改不再怕 找到问题的注册表根源
+作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名
+更新时间：2009-9-4 10:29:21' target="_self">网页被改不再怕&nbsp;找到问题</a><br></td>
+          </tr>
+          <tr>
+            <td class=left_tdbg2></td>
+          </tr>
+        </table>
+      <!--网页中部右栏代码结束--></td>
+    </tr>
+  </table>
+  <table class=center_tdbgall cellSpacing=0 cellPadding=0 width=950 align=center border=0>
+    <tr>
+      <td class=main_shadow></td>
+    </tr>
+  </table>
+  <!--文章显示代码结束-->
+  <!--网友评论代码开始-->
+  <!--网友评论代码结束-->
+  <!-- ********网页中部代码结束******** -->
+  <!-- ********网页底部代码开始******** --><table cellSpacing=0 cellPadding=0 width=950 align=center border=0>
+    <tr>
+      <td colSpan=3 height=5></td>
+    </tr>
+    <tr>
+      <td width=8><IMG height=45 src="http:/www.cnspeed.com/cn/imagestest/botm_1_1.gif" width=7></td>
+      <td width=934 background=/cn/imagestest/botm_1_3.gif>
+        <table cellSpacing=0 cellPadding=0 width="100%" border=0>
+          <tr>
+            <td width=29> </td>
+            <td class=menu1 width=651><A href="http://www.cnspeed.com/pay.asp" target=_blank>付款方式</A> | <A href="http://www.cnspeed.com/help/price.asp" target=_blank>价格总览</A> | <A href="http://www.cnspeed.com/agent/" target=_blank>代理加盟</A> | <A href="http://www.cnspeed.com/control/wrd_mng/wrd_add.asp" target=_blank>咨询反馈</A> | <A href="http://www.cnspeed.com/help/job.asp" target=_blank>诚聘英才</A> | <A href="http://www.cnspeed.com/help/aboutus.asp" target=_blank>关于我们</A> | <A href="http://www.cnspeed.com/help/contact.asp" target=_blank>联系我们</A>|<FONT color=#ff0000> 400热线服务电话(400-881-8881)</FONT></td>
+            <td class=menu1 align=middle width=254 height=18>版权所有:厦门市数字引擎网络技术有限公司</td>
+          </tr>
+        </table>
+      </td>
+      <td width=8><IMG height=45 src="http:/www.cnspeed.com/cn/imagestest/botm_1_2.gif" width=7></td>
+    </tr>
+    <tr>
+      <td colSpan=3 height=5></td>
+    </tr>
+    <tr align=middle>
+      <td colSpan=3 height=20>
+        <table cellSpacing=0 cellPadding=0 width=700 border=0>
+          <tr class=txstcolor3>
+            <td align=right>技术咨询：</td>
+            <td width=120><A title=请确保已安装好QQ软件 href="http://wpa.qq.com/msgrd?V=1&Uin=100201847&Site=www.cnspeed.com&Menu=yes" target=_blank><IMG alt=QQ留言 src="http://wpa.qq.com/pa?p=1:100201847:4" border=0><FONT color=#737f8d>:范工（邮件）</FONT></A></td>
+            <td><A title=请确保已安装好QQ软件 href="http://wpa.qq.com/msgrd?V=1&Uin=100201058&Site=www.cnspeed.com&Menu=yes" target=_blank><IMG alt=QQ留言 src="http://wpa.qq.com/pa?p=1:100201058:4" border=0><FONT color=#737f8d>:沈工</FONT></A></td>
+            <td><A title=请确保已安装好QQ软件 href="http://wpa.qq.com/msgrd?V=1&Uin=100201822&Site=www.cnspeed.com&Menu=yes" target=_blank><IMG alt=QQ留言 src="http://wpa.qq.com/pa?p=1:100201822:4" border=0><FONT color=#737f8d>:吴工</FONT></A></td>
+            <td><A title=请确保已安装好QQ软件 href="http://wpa.qq.com/msgrd?V=1&Uin=100201821&Site=www.cnspeed.com&Menu=yes" target=_blank><IMG alt=QQ留言 src="http://wpa.qq.com/pa?p=1:100201821:4" border=0><FONT color=#737f8d>:李工</FONT></A></td>
+            <td><A title=请确保已安装好QQ软件 href="http://wpa.qq.com/msgrd?V=1&Uin=100201850&Site=www.cnspeed.com&Menu=yes" target=_blank><IMG alt=QQ留言 src="http://wpa.qq.com/pa?p=1:100201850:4" border=0><FONT color=#737f8d>:张工</FONT></A></td>
+            <td><A title=请确保已安装好QQ软件 href="http://wpa.qq.com/msgrd?V=1&Uin=100201820&Site=www.cnspeed.com&Menu=yes" target=_blank><IMG alt=QQ留言 src="http://wpa.qq.com/pa?p=1:100201820:4" border=0><FONT color=#737f8d>:郭工</FONT></A></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr class=txstcolor3 align=middle>
+      <td colSpan=3 height=20>电话:0592-5583500/5583501/5583509 传真:0592-5567020 咨询信箱:info@cnspeed.com 投诉QQ:100201830(投诉)</td>
+    </tr>
+    <tr class=txstcolor3 align=middle>
+      <td colSpan=3 height=20>地址:厦门市莲岳路189号武夷工贸7号楼二层 邮编:361012 <SCRIPT src="http://union.sinojet.com/mystat.asp?siteid=3"></SCRIPT> <SCRIPT language=javascript 
+      src="http://union.sinojet.com/stat.asp?style=&siteid=3&tzone=8&tcolor=32&sSize=1440,900&fromurl=&referrer="></SCRIPT> </SCRIPT></td>
+    </tr>
+    <tr class=txstcolor3 align=middle>
+      <td colSpan=3 height=20><A href="http://www.cnspeed.com/help/hlp_dtl.asp?nid=10000022">《中华人民共和国增值电信业务经营许可证》闽B2-20050085</A></td>
+    </tr>
+    <tr class=txstcolor3 align=middle>
+      <td colSpan=3 height=20><A href="http://www.cnspeed.com/help/hlp_dtl.asp?nid=10000022">《中华人民共和国电信与信息服务业务经营许可证》闽ICP备040011号</A> </td>
+    </tr>
+    <tr class=txstcolor3 align=middle>
+      <td colSpan=3 height=20><A href="https://www.alipay.com/aip/aip_validate_list.htm?trust_id=AIP03013729" target=_blank><IMG height=62 src="/info/Skin/sealove/xinren.gif" width=149 border=0></A></td>
+    </tr>
+  </table> 
+  <!-- ********网页底部代码结束******** --><NOSCRIPT><IFRAME src='*' Width='0' Height='0'></IFRAME></NOSCRIPT>
+</body>
+</html>

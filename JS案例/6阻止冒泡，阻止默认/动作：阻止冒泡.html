@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#bigbox{width:300px; height:300px; border:1px solid red;}
+		#smallbox{width:100px; height:100px; border:1px solid green;}
+
+	</style>
+</head>
+<body>
+	<div id='bigbox'>
+		<div id='smallbox'>
+		
+		</div>
+	</div>
+	<script>
+	var  smallbox=document.getElementById('smallbox'),
+	     bigbox=document.getElementById('bigbox');
+
+	      smallbox.onclick=function(e){
+	      	alert('单击了小盒子');
+	      	var event=e ||　window.event;
+      			//event.stopPropagation();// event.停止传播 DOM
+      			//event.cancelBubble=true; //event.取消冒泡=true IE
+           stopPropagation(event);
+
+	      }
+
+	      bigbox.onclick=function(e){
+	      	alert('单击了大盒子')
+	      	var e=e ||　window.event;
+	      		//event.stopPropagation();
+	      		//event.cancelBubble=true;
+           stopPropagation(e)
+	      }
+
+	      document.body.onclick=function(){
+	      	alert('单击了整个页面')
+	      }
+
+ 
+ 		function  stopPropagation(eve){
+			if(eve.stopPropagation){  //DOM
+            	eve.stopPropagation();
+            }else{  //IE
+            	eve.cancelBubble=true;
+            }
+ 		}
+
+
+	</script>
+</body>
+</html>

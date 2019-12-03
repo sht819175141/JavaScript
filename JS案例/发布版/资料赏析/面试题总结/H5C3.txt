@@ -1,0 +1,57 @@
+1、CSS深入突出viewport, flex布局, rem单位部分, border-box盒模型
+2、CSS3深入，移动端兼容的如下方法：
+(1)移动端reset
+(2)给需要的属性加厂家前缀:prefix
+(3)四则运算:calc
+(4)定义渐变色值:gradient
+(5)定义响应式方案:responsive
+(6)定义字体图标:font
+(7)滤镜:filter
+(8)定义UA默认外观:appearance
+(9)定义是否可以选中元素:user-select
+(10)定义背景图像缩放:background-size
+(11)定义背景裁减:background-clip
+(12)定义背景显示区域:background-origin
+(13)定义盒模型:box-sizing
+(14)定义圆角：border-radius
+(15)定义简单变换:transform
+(16)定义变换原点:transform-origin
+(17)定义动画:animation
+(18)定义补间:transition
+(19)定义显示类型为伸缩盒:flexbox
+(20)定义伸缩盒子元素如何分配空间:flex
+(21)定义伸缩盒子元素的排版顺序:order
+(22)定义伸缩盒子元素的流动方向:flex-direction
+(23)定义伸缩盒子元素溢出排版:flex-wrap
+(24)定义伸缩盒子元素的水平对齐方式:justify-content
+(25)定义伸缩盒子元素的垂直对齐方式:align-items
+(26)定义伸缩盒子元素自身的垂直对齐方式:align-self
+(27)定义root: root-scroll
+(28)定义是否有滚动条:overflow
+(29)生成矩形方法:rect
+(30)生成正方形方法:square
+(31)生成圆形方法:circle
+(32)生成全屏方法:fullscreen
+(33)清除浮动方案:clearfix
+(34)链接处理方法:link
+(35)强制换行方案:wrap
+(36)单行文本溢出显示方案:ellipsis
+(37)文字隐藏方案:texthide
+(38)清除间隙方案-容器:killspace
+(39)清除间隙方案-子级:killspace-item
+(40)未知尺寸元素垂直居中解决方案-容器:valign
+(41)未知尺寸元素垂直居中解决方案-子级:valign-item
+(42)已经尺寸元素垂直居中解决方案:alignment
+3、zepto 重点
+(1)编译zepto模块
+(2)设备检查
+(3)touch事件
+(4)zepto动画
+4、添加iScroll的内容(很重要)：实现区域滚动
+5、swiper内容：实现图片轮换，分组滑动展示等等
+6、如Android 4.2- 版本的CSS，JS兼容问题
+点透问题
+tap事件冲突问题
+placeholder 字数长的处理
+多行文本溢出的处理
+……

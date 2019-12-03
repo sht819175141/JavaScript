@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="开始" id="kai"/>
+	<input type="text" value="" id="shu"/>
+	<script>
+		/*function one(name){
+			var	i=name.indexOf(".");
+			return document.write(name.substr(i));
+		}
+		one("index.html");*/
+
+		/*var arr="index.html";
+		var j=arr.indexOf(".");
+		alert(arr.substr(j));*/
+
+
+		/*for(var i=0;i<100;i++){
+			if(i%6==0){
+			document.write(i+"<br />");
+			}
+		}
+		var sum=0;
+		for(var i=0;i<20;i++){
+			sum=i*6;
+			document.write(sum+" ");
+		}*/
+
+		var  kai=document.getElementById('kai');
+		var  shu=document.getElementById('shu');
+		kai.onclick=function(){
+			kai.disabled=true;
+			time=setInterval(dao,100);
+			function dao(){
+				shu.value-=1;
+				if(shu.value<=0){	
+					clearInterval(time);
+					kai.disabled=false;
+					shu.value="";		
+				}
+			}
+		}
+	</script>
+</body>
+</html>

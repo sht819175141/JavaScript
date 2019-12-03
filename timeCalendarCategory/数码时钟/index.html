@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="background: #000;font-size: 50px;color:#fff">
+
+<img src="img/0.png">
+<img src="img/0.png">
+
+:
+
+<img src="img/0.png">
+<img src="img/0.png">
+
+:
+
+<img src="img/0.png">
+<img src="img/0.png">
+
+<script>
+
+    var imgs = document.getElementsByTagName("img");
+
+    function one(obj) {
+        if (obj < 10) {
+            return "0" + obj;
+        } else {
+            return "" + obj;
+        }
+    }
+
+    function change() {
+        var time = new Date();
+        var times = one(time.getHours()) + one(time.getMinutes()) + one(time.getSeconds());
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].src = "img/" + times[i] + ".png";
+        }
+    }
+
+    change();
+    setInterval(change, 1000);
+</script>
+
+</body>
+</html>

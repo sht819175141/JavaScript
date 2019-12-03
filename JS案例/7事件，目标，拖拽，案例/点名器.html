@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>李子龙</h1>
+	<button>开始</button>
+	<button>结束</button>
+	<script>
+	   var  h1=document.getElementsByTagName('h1');
+	   var  arr=['李子龙','韩鹤','宋晓东','赵毛呢','杨锐','骈永森'];
+	   var  i=0;
+	   var btns=document.getElementsByTagName('button');
+	   var timer=null;
+
+	   function  auto(){
+	   		 i++;
+	   	    if(i>arr.length-1)i=0;
+	   	    h1[0].innerHTML=arr[i];
+	   	   
+	   }
+
+  btns[0].onclick=function(){
+      play();
+  }
+  btns[1].onclick=function(){
+   stop_1();
+  }
+	
+
+//键盘控制 定时器的播放  按下
+//按下空格 如果现在播放则停止，否则播放。
+
+  document.onkeyup=function(e){
+  	var event= e || window.event;
+  	//   console.log(event.keyCode)
+  	if(event.keyCode==32){
+           if(btns[0].disabled){
+           	  //如果播放则停止
+           	  	stop_1()
+           }else{
+           	  //播放
+           	  	play()
+           }
+
+
+  	}
+  }
+
+
+function  play(){
+				timer= setInterval(auto,1000) ;
+  				btns[0].disabled=true;
+  	            btns[1].disabled=false;
+	
+}
+
+function  stop_1(){
+	clearInterval(timer);
+  	btns[0].disabled=false;
+  	btns[1].disabled=true;
+}
+	</script>
+</body>
+</html>

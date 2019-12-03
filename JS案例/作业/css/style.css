@@ -1,0 +1,4 @@
+*{margin: 0;padding:0;}
+.table{width:600px;margin: 20px auto; border-collapse: collapse;}
+.table td{border:1px solid red; height: 30px;}
+.table th{height: 40px; border:1px solid red; background:#ccc;}

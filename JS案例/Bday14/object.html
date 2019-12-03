@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		  function Test(from,to){
+		  	var props={
+		  		from:{
+		  			value:from
+		  		},
+		  		to:{
+		  			value:to
+		  		}
+		  	}
+		  /*	if(this instanceof Test)*/
+		  		Object.defineProperties(this,props);
+		  /*	else
+		  		return Object.create(Test.prototype,props);*/
+		  }
+		  Object.defineProperties(Test.prototype,{
+		  	   toString:{
+		  	   		value:function(){
+		  	   			return this.from+","+this.to;
+		  	   		}
+		  	   },
+		  	   isRange:{
+		  	   	value:function(x){
+		  	   		return x>=this.from && x<=this.to;
+		  	   	}
+		  	   }
+
+		  });
+
+		  var t=new Test(10,15);
+		  delete t.isRange
+		  alert(t.isRange(12));
+	</script>
+</body>
+</html>

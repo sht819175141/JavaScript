@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+<script>
+
+document.write("<br />-------reg------<br />");
+
+var reg = /\w/;
+
+document.write(reg.test("a")+"<br />-------reg1------<br />");
+
+var reg1 = /\W/;
+
+document.write(reg1.test("a")+"<br />-------reg2------<br />");
+
+var reg2 = /\s/;
+
+document.write(reg2.test("\n")+"<br />-------reg3------<br />");
+
+
+var reg3 = /\S/;
+
+
+document.write(reg3.test("aaa")+"<br />-------reg4------<br />");
+
+
+var reg4 = /\./;
+
+document.write(reg4.test("a")+"<br />-------reg5------<br />");
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr=[5,6,9,1,7,25];
+		var count=0;
+		function each(fun,array){
+			for(var i=0;i<array.length;i++){
+				fun(array[i]);
+			}
+		}
+
+		function getNum(count,val){
+			if(val%2==1){
+				count++;
+			}
+			return count;
+		}
+
+		function reduce(fun,base,array){
+			each(function(n){
+				base=fun(base,n)
+			},array);
+			return base;
+		}
+		console.log(reduce(getNum,0,arr));
+	</script>
+</body>
+</html>

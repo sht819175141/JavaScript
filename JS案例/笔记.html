@@ -1,0 +1,67 @@
+知识点：		
+	一、DOM ===》概念问题		
+		div 	===>标签
+		js1     ===>元素
+		DOM     ===>节点	
+	二、DOM树		
+		document(看不到)
+			html(看得到)
+				head      title
+				body      div
+	三、选取
+		document.getElementById()
+		document.getElementsByTagName()  ===>必须有下标
+	四、DOM	
+		childNodes (子节点)
+			***1、文本节点 
+			***2、元素节点(属性节点) ===》返回1//null
+		nodeName  ===>返回节点名称 
+				****1、返回节点名称(大写)		
+				****2、document ===>#document			
+		nodeType	===>节点类型			
+				****1、文本节点类型 ===》返回 3
+				****2、元素节点类型  ===》返回 1
+		firstChild  ===>  第一个子节点
+			***有兼容
+			firstChild ===>低版本浏览器
+			firstElementChild ===>高版本浏览器
+		lastChild  ===>最后一个子节点
+			lastChild ===>低级版本浏览器
+			lastElementChild ===》高级版本浏览器	
+	五、添加节点
+		appendChild()  ===>追加
+			***有2个功能
+			****1、删除原有
+			****2、追加
+		父元素.appendChild(子元素)
+*******first  last 兼容*******
+if(高版本){
+	高版本语句
+}else{
+	低版本语句
+}
+		六、创建节点b			
+			document.createElement		
+		七、parentNode
+		八、removeChild
+			父元素.removeChild(子元素)
+								子元素===》删除谁
+****补充
+href 不跳转 javascript:;;
+
+	
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+

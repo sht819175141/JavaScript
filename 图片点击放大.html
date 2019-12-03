@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box ul, li {
+            list-style: none
+        }
+
+        #box {
+            width: 630px;
+            height: 420px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        #box ul li {
+            float: left;
+            width: 210px;
+            height: 210px;
+        }
+
+        #box ul li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .max {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 630px;
+            height: 420px;
+            background: #000;
+            opacity: 0.5;
+        }
+
+        .pic {
+            width: 320px;
+            height: 320px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -160px;
+            margin-top: -160px;
+        }
+
+        /*.guan{width:20px;height: 20px;background: red;position: absolute;
+             left:475px;top:50px;line-height: 20px;text-align: center; font-size: 25px;}  */
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li><img src="images/a1.jpg" alt=""/></li>
+        <li><img src="images/a2.jpg" alt=""/></li>
+        <li><img src="images/a3.jpg" alt=""/></li>
+        <li><img src="images/a4.jpg" alt=""/></li>
+        <li><img src="images/a5.jpg" alt=""/></li>
+        <li><img src="images/a6.jpg" alt=""/></li>
+    </ul>
+</div>
+<script>
+    var box = document.getElementById("box");
+    var lis = document.getElementsByTagName("li");
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].onclick = function () {
+            var max = document.createElement("div");
+            max.className = "max";
+            box.appendChild(max);
+            var pic = document.createElement("img");
+            pic.className = "pic";
+            pic.src = this.lastChild.getAttribute("src");
+            //pic.src="images/a3.jpg";
+            //pic.src=this.firstChild.src;
+            box.appendChild(pic);
+            /*var guan=document.createElement("span");
+                guan.innerHTML="x";
+                guan.className="guan";
+                box.appendChild(guan);*/
+
+            pic.onclick = function () {
+                box.removeChild(max);
+                box.removeChild(pic);
+                box.removeChild(guan);
+            }
+        }
+    }
+</script>
+</body>
+</html>

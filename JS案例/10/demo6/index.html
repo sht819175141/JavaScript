@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div id="oDiv">我是div</div>
+
+<script>
+function box(){
+	var oDiv = document.getElementById("oDiv");
+
+	oDiv.onclick = function(){
+		alert(1);
+	}
+
+	alert(oDiv);
+
+	oDiv = null;
+
+	alert(oDiv);
+}
+
+box();
+</script>
+	
+</body>
+</html>

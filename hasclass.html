@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div id="box" class="qw asd xc"></div>
+	<ul>
+		<li class="qwe qw"></li>
+		<li class="qw qwer"></li>
+		<li class="qwe sadas"></li>
+		<li class="qsad qw"></li>
+		<li class="qwe kk"></li>
+	</ul>
+	<script>
+		var box=document.getElementById('box');
+		var lis=document.getElementsByTagName('li');
+		//查找一个标签的class
+		function hasClass(obj,nam){
+			var reg=new RegExp("\\b"+nam+"\\b");
+			arr=obj.className.match(reg)
+			return arr
+		}
+		console.log(hasClass(box,"xc"))
+		//添加一个标签名
+		function addClass(obj,nam){
+			if (hasClass(obj,nam)==null) {
+				obj.className=obj.className+" "+nam;
+			};
+		}
+		addClass(box,"qw")
+		//删除一个标签名
+		function remove(obj,nam){
+			var reg=new RegExp("\\b"+nam+"\\b");
+			if (hasClass(obj,nam)!=null) {
+				obj.className=obj.className.replace(reg,"")
+			}
+		}
+		remove(box,"asd")
+
+
+		//查找多个标签的class
+		function haveClass(obj,nam){
+			var arr=[];
+			for (var i = 0; i < obj.length; i++) {
+				if(hasClass(obj[i],nam)!=null){
+					arr.push(obj[i])
+				}
+			};
+			return arr;
+		}
+		console.log(haveClass(lis,"qw"))
+
+		/*//添加多个标签名
+		function addsClass(obj,nam){
+			for (var i = 0; i < haveClass(obj,nam).length; i++) {
+				Things[i]
+			};
+			if (hasClass(obj,nam)==null) {
+				obj.className=obj.className+" "+nam;
+			};
+		}
+		addsClasss(box,"qw")
+		//删除多个标签名
+		function removes(obj,nam){
+			var reg=new RegExp("\\b"+nam+"\\b");
+			if (hasClass(obj,nam)!=null) {
+				obj.className=obj.className.replace(reg,"")
+			}
+		}
+		removes(box,"asd")*/
+	</script>
+</body>
+</html>

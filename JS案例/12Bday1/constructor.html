@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Person(name,age)  //构造函数 名字首字母大写
+		{
+			this.name=name;   //类的实例(instance) 对象
+			this.age=age;
+			this.info=function(){
+				return this.name+","+this.age;
+			}
+		}
+		var p=new Person("zs",16); //this.name <=> p.name
+		// 新产生一个对象
+		//对象的作用域变了 ,this指向新创建的哪个对象
+		//执行了构造函数
+		//返回新建对象
+ 
+		alert(p.info());
+		var p1=new Person("ls",15);
+		p1.age=18;
+		alert(p1.info());
+		alert(p1.info==p.info);
+	</script>
+</body>
+</html>

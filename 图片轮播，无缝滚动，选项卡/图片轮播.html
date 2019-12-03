@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="box" id="box">
+    <ul id="ul">
+        <li><img src="images/img1.gif"></li>
+        <li><img src="images/img2.jpg"></li>
+        <li><img src="images/img3.jpg"></li>
+        <li><img src="images/img4.jpg"></li>
+        <li><img src="images/img5.png"></li>
+    </ul>
+    <ol id="ol">
+        <li class="bg">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+    <div id="left"><</div>
+    <div id="right">></div>
+</div>
+<script>
+    var box = document.getElementById("box");
+    var ul = document.getElementById("ul");
+    var li = ul.getElementsByTagName('li');
+    var ol = document.getElementById("ol");
+    var li2 = ol.getElementsByTagName("li");
+    var left = document.getElementById("left");
+    var right = document.getElementById("right");
+    //自动播放
+    var num = 0;
+    time = setInterval(change, 1000);
+
+    function change() {
+        num++;
+        if (num > li.length - 1) {
+            num = 0;
+        }
+        for (var i = 0; i < li.length; i++) {
+            li[i].style.display = "none";
+            li2[i].className = "";
+        }
+        li[num].style.display = "block";
+        li2[num].className = "bg";
+    }
+
+    //手动播放
+    box.onmouseover = function () {
+        clearInterval(time);
+        left.style.display = "block";
+        right.style.display = "block";
+    }
+    box.onmouseout = function () {
+        time = setInterval(change, 1000);
+        left.style.display = "none";
+        right.style.display = "none";
+    }
+    //按照下标来更换图片
+    for (var j = 0; j < li2.length; j++) {
+        li2[j].index = j;
+        li2[j].onmouseover = function () {
+            for (var i = 0; i < li.length; i++) {
+                li[i].style.display = "none";
+                li2[i].className = "";
+            }
+            li[this.index].style.display = "block";
+            this.className = "bg";
+        }
+    }
+    //点击左右。。。。
+    left.onclick = function () {
+        num--;
+        if (num < 0) {
+            num = li.length - 1;
+        }
+        for (var i = 0; i < li.length; i++) {
+            li[i].style.display = "none";
+            li2[i].className = "";
+        }
+        li[num].style.display = "block";
+        li2[num].className = "bg";
+    }
+    right.onclick = function () {
+        change();
+    }
+</script>
+</body>
+</html>

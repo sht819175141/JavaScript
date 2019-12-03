@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        p {
+            width: 200px;
+            height: 30px;
+            background: green;
+            margin-top: 10px;
+            border-color: red
+        }
+
+        div {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<script src="js/js.js"></script>
+<script src="js/move.js"></script>
+<div>&nbsp;&nbsp;&nbsp;</div>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<script>
+    $("p").hover(function () {
+        $(this).css("background", "blue").animate({"width": 1000})
+    }, function () {
+        $(this).css("background", "red").animate({"width": 200})
+    })
+    //追加进框里的两种方法
+    /*$("p").attr("flag",false)
+    $("p").click(function(){
+        $(this).elem[0].flag=!$(this).elem[0].flag
+        if($(this).elem[0].flag){
+            $("div").append($(this));
+        }else{
+            $("body").append($(this));
+        }
+    })*/
+
+    $("p").click(function () {
+        $("div").append($(this));
+        $("div").find("p").click(function () {
+            $("body").append($(this))
+        })
+    })
+
+
+</script>
+</body>
+</html>

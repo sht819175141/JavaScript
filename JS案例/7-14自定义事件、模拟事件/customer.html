@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function MyEvent(){
+			this.handler={};
+		}
+		MyEvent.prototype={
+			constructor:MyEvent,
+			addEvent:function(type,handler1){
+			
+				if(typeof this.handler[type]=="undefined"){
+					this.handler[type]=[];
+				}
+				
+				this.handler[type].push(handler1);
+			},
+			fire:function(myevent){
+				if(!myevent.target){
+					myevent.target=this;
+				} 
+				if(this.handler[myevent.type] instanceof Array){
+				var handlers=this.handler[myevent.type];
+				for(var i=0;i<handlers.length;i++){
+					 handlers[i](myevent);
+				}
+			}
+			},
+			removeEvent:function(type,func){
+				if(this.handler[type] instanceof Array){
+				var handlers=this.handler[type];
+				for(var i=0;i<handlers.length;i++){
+					if(handlers[i]==func) break;
+				}
+				this.handler[type].splice(i,1)
+			}
+		}
+		}
+		var me=new MyEvent();
+		function  myfun(obj){
+			if(obj.target.name){
+				alert(obj.target.name+obj.myinfomation)
+			}
+			else
+			{
+			alert(obj.myinfomation);
+		  }
+		}
+		me.addEvent("myinfo",myfun);
+		me.fire({type:"myinfo",myinfomation:"hello event"});
+		/*me.removeEvent("myinfo",myfun);
+		me.fire({type:"myinfo",myinfomation:"hello event"});*/
+
+		function Person(name,age){
+			MyEvent.call(this);
+			this.name=name;
+			this.age=age;
+		}
+		if(Object.create){
+		Person.prototype=Object.create(MyEvent.prototype);
+	    }
+	    else
+	    {
+	    	function F(){};
+	    	F.prototype=MyEvent.prototype;
+	    	Person.prototype=new F();
+	    }
+	    Person.prototype.constructor=Person;
+	    var p=new Person("zs",18);
+	    p.addEvent("myinfo",myfun);
+	    p.fire({type:"myinfo",myinfomation:"hello event"});
+
+	</script>
+</body>
+</html>

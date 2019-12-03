@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+select{width: 100px;}
+</style>
+<body>
+
+<select size="20" multiple="" id="sel1">
+		<option value="">天津</option>
+		<option value="">北京</option>
+		<option value="">山东</option>
+		<option value="">河北</option>
+		<option value="">湖南</option>
+		<option value="">山西</option>
+		<option value="">上海</option>
+</select>
+
+<input type="button" value="》》" onclick="doMove('sel1','sel2')">
+<input type="button" value="《《" onclick="doMove('sel2','sel1')">
+
+
+<select size="20" multiple="" id="sel2">
+
+</select>
+
+<script>
+function doMove(elment1,elment2){
+
+	var select1 = document.getElementById(elment1);
+	var select2 = document.getElementById(elment2);
+
+	var list = select1.options;
+
+	for(var i=0;i<list.length;i++){
+
+		if(list[i].selected==true){
+
+			list[i].selected=false;
+
+			select2.add(list[i]);
+
+			i--; 
+
+		}
+
+	}
+
+}
+</script>
+</body>
+</html>

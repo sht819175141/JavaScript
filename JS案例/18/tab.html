@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/myquery.js"></script>
+<style>	
+		div{
+			margin:0;
+		}
+		a
+		{
+			text-decoration: none;
+			color:#000;
+			display: inline-block;
+			width:50px;
+			height: 25px;
+		}
+		#content div
+		{
+			width:300px;
+			height: 150px;
+			border:1px solid red;
+			display: none;
+		}
+		#content .current
+		{
+			display: block;
+		}
+		#header .curtab
+		{
+			background: #ccc;
+			border-bottom:4px solid #0f0;
+		}
+		#tab img
+		{
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="tab">
+		<div id="header">
+			<a href="#" class="curtab">tab1</a>
+			<a href="#">tab2</a>
+			<a href="#">tab3</a>
+			<a href="#">tab4</a>
+		</div>
+		<div id="content">
+			<div class="current">content1</div>
+			<div>content2</div>
+			<div>content3</div>
+			<div>content4</div>
+		</div>
+	</div>
+	<script>
+	   	$("#header").find("a").click(function(){
+	     	$("#header").find("a").attr("className","");
+	    	$("#header").find("a").eq($(this).index()).attr("className","curtab");
+	    	
+	     	$("#content").find("div").attr("className","");
+	      	$("#content").find("div").eq($(this).index()).attr("className","current");
+	   	})
+	</script>
+</body>
+</html>

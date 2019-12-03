@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            width: 669px;
+            height: 387px;
+            margin: 50px auto;
+            border: 1px solid #ccc
+        }
+
+        div {
+            height: 33px;
+            margin-top: 5px;
+        }
+
+        #btn {
+            width: 144px;
+            height: 35px;
+            color: white;
+            line-height: 35px;
+            text-align: center;
+            background: #FF6600;
+            margin-top: 10px;
+            border: none;
+            margin-left: 80px;
+        }
+
+        form label {
+            width: 130px;
+            text-align: right;
+            float: left;
+        }
+
+        #first {
+            background: url("img/2.jpg") no-repeat left center;
+            float: left
+        }
+
+        form em {
+            width: 56px;
+            height: 16px;
+            display: inline-block;
+            background: #FFD099;
+            line-height: 16px;
+            text-align: center;
+            color: #ffffff;
+            font-style: normal
+        }
+    </style>
+</head>
+<body>
+<form id="gust" action="aa.php">
+    <div>
+        <label for="text"> 　会员名：</label><input type="text" id="text" style="float: left">
+        <p id="first">6-25字符，推荐使用字母、数字、下划线及汉字</p>
+    </div>
+    <div>
+        <p><label> 字 符 :</label><span>0个字符</span></p>
+    </div>
+
+    <div>
+        <label for="mima">登录密码：</label><input type="password" id="mima">
+        <p></p>
+    </div>
+    <div>
+        <label>判 断 :</label><em class="act">弱</em><em>中</em><em>强</em>
+    </div>
+    <div>
+        <label for="queren">确认密码：</label><input type="password" id="queren" style="float: left">
+        <p style=" float: left">6-25字符，推荐使用字母、数字、下划线及汉字</p>
+    </div>
+    <div>
+        <label for="yanzheng">　验　证：</label><input type="text" id="yanzheng" style="height: 29px;width: 60px;"><img
+            src="img/1.png" style="height: 30px;">
+    </div>
+    <div>
+        <input type="button" value="同意协议并注册" id="btn">
+    </div>
+</form>
+<script>
+    var gust = document.getElementById("gust"),
+        divs = document.getElementsByTagName("div"),
+        first = document.getElementById("first"),
+        btn = document.getElementById("btn");
+
+    text.onfocus = function () {
+        var qw = text.value;
+        //元字符
+        // reg=/\s{6-25}\w/;
+        //检测内容是否和正则相匹配
+        // alert(reg.test(qw));
+        if (reg.test(qw)) {
+            first.innerHTML = "匹配";
+        } else {
+            first.innerHTML = "不匹配";
+        }
+    }
+</script>
+</body>
+</html>

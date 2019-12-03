@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="跳跳跳" id="btn"/>
+	<script>
+	var btn=document.getElementById('btn');
+	function f(r){
+		alert(r)
+	}
+	btn.onclick=function(){
+		var scr = document.createElement("script");
+		scr.src = "http://localhost:8000/t.php";
+		document.body.appendChild(scr);
+		document.body.removeChild(scr);
+	}
+	</script>
+</body>
+</html>

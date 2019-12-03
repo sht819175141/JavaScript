@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+*{margin:0;padding: 0}
+</style>
+
+<style>
+*{margin:0;padding: 0}
+#box1{}
+</style>
+
+<style>
+*{margin:0;padding: 0}
+#box2{}
+</style>
+<body>
+
+<div id="box">111111111111111</div>
+
+<script>
+var box = document.getElementById("box");
+
+
+
+
+var sheet = document.styleSheets[0];    //====》第一个样式表
+
+
+/*sheet.addRule("#box","background:pink",0);  
+
+sheet.insertRule("#box{background:red}",0); 
+
+*/
+
+
+function addStyle(name,element,style,position){
+
+	if(name.addRule){
+
+		name.addRule(element,style,position);  
+
+	}else{
+
+		name.insertRule(element+"{"+style+"}",position); 
+
+
+	}
+
+}
+
+addStyle(sheet,"#box","background:pink",0);
+
+
+</script>
+	
+</body>
+</html>

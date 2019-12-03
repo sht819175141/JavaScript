@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	str="abcabcabc";
+	for(i=0;i<3;i++){
+	a=str.replace("c","C");
+   str=a;}
+	alert(a);
+	//组合模式
+	//属性放在实例上，方法放在原型上
+		/*function Person(name,age){
+			this.name=name;
+			this.age=age;
+			this.friends=["a","b"];
+
+		}
+		Person.prototype.info=function(){
+			return this.name+","+this.age+","+this.friends;
+		}
+		var p=new Person("zs",16);
+		
+		p.friends.push("cc");
+		alert(p.info());
+		var p1=new Person("ls",18);
+		alert(p1.info());
+		alert(p.info==p1.info);*/
+
+		function Person(name,age){
+			this.name=name;
+			this.age=age;
+			this.friends=["aa","bb"];
+
+		}
+		//增加到原型对象上
+		Person.prototype.info=function(){
+			return this.name+":"+this.age+":"+this.friends;
+		}
+		var p=new Person("张三",18);
+		p.friends.push("cc");
+		var p1=new Person("李四",22);
+		p1.friends.push("dd","ee");
+		alert(p.info==p1.info);
+		alert(p.friends)
+		alert(p1.friends.length)
+
+	</script>
+</body>
+</html>

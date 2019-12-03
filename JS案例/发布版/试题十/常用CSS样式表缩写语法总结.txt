@@ -1,0 +1,50 @@
+常用CSS样式表缩写语法总结  
+
+使用缩写可以帮助减少你CSS文件的大小，更加容易阅读。css缩写的主要规则如下：
+颜色
+16进制的色彩值，如果每两位的值相同，可以缩写一半，例如：#000000可以缩写为#000;#336699可以缩写为#369;
+盒尺寸
+通常有下面四种书写方法:
+property:value1; 表示所有边都是一个值value1;
+property:value1 value2; 表示top和bottom的值是value1,right和left的值是value2 ;
+property:value1 value2 value3; 表示top的值是value1，right和left的值是value2，bottom的值是value3 ;
+property:value1 value2 value3 value4; 四个值依次表示top,right,bottom,left;
+方便的记忆方法是顺时针，上右下左。具体应用在margin和padding的例子如下：
+margin:1em 0 2em 0.5em;
+边框(border)
+边框的属性如下：
+border-width:1px; border-style:solid; border-color:#000;
+可以缩写为一句：border:1px solid #000;
+语法是border:width style color;
+背景(Backgrounds)
+背景的属性如下：
+background-color:#f00; background-image:url(background.gif); background-repeat:no-repeat; background-attachment:fixed; background-position:0 0;
+可以缩写为一句：background:#f00 url(background.gif) no-repeat fixed 0 0;
+语法是background:color image repeat attachment position;
+你可以省略其中一个或多个属性值，如果省略，该属性值将用浏览器默认值，默认值为：
+color: transparent ;image: none;repeat: repeat;attachment: scroll;position: 0% 0%;
+字体(fonts)
+字体的属性如下：
+font-style:italic; font-variant:small-caps; font-weight:bold; font-size:1em; line-height:140%; font-family:"Lucida Grande",sans-serif;
+可以缩写为一句：font:italic small-caps bold 1em/140% "Lucida Grande",sans-serif;
+注意，如果你缩写字体定义，至少要定义font-size和font-family两个值。
+列表(lists)
+取消默认的圆点和序号可以这样写list-style:none;
+list的属性如下:
+list-style-type:square; list-style-position:inside; list-style-image:url(image.gif);
+可以缩写为一句：list-style:square inside url(image.gif);
+
+1. css 字体简写规则
+当使用css定义字体时你可能会这样做：
+font-size: 1em; line-height: 1.5em; font-weight: bold; font-style: italic; font-variant: small-caps; 　　font-family: verdana,serif;
+事实上你可以简写这些属性：
+font: 1em/1.5em bold italic small-caps verdana,serif
+现在好多了吧，不过有一点要注意：使用这一简写方式你至少要指定 font-size 和 font-family 属性，其他的属性(如 font-weight，font-style，font-varient)如未指定将自动使用默认值。
+2. 同时使用两个class
+通常我们只为属性指定一个class，但这并不等于你只能指定一个，实际上，你想指定多少就可以指定多少，例如：<p class="text side">...</p>
+通过同时使用两个 class(使用空格而不是逗号分割)，这个段落将同时应用两个 class 中制定的规则。如果两者中有任何规则重叠，那么后一个将获得实际的优先应用。
+3. css中边框(border)的默认值
+当编写一条边框的规则时，你通常会指定颜色、宽度以及样式(任何顺序均可)。例如：border: 3px solid #000(3像素宽的黑色实线边框)，其实这个例子中唯一需要指定的值只是样式。假如你指定样式为实线(solid)，那么其余的值将使用默认值：默认的 宽度为中等(相当于3到4像素);默认的颜色为边框里的文字颜色。如果这正是你想要的效果，你完全可以不在css里指定。
+4. !important会被IE忽略
+在 css 中，通常最后指定的规则会获得优先权。然而对除了IE以外的浏览器来说，任何后面标有 !important 的语句将获得绝对的优先权，例如：margin-top: 3.5em !important; margin-top: 2em。
+除IE以外所有浏览器中的顶部边界都是3.5em，而IE为2em，有时候这一点很有用，尤其在使用相对边界值时(就像这个例子)，可以显示出IE与其他浏览器的细微差别。(很多人可能还注意到了css的子选择器也是会被IE忽略的)

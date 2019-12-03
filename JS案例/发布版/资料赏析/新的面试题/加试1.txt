@@ -1,0 +1,50 @@
+1、给Array原型添加一个方法，这个方法接受一个参数，如果这个参数
+在数组中存在那么就把它从数组中删除。
+2、var str="test";
+function func1(){
+	console.log(str);
+}
+function func2(){
+	var str="test2";
+	func1();
+}
+func2();
+以上代码输出结果是什么，并说明原因
+3、跨域是如何产生的？简述JSONP的原理，并写出核心代码，如
+跨域的地址是：http://www.51code.com/demo
+4、写出三条以上IE与非IE在JS方面存在的浏览器兼容
+5、使用JS原生实现，点击id为box下的li时，弹出每一个li的索引
+6、已知结构：<ul>
+	<li>列表4</li>
+	<li>列表1</li>
+	<li>列表3</li>
+	<li>列表2</li>
+	<li>列表5</li>
+</ul>
+<input type="button" value="排序" id="sort">
+要求：使用jquery实现点击排序按钮后，页面的显示结果为：
+<ul>
+	<li>列表1</li>
+	<li>列表2</li>
+	<li>列表3</li>
+	<li>列表4</li>
+	<li>列表5</li>
+</ul>，此时如果再次点击按钮，则显示为：
+<ul>
+	<li>列表5</li>
+	<li>列表4</li>
+	<li>列表3</li>
+	<li>列表2</li>
+	<li>列表1</li>
+</ul>
+7、使用jquery扩展一个对象，此对象包含setBgText和getBgText两个方法，分别用于设置和获取背景色及文本颜色。
+
+如$('#box').setBgText({
+	background:'#ccc',
+	color:'#000'
+})
+就将这个盒子的背景设为灰色，文字颜色黑色。
+8、什么是闭包？写一个闭包的例子。
+9、在页面中输出 5 10 15 25 35 40 45 55
+10、将地址栏中的参数解析出来，传参数名，返回参数值
+

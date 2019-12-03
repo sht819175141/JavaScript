@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" value="全选" id="quan"/>
+<input type="button" value="全不选" id="bu"/>
+<input type="button" value="反选" id="fan"/>
+<div id="box">
+    <input type="checkbox" value="true" "checked"="checked"/>
+    <input type="checkbox" value="true" "checked"="checked"/>
+    <input type="checkbox" value="true" "checked"="checked"/>
+    <input type="checkbox" value="true" "checked"="checked"/>
+    <input type="checkbox" value="true" "checked"="checked"/>
+    <input type="checkbox" value="true" "checked"="checked"/>
+    <input type="checkbox" value="true" "checked"="checked"/>
+    <input type="checkbox" value="true" "checked"="checked"/>
+</div>
+<script>
+    var quan = document.getElementById("quan"),
+        bu = document.getElementById("bu"),
+        fan = document.getElementById("fan"),
+        box = document.getElementById("box"),
+        dan = box.getElementsByTagName("input");
+    quan.onclick = function () {
+        for (var i = 0, len = dan.length; i < len; i++) {
+            dan[i].checked = true;
+        }
+    }
+    bu.onclick = function () {
+        for (var i = 0, len = dan.length; i < len; i++) {
+            dan[i].checked = false;
+        }
+    }
+    fan.onclick = function () {
+        for (var i = 0, len = dan.length; i < len; i++) {
+            if (dan[i].checked == true) {
+                dan[i].checked = false;
+            } else {
+                dan[i].checked = true;
+            }
+        }
+    }
+</script>
+</body>
+</html>

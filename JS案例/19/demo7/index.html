@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+#box{width:300px;height: 300px;background: pink}
+#dv1{width:300px;height: 300px;background: blue}
+</style>
+
+<body>
+
+<div id="box">我是box</div>
+
+<div id="dv1">我是dv1</div>
+
+
+	
+<script src="index.js"></script>
+<script>
+
+var obj1 = new myJq();
+var obj2 = new myJq();
+var obj3 = new myJq();
+
+
+alert(obj1.getId("box").click == obj2.getId("dv1").click );
+
+
+
+</script>
+</body>
+</html>

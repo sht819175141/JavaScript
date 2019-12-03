@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">button</button>	
+	<a href="#" onclick="alert('hello link');" id="link">link</a>
+	<input type="text" id="txt" />
+	<div id="my">asdfsad</div>
+	<script>
+		var btn=document.getElementById("btn");
+		var link=document.getElementById("link");
+		var txt=document.getElementById("txt");
+		txt.onkeyup=function(ev){
+			e=ev||event;
+			alert(e);
+			console.log(e);
+		}
+		var my=document.getElementById("my");
+		my.addEventListener("abc",function(e){
+			alert(e.detail);
+		},false);
+		btn.onclick=function(){
+			//link.onclick();
+			/*var e=document.createEvent("MouseEvents");
+			e.initMouseEvent("click",true,true,window);
+			//事件名称 可冒泡 可取消 默认视图范围
+			link.dispatchEvent(e); //触发事件*/
+			/*if(document.implementation.hasFeature("keyboardEvents","3.0")){
+            var e=document.createEvent("keyboardEvent");
+            e.initKeyboardEvent("keyup",true,true,window,"a",0,"shift",0);
+            //事件名称 可冒泡 可取消 默认视图范围 按的键 主键盘 辅助按键 重复次数
+            txt.dispatchEvent(e);
+        }*/
+         if(document.implementation.hasFeature("CustomEvent","3.0")){
+            var e=document.createEvent("CustomEvent");
+            e.initCustomEvent("abc",true,true,"event details");
+            my.dispatchEvent(e);
+        }
+		}
+
+	</script>
+</body>
+</html>

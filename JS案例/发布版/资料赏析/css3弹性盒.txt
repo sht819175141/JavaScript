@@ -1,0 +1,169 @@
+Css3引入了新的盒模型——弹性盒模型，该模型决定一个盒子在其他盒子中的分布方式以及如何处理可用的空间。这与XUL（火狐使用的用户交互语言）相似，其它语言也使用相同的盒模型，如XAML 、GladeXML。
+
+使用该模型，可以很轻松的创建自适应浏览器窗口的流动布局或自适应字体大小的弹性布局。本文的例子使用以下的HTML代码：
+
+<body>
+  <div id="box1">1</div>
+  <div id="box2">2</div>
+  <div id="box3">3</div>
+</body>
+
+传统的盒模型基于HTML流在垂直方向上排列盒子。使用弹性盒模型可以规定特定的顺序，也可以反转之。要开启弹性盒模型，只需设置拥有子盒子的盒子的display的属性值为box（或inline-box）即可。
+
+display: box;
+
+水平或垂直分布
+
+“box-orient”定义分布的坐标轴：vertical和horizional。这两个值定义盒子如何显示
+
+body{
+  display: box;
+  box-orient: horizontal;
+}
+
+css3的新盒模型——弹性盒模型（图一）
+
+反向分布
+
+“box-direction”可以设置盒子出现的顺序。默认情况下，只需定义分布坐标轴——box随html流分布。如果为水平坐标轴，则从左到右分布；垂直坐标轴则从上到下分布。定义“box-direction”的属性值为“reverse”，则反转盒子的排列顺序。
+
+body {
+  display: box;
+  box-orient: vertical;
+  box-direction: reverse;
+}
+
+css3的新盒模型——弹性盒模型（图二）
+
+具体分布
+
+属性“box-ordinal-group”定义盒子分布的顺序。可以随意的控制其分布顺序。这些组以一个从“1”开始的数字定义，盒模型将首先分布这些组，所有这些盒子将在每个组中。分布将从小到大排列。
+
+body {
+  display: box;
+  box-orient: vertical;
+  box-direction : reverse;
+}
+#box1 {
+  box-ordinal-group: 2;
+}
+#box2 {
+  box-ordinal-group: 2;
+}
+#box3 {
+  box-ordinal-group: 1;
+}
+
+css3的新盒模型——弹性盒模型（图三）
+
+盒子尺寸
+
+默认情况下，盒子并不具有弹性，如果box-flex的属性值至少为1时，则变得富有弹性。
+
+如果盒子不具有弹性，它将尽可能的宽使其内容可见，且没有任何溢出，其大小由“width”和“height”来决定（或min-height、min-width、max-width、max-height）。
+
+如果盒子是弹性的，其大小将按下面的方式计算：
+
+    具体的大小声明（width、height、min-width、min-height、max-width、max-height）；
+    父盒子的大小和所有余下的可利用的内部空间 
+
+如果盒子没有任何大小声明，那么其大小将完全取决于父box的大小。即：盒子的大小等于父级盒子的大小乘以其box-flex在所有子盒子box-flex总和中的百分比（子盒子的大小=父盒子的大小*子盒子的box-flex/所有子盒子的box-flex值的和）。
+
+如果一个或更多的盒子有一个具体的大小声明，那么其大小将计算其中，余下的弹性盒子将按照上面的原则分享剩下的可利用空间。
+
+看看下面的例子，理解起来更容易。
+
+所有盒子都是弹性的
+
+下面的例子中，box1的大小为box2的两倍，box2与box3大小一样。看起来好像是用百分比定义盒子的大小，但是有一个区别：使用弹性盒模型，增加一个盒子，无须重新计算其大小。
+
+body {
+  display: box;
+  box-orient: horizontal;
+}
+#box1 {
+  box-flex: 2;
+}
+#box2 {
+  box-flex: 1;
+}
+#box3 {
+  box-flex: 1;
+}
+
+css3的新盒模型——弹性盒模型（图四）
+
+一些盒子有固定大小
+
+下面的例子中，box3并不是弹性的，宽度为160px；这样box1和box2将有240px的可利用空间。因此，box1的宽度为160px(240*2/3)，box2的宽度为80px(240*1/3)。
+
+body {
+  display: box;
+  box-orient: horizontal;
+  width: 400px;
+}
+#box1 {
+  box-flex: 2;
+}
+#box2 {
+  box-flex: 1;
+}
+#box3 {
+  width: 160px;
+}
+
+css3的新盒模型——弹性盒模型（图五）
+
+溢出管理
+
+因为是弹性盒子、非弹性盒子混排，有可能所有盒子的尺寸大于或小于父盒子的尺寸。这样就有可能空间太多或空间不足。
+
+空间太多如何处理
+
+可利用空间的分布取决于两个属性值：box-align 和 box-pack。
+
+属性“box-pack”管理水平方向上的空间分布，有以下四个可能属性：start、end、 justify、 or center。
+
+    start 所有盒子在父盒子的左侧，余下的空间在右侧；
+    end所有盒子在父盒子的右侧，余下的空间在左侧；
+    justify 余下的空间在盒子间平均分配；
+    center 可利用的空间在父盒子的两侧平均分配。 
+
+属性“box- align”管理垂直方向上的空间分布，有以下五个可能属性之：start、 end,、center、 baseline和 stretch。
+
+    start 每个盒子沿父盒子的上边缘排列，余下的空间位于底部；
+    end 每个盒子沿父盒子的下边缘排列，余下的空间位于顶部；
+    center 可用空间平均分配，上面一半，下面一半；
+    baseline 所有盒子沿着它们的基线排列，余下的空间可前可后；
+    stretch 每个盒子的高度调整到适合父盒子的高度 
+
+body {
+  display: box;
+  box-orient: horizontal;
+  width: 400px;
+}
+#box1 {
+  box-flex: 2;
+}
+#box2 {
+  box-flex: 1;
+}
+#box3 {
+  width: 160px;
+}
+
+css3的新盒模型——弹性盒模型（图六）
+
+空间不足怎么办
+
+与传统的盒模型一样，overflow属性用来决定其显示方式。为了避免溢出，你可以设置box-lines为multiple使其换行显示。
+
+弹性盒模型看起来很不错，Gecko 和 WebKit对该模型都有一些尝试性的测试。在这些属性之前加上-moz和-webkit即可使用该属性。也即是说，firefox、safari、chrome可以使用这些特性，可以看看这个弹性盒模型的demo。
+
+作为前端开发者来说，该模型对我们解决网页设计中一些常见的问题非常方便，如：表单布局、垂直居中、视觉上分离html流，等等。不就的将来它将成为一个web标准，早早熟悉它不是什么坏事。
+
+更多参考
+Shawn J. Goff: CSS3 Flexible Box Layout Module
+CSS3.info: Introducing the flexible box layout module
+W3C: Flexible Box Layout Module
+本文作者:未知 

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box {
+            height: 300px;
+            width: 300px;
+            background-color: red;
+            line-height: 300px;
+            font-size: 50px;
+            color: yellow;
+            text-align: center;
+            margin: 30px auto;
+        }
+
+        #kai {
+            margin-left: 629px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">点名</div>
+<input type="button" value="开始" id="kai"/>
+<input type="button" value="暂停" id="ting"/>
+<script>
+    var kai = document.getElementById("kai");
+    var ting = document.getElementById("ting");
+    var box = document.getElementById("box");
+    var arr = ['李晓勇', '王梦沛', '卫昱樨', '樊玉', '周晶晶', '赵如阳', '武向前', '郑志健', '侯佳佳', '党娜娜', '王爱芳', '贺谦', '关孟辉', '郭昊臻', '矦晓军', '李宝滢', '申丹丹', '杜阿娜', '潘镇伟', '刘全博', '刘希曦', '崔磊磊', '程富强', '郭祥然', '唐贝贝', '米淑妮', '康宇娟', '任文涛', '刘微微', '韩鹤', '李子龙', '马骁刚', '孙铭康', '赵毛妮', '宋晓东', '常海涛', '徐杰', '杨锐', '赵晓刚', '邢洁檀', '张彤彤', '张世镜', '王浩东', '左腾', '付聪美子', '宋永刚', '柴树国'];
+    kai.onclick = function () {
+        kai.disabled = true;
+        time = setInterval(dian, 100);
+    }
+    ting.onclick = function () {
+        clearInterval(time);
+        kai.disabled = false;
+    }
+
+    function dian() {
+        var i = Math.floor(Math.random() * arr.length);
+        box.innerHTML = arr[i];
+    }
+</script>
+</body>
+</html>

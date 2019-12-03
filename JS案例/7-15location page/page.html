@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li
+		{
+			display: none;
+		}
+		.show
+		{
+			display: block;
+		}
+		a{
+			display: inline-block;
+			width: 20px;
+			text-align: center;
+			color:#000;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>abc</li>
+		<li>abc1</li>
+		<li>abc2</li>
+		<li>abc3</li>
+		<li>abc4</li>
+		<li>abc5</li>
+		<li>abc6</li>
+		<li>abc7</li>
+		<li>abc9</li>
+		<li>abc11</li>
+	</ul>
+	<input type="button" id="previousBtn" value="prev" />
+	<div id="box"></div>
+	<input type="button" id="nextBtn" value="next" />
+	<a href="#" onclick="history.go(-2)">回到上一页</a>
+	<button id="test">test</button>
+	
+	<script>
+	console.log(screen);
+		var pagesize=3;
+		var lis=document.getElementsByTagName('li');
+		var pageCount=Math.ceil(lis.length/pagesize);
+		var objBox=document.getElementById("box");
+		var btnNext=document.getElementById("nextBtn");
+		var btnPrev=document.getElementById("previousBtn");
+
+   test.onclick=function(){
+   	alert("test");
+   }
+		for(var i=1;i<=pageCount;i++){
+			var tema=document.createElement("a");
+			tema.href="page.html?p="+i;
+			tema.innerHTML=i;
+			objBox.appendChild(tema);
+		}
+		function getLis(start,end){
+			for(var i=start;i<end;i++){
+				lis[i].className="show";
+		}
+	}
+	   function getPara(name){
+	   	 
+	   	 var reg=new RegExp("(^|&)"+name+"=([^&]*)(&|$)");   
+	   	 if(arr=location.search.substring(1).match(reg)){
+	   	 	
+	   	 	return arr[2];
+	   	 }
+	   	 return "";
+	   	  
+	   }
+
+	
+    if(location.search==""){
+    	var curPage=1;
+    	getLis(0,pagesize);
+    }
+	
+	else
+	{
+		curPage=getPara("p");
+	    var start=(curPage-1)*pagesize;
+	    if(curPage!=pageCount){
+		getLis(start,start+pagesize);
+	    }
+	    else
+	    {
+	    	getLis(start,lis.length);
+	    }
+	}
+	btnNext.onclick=function(){
+		document.title=curPage;
+		if(curPage<pageCount){
+			curPage++;
+		
+		location.href="?p="+curPage;
+	}
+	}
+	btnPrev.onclick=function(){
+		if(curPage>1){
+		curPage--;
+		location.href="?p="+curPage;
+	}
+	}
+       
+	</script>
+</body>
+</html>

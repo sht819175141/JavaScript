@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#big
+		{
+			position: relative;
+			width:400px;
+			height: 100px;
+			overflow: hidden;
+			
+		}
+		#small{
+			position: absolute;
+			left:0;
+			height: 100px;
+			width:800px;
+		}
+		#small img
+		{
+			float: left;
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="big">
+		<div id="small">
+			<img src="img/a.jpg">
+			<img src="img/b.jpg">
+			<img src="img/a.jpg">
+			<img src="img/b.jpg">
+		</div>
+	</div>
+	<script>
+	    function Scroll(cid){
+	       this.timer=null;
+	       this.objSmall=document.getElementById(cid);
+		   this.imgs=this.objSmall.getElementsByTagName("img");
+		   this.init();
+		   this.scroll();
+	    }
+		Scroll.prototype.init=function(){
+		 for(var i=0,len=this.imgs.length;i<len;i++){
+		 	this.objSmall.appendChild(this.imgs[i].cloneNode(false));
+		 }
+		}
+		Scroll.prototype.scroll=function(){
+			var _this=this;
+		 this.timer=setInterval(function(){
+		 	if(_this.objSmall.offsetLeft>-_this.objSmall.offsetWidth/2){
+		 	 _this.objSmall.style.left=_this.objSmall.offsetLeft-1+"px";
+		 	}else{
+		 		_this.objSmall.style.left=0;
+		 	}
+		 },30)
+		}
+ 	     function AdvScroll(cid){
+ 	     	Scroll.call(this,cid);
+ 	     	this.mouse();
+ 	     }
+ 	     function F(){};
+ 	     F.prototype=Scroll.prototype;
+ 	     AdvScroll.prototype=new F();
+ 	     AdvScroll.prototype.constructor=AdvScroll;
+
+ 	     AdvScroll.prototype.mouse=function(){
+ 	     	var _this=this;
+ 	     	this.objSmall.onmouseover=function(){
+ 	     		clearInterval(_this.timer);
+ 	     	}
+ 	     	this.objSmall.onmouseout=function(){
+ 	     		_this.scroll();
+ 	     	}
+ 	     }
+ 	     new AdvScroll("small");
+	</script>
+</body>
+</html>

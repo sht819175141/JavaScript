@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+	<input type="text" id="tex">
+	<span id="span"></span>
+	<script>
+
+		var tex=document.getElementById('tex')
+		var span=document.getElementById('span')
+		/*if(window.XMLHttpRequest){
+			var xml=new XMLHttpRequest();
+		}else{
+			var xml=new ActiveXobject("Microsoft.XMLHttp")
+		}*/
+	var xml=new XMLHttpRequest();
+
+		tex.onblur=function(){
+			xml.open('get','b.asp?name='+this.value +'&'+ new Date().getTime(),true);
+			xml.send();
+			xml.onreadystatechange=function(){
+				if(xml.readyState==4 && xml.status==200){
+					alert(xml.responseText);
+					var v=xml.responseText;
+					if(v==1){
+						span.innerHTML="此名字已占用"
+					}else if(v==0){
+						span.innerHTML="ok"
+					}
+				}
+			}
+
+		}
+		
+		
+	</script>
+</body>
+</html>

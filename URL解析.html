@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div id="btn"></div>
+	<script>
+	var url='http://www.baidu.com?user=张三&city=北京&p_id=18';
+	function getString(name){
+		var reg=new RegExp("(\\?|&)"+name+"=[\\w\\u4e00-\\u9fa5]+","g");
+		var arr=url.match(reg);
+		var temp=arr[0].split("=");
+		console.log(temp[1]);
+	}
+	getString("p_id")
+
+	</script>
+</body>
+</html>

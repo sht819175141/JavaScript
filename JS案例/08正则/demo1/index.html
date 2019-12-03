@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+
+document.write("<br />------------- * ---------<br />");
+
+
+var reg = /bo*ks/;
+
+var str = "bks";
+
+document.write(reg.test(str));
+
+
+
+document.write("<br />------------- + ---------<br />");
+
+
+var reg1 = /bo+ks/;
+
+var str1 = "bks";
+
+document.write(reg1.test(str1));
+
+
+
+document.write("<br />------------- ? ---------<br />");
+
+
+var reg1 = /bo?ks/;
+
+var str1 = "books";
+
+document.write(reg1.test(str1));
+
+
+
+document.write("<br />------------- {n} ---------<br />");
+
+
+var reg2 = /bo{3}ks/;
+var str2 = "boooks";
+
+document.write(reg2.test(str2));
+
+
+document.write("<br />------------- {n,} ---------<br />");
+
+var reg3 = /bo{0,}ks/;
+var str3 = "bks";
+
+document.write(reg3.test(str3));
+
+
+document.write("<br />------------- {n,m} ---------<br />");
+
+
+var reg4 = /bo{6,18}ks/;
+var str4 = "booooooks";
+
+document.write(reg4.test(str4));
+
+
+
+document.write("<br />------------- {n,m} ---------<br />");
+
+var reg5 = /^[0-9]{2,4}$/;
+var str5 = "100000000";
+document.write(reg5.test(str5));
+
+
+
+document.write("<br />------------ ^  $---------<br />");
+
+
+//用户名 6-12位数    第一位必须是字母   第一位之后,可以有数字 字母 下划线
+var reg6 = /^([a-zA-Z])(\w{6,12})$/;        
+var str6 = "zhangsan";
+document.write(reg6.test(str6));
+
+
+document.write("<br />------------ 分组 -----------<br />");
+
+var reg7 = /(boks){2}/;
+var str7 = "boksboks";
+document.write(reg7.test(str7));
+
+
+
+
+</script>
+	
+</body>
+</html>

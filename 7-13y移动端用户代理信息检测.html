@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //去掉尖括号，取里边的内容
+    var str = '<div><h1>教务楼漏水</h1><p>教务楼漏水，学生八维被迫停课</p></div><div><h1>昨天大雨</h1><p>昨天大雨过后，八八维维积水严重</p></div>';
+    var reg = /<\/?\w+>/gi;
+    //var reg = /<[^<>]+>/g;
+    document.write(str.replace(reg, ''))
+
+
+    //alert(navigator.userAgent)
+    //移动端安卓苹果用户代理信息检测
+    function YidongUser() {
+        var na = navigator.userAgent;
+        if ((/Android/).test(na)) {
+            return 'Android';
+        } else if ((/iPhone/).test(na)) {
+            return "iPhone";
+        }
+    }
+
+    //alert(YidongUser())
+
+    //PC端用户信息检测(谷歌火狐)
+    function PcUser() {
+        var na = navigator.userAgent;
+        if ((/Chrome\/\d+/).test(na)) {
+            return "Chrome";
+        } else if ((/Firefox\/\d+/).test(na)) {
+            return 'Firefox';
+        }
+    };
+    //alert(PcUser());
+
+
+</script>
+</body>
+</html>

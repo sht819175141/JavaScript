@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		String.prototype.convert=function(){
+			var arr=["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
+			if(this.length!=3) return;
+ 			str="";
+ 			str=arr[this.charAt(0)]+"佰";
+
+ 			if(this.charAt(1)=="0"){
+ 				str+="零";
+ 			}
+ 			else
+ 			{
+ 				str+=arr[this.charAt(1)]+"拾";
+ 			}
+            if(this.charAt(2)!="0"){
+ 				str+=arr[this.charAt(2)];
+ 			}
+ 			return str;
+
+		}
+		alert("567".convert());
+	</script>
+</body>
+</html>

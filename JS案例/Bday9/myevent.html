@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//自定义事件 名字(字符串)    关联多个函数(数组)
+		function MyEvent(){
+			this.handler={};   
+		}
+		MyEvent.prototype.addEvent=function(eventName,func){    //"abc"
+          	if(typeof this.handler[eventName]=="undefined"){
+				this.handler[eventName]=[];  //"abc"  fn1  fn2    只有第一词调用addEvent建立数组
+			}
+			this.handler[eventName].push(func);  //dom2级的效果
+		}
+
+		MyEvent.prototype.doEvent=function(str){  //"abc"
+			var arr=this.handler[str];
+            if(arr instanceof Array){
+                for(var i=0;i<arr.length;i++){
+                 	arr[i]();
+                }
+            }
+		}
+		
+		var e=new MyEvent();
+		e.addEvent("abc",function(){
+			alert("abc method");
+		});
+		console.log(e.handler["abc"]);
+
+		e.addEvent("abc",function(){
+			alert("1412B");
+		});
+		e.doEvent("abc");
+			</script>
+		</body>
+</html>

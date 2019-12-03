@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		  function Publisher(name){
+		  	  this.name=name;
+		  	  this.reader=[];
+		  }
+		  Publisher.prototype.deliver=function(news){
+		  	 var pub=this;
+		  	 this.reader.forEach(function(fn){
+		  	 		fn(pub,news);
+		  	 });
+		  }
+		  Function.prototype.subscribe=function(pub){
+		  		var sub=this;
+
+		  		var isExists=pub.reader.some(function(item){
+		  			return item===sub;
+		  		});
+		  		if(!isExists){
+		  			pub.reader.push(sub);
+		  		}
+		  		return this;
+
+		  }
+		    Function.prototype.unsubscribe=function(pub){
+		  		var sub=this;
+
+		  		var isExists=pub.reader.some(function(item){
+		  			return item===sub;
+		  		});
+		  		if(isExists){
+		  			pub.reader=pub.reader.filter(function(item){
+		  				return item!==sub;
+		  			});
+		  		}
+		  		return this;
+
+		  }
+		  var p=new Publisher("新华社");
+		  var p1=new Publisher("路透社");
+
+		  function sub1(pub,info){
+		  	alert(pub.name+":"+info);
+		  }
+		  function sub2(pub,info){
+		  	alert(pub.name+":"+info);
+		  }
+		  sub1.subscribe(p).subscribe(p1);
+		  sub2.subscribe(p1);
+		  sub1.unsubscribe(p1);
+		  p.deliver("我们又得金牌了");
+		  p1.deliver("总统大选拉开帷幕");
+	</script>
+</body>
+</html>

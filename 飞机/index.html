@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    #box {
+        width: 400px;
+        height: 400px;
+        border: 1px solid #ccc;
+        position: relative;
+    }
+
+    #box img {
+        position: absolute;
+    }
+</style>
+<body>
+
+<div id="box">
+    <img src="images/2.png" id="pos0" style="display: none">
+    <img src="images/2.png" id="pos1" style="display: none">
+    <img src="images/2.png" id="pos2" style="display: none">
+    <img src="images/2.png" id="pos3" style="display: none">
+    <img src="images/2.png" id="pos4" style="display: none">
+    <img src="images/2.png" id="pos5" style="display: none">
+    <img src="images/2.png" id="pos6" style="display: none">
+    <img src="images/2.png" id="pos7" style="display: none">
+    <img src="images/1.gif" id="fly">
+
+</div>
+
+<script>
+    var fly = document.getElementById("fly");
+    document.onkeydown = function (event) {
+        switch (event.keyCode) {
+            case 37:
+                fly.style.left = Math.max(0, fly.offsetLeft - 5) + "px";
+                break;
+            case 38:
+                fly.style.top = Math.max(0, fly.offsetTop - 5) + "px";
+                break;
+            case 39:
+                fly.style.left = Math.min(334, fly.offsetLeft + 5) + "px";
+                break;
+            case 40:
+                fly.style.top = Math.min(320, fly.offsetTop + 5) + "px";
+                break;
+            case 32:
+                shot(parseInt(fly.style.left) + 33, fly.style.top);
+                break;
+        }
+    }
+
+    function shot(x, y) {
+        for (var i = 0; i < 8; i++) {
+            var pos0 = document.getElementById("pos" + i);
+            if (pos0.style.display == "none") {
+                pos0.style.left = x + "px";
+                pos0.style.top = y;
+                pos0.style.display = "block";
+                return pos0;
+            }
+        }
+    }
+
+    setInterval(change, 50);
+
+    function change() {
+        for (var i = 0; i < 8; i++) {
+            var pos0 = document.getElementById("pos" + i);
+            if (pos0.style.display == "block") {
+                pos0.style.top = parseInt(pos0.style.top) - 20 + "px";
+                if (parseInt(pos0.style.top) < -14) {
+                    pos0.style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

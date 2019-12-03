@@ -1,0 +1,2180 @@
+From: =?gb2312?B?08kgV2luZG93cyBJbnRlcm5ldCBFeHBsb3JlciA5ILGjtOY=?=
+Subject: =?gb2312?B?Q1NTILHgwuu55re2IKGqIEtJU1NZIHYxLjNyYyBEb2N1bWVudGF0aW9u?=
+Date: Mon, 15 Oct 2012 13:05:47 -0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_001E_01CDAAD5.CAFE1EA0"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.1.7601.17609
+
+这是 MIME 格式的多方邮件。
+
+------=_NextPart_000_001E_01CDAAD5.CAFE1EA0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding-style.html
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html><HTML><HEAD>
+<META charset=3D"utf-8"><TITLE>CSS =E7=BC=96=E7=A0=81=E8=A7=84=E8=8C=83 =
+=E2=80=94 KISSY v1.3rc Documentation</TITLE><LINK=20
+rel=3D"stylesheet" =
+href=3D"http://a.tbcdn.cn/s/kissy/1.2.0/css/reset.css"><LINK =
+rel=3D"stylesheet"=20
+href=3D"http://docs.kissyui.com/docs/html/_static/kissy.css"><LINK =
+rel=3D"stylesheet"=20
+href=3D"http://docs.kissyui.com/docs/html/_static/pygments.css"><LINK =
+rel=3D"shortcut icon"=20
+type=3D"image/x-icon" =
+href=3D"http://a.tbcdn.cn/s/kissy/favicon.ico"><LINK rel=3D"stylesheet"=20
+type=3D"text/css" =
+href=3D"http://fonts.googleapis.com/css?family=3DPhilosopher">
+<SCRIPT>=0A=
+    var DOCUMENTATION_OPTIONS =3D {=0A=
+        URL_ROOT:    '../../',=0A=
+        VERSION:     'rc',=0A=
+        COLLAPSE_INDEX: false,=0A=
+        FILE_SUFFIX: '.html',=0A=
+        HAS_SOURCE: true=0A=
+    };=0A=
+    (function(){=0A=
+        var js=3D[],h=3Dwindow.location.href,d=3Ddocument;=0A=
+            js.push("../../_static/jquery.js");=0A=
+            js.push("../../_static/underscore.js");=0A=
+            js.push("../../_static/doctools.js");=0A=
+        for(var i=3D0;i<js.length;i++){=0A=
+            var j=3Djs[i];=0A=
+            if(h.indexOf("localhost/kissy_git/")=3D=3D-1=0A=
+            &&=0A=
+=0A=
+            h.indexOf("fed.ued.taobao.net/kissy-team/kissyteam/")=3D=3D-1=0A=
+            &&=0A=
+            j.indexOf("jquery.js")!=3D-1){=0A=
+                d.write('<script type=3D"text/javascript" =
+src=3D"http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"><=
+\/script>');=0A=
+            }else{=0A=
+                d.write('<script type=3D"text/javascript" src=3D"'+ j =
++'"><\/script>');=0A=
+            }=0A=
+        }=0A=
+    })();=0A=
+</SCRIPT>
+
+<SCRIPT>=0A=
+=0A=
+    var _gaq =3D _gaq || [];=0A=
+    _gaq.push(['_setAccount', 'UA-31470541-1']);=0A=
+    _gaq.push(['_trackPageview']);=0A=
+=0A=
+    (function() {=0A=
+        var ga =3D document.createElement('script'); ga.type =3D =
+'text/javascript'; ga.async =3D true;=0A=
+        ga.src =3D ('https:' =3D=3D document.location.protocol ? =
+'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';=0A=
+        var s =3D document.getElementsByTagName('script')[0]; =
+s.parentNode.insertBefore(ga, s);=0A=
+    })();=0A=
+=0A=
+</SCRIPT>
+
+<META name=3D"GENERATOR" content=3D"MSHTML 9.00.8112.16450"></HEAD>
+<BODY>
+<DIV id=3D"header">
+<H1 class=3D"logo"><A href=3D"http://docs.kissyui.com/" =
+alt=3D"KISSY"><IMG src=3D"http://a.tbcdn.cn/s/kissy/logo.png"></A></H1>
+<UL class=3D"navigation">
+  <LI><A href=3D"http://docs.kissyui.com/">=E9=A6=96=E9=A1=B5</A></LI>
+  <LI><A=20
+  =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/index.html">Tutorials=
+</A></LI>
+  <LI><A =
+href=3D"http://docs.kissyui.com/docs/html/api/index.html">API</A></LI>
+  <LI><A =
+href=3D"http://docs.kissyui.com/docs/html/demo/index.html">DEMO</A></LI>
+  <LI><A href=3D"https://groups.google.com/group/kissy-ui">Google =
+Group</A></LI>
+  <LI><A href=3D"http://www.github.com/kissyteam">Source Code</A></LI>
+  <LI><A href=3D"http://docs.kissyui.com/kissy/docs/">English API =
+Docs</A></LI></UL>
+<DIV style=3D"display: none;" id=3D"searchbox" class=3D"searchbox">
+<FORM class=3D"search" method=3D"get" =
+action=3D"../../search.html"><INPUT class=3D"ipt"=20
+name=3D"q" size=3D"28"=20
+type=3D"text"><INPUT class=3D"btn" value=3D"Go" type=3D"submit"><INPUT =
+name=3D"check_keywords"=20
+value=3D"yes" type=3D"hidden"><INPUT name=3D"area" value=3D"default"=20
+type=3D"hidden"></FORM></DIV>
+<SCRIPT type=3D"text/javascript">$('#searchbox').show(0);</SCRIPT>
+</DIV>
+<DIV id=3D"content">
+<DIV id=3D"layout" class=3D"layout grid-s6m0e7">
+<DIV class=3D"col-main">
+<DIV class=3D"main-wrap">
+<DIV class=3D"related">
+<H3>Navigation</H3>
+<UL>
+  <LI style=3D"margin-right: 10px;" class=3D"right"><A accessKey=3D"I" =
+title=3D"General Index"=20
+  =
+href=3D"http://docs.kissyui.com/docs/html/genindex.html">index</A></LI>
+  <LI class=3D"right"><A title=3D"Python Module Index" =
+href=3D"http://docs.kissyui.com/docs/html/py-modindex.html">modules</A>=20
+  | </LI>
+  <LI class=3D"right"><A accessKey=3D"N" title=3D"HTML =
+=E7=BC=96=E7=A0=81=E8=A7=84=E8=8C=83" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/html-codin=
+g-style.html">next</A>=20
+  | </LI>
+  <LI class=3D"right"><A accessKey=3D"P" =
+title=3D"=E9=80=9A=E7=94=A8=E7=BA=A6=E5=AE=9A" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/common-con=
+ventions.html">previous</A>=20
+  | </LI>
+  <LI><A href=3D"http://docs.kissyui.com/docs/html/index.html">KISSY =
+v1.3rc=20
+  Documentation</A> =C2=BB </LI>
+  <LI><A=20
+  =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/index.html">Tutorial<=
+/A> =C2=BB=20
+  </LI>
+  <LI><A accessKey=3D"U" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/index.html=
+">=E6=9C=80=E4=BD=B3=E7=BC=96=E7=A0=81=E5=AE=9E=E8=B7=B5</A>=20
+  =C2=BB </LI></UL></DIV>
+<DIV id=3D"css" class=3D"section">
+<H1>CSS =E7=BC=96=E7=A0=81=E8=A7=84=E8=8C=83<A class=3D"headerlink" =
+title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#css">=C2=B6</A></H1>
+<DIV id=3D"id1" class=3D"section">
+<H2>css =E6=A0=A1=E9=AA=8C<A class=3D"headerlink" title=3D"Permalink to =
+this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id1">=C2=B6</A></H2>
+<P>=E9=99=A4=E4=BA=86 css hack =
+=E5=92=8C=E6=B5=8F=E8=A7=88=E5=99=A8=E7=A7=81=E6=9C=89=E5=B1=9E=E6=80=A7=EF=
+=BC=8C =E6=8E=A8=E8=8D=90=E4=BD=BF=E7=94=A8 <A class=3D"reference =
+external" href=3D"http://jigsaw.w3.org/css-validator/">w3c=20
+css validator</A> =
+=E6=A0=A1=E9=AA=8C=E5=85=B6=E4=BD=99=E7=9A=84=E4=BB=A3=E7=A0=81.</P></DIV=
+>
+<DIV id=3D"id2" class=3D"section">
+<H2>=E4=BB=A3=E7=A0=81=E8=A7=84=E8=8C=83<A class=3D"headerlink" =
+title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id2">=C2=B6</A></H2>
+<DIV id=3D"id3" class=3D"section">
+<H3>=E4=B8=80=E8=88=AC=E6=80=A7=E5=91=BD=E5=90=8D<A class=3D"headerlink" =
+title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id3">=C2=B6</A></H3>
+<P>=E4=BD=BF=E7=94=A8=E5=B0=8F=E5=86=99=E5=AD=97=E6=AF=8D=EF=BC=8C=E5=A4=8D=
+=E5=90=88=E8=AF=8D=E4=BB=A5 <TT class=3D"docutils literal"><SPAN =
+class=3D"pre">-</SPAN></TT> =E5=88=86=E9=9A=94;=20
+=E4=BE=8B=E5=A6=82 <TT class=3D"docutils literal"><SPAN =
+class=3D"pre">nav.css</SPAN></TT> , <TT=20
+class=3D"docutils literal"><SPAN class=3D"pre">login-nav.css</SPAN></TT> =
+, <TT=20
+class=3D"docutils literal"><SPAN =
+class=3D"pre">login-page</SPAN></TT></P></DIV>
+<DIV id=3D"id" class=3D"section">
+<H3>id =E5=92=8C=E7=B1=BB=E7=9A=84=E5=91=BD=E5=90=8D<A =
+class=3D"headerlink" title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id">=C2=B6</A></H3>
+<P>=E4=B8=BA id =
+=E5=92=8C=E6=A0=B7=E5=BC=8F=E7=B1=BB=E4=BD=BF=E7=94=A8=E6=9C=89=E6=84=8F=E4=
+=B9=89=E6=88=96=E9=80=9A=E7=94=A8=E7=9A=84=E5=90=8D=E5=AD=97=EF=BC=8C=E9=81=
+=BF=E5=85=8D=E7=94=B1=E4=BA=8E css =
+=E5=91=BD=E5=90=8D=E6=9B=B4=E6=94=B9=E5=BC=95=E8=B5=B7=E7=9A=84=E4=B8=8D=E5=
+=BF=85=E8=A6=81=E7=9A=84=E6=96=87=E6=A1=A3=E6=88=96=E6=A8=A1=E6=9D=BF=E6=94=
+=B9=E5=8F=98=EF=BC=9B=E4=BE=8B=E5=A6=82</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =
+=E4=B8=8D=E6=8E=A8=E8=8D=90=EF=BC=9A =E6=97=A0=E6=84=8F=E4=B9=89 =
+*/</SPAN>=0A=
+<SPAN class=3D"nf">#yee-1901</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+=0A=
+<SPAN class=3D"c">/* =E4=B8=8D=E6=8E=A8=E8=8D=90=EF=BC=9A =
+=E8=A1=A8=E7=8E=B0=E5=B1=82=E7=9A=84=E5=91=BD=E5=90=8D */</SPAN>=0A=
+<SPAN class=3D"nc">.button-green</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+</PRE></DIV>
+</DIV>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =E6=8E=A8=E8=8D=90: =
+=E5=85=B7=E4=BD=93 */</SPAN>=0A=
+<SPAN class=3D"nf">#gallery</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+<SPAN class=3D"nf">#login</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+<SPAN class=3D"nc">.video</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+=0A=
+<SPAN class=3D"c">/* =E6=8E=A8=E8=8D=90: =E9=80=9A=E7=94=A8 */</SPAN>=0A=
+<SPAN class=3D"nc">.effect</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+<SPAN class=3D"nc">.alt</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+</PRE></DIV>
+</DIV>
+<P>id =E5=92=8C class =
+=E7=9A=84=E5=91=BD=E5=90=8D=E9=95=BF=E5=BA=A6=E5=BA=94=E8=AF=A5=E9=80=82=E4=
+=B8=AD=EF=BC=8C=E4=B8=8D=E8=A6=81=E5=A4=AA=E7=AE=80=E7=95=A5=E4=B9=9F=E4=B8=
+=8D=E8=A6=81=E5=A4=AA=E8=AF=A6=E7=BB=86=EF=BC=9B=E4=BE=8B=E5=A6=82</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =
+=E4=B8=8D=E6=8E=A8=E8=8D=90 */</SPAN>=0A=
+<SPAN class=3D"nf">#navigation</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+<SPAN class=3D"nc">.atr</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+</PRE></DIV>
+</DIV>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =E6=8E=A8=E8=8D=90 =
+*/</SPAN>=0A=
+<SPAN class=3D"nf">#nav</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+<SPAN class=3D"nc">.author</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"id4" class=3D"section">
+<H3>=E5=85=83=E7=B4=A0=E9=80=89=E6=8B=A9=E5=99=A8<A class=3D"headerlink" =
+title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id4">=C2=B6</A></H3>
+<P>=E4=B8=BA=E4=BA=86 <A class=3D"reference external" =
+href=3D"http://www.stevesouders.com/blog/2009/06/18/simplifying-css-selec=
+tors/">=E6=80=A7=E8=83=BD=E5=8E=9F=E5=9B=A0</A>=20
+=EF=BC=8C =
+=E8=AF=B7=E9=81=BF=E5=85=8D=E5=85=83=E7=B4=A0=E9=80=89=E6=8B=A9=E5=99=A8=E5=
+=92=8C=E7=B1=BB=E9=80=89=E6=8B=A9=E5=99=A8=E4=BB=A5=E5=8F=8A id =
+=E9=80=89=E6=8B=A9=E5=99=A8=E6=B7=B7=E7=94=A8;=E4=BE=8B=E5=A6=82</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =
+=E4=B8=8D=E6=8E=A8=E8=8D=90 */</SPAN>=0A=
+<SPAN class=3D"nt">ul</SPAN><SPAN class=3D"nf">#example</SPAN> <SPAN =
+class=3D"p">{}</SPAN>=0A=
+<SPAN class=3D"nt">div</SPAN><SPAN class=3D"nc">.error</SPAN> <SPAN =
+class=3D"p">{}</SPAN>=0A=
+</PRE></DIV>
+</DIV>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =E6=8E=A8=E8=8D=90 =
+*/</SPAN>=0A=
+<SPAN class=3D"nf">#example</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+<SPAN class=3D"nc">.error</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"id6" class=3D"section">
+<H3>=E7=AE=80=E5=86=99=E5=B1=9E=E6=80=A7=E5=90=8D=E5=AD=97<A =
+class=3D"headerlink" title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id6">=C2=B6</A></H3>
+<P>=E4=B8=BA=E4=BA=86=E6=8F=90=E9=AB=98=E5=8F=AF=E8=AF=BB=E6=80=A7=EF=BC=8C=
+=E5=B0=BD=E5=8F=AF=E8=83=BD=E7=9A=84=E4=BD=BF=E7=94=A8=E7=AE=80=E5=86=99=E5=
+=B1=9E=E6=80=A7=E3=80=82=E4=BE=8B=E5=A6=82</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =
+=E4=B8=8D=E6=8E=A8=E8=8D=90 */</SPAN>=0A=
+<SPAN class=3D"nt">border-top-style</SPAN><SPAN class=3D"o">:</SPAN> =
+<SPAN class=3D"nt">none</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">font-family</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">palatino</SPAN><SPAN class=3D"o">,</SPAN> <SPAN =
+class=3D"nt">georgia</SPAN><SPAN class=3D"o">,</SPAN> <SPAN =
+class=3D"nt">serif</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">font-size</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">100</SPAN><SPAN class=3D"o">%;</SPAN>=0A=
+<SPAN class=3D"nt">line-height</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">1</SPAN><SPAN class=3D"nc">.6</SPAN><SPAN =
+class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">padding-bottom</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">2em</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">padding-left</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">1em</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">padding-right</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">1em</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">padding-top</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">0</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+</PRE></DIV></DIV>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =E6=8E=A8=E8=8D=90 =
+*/</SPAN>=0A=
+<SPAN class=3D"nt">border-top</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">0</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">font</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">100</SPAN><SPAN class=3D"o">%/</SPAN><SPAN =
+class=3D"nt">1</SPAN><SPAN class=3D"nc">.6</SPAN> <SPAN =
+class=3D"nt">palatino</SPAN><SPAN class=3D"o">,</SPAN> <SPAN =
+class=3D"nt">georgia</SPAN><SPAN class=3D"o">,</SPAN> <SPAN =
+class=3D"nt">serif</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">padding</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">0</SPAN> <SPAN class=3D"nt">1em</SPAN> <SPAN =
+class=3D"nt">2em</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"id7" class=3D"section">
+<H3>0 =E5=92=8C=E5=8D=95=E4=BD=8D<A class=3D"headerlink" =
+title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id7">=C2=B6</A></H3>
+<P>=E5=AF=B9=E5=B1=9E=E6=80=A7=E5=80=BC=E4=B8=BA 0 =
+=E7=9A=84=E6=83=85=E5=86=B5=E7=9C=81=E7=95=A5=E5=8D=95=E4=BD=8D=EF=BC=9B=E4=
+=BE=8B=E5=A6=82</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"nt">margin</SPAN><SPAN =
+class=3D"o">:</SPAN> <SPAN class=3D"nt">0</SPAN><SPAN =
+class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">padding</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">0</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"id8" class=3D"section">
+<H3>0 =E5=89=8D=E7=BC=80=E6=83=85=E5=86=B5<A class=3D"headerlink" =
+title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id8">=C2=B6</A></H3>
+<P>=E7=9C=81=E7=95=A5=E5=B1=9E=E6=80=A7=E5=80=BC=E4=B8=AD=E7=9A=84 0 =
+=E5=89=8D=E7=BC=80;=E4=BE=8B=E5=A6=82</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"nt">font-size</SPAN><SPAN =
+class=3D"o">:</SPAN> <SPAN class=3D"nc">.8em</SPAN><SPAN =
+class=3D"o">;</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"id9" class=3D"section">
+<H3>16 =
+=E8=BF=9B=E5=88=B6=E7=9A=84=E9=A2=9C=E8=89=B2=E5=80=BC=E8=A1=A8=E7=A4=BA<=
+A class=3D"headerlink" title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id9">=C2=B6</A></H3>
+<P>=E5=B0=BD=E5=8F=AF=E8=83=BD=E4=BD=BF=E7=94=A8 3 =
+=E4=B8=AA=E5=AD=97=E7=AC=A6=E7=9A=84 16 =
+=E8=BF=9B=E5=88=B6=E9=A2=9C=E8=89=B2=E5=80=BC=EF=BC=9B=E4=BE=8B=E5=A6=82<=
+/P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =
+=E4=B8=8D=E6=8E=A8=E8=8D=90 */</SPAN>=0A=
+<SPAN class=3D"nt">color</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nf">#eebbcc</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+</PRE></DIV>
+</DIV>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =E6=8E=A8=E8=8D=90 =
+*/</SPAN>=0A=
+<SPAN class=3D"nt">color</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nf">#ebc</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"id10" class=3D"section">
+<H3>=E5=89=8D=E7=BC=80<A class=3D"headerlink" title=3D"Permalink to this =
+headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id10">=C2=B6</A></H3>
+<P>=E4=B8=BA=E4=BA=86=E9=98=B2=E6=AD=A2=E5=86=B2=E7=AA=81=EF=BC=8C=E5=AF=B9=
+=E4=BA=8E=E5=BA=94=E7=94=A8=E7=89=B9=E5=AE=9A=E7=9A=84=E6=A0=B7=E5=BC=8F=E9=
+=99=84=E5=8A=A0=E5=BA=94=E7=94=A8=E5=89=8D=E7=BC=80=EF=BC=9B=E4=BE=8B=E5=A6=
+=82</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"nc">.login-help</SPAN> =
+<SPAN class=3D"p">{}</SPAN> <SPAN class=3D"c">/* login page */</SPAN>=0A=
+<SPAN class=3D"nf">#detail-note</SPAN> <SPAN class=3D"p">{}</SPAN> <SPAN =
+class=3D"c">/* detail page */</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"hacks" class=3D"section">
+<H3>hacks<A class=3D"headerlink" title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#hacks">=C2=B6</A></H3>
+<P>=E9=81=BF=E5=85=8D css hack =EF=BC=8C =
+=E8=80=83=E8=99=91=E4=BD=BF=E7=94=A8=E7=89=B9=E5=AE=9A=E6=B5=8F=E8=A7=88=E5=
+=99=A8=E5=89=8D=E7=BC=80=E8=A1=A8=E7=A4=BA=EF=BC=9B=E4=BE=8B=E5=A6=82</P>=
+
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"nc">.ks-ie6</SPAN> <SPAN =
+class=3D"nt">p</SPAN> <SPAN class=3D"p">{</SPAN>=0A=
+    <SPAN class=3D"k">margin</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"m">1em</SPAN> <SPAN class=3D"m">0</SPAN><SPAN =
+class=3D"p">;</SPAN>=0A=
+<SPAN class=3D"p">}</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV></DIV>
+<DIV id=3D"id11" class=3D"section">
+<H2>=E6=A0=BC=E5=BC=8F=E8=A7=84=E8=8C=83<A class=3D"headerlink" =
+title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id11">=C2=B6</A></H2>
+<DIV id=3D"id12" class=3D"section">
+<H3>=E5=B1=9E=E6=80=A7=E5=A3=B0=E6=98=8E=E9=A1=BA=E5=BA=8F<A =
+class=3D"headerlink" title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id12">=C2=B6</A></H3>
+<P>=E6=8C=89=E7=85=A7=E5=AD=97=E6=AF=8D=E9=A1=BA=E5=BA=8F=E5=A3=B0=E6=98=8E=
+=E5=B1=9E=E6=80=A7=EF=BC=8C=E6=8E=92=E5=BA=8F=E6=97=B6=E5=BF=BD=E7=95=A5=E7=
+=A7=81=E6=9C=89=E7=9A=84=E6=B5=8F=E8=A7=88=E5=99=A8=E5=89=8D=E7=BC=80=EF=BC=
+=8C=E5=AF=B9=E4=BA=8E=E7=89=B9=E5=AE=9A=E7=9A=84=E6=B5=8F=E8=A7=88=E5=99=A8=
+=EF=BC=8C=E7=A7=81=E6=9C=89=E7=9A=84=E6=B5=8F=E8=A7=88=E5=99=A8=E5=89=8D=E7=
+=BC=80=E5=BA=94=E8=AF=A5=E5=8F=82=E4=B8=8E=E6=8E=92=E5=BA=8F;=E4=BE=8B=E5=
+=A6=82</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"nt">background</SPAN><SPAN =
+class=3D"o">:</SPAN> <SPAN class=3D"nt">fuchsia</SPAN><SPAN =
+class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">border</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">1px</SPAN> <SPAN class=3D"nt">solid</SPAN><SPAN =
+class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">-moz-border-radius</SPAN><SPAN class=3D"o">:</SPAN> =
+<SPAN class=3D"nt">4px</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">-webkit-border-radius</SPAN><SPAN =
+class=3D"o">:</SPAN> <SPAN class=3D"nt">4px</SPAN><SPAN =
+class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">border-radius</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">4px</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">color</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">black</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">text-align</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">center</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+<SPAN class=3D"nt">text-indent</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"nt">2em</SPAN><SPAN class=3D"o">;</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"id13" class=3D"section">
+<H3>=E5=9D=97=E7=BC=A9=E8=BF=9B<A class=3D"headerlink" =
+title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id13">=C2=B6</A></H3>
+<P>=E5=9D=97=E7=9A=84=E5=86=85=E5=AE=B9=E5=BA=94=E8=AF=A5=E8=A2=AB=E7=BC=A9=
+=E8=BF=9B=EF=BC=9B=E4=BE=8B=E5=A6=82</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"k">@media</SPAN> <SPAN =
+class=3D"nt">screen</SPAN><SPAN class=3D"o">,</SPAN> <SPAN =
+class=3D"nt">projection</SPAN> <SPAN class=3D"p">{</SPAN>=0A=
+=0A=
+  <SPAN class=3D"nt">html</SPAN> <SPAN class=3D"p">{</SPAN>=0A=
+    <SPAN class=3D"k">background</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"m">#fff</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+    <SPAN class=3D"k">color</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"m">#444</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+  <SPAN class=3D"p">}</SPAN>=0A=
+=0A=
+<SPAN class=3D"p">}</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"id14" class=3D"section">
+<H3>=E5=88=86=E5=8F=B7<A class=3D"headerlink" title=3D"Permalink to this =
+headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id14">=C2=B6</A></H3>
+<P>=E4=BD=BF=E7=94=A8=E5=88=86=E5=8F=B7=E7=BB=93=E6=9D=9F=E5=8D=95=E4=B8=AA=
+=E5=B1=9E=E6=80=A7=E7=9A=84=E5=AE=9A=E4=B9=89=EF=BC=9B=E4=BE=8B=E5=A6=82<=
+/P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =
+=E4=B8=8D=E6=8E=A8=E8=8D=90 */</SPAN>=0A=
+<SPAN class=3D"nc">.test</SPAN> <SPAN class=3D"p">{</SPAN>=0A=
+  <SPAN class=3D"k">display</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"k">block</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+  <SPAN class=3D"k">height</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"m">100px</SPAN>=0A=
+<SPAN class=3D"p">}</SPAN>=0A=
+</PRE></DIV>
+</DIV>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =E6=8E=A8=E8=8D=90 =
+*/</SPAN>=0A=
+<SPAN class=3D"nc">.test</SPAN> <SPAN class=3D"p">{</SPAN>=0A=
+  <SPAN class=3D"k">display</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"k">block</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+  <SPAN class=3D"k">height</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"m">100px</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+<SPAN class=3D"p">}</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"id15" class=3D"section">
+<H3>=E7=A9=BA=E6=A0=BC<A class=3D"headerlink" title=3D"Permalink to this =
+headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id15">=C2=B6</A></H3>
+<P>=E5=9C=A8=E5=B1=9E=E6=80=A7=E5=90=8D=E5=86=92=E5=8F=B7=E5=90=8E=E5=8A=A0=
+=E4=B8=80=E4=B8=AA=E7=A9=BA=E6=A0=BC=EF=BC=8C=E4=BE=8B=E5=A6=82</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =
+=E4=B8=8D=E6=8E=A8=E8=8D=90 */</SPAN>=0A=
+<SPAN class=3D"nc">.test</SPAN> <SPAN class=3D"p">{</SPAN>=0A=
+  <SPAN class=3D"k">display</SPAN><SPAN class=3D"o">:</SPAN><SPAN =
+class=3D"k">block</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+<SPAN class=3D"p">}</SPAN>=0A=
+</PRE></DIV>
+</DIV>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =E6=8E=A8=E8=8D=90 =
+*/</SPAN>=0A=
+<SPAN class=3D"nc">.test</SPAN> <SPAN class=3D"p">{</SPAN>=0A=
+  <SPAN class=3D"k">display</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"k">block</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+<SPAN class=3D"p">}</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"id16" class=3D"section">
+<H3>=E7=A9=BA=E8=A1=8C<A class=3D"headerlink" title=3D"Permalink to this =
+headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id16">=C2=B6</A></H3>
+<P>=E5=A4=9A=E4=B8=AA=E9=80=89=E6=8B=A9=E4=BB=A5=E5=8F=8A=E5=A3=B0=E6=98=8E=
+=E9=97=B4=E4=BB=A5=E8=A1=8C=E5=88=86=E9=9A=94=EF=BC=9B=E4=BE=8B=E5=A6=82<=
+/P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =
+=E4=B8=8D=E6=8E=A8=E8=8D=90 */</SPAN>=0A=
+<SPAN class=3D"nt">a</SPAN><SPAN class=3D"nd">:focus</SPAN><SPAN =
+class=3D"o">,</SPAN> <SPAN class=3D"nt">a</SPAN><SPAN =
+class=3D"nd">:active</SPAN> <SPAN class=3D"p">{</SPAN>=0A=
+  <SPAN class=3D"k">position</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"k">relative</SPAN><SPAN class=3D"p">;</SPAN> <SPAN =
+class=3D"k">top</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"m">1px</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+<SPAN class=3D"p">}</SPAN>=0A=
+</PRE></DIV>
+</DIV>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =E6=8E=A8=E8=8D=90 =
+*/</SPAN>=0A=
+<SPAN class=3D"nt">h1</SPAN><SPAN class=3D"o">,</SPAN>=0A=
+<SPAN class=3D"nt">h2</SPAN><SPAN class=3D"o">,</SPAN>=0A=
+<SPAN class=3D"nt">h3</SPAN> <SPAN class=3D"p">{</SPAN>=0A=
+  <SPAN class=3D"k">font-weight</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"k">normal</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+  <SPAN class=3D"k">line-height</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"m">1</SPAN><SPAN class=3D"o">.</SPAN><SPAN =
+class=3D"m">2</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+<SPAN class=3D"p">}</SPAN>=0A=
+</PRE></DIV>
+</DIV>
+<P>=E5=A4=9A=E4=B8=AA css =
+=E8=A7=84=E5=88=99=E9=97=B4=E4=BB=A5=E7=A9=BA=E8=A1=8C=E5=88=86=E9=9A=94=EF=
+=BC=9B=E4=BE=8B=E5=A6=82</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"nt">html</SPAN> <SPAN =
+class=3D"p">{</SPAN>=0A=
+  <SPAN class=3D"k">background</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"m">#fff</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+<SPAN class=3D"p">}</SPAN>=0A=
+=0A=
+<SPAN class=3D"nt">body</SPAN> <SPAN class=3D"p">{</SPAN>=0A=
+  <SPAN class=3D"k">margin</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"k">auto</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+  <SPAN class=3D"k">width</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"m">50</SPAN><SPAN class=3D"o">%</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+<SPAN class=3D"p">}</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"id17" class=3D"section">
+<H3>=E5=BC=95=E5=8F=B7<A class=3D"headerlink" title=3D"Permalink to this =
+headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id17">=C2=B6</A></H3>
+<P>=E5=B0=BD=E5=8F=AF=E8=83=BD=E7=9A=84=E4=B8=8D=E7=94=A8=E5=BC=95=E5=8F=B7=
+=EF=BC=8C=E8=BF=AB=E4=B8=8D=E5=BE=97=E5=B7=B2=E6=97=B6=E4=BD=BF=E7=94=A8=E5=
+=8D=95=E5=BC=95=E5=8F=B7.</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =
+=E4=B8=8D=E6=8E=A8=E8=8D=90 */</SPAN>=0A=
+<SPAN class=3D"k">@import</SPAN> <SPAN class=3D"nt">url</SPAN><SPAN =
+class=3D"o">(</SPAN><SPAN =
+class=3D"s2">"//www.google.com/css/maia.css"</SPAN><SPAN =
+class=3D"o">)</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+=0A=
+<SPAN class=3D"nt">html</SPAN> <SPAN class=3D"p">{</SPAN>=0A=
+  <SPAN class=3D"k">font-family</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"s2">"open sans"</SPAN><SPAN class=3D"o">,</SPAN> <SPAN =
+class=3D"n">arial</SPAN><SPAN class=3D"o">,</SPAN> <SPAN =
+class=3D"k">sans-serif</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+<SPAN class=3D"p">}</SPAN>=0A=
+</PRE></DIV>
+</DIV>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* =E6=8E=A8=E8=8D=90 =
+*/</SPAN>=0A=
+<SPAN class=3D"k">@import</SPAN> <SPAN class=3D"nt">url</SPAN><SPAN =
+class=3D"o">(//</SPAN><SPAN class=3D"nt">www</SPAN><SPAN =
+class=3D"nc">.google.com</SPAN><SPAN class=3D"o">/</SPAN><SPAN =
+class=3D"nt">css</SPAN><SPAN class=3D"o">/</SPAN><SPAN =
+class=3D"nt">maia</SPAN><SPAN class=3D"nc">.css</SPAN><SPAN =
+class=3D"o">)</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+=0A=
+<SPAN class=3D"nt">html</SPAN> <SPAN class=3D"p">{</SPAN>=0A=
+  <SPAN class=3D"k">font-family</SPAN><SPAN class=3D"o">:</SPAN> <SPAN =
+class=3D"s1">'open sans'</SPAN><SPAN class=3D"o">,</SPAN> <SPAN =
+class=3D"n">arial</SPAN><SPAN class=3D"o">,</SPAN> <SPAN =
+class=3D"k">sans-serif</SPAN><SPAN class=3D"p">;</SPAN>=0A=
+<SPAN class=3D"p">}</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV>
+<DIV id=3D"id18" class=3D"section">
+<H3>=E6=B3=A8=E9=87=8A<A class=3D"headerlink" title=3D"Permalink to this =
+headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id18">=C2=B6</A></H3>
+<P>=E6=88=90=E7=BB=84=E7=9A=84 css =
+=E8=A7=84=E5=88=99=E9=97=B4=E7=94=A8=E5=9D=97=E7=8A=B6=E6=B3=A8=E9=87=8A=E5=
+=92=8C=E7=A9=BA=E8=A1=8C=E5=88=86=E7=A6=BB;=E4=BE=8B=E5=A6=82</P>
+<DIV class=3D"highlight-css">
+<DIV class=3D"highlight"><PRE><SPAN class=3D"c">/* Header */</SPAN>=0A=
+=0A=
+<SPAN class=3D"nf">#login-header</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+=0A=
+<SPAN class=3D"nf">#login-header-below</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+=0A=
+<SPAN class=3D"c">/* Footer */</SPAN>=0A=
+=0A=
+<SPAN class=3D"nf">#login-footer</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+=0A=
+<SPAN class=3D"nf">#login-footer-below</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+=0A=
+<SPAN class=3D"c">/* Gallery */</SPAN>=0A=
+=0A=
+<SPAN class=3D"nc">.login-gallery</SPAN> <SPAN class=3D"p">{}</SPAN>=0A=
+=0A=
+<SPAN class=3D"nc">.login-gallery-other</SPAN> <SPAN =
+class=3D"p">{}</SPAN>=0A=
+</PRE></DIV>
+</DIV></DIV></DIV>
+<DIV id=3D"id19" class=3D"section">
+<H2>=E5=8F=82=E8=80=83=E6=96=87=E6=A1=A3<A class=3D"headerlink" =
+title=3D"Permalink to this headline" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id19">=C2=B6</A></H2>
+<P><A class=3D"reference external" =
+href=3D"http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xm=
+l">http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml</A>=
+</P>
+</DIV></DIV>
+<DIV class=3D"related">
+<H3>Navigation</H3>
+<UL>
+  <LI style=3D"margin-right: 10px;" class=3D"right"><A accessKey=3D"I" =
+title=3D"General Index"=20
+  =
+href=3D"http://docs.kissyui.com/docs/html/genindex.html">index</A></LI>
+  <LI class=3D"right"><A title=3D"Python Module Index" =
+href=3D"http://docs.kissyui.com/docs/html/py-modindex.html">modules</A>=20
+  | </LI>
+  <LI class=3D"right"><A accessKey=3D"N" title=3D"HTML =
+=E7=BC=96=E7=A0=81=E8=A7=84=E8=8C=83" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/html-codin=
+g-style.html">next</A>=20
+  | </LI>
+  <LI class=3D"right"><A accessKey=3D"P" =
+title=3D"=E9=80=9A=E7=94=A8=E7=BA=A6=E5=AE=9A" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/common-con=
+ventions.html">previous</A>=20
+  | </LI>
+  <LI><A href=3D"http://docs.kissyui.com/docs/html/index.html">KISSY =
+v1.3rc=20
+  Documentation</A> =C2=BB </LI>
+  <LI><A=20
+  =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/index.html">Tutorial<=
+/A> =C2=BB=20
+  </LI>
+  <LI><A accessKey=3D"U" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/index.html=
+">=E6=9C=80=E4=BD=B3=E7=BC=96=E7=A0=81=E5=AE=9E=E8=B7=B5</A>=20
+  =C2=BB </LI></UL></DIV>
+<DIV id=3D"disqus_thread"></DIV>
+<SCRIPT>if((window.location.hostname.indexOf("kissyui.com")!=3D-1 )&& =
+window.localStorage.getItem("kissy-commment")!=3D"0"){=0A=
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR =
+WEBPAGE * * */=0A=
+    var disqus_shortname =3D 'kissy-docs'; // required: replace example =
+with your forum shortname=0A=
+=0A=
+    // The following are highly recommended additional parameters. =
+Remove the slashes in front to use.=0A=
+     //var disqus_identifier =3D '/anim';=0A=
+     //var disqus_url =3D window.location;=0A=
+=0A=
+    /* * * DON'T EDIT BELOW THIS LINE * * */=0A=
+    (function() {=0A=
+        var dsq =3D document.createElement('script'); dsq.type =3D =
+'text/javascript'; dsq.async =3D true;=0A=
+        dsq.src =3D 'http://' + disqus_shortname + =
+'.disqus.com/embed.js';=0A=
+        (document.getElementsByTagName('head')[0] || =
+document.getElementsByTagName('body')[0]).appendChild(dsq);=0A=
+    })();=0A=
+    }=0A=
+</SCRIPT>
+<!--<div id=3D"google-search-box">=0A=
+    <div id=3D"cse" style=3D"width: 100%;">Loading</div>=0A=
+    <script>=0A=
+        if(window.location.hostname.indexOf("kissyui.com")!=3D-1){=0A=
+            document.write('<script src=3D"http://www.google.com/jsapi" =
+type=3D"text/javascript"><'+'/script>');=0A=
+        }=0A=
+    </script>=0A=
+    <script>=0A=
+        if(window.location.hostname.indexOf("kissyui.com")!=3D-1){=0A=
+            google.load('search', '1', {language : 'zh-CN', style : =
+google.loader.themes.MINIMALIST});=0A=
+            google.setOnLoadCallback(function() {=0A=
+                var customSearchControl =3D new =
+google.search.CustomSearchControl('012347804910294994683:n4uzb24gqdm');=0A=
+                =
+customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RE=
+SULTSET);=0A=
+                customSearchControl.draw('cse');=0A=
+            }, true);=0A=
+        }=0A=
+    </script>=0A=
+</div>--></DIV></DIV>
+<DIV class=3D"col-sub">
+<DIV class=3D"s-box">
+<DIV class=3D"s-box-bd">
+<UL class=3D"current">
+  <LI class=3D"toctree-l1"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/api/index.html">API=20
+  Documentation</A></LI>
+  <LI class=3D"toctree-l1"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/demo/index.html">Demos</A></LI>=
+
+  <LI class=3D"toctree-l1 current"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/index.html">Tutorial<=
+/A>
+  <UL class=3D"current">
+    <LI class=3D"toctree-l2"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/quickstart/index.html=
+">=E5=BF=AB=E9=80=9F=E4=B8=8A=E6=89=8B</A></LI>
+    <LI class=3D"toctree-l2"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/kissy/index.html">=E6=
+=A8=A1=E5=9D=97=E4=BB=8B=E7=BB=8D</A></LI>
+    <LI class=3D"toctree-l2 current"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/index.html=
+">=E6=9C=80=E4=BD=B3=E7=BC=96=E7=A0=81=E5=AE=9E=E8=B7=B5</A>
+    <UL class=3D"current">
+      <LI class=3D"toctree-l3"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/common-con=
+ventions.html">=E9=80=9A=E7=94=A8=E7=BA=A6=E5=AE=9A</A></LI>
+      <LI class=3D"toctree-l3 current"><A class=3D"current reference =
+internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/">CSS=20
+      =E7=BC=96=E7=A0=81=E8=A7=84=E8=8C=83</A></LI>
+      <LI class=3D"toctree-l3"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/html-codin=
+g-style.html">HTML=20
+      =E7=BC=96=E7=A0=81=E8=A7=84=E8=8C=83</A></LI>
+      <LI class=3D"toctree-l3"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/google-js-=
+style.html">Google=20
+      JavaScript =E8=A7=84=E8=8C=83</A></LI>
+      <LI class=3D"toctree-l3"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/js-lang-ru=
+les.html">JavaScript=20
+      =E8=AF=AD=E8=A8=80=E8=A7=84=E8=8C=83</A></LI>
+      <LI class=3D"toctree-l3"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/js-style-r=
+ules.html">JavaScript=20
+      =E7=BC=96=E7=A0=81=E9=A3=8E=E6=A0=BC</A></LI>
+      <LI class=3D"toctree-l3"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/kissy-sour=
+ce-style.html">KISSY=20
+      =E6=BA=90=E7=A0=81=E8=A7=84=E8=8C=83</A></LI></UL></LI>
+    <LI class=3D"toctree-l2"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/projguide/index.html"=
+>=E9=A1=B9=E7=9B=AE=E5=BC=80=E5=8F=91=E6=8C=87=E5=8D=97</A></LI>
+    <LI class=3D"toctree-l2"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/workflow/index.html">=
+=E7=BB=84=E4=BB=B6=E5=BC=80=E5=8F=91=E6=8C=87=E5=8D=97</A></LI>
+    <LI class=3D"toctree-l2"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/tools/index.html">=E5=
+=89=8D=E7=AB=AF=E5=B8=B8=E7=94=A8=E5=B7=A5=E5=85=B7</A></LI>
+    <LI class=3D"toctree-l2"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/changelog/1.3.html">K=
+ISSY=20
+    1.3rc =E5=8D=87=E7=BA=A7=E6=8C=87=E5=8D=97</A></LI>
+    <LI class=3D"toctree-l2"><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/changelog/1.3.html#ki=
+ssy-1-4-roadmap">KISSY=20
+    1.4 RoadMap</A></LI></UL></LI></UL></DIV></DIV></DIV>
+<DIV class=3D"col-extra">
+<DIV class=3D"s-box">
+<DIV class=3D"s-box-hd">
+<H3>=E6=9C=AC=E8=8A=82=E6=8F=90=E7=BA=B2</H3></DIV>
+<DIV class=3D"s-box-bd">
+<UL>
+  <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#">CSS=20
+  =E7=BC=96=E7=A0=81=E8=A7=84=E8=8C=83</A>
+  <UL>
+    <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id1">css=20
+    =E6=A0=A1=E9=AA=8C</A></LI>
+    <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id2">=E4=BB=A3=E7=A0=81=E8=A7=84=E8=8C=83</A>
+    <UL>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id3">=E4=B8=80=E8=88=AC=E6=80=A7=E5=91=BD=E5=90=8D</A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id">id=20
+      =E5=92=8C=E7=B1=BB=E7=9A=84=E5=91=BD=E5=90=8D</A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id4">=E5=85=83=E7=B4=A0=E9=80=89=E6=8B=A9=E5=99=A8</A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id6">=E7=AE=80=E5=86=99=E5=B1=9E=E6=80=A7=E5=90=8D=E5=AD=97</=
+A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id7">0=20
+      =E5=92=8C=E5=8D=95=E4=BD=8D</A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id8">0=20
+      =E5=89=8D=E7=BC=80=E6=83=85=E5=86=B5</A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id9">16=20
+      =
+=E8=BF=9B=E5=88=B6=E7=9A=84=E9=A2=9C=E8=89=B2=E5=80=BC=E8=A1=A8=E7=A4=BA<=
+/A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id10">=E5=89=8D=E7=BC=80</A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#hacks">hacks</A></LI>
+    </UL></LI>
+    <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id11">=E6=A0=BC=E5=BC=8F=E8=A7=84=E8=8C=83</A>
+    <UL>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id12">=E5=B1=9E=E6=80=A7=E5=A3=B0=E6=98=8E=E9=A1=BA=E5=BA=8F<=
+/A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id13">=E5=9D=97=E7=BC=A9=E8=BF=9B</A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id14">=E5=88=86=E5=8F=B7</A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id15">=E7=A9=BA=E6=A0=BC</A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id16">=E7=A9=BA=E8=A1=8C</A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id17">=E5=BC=95=E5=8F=B7</A></LI>
+      <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id18">=E6=B3=A8=E9=87=8A</A></LI>
+    </UL></LI>
+    <LI><A class=3D"reference internal" =
+href=3D"http://docs.kissyui.com/docs/html/tutorials/styleguide/css-coding=
+-style.html#id19">=E5=8F=82=E8=80=83=E6=96=87=E6=A1=A3</A></LI>
+  </UL></LI></UL></DIV></DIV></DIV></DIV>
+<SCRIPT>=0A=
+        if(!$.trim($(".col-extra").html())){=0A=
+            =
+$("#layout").removeClass("grid-s6m0e7").addClass("grid-s6m0");=0A=
+        }=0A=
+    </SCRIPT>
+</DIV>
+<DIV id=3D"footer">=C2=A9 Copyright 2010~2012, KISSY Team. Created using =
+<A href=3D"http://sphinx.pocoo.org/">Sphinx</A>
+</DIV></BODY></HTML>
+
+------=_NextPart_000_001E_01CDAAD5.CAFE1EA0
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://a.tbcdn.cn/s/kissy/logo.png
+
+iVBORw0KGgoAAAANSUhEUgAAAIcAAABBCAMAAADMiEeRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+bWFnZVJlYWR5ccllPAAAAYBQTFRF/f7/ULjt8fn+ktT0Xr3uC6Pqtdz11e37vub5kc3wfMvy3PD7
+ccnydcTvRbXsbsLvq932jNL0O7Ls5fX8icvwZMHv6fb9BaLpfcfv+Pz+Yr7uasPw2e77nNn27vj9
+ccXwweb5odLyHanqms/xls7xodj1s+D3EaXqxej5+v3+tOL44PL89Pr+QrTsyer6ndHxaMDu0Oj6
+PrPsS7nuLa7rgsjwXcDvzer6Kq3rYsPxSbbtic/zPLTtgszyueT50ez6mNb0Vr3v0uj6W7zuhtD0
+RbjuMbDsFabqJ6zrpNv2hM3yzez6uuH3ntf00+v7ptz20Ov65vP7hcnwKa/s4vT8mdHxrt/3Wbzu
+eMfwVLvuQrbtNLPtp9XyOLPtV7vtNLDsMa/rTLftN7HsVLrtJKvrZb/uGKfqjsvwecXvIKrr9/z+
+1+/7WL/vFajrULvuO7TtNrPtyOX3MbDrNrHrV7vuWr/ww+P2+Pv+4/P80+r5jM3xf87z+/7/L6/s
+0ej6////UNS/nAAABc5JREFUeNrMmf9f2kYYx1PiSgquQilZ+WJAV5GQjEq1+AVFjGDVotba+YVq
+V9u126B1X7t2c83967svgTwHAbfXC0g/P9S753nu7p27y90TKqCrpXhzpmnmdrU6rcpxVt1HfZRw
+dYiWM0wiwzBlhOrxnEHrhhkXhsmhmS0ZOVnfNeyqVxgeh5IzIAismUZoaByCFw5MVgNWdofG4cmZ
+3WXkPMPi+Gj04DBzyrA4/L05+j4fH/b35YiDXx4qx371dGJi4vT6X3rn69Jrf+wK/eSI/HmvqdNc
+W8//mD0mpL/v7Yfr94CqbSBad47+nmOR619z+pUPiDzuBmIYej/Pde/pKccxofIRoS4rY5ge1E8O
+VY1U7wK1c+ALxhg4Bntf4j050Mec4fCq6KjvHP4bQPc6OJAeN9tvmbiKBszxrdMI/CYxchpCA+CI
+/wDkyIG4vMMMocFw3Aa66zzjKkgAPiL3OJAQt0AMPxoUxxOgG912oAVi9DMt5Tm8D4D+7vomUBDD
+VNHAOO4AdecgSWIfU7ArOG73eN76YyOEBsjxI9CTSK/sXUMD5Nj9EuhBBLkgyrH6mXA8HgO685lw
+HLvIMQPU4lBk/utEq4pioNrgTzElXk3tlALV6rzcdrx5/NUq9WRl4T9yzL8GSjCO7EpsZmY71coy
+ZNHyb8/brVdLY612MyspcLR4Swnb8yBAnsi/M2Vrp2oFJml1j3FEgSwOzzGtHXutEcfsiFLdSgYK
+UV6JbBM62OYZS+Jw3sQOIo1VRMqRHQEas9Zlh1WjaVJJR2FIgYb4YyMdWmWAiU4P7qbAGbbocqyw
+QTTGsQ4UsziCVn0EX6/JdV4SmbAEZ5p5Tf5NkHXUjx08MQ+SeDNZRcsUZPsj+xwozDhCI03DNn6+
+57wOccAWNCT8ikINZLZT0BNrKEqAFDSkRLlO8A5RwqzotTheATEO3dcyHIUEvbENQ15hDnUMGgqk
+TcaXSOH+hGPoWSGeoi8RwJ4C10lCRSIr+az3JX0NKFqnGMBC8h41DGMwh74ODX9IdvoeiULPq4zt
+SV7j5PVbhfkmxznQOp4PZRQYwrSjGIwJYDDOcH6e95Uk9goIx7xnxCcW2fXoOeIcPmuUhNDkWAI6
+EtDTGDRItA/OhDmQuNSh822ZhE45eHxPiaew5CSpeY4lb0KtlE5gdZvNaRja9sibv3SzU3Tu5GsO
+nhFylKVvOrVRWxzfdFfeWt4wNO7RVicO4QG6748cPONk2zk1SbXO9eT9rlpqWHssD617bLmnTjri
+YyxvC6x1ePJ0YTpHONFtjlvdVEs393oemulZKMvIE8i3NXjLbkikH4bbPBdkvGznEFv2PSe97KZa
+Kw98C82krVS7j6daPbzPNZhVyC64JeKeMzXOc4u8/vWL9hEqHsDxXVddNO/+NWidIj3iv2TNy1x8
+TUHCe/xXJDcD53lJH6nQPkAJ3PvSC6i132Ft1EoeTqARj6/XqDctj3KNF/EUzZJCTJJ9fLfs6H7B
+a1kGHMU5qFKJqwZZ4AW0kXkQWfGMC/7tEfaMO3k+sZ0WmeWsc2WYBxUXoILoPVdPMQ5oIhz1xYUO
+zWXoJ/lop2dhzxqwzFk3NI5jE6qMtGewvkCeEVWgaZw+2uXcJq9K0vptoPypzbNcbO73R5x9lMsL
+M99D4ak6XAY6e0+2dJ4UN3BTEmJtrsZlbdNu93PQzmf95QrwvCzL9u8XFTDUZoPj0ERRLEpUyaRE
+pioCpZMglZRC3kYjm04nQ/avItL4KJWvyGfVaqPlycjQUf7J1uL/+X+x/n0b6Dq+yx9N2sq6wVGc
+3dg4u/Soyy2MNeQCR/EN1SW6fNOU5AKHuvyQ6gxl37DSw4rgAod3mmnyqXBgFQ+RCxyr1uDTElpk
+hWcRNzj8018w/bJVYYVx5AYHskZv6UB3hyPTxhFE7nCgt19BTSpuccjPIMc4cosDf529a2GUkXsc
++ON9b7E2+e7hQSzb7vlXgAEAIo+kjrQ9VoEAAAAASUVORK5CYII=
+
+------=_NextPart_000_001E_01CDAAD5.CAFE1EA0
+Content-Type: text/css;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://a.tbcdn.cn/s/kissy/1.2.0/css/reset.css
+
+body {
+	margin: 0px; padding: 0px;
+}
+h1 {
+	margin: 0px; padding: 0px;
+}
+h2 {
+	margin: 0px; padding: 0px;
+}
+h3 {
+	margin: 0px; padding: 0px;
+}
+h4 {
+	margin: 0px; padding: 0px;
+}
+h5 {
+	margin: 0px; padding: 0px;
+}
+h6 {
+	margin: 0px; padding: 0px;
+}
+hr {
+	margin: 0px; padding: 0px;
+}
+p {
+	margin: 0px; padding: 0px;
+}
+blockquote {
+	margin: 0px; padding: 0px;
+}
+dl {
+	margin: 0px; padding: 0px;
+}
+dt {
+	margin: 0px; padding: 0px;
+}
+dd {
+	margin: 0px; padding: 0px;
+}
+ul {
+	margin: 0px; padding: 0px;
+}
+ol {
+	margin: 0px; padding: 0px;
+}
+li {
+	margin: 0px; padding: 0px;
+}
+pre {
+	margin: 0px; padding: 0px;
+}
+form {
+	margin: 0px; padding: 0px;
+}
+fieldset {
+	margin: 0px; padding: 0px;
+}
+legend {
+	margin: 0px; padding: 0px;
+}
+button {
+	margin: 0px; padding: 0px;
+}
+input {
+	margin: 0px; padding: 0px;
+}
+textarea {
+	margin: 0px; padding: 0px;
+}
+th {
+	margin: 0px; padding: 0px;
+}
+td {
+	margin: 0px; padding: 0px;
+}
+body {
+	font: 12px/1.5 tahoma, arial, =CB=CE=CC=E5, sans-serif; =
+font-size-adjust: none; font-stretch: normal;
+}
+button {
+	font: 12px/1.5 tahoma, arial, =CB=CE=CC=E5, sans-serif; =
+font-size-adjust: none; font-stretch: normal;
+}
+input {
+	font: 12px/1.5 tahoma, arial, =CB=CE=CC=E5, sans-serif; =
+font-size-adjust: none; font-stretch: normal;
+}
+select {
+	font: 12px/1.5 tahoma, arial, =CB=CE=CC=E5, sans-serif; =
+font-size-adjust: none; font-stretch: normal;
+}
+textarea {
+	font: 12px/1.5 tahoma, arial, =CB=CE=CC=E5, sans-serif; =
+font-size-adjust: none; font-stretch: normal;
+}
+h1 {
+	font-size: 100%;
+}
+h2 {
+	font-size: 100%;
+}
+h3 {
+	font-size: 100%;
+}
+h4 {
+	font-size: 100%;
+}
+h5 {
+	font-size: 100%;
+}
+h6 {
+	font-size: 100%;
+}
+address {
+	font-style: normal;
+}
+cite {
+	font-style: normal;
+}
+dfn {
+	font-style: normal;
+}
+em {
+	font-style: normal;
+}
+var {
+	font-style: normal;
+}
+code {
+	font-family: courier new, courier, monospace;
+}
+kbd {
+	font-family: courier new, courier, monospace;
+}
+pre {
+	font-family: courier new, courier, monospace;
+}
+samp {
+	font-family: courier new, courier, monospace;
+}
+small {
+	font-size: 12px;
+}
+ul {
+	list-style: none;
+}
+ol {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+sup {
+	vertical-align: text-top;
+}
+sub {
+	vertical-align: text-bottom;
+}
+legend {
+	color: rgb(0, 0, 0);
+}
+fieldset {
+	border: 0px currentColor;
+}
+img {
+	border: 0px currentColor;
+}
+button {
+	font-size: 100%;
+}
+input {
+	font-size: 100%;
+}
+select {
+	font-size: 100%;
+}
+textarea {
+	font-size: 100%;
+}
+table {
+	border-collapse: collapse; border-spacing: 0;
+}
+article {
+	margin: 0px; padding: 0px; display: block;
+}
+aside {
+	margin: 0px; padding: 0px; display: block;
+}
+details {
+	margin: 0px; padding: 0px; display: block;
+}
+figcaption {
+	margin: 0px; padding: 0px; display: block;
+}
+figure {
+	margin: 0px; padding: 0px; display: block;
+}
+footer {
+	margin: 0px; padding: 0px; display: block;
+}
+header {
+	margin: 0px; padding: 0px; display: block;
+}
+hgroup {
+	margin: 0px; padding: 0px; display: block;
+}
+menu {
+	margin: 0px; padding: 0px; display: block;
+}
+nav {
+	margin: 0px; padding: 0px; display: block;
+}
+section {
+	margin: 0px; padding: 0px; display: block;
+}
+summary {
+	margin: 0px; padding: 0px; display: block;
+}
+time {
+	margin: 0px; padding: 0px; display: block;
+}
+mark {
+	margin: 0px; padding: 0px; display: block;
+}
+audio {
+	margin: 0px; padding: 0px; display: block;
+}
+video {
+	margin: 0px; padding: 0px; display: block;
+}
+mark {
+	background: rgb(255, 255, 0);
+}
+
+------=_NextPart_000_001E_01CDAAD5.CAFE1EA0
+Content-Type: text/css;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.kissyui.com/docs/html/_static/kissy.css
+
+body {
+	padding: 0px 10px; color: rgb(68, 68, 68); font-size: 14px;
+}
+p.rubric {
+	font-weight: bold; margin-top: 30px;
+}
+body {
+	font: 14px/1.5 tahoma, arial, =CB=CE=CC=E5, sans-serif; =
+font-size-adjust: none; font-stretch: normal;
+}
+button {
+	font: 14px/1.5 tahoma, arial, =CB=CE=CC=E5, sans-serif; =
+font-size-adjust: none; font-stretch: normal;
+}
+input {
+	font: 14px/1.5 tahoma, arial, =CB=CE=CC=E5, sans-serif; =
+font-size-adjust: none; font-stretch: normal;
+}
+select {
+	font: 14px/1.5 tahoma, arial, =CB=CE=CC=E5, sans-serif; =
+font-size-adjust: none; font-stretch: normal;
+}
+textarea {
+	font: 14px/1.5 tahoma, arial, =CB=CE=CC=E5, sans-serif; =
+font-size-adjust: none; font-stretch: normal;
+}
+.align-left {
+	text-align: left;
+}
+.align-center {
+	text-align: center; clear: both;
+}
+.align-right {
+	text-align: right;
+}
+div.topic {
+	margin: 10px 0px; padding: 7px 7px 0px; border: 1px solid rgb(204, 204, =
+204);
+}
+p.topic-title {
+	font-size: 14px; font-weight: bold; margin-top: 10px;
+}
+div.admonition {
+	padding: 7px; font-size: 12px; margin-top: 10px; margin-bottom: 10px;
+}
+div.admonition dt {
+	font-weight: bold;
+}
+p.admonition-title {
+	margin: 0px 10px 5px 0px; font-weight: bold;
+}
+table.docutils {
+	border: 0px currentColor; border-collapse: collapse;
+}
+table.docutils td {
+	border-width: 0px 0px 1px; border-style: none none solid; border-color: =
+currentColor currentColor rgb(170, 170, 170);
+}
+table.docutils th {
+	border-width: 0px 0px 1px; border-style: none none solid; border-color: =
+currentColor currentColor rgb(170, 170, 170);
+}
+table.field-list td {
+	border: 0px currentColor !important;
+}
+table.field-list th {
+	border: 0px currentColor !important;
+}
+table .field-body {
+	padding-left: 20px;
+}
+table.footnote td {
+	border: 0px currentColor !important;
+}
+table.footnote th {
+	border: 0px currentColor !important;
+}
+th {
+	text-align: left; padding-right: 5px;
+}
+table.citation {
+	margin-left: 1px; border-left-color: gray; border-left-width: 1px; =
+border-left-style: solid;
+}
+table.citation td {
+	border-bottom-color: currentColor; border-bottom-width: medium; =
+border-bottom-style: none;
+}
+ul ul {
+	margin-left: 20px;
+}
+ol.arabic {
+	list-style: decimal inside;
+}
+ol.loweralpha {
+	list-style: lower-alpha;
+}
+ol.upperalpha {
+	list-style: upper-alpha;
+}
+ol.lowerroman {
+	list-style: lower-roman;
+}
+ol.upperroman {
+	list-style: upper-roman;
+}
+dt:target {
+	background-color: rgb(255, 252, 219);
+}
+.highlighted {
+	background-color: rgb(255, 252, 219);
+}
+.refcount {
+	color: rgb(0, 102, 0);
+}
+.optional {
+	font-weight: bold;
+}
+.system-message {
+	padding: 5px; border: 3px solid red; background-color: rgb(255, 221, =
+170);
+}
+:target.footnote {
+	background-color: rgb(255, 255, 170);
+}
+.guilabel {
+	font-family: sans-serif;
+}
+.menuselection {
+	font-family: sans-serif;
+}
+.accelerator {
+	text-decoration: underline;
+}
+.classifier {
+	font-style: oblique;
+}
+pre {
+	overflow: auto;
+}
+td.linenos pre {
+	padding: 5px 0px; border: 0px currentColor; color: rgb(170, 170, 170); =
+background-color: transparent;
+}
+table.highlighttable {
+	margin-left: 0.5em;
+}
+table.highlighttable td {
+	padding: 0px 0.5em;
+}
+.viewcode-link {
+	float: right;
+}
+.viewcode-back {
+	font-family: sans-serif; float: right;
+}
+div:target.viewcode-block {
+	margin: -1px -10px; padding: 0px 10px;
+}
+a:link {
+	color: rgb(0, 160, 233);
+}
+a:visited {
+	color: rgb(0, 160, 233);
+}
+a:hover {
+	color: rgb(255, 102, 0);
+}
+a:active {
+	color: rgb(255, 102, 0);
+}
+a.headerlink {
+	visibility: hidden;
+}
+h1:hover > a.headerlink {
+	visibility: visible;
+}
+h2:hover > a.headerlink {
+	visibility: visible;
+}
+h3:hover > a.headerlink {
+	visibility: visible;
+}
+h4:hover > a.headerlink {
+	visibility: visible;
+}
+h5:hover > a.headerlink {
+	visibility: visible;
+}
+h6:hover > a.headerlink {
+	visibility: visible;
+}
+dt:hover > a.headerlink {
+	visibility: visible;
+}
+h1 {
+	padding: 8px 0px; font-family: tahoma, "Microsoft YaHei", sans-serif; =
+font-size: 18px;
+}
+h2 {
+	padding: 8px 0px; font-family: tahoma, "Microsoft YaHei", sans-serif; =
+font-size: 18px;
+}
+h3 {
+	padding: 8px 0px; font-family: tahoma, "Microsoft YaHei", sans-serif; =
+font-size: 18px;
+}
+h3 {
+	font-size: 16px; font-weight: bold;
+}
+h4 {
+	font-size: 14px; font-weight: bold;
+}
+h1 a.anchor {
+	margin: 0px 0px 0px 0.3em; padding: 0px 0.2em; color: rgb(170, 170, =
+170) !important; display: none;
+}
+h2 a.anchor {
+	margin: 0px 0px 0px 0.3em; padding: 0px 0.2em; color: rgb(170, 170, =
+170) !important; display: none;
+}
+h3 a.anchor {
+	margin: 0px 0px 0px 0.3em; padding: 0px 0.2em; color: rgb(170, 170, =
+170) !important; display: none;
+}
+h4 a.anchor {
+	margin: 0px 0px 0px 0.3em; padding: 0px 0.2em; color: rgb(170, 170, =
+170) !important; display: none;
+}
+h5 a.anchor {
+	margin: 0px 0px 0px 0.3em; padding: 0px 0.2em; color: rgb(170, 170, =
+170) !important; display: none;
+}
+h6 a.anchor {
+	margin: 0px 0px 0px 0.3em; padding: 0px 0.2em; color: rgb(170, 170, =
+170) !important; display: none;
+}
+h1:hover a.anchor {
+	display: inline;
+}
+h2:hover a.anchor {
+	display: inline;
+}
+h3:hover a.anchor {
+	display: inline;
+}
+h4:hover a.anchor {
+	display: inline;
+}
+h5:hover a.anchor {
+	display: inline;
+}
+h6:hover a.anchor {
+	display: inline;
+}
+h1 a.anchor:hover {
+	color: rgb(119, 119, 119); background-color: rgb(238, 238, 238);
+}
+h2 a.anchor:hover {
+	color: rgb(119, 119, 119); background-color: rgb(238, 238, 238);
+}
+h3 a.anchor:hover {
+	color: rgb(119, 119, 119); background-color: rgb(238, 238, 238);
+}
+h4 a.anchor:hover {
+	color: rgb(119, 119, 119); background-color: rgb(238, 238, 238);
+}
+h5 a.anchor:hover {
+	color: rgb(119, 119, 119); background-color: rgb(238, 238, 238);
+}
+h6 a.anchor:hover {
+	color: rgb(119, 119, 119); background-color: rgb(238, 238, 238);
+}
+.col-sub h2.s-box-hd {
+	color: rgb(136, 136, 136);
+}
+a.headerlink {
+	padding: 0px 4px; font-size: 1em; text-decoration: none !important; =
+margin-left: 6px;
+}
+a.headerlink:hover {
+	color: white; background-color: rgb(204, 204, 204);
+}
+hr {
+	margin: 10px 0px; border: 1px solid rgb(204, 204, 204);
+}
+pre {
+	background: rgb(248, 248, 246); font: 14px/1.5 "Consolas", "Deja Vu =
+Sans Mono", "Bitstream Vera Sans Mono", monospace; padding: 10px; =
+border-radius: 2px; border: 1px solid rgb(209, 209, 209); =
+font-size-adjust: none; font-stretch: normal; -webkit-border-radius: =
+2px; -moz-border-radius: 2px;
+}
+pre a {
+	color: inherit; text-decoration: underline;
+}
+td.linenos pre {
+	padding: 0.5em 0px;
+}
+div.quotebar {
+	padding: 2px 7px; border: 1px solid rgb(204, 204, 204); float: right; =
+max-width: 250px; background-color: rgb(248, 248, 248);
+}
+div.topic {
+	background-color: rgb(248, 248, 248);
+}
+table {
+	margin: 0px -0.5em; border-collapse: collapse;
+}
+table td {
+	padding: 0.2em 0.5em;
+}
+table th {
+	padding: 0.2em 0.5em;
+}
+table.highlighttable {
+	width: 100%;
+}
+div.admonition {
+	margin: 1em 0px; padding: 0px; border: 1px solid rgb(209, 209, 209); =
+background-color: rgb(248, 248, 246);
+}
+div.warning {
+	margin: 1em 0px; padding: 0px; border: 1px solid rgb(209, 209, 209); =
+background-color: rgb(248, 248, 246);
+}
+div.admonition p {
+	margin: 0.5em 1em; padding: 0px;
+}
+div.warning p {
+	margin: 0.5em 1em; padding: 0px;
+}
+div.admonition pre {
+	margin: 0.4em 1em;
+}
+div.warning pre {
+	margin: 0.4em 1em;
+}
+div.admonition p.admonition-title {
+	margin: 0px; padding: 0.2em 0px 0.2em 0.5em; font-weight: bold; =
+border-bottom-color: rgb(209, 209, 209); border-bottom-width: 1px; =
+border-bottom-style: solid; background-color: rgb(238, 238, 238);
+}
+div.warning p.admonition-title {
+	margin: 0px; padding: 0.2em 0px 0.2em 0.5em; font-weight: bold; =
+border-bottom-color: rgb(209, 209, 209); border-bottom-width: 1px; =
+border-bottom-style: solid; background-color: rgb(238, 238, 238);
+}
+div.warning {
+	border: 1px solid rgb(102, 0, 0);
+}
+div.warning p.admonition-title {
+	color: white; border-bottom-color: rgb(102, 0, 0); background-color: =
+rgb(255, 102, 0);
+}
+div.admonition ul {
+	margin: 6px 0px 6px 20px; padding: 0px;
+}
+div.admonition ol {
+	margin: 6px 0px 6px 20px; padding: 0px;
+}
+div.admonition dl {
+	margin: 6px 0px 6px 20px; padding: 0px;
+}
+div.warning ul {
+	margin: 6px 0px 6px 20px; padding: 0px;
+}
+div.warning ol {
+	margin: 6px 0px 6px 20px; padding: 0px;
+}
+div.attention {
+	border: 1px solid rgb(0, 102, 204);
+}
+div.attention p.admonition-title {
+	color: white; border-bottom-color: rgb(0, 102, 204); background-color: =
+rgb(77, 169, 255);
+}
+div.caution {
+	border: 1px solid rgb(93, 8, 128);
+}
+div.caution p.admonition-title {
+	color: white; border-bottom-color: rgb(93, 8, 128); background-color: =
+rgb(164, 100, 224);
+}
+div.danger {
+	border: 1px solid rgb(147, 1, 39);
+}
+div.danger p.admonition-title {
+	color: white; border-bottom-color: rgb(147, 1, 39); background-color: =
+rgb(254, 119, 154);
+}
+div.important {
+	border: 1px solid rgb(26, 99, 3);
+}
+div.important p.admonition-title {
+	color: white; border-bottom-color: rgb(26, 99, 3); background-color: =
+rgb(91, 152, 59);
+}
+div.hint {
+	border: 1px solid rgb(123, 163, 15);
+}
+div.hint p.admonition-title {
+	border-bottom-color: rgb(123, 163, 15); background-color: rgb(210, 234, =
+147);
+}
+div.error {
+	border: 1px solid rgb(171, 1, 58);
+}
+div.error p.admonition-title {
+	color: white; border-bottom-color: rgb(171, 1, 58); background-color: =
+rgb(211, 91, 148);
+}
+div.tip {
+	border: 1px solid rgb(155, 215, 3);
+}
+div.tip p.admonition-title {
+	border-bottom-color: rgb(155, 215, 3); background-color: rgb(243, 250, =
+162);
+}
+div.versioninfo {
+	margin: 1em 0px 0px; padding: 8px; border: 1px solid rgb(204, 204, =
+204); line-height: 1.5em; font-size: 12px; background-color: rgb(221, =
+234, 240);
+}
+.viewcode-back {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Geneva", =
+"Verdana", sans-serif;
+}
+div:target.viewcode-block {
+	border-top-color: rgb(170, 204, 153); border-bottom-color: rgb(170, =
+204, 153); border-top-width: 1px; border-bottom-width: 1px; =
+border-top-style: solid; border-bottom-style: solid; background-color: =
+rgb(244, 222, 191);
+}
+div.describ {
+	padding: 10px; border-radius: 3px; border: 1px solid rgb(209, 209, =
+209); -webkit-border-radius: 3px; -moz-border-radius: 3px;
+}
+div.demo {
+	background: rgb(248, 248, 246); margin: 8px 0px; padding: 10px; =
+border-radius: 2px; border: 1px solid rgb(209, 209, 209); =
+-webkit-border-radius: 2px; -moz-border-radius: 2px;
+}
+.highlight .c1 {
+	font-style: normal !important;
+}
+.highlight .cm {
+	font-style: normal !important;
+}
+.highlight {
+	margin: 8px 0px;
+}
+.main-wrap > .section > .section > blockquote {
+	margin-left: 30px;
+}
+.main-wrap > .section > .section > dl {
+	margin-left: 30px;
+}
+.main-wrap > .section > .section > .toctree-wrapper {
+	margin-left: 30px;
+}
+.section blockquote {
+	margin-left: 30px;
+}
+.section .section .section {
+	margin-left: 30px;
+}
+.main-wrap > .section > .section {
+	margin-top: 10px; margin-bottom: 10px;
+}
+.main-wrap > .section > dl {
+	margin-bottom: 16px; border-bottom-color: rgb(204, 204, 204); =
+border-bottom-width: 1px; border-bottom-style: dotted;
+}
+.main-wrap > .section > .line-block {
+	font-size: 12px; margin-left: 30px;
+}
+.main-wrap > .section > .versionadded {
+	font-size: 12px; margin-left: 30px;
+}
+tt {
+	font-family: arial;
+}
+tt.descclassname {
+	color: rgb(159, 42, 42);
+}
+tt.descname {
+	color: rgb(159, 42, 42);
+}
+tt.descclassname {
+	font-weight: bold;
+}
+tt.descname {
+	font-weight: bold;
+}
+tt.xref {
+	font-weight: bold;
+}
+.versionchanged tt {
+	font-weight: normal;
+}
+.versionchanged {
+	margin: 10px 0px;
+}
+.versionadded {
+	margin: 10px 0px;
+}
+.versionmodified {
+	margin: 10px 0px;
+}
+.versionmodified {
+	color: red;
+}
+.versionmodified {
+	background: rgb(255, 255, 102);
+}
+.section > h1 + .versionadded {
+	background: rgb(255, 255, 102);
+}
+dl.function {
+	padding-bottom: 15px; margin-bottom: 15px; border-bottom-color: =
+rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: =
+dotted;
+}
+dl.class {
+	padding-bottom: 15px; margin-bottom: 15px; border-bottom-color: =
+rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: =
+dotted;
+}
+dl.attribute {
+	padding-bottom: 15px; margin-bottom: 15px; border-bottom-color: =
+rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: =
+dotted;
+}
+dl.data {
+	padding-bottom: 15px; margin-bottom: 15px; border-bottom-color: =
+rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: =
+dotted;
+}
+dl.method {
+	padding-bottom: 15px; margin-bottom: 15px; border-bottom-color: =
+rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: =
+dotted;
+}
+dl.staticmethod {
+	padding-bottom: 15px; margin-bottom: 15px; border-bottom-color: =
+rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: =
+dotted;
+}
+dl.function dt big {
+	display: none;
+}
+dl.class dt big {
+	display: none;
+}
+dl.method dt big {
+	display: none;
+}
+dl.staticmethod dt big {
+	display: none;
+}
+dl.function dd {
+	margin: 0px 0px 0px 30px;
+}
+dl.class dd {
+	margin: 0px 0px 0px 30px;
+}
+dl.attribute dd {
+	margin: 0px 0px 0px 30px;
+}
+dl.data dd {
+	margin: 0px 0px 0px 30px;
+}
+dl.method dd {
+	margin: 0px 0px 0px 30px;
+}
+dl.staticmethod dd {
+	margin: 0px 0px 0px 30px;
+}
+dl.function dd > .line-block {
+	margin: 10px 0px;
+}
+dl.class dd > .line-block {
+	margin: 10px 0px;
+}
+dl.method dd > .line-block {
+	margin: 10px 0px;
+}
+dl.staticmethod dd > .line-block {
+	margin: 10px 0px;
+}
+dl.function dd > .line-block :first-child.line {
+	padding-left: 6px; border-left-color: rgb(164, 211, 242); =
+border-left-width: 3px; border-left-style: solid;
+}
+dl.class dd > .line-block :first-child.line {
+	padding-left: 6px; border-left-color: rgb(164, 211, 242); =
+border-left-width: 3px; border-left-style: solid;
+}
+dl.method dd > .line-block :first-child.line {
+	padding-left: 6px; border-left-color: rgb(164, 211, 242); =
+border-left-width: 3px; border-left-style: solid;
+}
+dl.staticmethod dd > .line-block :first-child.line {
+	padding-left: 6px; border-left-color: rgb(164, 211, 242); =
+border-left-width: 3px; border-left-style: solid;
+}
+li > tt.literal {
+	color: rgb(68, 68, 68); font-family: "Verdana"; background-color: =
+rgb(240, 240, 240);
+}
+p > tt.literal {
+	color: rgb(68, 68, 68); font-family: "Verdana"; background-color: =
+rgb(240, 240, 240);
+}
+.col-main {
+	width: 100%; float: left; min-height: 1px;
+}
+.col-sub {
+	float: left;
+}
+.col-extra {
+	float: left;
+}
+.layout::after {
+	height: 0px; clear: both; display: block; content: "\20";
+}
+.main-wrap::after {
+	height: 0px; clear: both; display: block; content: "\20";
+}
+.col-sub::after {
+	height: 0px; clear: both; display: block; content: "\20";
+}
+.col-extra::after {
+	height: 0px; clear: both; display: block; content: "\20";
+}
+.layout {
+=09
+}
+.main-wrap {
+=09
+}
+.col-sub {
+=09
+}
+.col-extra {
+=09
+}
+.grid-s6m0e7 .main-wrap {
+	padding-right: 10px; padding-left: 10px; margin-right: 260px; =
+margin-left: 210px;
+}
+.grid-s6m0 .main-wrap {
+	padding-left: 10px; margin-left: 210px;
+}
+.grid-s6m0e7 .col-sub {
+	width: 200px; margin-left: -100%;
+}
+.grid-s6m0 .col-sub {
+	width: 200px; margin-left: -100%;
+}
+.grid-s6m0e7 .col-extra {
+	width: 248px; margin-left: -250px;
+}
+#header {
+	color: rgb(136, 136, 136); overflow: hidden; border-bottom-color: =
+rgb(164, 211, 242); border-bottom-width: 1px; border-bottom-style: =
+solid;
+}
+#header .logo {
+	margin: 20px 0px 0px; padding: 0px; border: currentColor; float: left;
+}
+#header .sub-title {
+	font: 25px/normal "Microsoft YaHei"; margin: 45px 5px 0px; color: =
+rgb(170, 170, 170); float: left; font-size-adjust: none; font-stretch: =
+normal;
+}
+#header .desc {
+	margin-top: 50px; margin-left: 5px; float: left;
+}
+#header .navigation {
+	list-style: none; margin: 53px 0px 0px; overflow: hidden; float: right;
+}
+#header .navigation li {
+	padding: 0px 10px; line-height: 1.1em; font-weight: bold; margin-left: =
+-1px; border-left-color: rgb(221, 221, 221); border-left-width: 1px; =
+border-left-style: solid; float: left;
+}
+.col-sub {
+	background: rgb(242, 248, 250); border-width: medium 1px 1px; =
+border-style: none solid solid; border-color: currentColor rgb(164, 211, =
+242) rgb(164, 211, 242);
+}
+.col-extra {
+	background: rgb(242, 248, 250); border-width: medium 1px 1px; =
+border-style: none solid solid; border-color: currentColor rgb(164, 211, =
+242) rgb(164, 211, 242);
+}
+#footer {
+	padding: 30px 0px; text-align: center; color: rgb(136, 136, 136); =
+clear: both; margin-top: 20px; border-top-color: rgb(204, 204, 204); =
+border-top-width: 1px; border-top-style: solid;
+}
+#footer a {
+	color: rgb(136, 136, 136);
+}
+.s-box .s-box-hd h3 {
+	font: bold 16px/normal "Microsoft YaHei"; margin: 0px; =
+font-size-adjust: none; font-stretch: normal;
+}
+.s-box .s-box-bd {
+	overflow: hidden;
+}
+.col-sub .s-box {
+	margin-bottom: 10px; margin-left: 10px;
+}
+.col-extra .s-box {
+	margin-bottom: 10px; margin-left: 10px;
+}
+.col-sub .s-box .box-hd {
+	color: rgb(68, 68, 68);
+}
+.col-extra .s-box .box-hd {
+	color: rgb(68, 68, 68);
+}
+tt.descclassname {
+	display: none;
+}
+em.property {
+	display: none;
+}
+div.related {
+	margin: 6px 0px 20px;
+}
+div.related h3 {
+	display: none;
+}
+div.related ul {
+	list-style: none; margin: 0px; padding: 0px 0px 0px 10px;
+}
+div.related li {
+	display: inline;
+}
+div.related li.right {
+	margin-right: 5px; float: right;
+}
+div.related ul {
+	list-style: none; padding: 0px; height: 2em; border-bottom-color: =
+rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: =
+dotted;
+}
+div.related ul li {
+	list-style: none; margin: 0px; padding: 0px; height: 2em; float: left;
+}
+div.related ul li.right {
+	margin-right: 5px; float: right;
+}
+div.related ul li a {
+	margin: 0px; padding: 0px 5px; color: rgb(128, 194, 105); line-height: =
+1.75em;
+}
+div.related ul li a:hover {
+	color: rgb(255, 102, 0);
+}
+.col-sub li {
+	white-space: nowrap;
+}
+#searchbox {
+	top: 15px; right: 22px; position: absolute;
+}
+.searchbox input {
+	border: 1px solid rgb(153, 153, 153); height: 20px; line-height: 20px; =
+vertical-align: middle;
+}
+#search-results {
+	margin-top: 20px;
+}
+#searchbox2 {
+	margin-top: 20px;
+}
+#search-results .search li span {
+	display: none;
+}
+#search-results .search li .context {
+	display: none;
+}
+.iframe-demo {
+	border: 2px solid rgb(204, 204, 255);
+}
+.section .section .data .simple li {
+	list-style-image: url("bullet.gif");
+}
+
+------=_NextPart_000_001E_01CDAAD5.CAFE1EA0
+Content-Type: text/css;
+	charset="gb2312"
+Content-Transfer-Encoding: 7bit
+Content-Location: http://docs.kissyui.com/docs/html/_static/pygments.css
+
+.highlight .hll {
+	background-color: rgb(255, 255, 204);
+}
+.highlight .c {
+	color: rgb(0, 153, 255); font-style: italic;
+}
+.highlight .err {
+	color: rgb(170, 0, 0); background-color: rgb(255, 170, 170);
+}
+.highlight .k {
+	color: rgb(0, 102, 153); font-weight: bold;
+}
+.highlight .o {
+	color: rgb(85, 85, 85);
+}
+.highlight .cm {
+	color: rgb(0, 153, 255); font-style: italic;
+}
+.highlight .cp {
+	color: rgb(0, 153, 153);
+}
+.highlight .c1 {
+	color: rgb(0, 153, 255); font-style: italic;
+}
+.highlight .cs {
+	color: rgb(0, 153, 255); font-style: italic; font-weight: bold;
+}
+.highlight .gd {
+	border: 1px solid rgb(204, 0, 0); background-color: rgb(255, 204, 204);
+}
+.highlight .ge {
+	font-style: italic;
+}
+.highlight .gr {
+	color: rgb(255, 0, 0);
+}
+.highlight .gh {
+	color: rgb(0, 51, 0); font-weight: bold;
+}
+.highlight .gi {
+	border: 1px solid rgb(0, 204, 0); background-color: rgb(204, 255, 204);
+}
+.highlight .go {
+	color: rgb(170, 170, 170);
+}
+.highlight .gp {
+	color: rgb(0, 0, 153); font-weight: bold;
+}
+.highlight .gs {
+	font-weight: bold;
+}
+.highlight .gu {
+	color: rgb(0, 51, 0); font-weight: bold;
+}
+.highlight .gt {
+	color: rgb(153, 204, 102);
+}
+.highlight .kc {
+	color: rgb(0, 102, 153); font-weight: bold;
+}
+.highlight .kd {
+	color: rgb(0, 102, 153); font-weight: bold;
+}
+.highlight .kn {
+	color: rgb(0, 102, 153); font-weight: bold;
+}
+.highlight .kp {
+	color: rgb(0, 102, 153);
+}
+.highlight .kr {
+	color: rgb(0, 102, 153); font-weight: bold;
+}
+.highlight .kt {
+	color: rgb(0, 119, 136); font-weight: bold;
+}
+.highlight .m {
+	color: rgb(255, 102, 0);
+}
+.highlight .s {
+	color: rgb(204, 51, 0);
+}
+.highlight .na {
+	color: rgb(51, 0, 153);
+}
+.highlight .nb {
+	color: rgb(51, 102, 102);
+}
+.highlight .nc {
+	color: rgb(0, 170, 136); font-weight: bold;
+}
+.highlight .no {
+	color: rgb(51, 102, 0);
+}
+.highlight .nd {
+	color: rgb(153, 153, 255);
+}
+.highlight .ni {
+	color: rgb(153, 153, 153); font-weight: bold;
+}
+.highlight .ne {
+	color: rgb(204, 0, 0); font-weight: bold;
+}
+.highlight .nf {
+	color: rgb(204, 0, 255);
+}
+.highlight .nl {
+	color: rgb(153, 153, 255);
+}
+.highlight .nn {
+	color: rgb(0, 204, 255); font-weight: bold;
+}
+.highlight .nt {
+	color: rgb(51, 0, 153); font-weight: bold;
+}
+.highlight .nv {
+	color: rgb(0, 51, 51);
+}
+.highlight .ow {
+	color: rgb(0, 0, 0); font-weight: bold;
+}
+.highlight .w {
+	color: rgb(187, 187, 187);
+}
+.highlight .mf {
+	color: rgb(255, 102, 0);
+}
+.highlight .mh {
+	color: rgb(255, 102, 0);
+}
+.highlight .mi {
+	color: rgb(255, 102, 0);
+}
+.highlight .mo {
+	color: rgb(255, 102, 0);
+}
+.highlight .sb {
+	color: rgb(204, 51, 0);
+}
+.highlight .sc {
+	color: rgb(204, 51, 0);
+}
+.highlight .sd {
+	color: rgb(204, 51, 0); font-style: italic;
+}
+.highlight .s2 {
+	color: rgb(204, 51, 0);
+}
+.highlight .se {
+	color: rgb(204, 51, 0); font-weight: bold;
+}
+.highlight .sh {
+	color: rgb(204, 51, 0);
+}
+.highlight .si {
+	color: rgb(170, 0, 0);
+}
+.highlight .sx {
+	color: rgb(204, 51, 0);
+}
+.highlight .sr {
+	color: rgb(51, 170, 170);
+}
+.highlight .s1 {
+	color: rgb(204, 51, 0);
+}
+.highlight .ss {
+	color: rgb(255, 204, 51);
+}
+.highlight .bp {
+	color: rgb(51, 102, 102);
+}
+.highlight .vc {
+	color: rgb(0, 51, 51);
+}
+.highlight .vg {
+	color: rgb(0, 51, 51);
+}
+.highlight .vi {
+	color: rgb(0, 51, 51);
+}
+.highlight .il {
+	color: rgb(255, 102, 0);
+}
+
+------=_NextPart_000_001E_01CDAAD5.CAFE1EA0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://fonts.googleapis.com/css?family=Philosopher
+
+@font-face {
+	font-family: Philosopher;
+	src: local("Philosopher"), =
+url(http://themes.googleusercontent.com/static/fonts/philosopher/v4/Ottjx=
+gcoEsufOGSINYBGLWfQcKutQXcIrRfyR5jdjY8.eot) format("embedded-opentype"), =
+url(http://themes.googleusercontent.com/static/fonts/philosopher/v4/Ottjx=
+gcoEsufOGSINYBGLYbN6UDyHWBl620a-IRfuBk.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+
+------=_NextPart_000_001E_01CDAAD5.CAFE1EA0--

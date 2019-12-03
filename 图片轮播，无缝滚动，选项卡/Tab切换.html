@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+    }
+
+    a {
+        float: left;
+        width: 50px;
+        height: 30px;
+        margin: 10px;
+        color: #000
+    }
+
+    #tit .titl {
+        background: #ccc;
+    }
+
+    #cont {
+        clear: left;
+    }
+
+    #cont div {
+        width: 300px;
+        height: 200px;
+        border: 2px solid red;
+        display: none;
+    }
+
+    #cont .content {
+        display: block;
+    }
+
+</style>
+<body>
+<div id='tit'>
+    <a class='titl' href="#">title1</a>
+    <a href="#">title2</a>
+    <a href="#">title3</a>
+    <a href="#">title4</a>
+</div>
+<div id='cont'>
+    <div class='content'>content1</div>
+    <div>content2</div>
+    <div>content3</div>
+    <div>content4</div>
+</div>
+<script>
+    function Tab(tit, cont) {
+        this.tit = document.getElementById(tit);
+        this.as = this.tit.getElementsByTagName('a');
+        this.cont = document.getElementById(cont);
+        this.divs = this.cont.getElementsByTagName('div');
+        this.div();
+    }
+
+    Tab.prototype.div = function () {
+        var _this = this;
+        for (var i = 0; i < _this.as.length; i++) {
+            _this.as[i].index = i;
+            _this.as[i].onclick = function () {
+                _this.oclick(this);
+
+            };
+        }
+    }
+
+    Tab.prototype.oclick = function (ass) {
+        for (var j = 0; j < this.as.length; j++) {
+            this.as[j].className = '';
+            this.divs[j].className = '';
+        }
+
+        this.as[ass.index].className = 'titl';
+        this.divs[ass.index].className = 'content';
+        this.num = ass.index;
+    };
+
+
+    function SetTim(asid, divsid) {
+        Tab.call(this, asid, divsid);
+        this.timer = null;
+        this.num = 0;
+        this.Timer();
+        this.Move();
+    }
+
+    SetTim.prototype = Object.create(Tab.prototype);
+    SetTim.prototype.constructor = SetTim;
+
+    SetTim.prototype.Timer = function () {
+        var _this = this;
+        _this.timer = setInterval(function () {
+            if (_this.num > _this.as.length - 1) {
+                _this.num = 0;
+            }
+            for (var j = 0; j < _this.as.length; j++) {
+                _this.as[j].className = '';
+                _this.divs[j].className = '';
+            }
+            ;
+            _this.as[_this.num].className = 'titl'
+            _this.divs[_this.num].className = 'content';
+            _this.num++;
+
+        }, 1000)
+    }
+
+    SetTim.prototype.Move = function () {
+        var _this = this;
+        _this.cont.onmouseover = function () {
+            clearInterval(_this.timer);
+        };
+        _this.cont.onmouseout = function () {
+            _this.Timer()
+        }
+    }
+
+    new SetTim('tit', 'cont')
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div id="box">
+
+	我是box
+
+	<b>===B标签===</b>
+
+</div>
+
+<script>
+var box = document.getElementById("box");
+
+//alert( box.innerHTML );  
+
+//alert( box.innerText );
+//alert( box.textContent );
+
+
+//alert(typeof box.innerText);
+
+function txt(element){
+
+	if(typeof element.innerText=="string"){
+
+		return element.innerText;
+	}else{
+		return element.textContent;
+	}
+
+}
+alert(txt(box));
+
+</script>
+
+	
+</body>
+</html>

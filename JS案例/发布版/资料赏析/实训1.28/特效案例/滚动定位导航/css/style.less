@@ -1,0 +1,82 @@
+.wrap{
+    width: 1300px;
+    height: 8345px;
+    margin: 0 auto;
+    position: relative;
+    .m_nav{
+        width: 32px;
+        height: 440px;
+        position: fixed;
+        left:5px;
+        top:105px;
+        ul{
+            width: 32px;
+            li{
+                width: 32px;
+                height: 39px;
+                overflow: hidden;
+                background: #F4F4F4;
+                border-top: 1px #ddd solid;
+                a.before{
+                    display:block;
+                    width: 32px;
+                    height: 39px;
+                    background-image: url(../img/icon.png);
+                    background-repeat: no-repeat;
+                    background-size: 70%;
+                }
+                
+                &.hover,&.on{
+                    a.after{
+                        opacity: 1;
+                    }
+                    a.before{
+                        display: none
+                    }
+                }
+                a.after{
+                    display: block;
+                    opacity: 0;
+                    width: 32px;
+                    height: 39px;
+                    text-align: center;
+                    padding-top: 3px;
+                    box-sizing: border-box;
+                }
+                &.f1 a.before{
+                    background-position: center top;
+                }
+                &.f2 a.before{
+                    background-position: center -40px;
+                }
+                &.f3 a.before{
+                    background-position: center -78px;
+                }
+                &.f4 a.before{
+                    background-position: center -114px;
+                }
+                &.f5 a.before{
+                    background-position: center -153px;
+                }
+                &.f6 a.before{
+                    background-position: center -192px;
+                }
+                &.f7 a.before{
+                    background-position: center -230px;
+                }
+                &.f8 a.before{
+                    background-position: center -267px;
+                }
+                &.f9 a.before{
+                    background-position: center -305px;
+                }
+                &.f10 a.before{
+                    background-position: center -345px;
+                }
+                &.f11 a.before{
+                    background-position: center -383px;
+                }
+            } 
+        }
+    }
+}

@@ -1,0 +1,140 @@
+﻿
+<html>
+<head>
+    <title>WebSocketTest</title>
+    <link type="text/javascript" src="jquery-1.10.0.min.js" />
+    <style>
+        body {
+            margin: 0 0;
+            padding: 0 0;
+            text-align: center;
+        }
+
+        .lab {
+            float: left;
+            width: 50%;
+            height: 200px;
+            text-align: center;
+            font-size: 120px;
+            font-family: @Adobe 黑体 Std R;
+        }
+    </style>
+    `
+</head>
+<body>
+    <h1>
+        汇智大有宿舍考勤系统
+    </h1>
+    <div id="login">
+        <div>
+            <div id="lab1" class="lab">
+            </div>
+            <div id="lab2" class="lab">
+            </div>
+            <div id="lab3" class="lab">
+            </div>
+            <div id="lab4" class="lab">
+            </div>
+            <div id="lab5" class="lab">
+            </div>
+            <div id="lab6" class="lab">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var flag = 0;
+        var socket;
+        var objarray1 = "大有科技";
+        var objarray2 = "大有科技";
+        var objarray3 = "大有科技";
+        var objarray4 = "大有科技";
+        var objarray5 = "大有科技";
+        var objarray6 = "大有科技";
+
+        $("lab1").innerHTML = objarray1;
+        $("lab2").innerHTML = objarray2;
+        $("lab3").innerHTML = objarray3;
+        $("lab4").innerHTML = objarray4;
+        $("lab5").innerHTML = objarray5;
+        $("lab6").innerHTML = objarray6;
+
+        function connect() {
+            var host = "ws://192.168.4.17:789/"
+            socket = new WebSocket(host);
+
+            try {
+                socket.onopen = function (msg) {
+                };
+                socket.onmessage = function (msg) {
+                    if (typeof msg.data == "string") {
+                        if (msg.data == "tongji") {
+                            flag = 1;
+                            window.location.href = "resault.aspx";
+
+                        } else
+                            if (msg.data == "clear") {
+                                objarray1 = "大有科技";
+                                objarray2 = "大有科技";
+                                objarray3 = "大有科技";
+                                objarray4 = "大有科技";
+                                objarray5 = "大有科技";
+                                objarray6 = "大有科技";
+                                $("lab1").innerHTML = "大有科技";
+                                $("lab2").innerHTML = "大有科技";
+                                $("lab3").innerHTML = "大有科技";
+                                $("lab4").innerHTML = "大有科技";
+                                $("lab5").innerHTML = "大有科技";
+                                $("lab6").innerHTML = "大有科技";
+                            }
+                            else if (msg.data != objarray1 && msg.data != objarray2 && msg.data != objarray3 && msg.data != objarray4 && msg.data != objarray5 && msg.data != objarray6) {
+                                displayContent(msg.data);
+                            }
+                    }
+                    else {
+                        displayContent("错误名称");
+                    }
+                };
+
+                socket.onclose = function (msg) {
+                    if (flag == 0) {
+                        window.location.reload();
+                    }
+                };
+            }
+            catch (ex) {
+                log(ex);
+            }
+        }
+        window.onbeforeunload = function () {
+            try {
+                socket.close();
+                socket = null;
+            }
+            catch (ex) {
+            }
+        };
+
+        function $(id) { return document.getElementById(id); }
+
+
+        function displayContent(msg) {
+            objarray6 = objarray5;
+            objarray5 = objarray4;
+            objarray4 = objarray3;
+            objarray3 = objarray2;
+            objarray2 = objarray1;
+            objarray1 = msg;
+            $("lab1").innerHTML = objarray1;
+            $("lab2").innerHTML = objarray2;
+            $("lab3").innerHTML = objarray3;
+            $("lab4").innerHTML = objarray4;
+            $("lab5").innerHTML = objarray5;
+            $("lab6").innerHTML = objarray6;
+        }
+        function onkey(event) { if (event.keyCode == 13) { send(); } }
+    </script>
+    <script type="text/javascript">
+        connect();
+    </script>
+</body>
+</html>

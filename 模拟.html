@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var str = "acdkjackmijks";
+    var num = 0;
+
+    function one(arr) {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr.charAt(i) == "k") {
+                num++;
+            }
+        }
+        return document.write(num);
+    }
+
+    one(str);
+
+    var arr = [1, 6, 7, 5, 1, 99, 23, 88];
+    var sum = 0;
+
+    function er(srr) {
+        for (var j = 0; j < srr.length; j++) {
+            if (arr[j] == 1) {
+                sum++;
+            }
+        }
+        return alert(sum)
+    }
+
+    er(arr);
+
+    var str = "abcdef";
+    var srt = "";
+    for (var x = str.length - 1; x >= 0; x--) {
+        srt += str.charAt(x);
+    }
+    alert(srt);
+
+    var arr1 = ["a", "c", "m"], arr2 = ["k", "u", "y"];
+    var arr = [];
+    arr = arr1.concat(arr2)
+    document.write(arr);
+    arr.splice(1, 1)
+    alert(arr);
+
+    var nums = [9, 4, 3, 6, 3, 8, 14, 3, 9, 28];
+    var sums = [];
+    for (var y = 0; y < nums.length; y++) {
+        if (sums.indexOf(nums[y]) == -1) {
+            sums.push(nums[y]);
+        }
+    }
+    document.write(sums);
+    var xums = 0;
+    for (var a = 0; a < sums.length; a++) {
+        for (var b = a + 1; b < sums.length; b++) {
+            if (sums[a] > sums[b]) {
+                xums = sums[a];
+                sums[a] = sums[b];
+                sums[b] = xums;
+            }
+        }
+    }
+    document.write(sums);
+</script>
+</body>
+</html>

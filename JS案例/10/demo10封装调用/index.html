@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+#box{width:300px;height: 300px;}
+</style>
+<body>
+	<div id="box" style="background: pink"></div>
+<script>
+
+/*var box = document.getElementById("box");
+box.style.background = "pink";
+box.onclick = function(){
+	alert(1);
+}
+*/
+
+/*var obj = new box("box");
+
+function box(element){
+	return document.getElementById(element);
+}
+
+obj.css = function(style,value){
+	this.style[style] = value;
+	return this;
+
+}
+obj.click = function(fn){
+	this.onclick = fn;
+	return this;
+}
+
+obj.hover = function(over,out){
+	this.onmouseover = over;
+	this.onmouseout = out;
+	return this;
+}
+
+obj.css("background","blue").click(function(){
+	alert("单击");
+}).hover(function(){
+	alert("移入");
+},function(){
+	alert("移出");
+})*/
+
+var obj = new box("box");
+
+function box(element){
+	return document.getElementById(element);
+}
+
+obj.css = function(style,value){
+	if(arguments.length==1){
+		return this.style[style];
+	}else{
+		return this.style[style] = value;
+	}
+
+alert(  obj.css("background") );
+}
+//如果css()方法是一个参数的话.那么我是获取
+//如果css()方法是二个参数的话,那么我是设置
+
+
+
+//1、css()==》方法
+//2个参数   参数1》属性名称  参数2》属性值
+//3、click()  ===>fucntion(){}[函数]
+//4、如果实现连缀写法   所有的方法.返回的this 必须是对象本身
+
+</script>
+	
+</body>
+</html>

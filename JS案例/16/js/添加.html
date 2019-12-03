@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	 	#tab{width:500px; border-collapse: collapse; margin:20px auto;}
+	 	#tab tr td{border:1px solid red; height: 30px;}
+	 	#tab tr th{border:1px solid red; line-height: 40px;}
+	</style>
+</head>
+<body>
+	<table id='tab'>
+		<thead>
+			<tr>
+				<th colspan='2'>歌曲排行榜</th>
+			</tr>
+		</thead>	
+		<tbody>
+			<tr>
+				<td><input type="checkbox" name='song'></td>
+				<td>两只老虎111</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name='song'></td>
+				<td>两只老虎222</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name='song'></td>
+				<td>两只老虎333</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name='song'></td>
+				<td>两只老虎444</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan='2'><input type="checkbox" id='selectall'>全选/不选 <button id='del'>删除</button></td>
+			</tr>
+			<tr>
+				<td colspan='2'>
+				<button id='add'>添加</button><input type="text" placeholder='歌曲名' id='text'>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+<script>
+var  add=document.getElementById('add'),
+	 text=document.getElementById('text'),
+	 tab=document.getElementById('tab'),
+	 tbody=tab.tBodies,
+	 song=document.getElementsByName('song'),
+	 del=document.getElementById('del');
+//单击添加背景或者删除背景
+//遍历所有的song
+
+function  changeBj(){
+	for(var i=0;i<song.length;i++){
+		//单击每个song的时候
+		   song[i].onclick=function(){
+		   	//如果当前复选框选中了
+		   	  if(this.checked){
+		   	  	//当前行添加背景
+		   	  		this.parentNode.parentNode.style.background='red'
+		   	  }else{
+		   	  	//删除背景
+		   	  	    this.parentNode.parentNode.style.background=''
+		   	  }
+		   }
+	}
+}
+changeBj();
+
+//添加
+	add.onclick=function(){
+		var  val=text.value	;
+		if(val==""){
+			alert('你输入的内容为空')
+		}else{
+
+			var  tr=document.createElement('tr');
+			var  td1=document.createElement('td'),
+				 td2=document.createElement('td');
+                 td1.innerHTML='<input type="checkbox" name="song">';
+                 td2.innerHTML=val;
+
+                 tr.appendChild(td1);
+                 tr.appendChild(td2);
+                 tbody[0].appendChild(tr);
+
+		}
+
+		changeBj()
+
+
+	}
+
+//删除
+del.onclick=function(){
+	var count=0;
+	//var  flag='没有';
+	 for(var i=0;i<song.length;i++){
+	 	  if(song[i].checked){
+            count++;
+          //flag='有';
+	 	  }
+	 }
+
+if(count==0){
+	alert('没有选中的删除项')
+}else{
+	if(confirm('你确定要删除吗')){ 
+	 	for(var i=song.length-1;i>=0;i--){
+	 		if(song[i].checked){
+	 			tbody[0].removeChild(song[i].parentNode.parentNode)
+	 		}
+	 	}
+	}
+}
+}
+</script>
+</body>
+</html>

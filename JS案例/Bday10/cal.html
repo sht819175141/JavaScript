@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#cal
+		{
+			width:350px;
+			height:350px;
+			border:1px solid red;
+		}
+		#cal span
+		{
+			float: left;
+			width:50px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="cal">
+ 				<span>一</span>
+ 				<span>二</span>
+ 				<span>三</span>
+ 				<span>四</span>
+ 				<span>五</span>
+ 				<span>六</span>
+ 				<span>日</span>		
+		
+	</div>
+	<script>
+	      var m= prompt("你需要几月份的日历");
+	      var days=[31,28,31,30,31,30,31,31,30,31,30,31];
+		  var week=new Date(2016,m-1,1).getDay();
+		  var blankCount=[6,0,1,2,3,4,5];
+		  var cal=document.getElementById("cal");
+
+		  for(var i=0;i<42;i++){
+		  	 var temSpan=document.createElement("span");
+		  	 cal.appendChild(temSpan);
+		  }
+
+		  var spans=cal.getElementsByTagName("span");
+		  for(var i=1;i<=days[m-1];i++){
+		  	 spans[7+blankCount[week]+i-1].innerHTML=i;
+		  }
+	</script>
+</body>
+</html>

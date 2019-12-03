@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 100%;
+            background-color: #000;
+            opacity: 0.6;
+            position: fixed;
+            left: 0px;
+            top: 0px;
+        }
+
+        .pic {
+            position: absolute;
+            left: 50%;
+            width: 461px;
+            height: 433px;
+            margin-left: -230px
+        }
+    </style>
+</head>
+<body>
+<img src="images/bj.png" alt=""/>
+<script>
+    setTimeout(tan, 3000);
+
+    function tan() {
+        var box = document.createElement("div");
+        var pic = document.createElement("img");
+        box.className = "box";
+        box.style.height = document.body.offsetHeight + "px";
+        pic.className = "pic";
+        pic.src = "images/ditu.png";
+        pic.style.top = (document.documentElement.clientHeight - 433) / 2 + "px";
+        document.body.appendChild(box);
+        document.body.appendChild(pic);
+
+        pic.onclick = function () {
+            document.body.removeChild(box);
+            document.body.removeChild(pic);
+        }
+    }
+</script>
+</body>
+</html>

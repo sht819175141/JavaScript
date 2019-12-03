@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Person(name,age){
+			alert(this==obj);
+			this.name=name;
+			this.age=age;
+		}
+		var obj={};
+		Person.call(obj,"zs",15);
+		alert(obj.name);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<select>
+		<option></option>
+	</select>
+	<div id="wrap">
+		
+	</div>
+	<button id="btn">设置数据</button>
+	<script>
+		window.onload=function(option){
+			/*$.ajax({
+				type:"get",
+				url:"zuoye.json",
+				ssync:true,
+				data:"",
+				datatype:"json",
+				success:function(){
+
+				}
+			})*/
+
+			var $={
+				ajax:function(){
+					var xhr;
+					var async=typeof(option.async==="undefined")?true:option.async;
+					try{
+						xhr=new XMLHttpRequest();
+					}catch(e){
+						try{
+							xhr=new ActiveXOject("Msxml2.XMLHTTP")
+						}catch(e){
+							try{
+								xhr=new ActiveXOject("Microsoft.XMLHTTP")
+							}catch(e){
+								alert("浏览器应用不正确")
+							}
+
+						}
+					}
+					if(!option.data){
+						option.data=null
+					}
+					xhr.open(option.type || "get" ,option.url,async);
+					xhr.send(option.data);
+					if(option.type=="post"){
+						xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+					}
+					xhr.onreadystatechange=function(){
+						if(xhr.readyState==4 && xhr.status==200){
+						 	var data=null;
+						 	if(option.datatype=="text"){
+						 		data=xhr.responseText;
+						 	}else if(option.datatype=="xml"){
+						 		data=xhr.responseXML;
+						 	}else if(option.datatype=="json"){
+						 		var tet=xhr.responseText;
+						 		var data=eval("("+txt+")")
+						 	}
+
+						 	return option.success(data)
+						}
+					}
+				}
+			};
+
+			$.ajax({
+				type:"get",
+				url:"zuoye.json",
+				async:true,
+				datatype:"json",
+				success:function(data){
+					var hh=document.createElement("h2")
+					for(i in data){
+						hh.innerHTML+="编号"+i;
+						wrap.appendChild(hh);
+						for(t in data[i]){
+							var pp=document.createElement("p");
+							pp.innerHTML=t+">="+data[i][t];
+							pp.style.marginLeft="50px";
+							hh.appendChild(pp);
+						}
+					}
+				}
+			})
+		}
+	</script>
+</body>
+</html>

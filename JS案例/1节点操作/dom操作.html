@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img src="" alt="">
+	<form action="">
+		用户名：<input type="text" >
+		密码：<input type="password">
+		<input type="button">
+	</form>
+	<form action="">
+		用户名：<input type="text">
+		密码：<input type="text">
+	</form>
+	<div>
+		<ul id='box' title='ddd'>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li>扥东风</li>
+		</ul>
+	</div>
+	<h1></h1>
+	//dom
+
+	1)节点关系：父子关系，兄弟关系
+	childNowdes.length  firstChild  lastChild  firstChild.nextSibling
+	childNodes[1]
+	parentNode   childNodes[2].previousSibling
+	2)节点类型： 12
+
+	元素节点  1
+	文本节点  3
+	属性节点  2
+	注释节点  8
+	文档节点  9
+	3）节点属性：
+	类型   nodeType
+	名字   nodeName
+	值     nodeValue
+	元素节点   1      H1  null
+	文本节点   3      #text 文本自身
+	属性节点   2     属性名    属性值
+	4）节点方法：
+	   1、查找节点
+	      getElementById('') 唯一的
+	      getElementsByName('') 一组数据     getElementsByName('')[length-1]
+	      getElementsByTagName("")  一组数据  
+         特殊集合：
+         查找表单   document.getElementsByTagName('form')
+         document.forms
+         表单元素：文本框，密码框 单选框  复选框  下拉列表框  elements(查找表单元素)
+         图片：document.getElementsByTagName('image')
+         document.images
+	<script>
+        console.log(document.forms.length)
+        console.log(document.forms[0].elements.length)
+        document.forms[0].elements[0].style.background='red'
+
+
+
+	</script>
+</body>
+</html>

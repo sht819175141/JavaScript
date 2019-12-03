@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+<script>
+//    2009_-1@qq.com   @163.com    @126.cn    @123.cc   @.com.cn   @aa.net
+
+//   数字  字母  _  - @
+
+
+var str = "2-1@163.com.cn";
+
+
+var reg = /^([\w\-]{2,4})@([0-9a-zA-Z]+)\.(com|cn|cc|net|com\.cn)$/;
+
+
+document.write(reg.test(str));
+
+
+
+//手机号   131  132  133  134  135  136  37  38  39   187  153    
+  
+
+document.write("<br />-------------<br />");
+
+var str1 = "13666668888";//
+
+var reg1 = /^1(3|5|8|7|4)[\d]{9}$/;
+
+document.write(reg1.test(str1));
+
+
+//不能有空格   长度6-12位    只能是数字  字母  下划线
+
+
+
+var reg = new RegExp('(\\s|^)'+"aa"+'(\\s|$)')
+
+var str = "aa bb cc";
+
+alert(str.match(reg))
+
+</script>
+	
+<input type="text">
+
+
+</body>
+</html>

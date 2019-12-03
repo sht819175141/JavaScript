@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+
+    #box {
+        margin: 50px auto;
+        position: relative;
+    }
+
+    .pos1 {
+        width: 50px;
+        height: 50px;
+        background: #666;
+        float: left;
+    }
+
+    .pos2 {
+        width: 50px;
+        height: 50px;
+        background: url(images/wall.png) no-repeat;
+        float: left;
+    }
+
+    .pos3 {
+        width: 50px;
+        height: 50px;
+        background: red;
+        float: left;
+    }
+
+    .pos0 {
+        width: 50px;
+        height: 50px;
+        background: blue;
+        float: left;
+    }
+
+    .box {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background: url(images/box.png);
+    }
+
+
+    .pro {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background: url(images/person.png);
+    }
+
+</style>
+<body>
+
+<div id="box"></div>
+
+
+<script>
+    window.onload = function () {
+
+
+        var box = document.getElementById('box');
+
+        Game.init(box);
+
+
+    }
+
+
+    var Game = {
+
+        gk: [
+
+
+            {
+
+                map: [
+
+                    1, 1, 2, 2, 2, 2, 1, 1,
+                    1, 1, 2, 3, 3, 2, 1, 1,
+                    1, 2, 2, 0, 3, 2, 2, 1,
+                    1, 2, 0, 0, 0, 3, 2, 1,
+                    2, 2, 0, 0, 0, 0, 2, 2,
+                    2, 0, 0, 2, 0, 0, 0, 2,
+                    2, 0, 0, 0, 0, 0, 0, 2,
+                    2, 2, 2, 2, 2, 2, 2, 2
+                ],
+                box: [
+
+                    {x: 4, y: 3},
+                    {x: 3, y: 4},
+                    {x: 4, y: 5},
+                    {x: 5, y: 5}
+
+                ],
+                pro: {x: 3, y: 6}
+
+            },
+
+            {
+
+                map: [
+
+                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+                ]
+
+            }
+
+
+        ],
+
+
+        init: function (option) {
+
+            this.option = option;  //this.option 代表box  就是父元素
+
+            this.createMap(0);   //第几关参数控制
+
+        },
+        createMap: function (iNow) {   //画出游戏地图
+
+            this.newJson = this.gk[iNow];  //第几关
+
+            this.option.style.width = parseInt(Math.sqrt(this.newJson.map.length) * 50) + "px";
+
+            for (var i = 0; i < this.newJson.map.length; i++) {
+
+
+                var oDiv = document.createElement("div");
+
+                oDiv.setAttribute("class", "pos" + this.newJson.map[i] + "");
+
+                this.option.appendChild(oDiv);
+
+
+            }
+            this.createBox();  //加载箱子进来
+            this.createPro();  //加载乌龟进来
+        },
+        createBox: function () { //操作箱子的方法
+
+
+            /* 		left   ===>x
+
+                     top    ===>y*/
+
+
+            for (var i = 0; i < this.newJson.box.length; i++) {
+
+                var oBox = document.createElement("div");
+
+                oBox.setAttribute("class", "box");
+
+
+                oBox.style.left = this.newJson.box[i].x * 50 + "px";
+
+                oBox.style.top = this.newJson.box[i].y * 50 + "px";
+
+                this.option.appendChild(oBox);
+
+            }
+
+        },
+
+        createPro: function () {	//创建乌龟位置
+
+
+            var oPro = document.createElement("div");
+            oPro.setAttribute("class", "pro");
+
+
+            oPro.style.left = this.newJson.pro.x * 50 + "px";
+            oPro.style.top = this.newJson.pro.y * 50 + "px";
+            this.option.appendChild(oPro);
+
+            this.bindPro(oPro);
+
+        },
+
+        bindPro: function (op) {
+
+            var This = this;
+
+            document.onkeydown = function (evt) {
+                var evt = evt || window.event;
+
+                switch (evt.keyCode) {
+
+                    case 37:
+
+                        op.style.backgroundPosition = "-150px 0px";
+
+                        if (This.newJson.map[This.newJson.pro.y * 8 + (This.newJson.pro.x - 1)] != 2) {
+
+                            This.newJson.pro.x = This.newJson.pro.x - 1;
+                            op.style.left = This.newJson.pro.x * 50 + "px";
+                        }
+
+                        break;
+
+                    case 38:
+
+                        op.style.backgroundPosition = "0px 0px";
+
+                        if (This.newJson.map[(This.newJson.pro.y - 1) * 8 + (This.newJson.pro.x)] != 2) {
+
+                            This.newJson.pro.y = This.newJson.pro.y - 1;
+                            op.style.top = This.newJson.pro.y * 50 + "px";
+                        }
+
+                        break;
+
+
+                }
+            }
+
+
+        }
+
+
+    }
+
+</script>
+
+</body>
+</html>

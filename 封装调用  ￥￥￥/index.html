@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    #uls {
+        display: none;
+    }
+
+    ul {
+        list-style: none;
+        width: 200px;
+        height: auto;
+        background: pink;
+    }
+
+    #box {
+        width: 200px;
+        height: 100px;
+        background: blue;
+        line-height: 100px;
+        text-align: center;
+        font-size: 36px;
+        color: #fff;
+    }
+
+    ul li {
+        line-height: 30px;
+        text-align: center;
+    }
+
+    #login {
+        width: 300px;
+        height: 80px;
+        border: 1px solid #ccc;
+        text-align: center;
+        line-height: 80px;
+    }
+
+    #close {
+        width: 300px;
+        height: 300px;
+        border: 1px solid #ccc;
+        text-align: right;
+        display: none;
+        position: absolute;
+    }
+</style>
+<body>
+<div id="box">菜单</div>
+<ul id="uls">
+    <li>导航1</li>
+    <li>导航1</li>
+    <li>导航1</li>
+    <li>导航1</li>
+</ul>
+
+<h1>h11</h1>
+<h1>h12</h1>
+<h1>h13</h1>
+<h1>h14</h1>
+<h1>h15</h1>
+
+<div id="login">登录</div>
+<div id="close">关闭</div>
+<script src="index.js"></script>
+<script>
+
+    $().getId("box").hover(function () {
+
+        $().getId("uls").slideDown(200, 10);
+
+    }, function () {
+
+        $().getId("uls").hide();
+
+    })
+
+    $().getTagName("h1").eq(1).css("background", "red");
+
+    $().getTagName("h1").first().css("background", "red");
+
+    $().getTagName("h1").last().css("background", "red");
+
+    $().getId("login").click(function () {
+
+        $().getId("close").content(300, 300);
+
+    })
+
+    $().getId("close").click(function () {
+
+        $().getId("close").hide();
+
+    })
+</script>
+</body>
+</html>

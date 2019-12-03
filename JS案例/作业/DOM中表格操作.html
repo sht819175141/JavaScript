@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<table class='table' id="tab">
+		<thead>
+			<tr>
+				<th colspan='2'>歌曲排行榜</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td><input type="checkbox" name="song"></td><td>匆匆那年1</td></tr>
+			<tr><td><input type="checkbox" name="song"></td><td>匆匆那年2</td></tr>
+			<tr><td><input type="checkbox" name="song"></td><td>匆匆那年3</td></tr>
+			<tr><td><input type="checkbox" name="song"></td><td>匆匆那年4</td></tr>
+		</tbody>		
+		<tfoot>
+			<tr><td colspan='2'>
+				<input type="checkbox" id="selectAll">全选
+				<button id="del">删除</button>
+			</td></tr>
+			<tr>
+				<td colspan='2'><button id="add">添加</button>
+                    <input type="text" id="txtbox"  placeholder="歌曲名">
+				 </td>
+			</tr>
+		</tfoot>
+	</table>
+	<script src='js/table.js'></script>
+</body>
+</html>

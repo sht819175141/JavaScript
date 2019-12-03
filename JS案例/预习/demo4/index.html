@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+<script>
+
+document.write("<br />------{n}    匹配前一项n次，正整数。------<br />");
+
+
+var reg = /\d{5}/;  //[0-9]       
+
+document.write(reg.test("12345"));
+
+
+
+document.write("<br />------{n,m}  匹配前一项 n-m次。------<br />");
+
+
+var reg1 = /\d{2,4}/;
+
+
+document.write(reg1.test("11111"));
+
+
+
+document.write("<br />------*------<br />");
+
+var reg2 = /bo*ks/;
+
+var str = "booooks";
+
+document.write(reg2.test(str));
+
+
+
+document.write("<br />------+------<br />");
+
+
+var reg3 = /bo+ks/;
+var str = "bks";
+
+document.write(reg3.test(str));
+
+
+document.write("<br />------?------<br />");
+
+
+var reg4 = /bo?ks/;
+var str4 = "books";
+
+document.write(reg4.test(str4));
+
+
+
+
+document.write("<br />------|------<br />");
+
+
+
+var reg5 = /北京|天津|上海/;
+var str5 = "11天津aa";
+
+document.write(reg5.test(str5));
+
+</script>
+	
+</body>
+</html>

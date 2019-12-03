@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box {
+            height: 500px;
+            width: 1000px;
+            margin: 0 auto;
+            background-color: #000;
+            color: red;
+            font-size: 85px;
+            line-height: 500px;
+            text-align: center;
+        }
+
+        #box1 {
+            height: 100px;
+            width: 400px;
+            background-color: #ccc;
+            margin-bottom: 10px;
+            margin: 10px auto;
+            line-height: 100px;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        #kai {
+            margin-left: 630px;
+        }
+    </style>
+</head>
+<body>
+<div id="box1"></div>
+<input type="button" value="开始" id="kai"/>
+<input type="button" value="暂停" id="ting"/>
+<div id="box">距离毕业还有</div>
+<script>
+    setInterval(shi, 1000)
+
+    function shi() {
+        var box = document.getElementById("box");
+        var da = new Date(2017, 3, 31)
+        var da2 = new Date();
+        var num = da - da2;//1000/60/60/24
+        var da3 = new Date(num);
+        var year = da3.getFullYear() - 2016, 7, 21;
+        var mon = da3.getMonth();
+        var dat = da3.getDate() - 1;
+        var hou = da3.getHours() - 8;
+        var min = da3.getMinutes();
+        var sec = da3.getSeconds();
+        /*var year=da.getFullYear();
+        var mon=da.getMonth()+1;
+        var dat=da.getDate();
+        var hou=da.getHours();
+        var min=da.getMinutes();
+        var sec=da.getSeconds();*/
+        box.innerHTML = year + "年" + mon + "月" + dat + "日" + hou + "小时" + min + "分" + sec + "秒";
+
+    }
+
+
+    /*var kai=document.getElementById("kai");
+    var box=document.getElementById("box");
+    var ting=document.getElementById("ting");
+    kai.onclick=function(){
+        kai.disabled=true;
+        time=setInterval(shi,500);
+    }
+    ting.onclick=function(){
+        kai.disabled=false;
+        clearInterval(time);
+    }
+    function shi(){
+        var arr=[];
+        var acc=[];
+        var k=5;
+        for(var i=0;i<k;i++){
+            var	j=Math.floor(Math.random()*10)
+            if(acc.indexOf(j)==-1){
+                acc.push(j);
+            }else{
+                k++
+            }
+
+        }
+        box.innerHTML=acc.join("");
+    }	*/
+
+</script>
+</body>
+</html>

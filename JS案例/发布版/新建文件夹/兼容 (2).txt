@@ -1,0 +1,89 @@
+Overflow:hidden
+对行内元素无效，必须是块级元素，并且设置宽度高度。
+Overflow:hidden,隐藏之后元素依然占据着位置。
+
+Display:none
+使用此属性之后元素不存在了，元素占据的位置也不存在。
+ 
+Visibility:hidden
+使用此属性之后元素不存在了，元素占据的位置依然存在。
+
+1、FF、IE7（！important）
+IE6、IE7(*)
+IE6(_)
+*+ 可被IE7识别
+“\9″ IE6/IE7/IE8/IE9/IE10都生效
+“\0″ IE8/IE9/IE10都生效，是IE8/9/10的hack
+“\9\0″ 只对IE9/IE10生效，是IE9/10的hack
+\9 IE9
+\0 IE8
+
+2、 <!--[if IE 6]> 仅IE6可识别 <![endif]--> 
+ <!--[if IE 7]> 仅IE7可识别 <![endif]--> 
+
+3、margin加倍的问题     
+设置为float的div在ie6下设置的margin会加倍。解决方案是在这个div里面加上 display:inline;或margin/2
+4、CSS透明问题 
+IE：filter:alpha(opacity=透明度)，opacity参数设置透明度，范 围为0~100，0为完全透明。
+FF：opacity:0.6
+
+6.文字本身的大小不兼容。同样是font-size:14px的宋体文字，在不同浏览器下占的空间是不一样的，ie下实际占高16px，下留白3px，ff下实际占高17px，上留白1px，下留白3px，opera下就更不一样了。
+	解决方案：给文字设定 line-height 。确保所有文字都有默认的 line-height 值。这点很重要，在高度上我们不能容忍1px 的差异。
+7. img下的留白。
+	解决方案：给img设定 display:block。
+8、元素会有一个字符的默认高度：
+	设置font-size,overflow,height属性
+	font-size:0;overflow:hidden;height:0;
+9、总是会遇到图片与文字并排，在IE6及更低版本浏览器下行高失效的问题
+IE下line-height属性失效是由于文字中包含img、input、select、textarea、button、object等标记造成的。或者也可以说是在line-height的元素里的文字，同时有了block或者是inline-block元素导致的。
+
+解决办法：
+
+对和文字相连接的img、input、textarea、select等元素加以css样式：
+margin: (所属line-height-自身高度)/2px 0;  /*有几像素的偏差，这个要根据实际情况来设置，有时可能top与bottom值不相同*/
+
+vertical-align:middle;
+
+5、CSS圆角问题 
+IE：ie7以下版本不支持圆角。 
+FF： -moz-border-radius:4px，或者-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;-moz-border-radius-bottomleft:4px;-moz- border-radius-bottomright:4px;
+
+
+
+什么是浏览器内核？
+首先解释一下浏览器内核是什么东西。英文叫做：Rendering Engine，中文翻译很多，排版引擎、解释引擎、渲染引擎，现在流行称为浏览器内核，至于为什么流行这么称呼，请自行领悟。
+
+Rendering Engine，顾名思义，就是用来渲染网页内容的，将网页的代码转换为最终你看得见的页面。因为是排版，所以肯定会排版错位等问题。为什么会排版错位呢？有的是由于网站本身编写不规范，有的是由于浏览器本身的渲染不标准。
+现在有几个主流的排版引擎，因为这些排版引擎都有其代表的浏览器，所以常常会把排版引擎的名称和浏览器的名称混用，比如常的说IE核、Chrome内核。其实这样子是不太合理的，因为一个完整的浏览器不会只有一的排版引擎，还有自己的界面框架和其它的功能支撑，而排版引擎本身也不可能实现浏览器的所有功能。下面罗列一下几款主流的排版引擎和浏览器。
+
+
+浏览器内核：
+1、Trident内核：IE最先开发或使用的，也称IE内核，360浏览器使用的也是IE内核；
+2、Webkit内核：谷歌chrome浏览器最先开发或使用，也叫谷歌内核，枫树浏览器、太阳花使用的也是谷歌内核；
+3、Gecko内核： Netscape6开始采用的内核，后来的Mozilla FireFox (火狐浏览器) 也采用了该内核，K-Meleon浏览器也是使用这种内核；
+4、Presto内核：目前只有Opera浏览器采用该内核
+此外，由于IE浏览器在国内的普及率非常高，所以造成了很多网上银行和支付系统只支持IE的Trident内核，其他浏览器访问根本无法进行正常支付和转账等业务。这就造成了经常在网上购物的人离不开Trident内核的IE浏览器。但是Trident内核的速度和兼容性上又是在比不上Chrome浏览器的WebKit内核和Firefox浏览器的Gecko内核。于是双核浏览器应运而生，比如傲游、枫树浏览器（ChromePlus）、搜狗高速浏览器。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

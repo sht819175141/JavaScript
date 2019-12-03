@@ -1,0 +1,202 @@
+ 3 属性或方法                       说明
+ 4 caption              保存着<caption>元素的引用;
+ 5 tBodies              保存着<tbody>元素的HTMLCollection集合;
+ 6 tFoot                保存着对<tfoot>元素的引用;
+ 7 tHead                保存着对<thead>元素的引用;
+ 8 rows                 保存着对<tr>元素的HTMLCollection集合;
+ 9 createTHead()        创建<thead>元素,并返回引用;
+10 createTFoot()        创建<tfoot>元素,并返回引用;
+11 createCpation()      创建<caption>元素,并返回引用;
+12 deleteTHead()        删除<thead>元素;
+13 deleteTFoot()        删除<tfoot>元素;
+14 deleteCaption()      删除<caption>元素;
+15 deleteRow(pos)       删除指定的行;
+16 insertRow(pos)       向rows集合中的指定位置插入一行;
+17 
+18 <tbody>元素添加的属性和方法
+19 rows                 保存着<tbody>元素中行的HTMLCollection;
+20 deleteRow(pos)       删除指定位置的行;
+21 insertRow(pos)       向rows集合中的指定位置插入一行;
+22 
+23     <tr>元素添加的属性和方法
+24 cells                保存着<tr>元素中单元格的HTMLCollectioin集合;
+25 deleteCell(pos)      删除指定位置的单元格;
+26 insertCell(pos)      向cells集合的指定位置插入一个单元格,并返回引用;
+27 
+28 // HTMLDOM获取表格的<caption>
+29     alert(table.caption.innerHTML);                // 获取caption的内容;
+30 
+31 // PS:在一个表格中<thead>和<tfoot>是唯一的,只能有一个;
+32 //   而<tbody>不是唯一的,可以是多个,这样导致最后返回的<thead>和<tfoot>是元素引用;而<tbody>是元素集合;
+ 
+二 操作样式
+1 // CSS作为(X)HTML的辅助,可以增强页面的显示效果,但不是每个浏览器都能支持最新的CSS能力;
+2 // CSS的能力和DOM级别密切相关,所以需要检测当前浏览器的支持CSS能力的级别;
+3 // 在HTML中定义样式的方式有3种:
+4 // (1).使用style特性定义针对特定元素的样式;
+5 // (2).使用<style/>元素定义嵌入式样式;
+6 // (3).通过<link/>元素包含外部样式表文件;
+1 // DOM1级实现了最基本的文档处理,DOM2和DOM3在这个基础上增加了更多的交互能力;
+2 // DOM2增加了CSS编程访问方式和改变CSS样式信息;
+3 // 检测浏览器是否支持DOM1级CSS能力或DOM2级CSS能力
+4     alert('DOM1级CSS能力:'+document.implementation.hasFeature('CSS','2.0'));
+5     alert('DOM2级CSS能力:'+document.implementation.hasFeature('CSS2','2.0'));
+1.访问元素的样式
+ 
+ 1 (1).style特性/对象
+ 2 // 任何HTML元素标签都会有一个通用的属性:style,它会返回CSSStyleDeclaration对象;
+ 3     CSS属性及JavaScript调用
+ 4 CSS属性                 JavaScript调用 
+ 5 color                   style.color
+ 6 font-size               style.fontSize 
+ 7 float                   style.cssFloat(非IE)
+ 8 float                   style.styleFloat(IE)
+ 9     var box = document.getElementById('box');
+10     box.style;                              // CSSStyleDecaration;
+11     box.style.color;                        // red;
+12     box.style.fontSze;                      // 20px;
+13     // 兼容IE的float操作;
+14     typeof box.style.cssFloat != 'undefined' ? box.style.cssFloat = 'right' : box.style.styleFloat = 'right';
+15 
+16     DOM2级样式规范为style对象定义属性和方法
+17 属性或方法                       说明
+18 cssText                 访问或设置style中的CSS代码;
+19     box.style.cssText;                      // 获取CSS代码;
+20     // PS:style属性仅仅只能获取行内的CSS样式,对于另外两种形式内联<style>和链接<link>方法则无法获取到;
+ 
+ 1 (2).计算后的样式:getComputedStyle/currentStyle
+ 2 // 虽然可以通过style来获取单一值的CSS样式,但对于复合值的样式信息,就需要通过计算样式来获取;
+ 3 // DOM2级样式,window对象下提供了getComputedStyle()方法:接收两个参数,需要计算的样式元素,和伪类(:hover);如果没有伪类,则null;
+ 4 // getComputedStyle()方法返回一个CSSStyleDeclaration对象;(与style属性的类型相同);其中包含当前元素的所有计算的样式;
+ 5 // PS:IE不支持这个DOM2级的方法,但有个类似的属性可以使用currentStyle属性;
+ 6     var box = document.getElementById('box');
+ 7     var style = window.getComputedStyle ? window.getComputedStyle(box,null) : null ||box.currentStyle;
+ 8     alert(style.color);                     // 颜色在不同的浏览器会有不同rgb()格式;
+ 9     alert(style.border);                    // 不同浏览器不同的结果;
+10     alert(sytle.fontFamily);                // 计算显示复合的样式值;
+11     // PS:border属性是一个综合属性,所以它在Chrome显示了,Firefox为空,IE为undefined;
+12     // 所以,DOM在获取CSS的时候,最好采用完整写法兼容性最好;比如:border-top-color;
+ 
+2.操作样式表
+ 
+ 1 // 使用style属性可以设置行内的CSS样式,而通过id和class调用是最常用的方法;
+ 2     box.className = 'red';                  // 通过className关键字来设置样式;
+ 3 // 添加多个className函数:
+ 4     // 判断是否存在这个class;
+ 5     function hasClass(element,className){
+ 6         return element.className.match(new RegExp('(\\s|^)'+className+'(\\s|$)'));
+ 7     }
+ 8     // 添加一个class,如果不存在的话;
+ 9     function addClass(element,className){
+10         if(!hasClass(element,className)){
+11             element.className += " "+className;
+12         }
+13     }
+14     // 删除一个class,如果存在的话;
+15     function removeClass(element,className){
+16         if(hasClass(element,className)){
+17             element.className = element.className.replace(new RegExp('(\\s|^)'+className+'(\\s|$)'),'');
+18         }
+19     }
+20 // 之前使用style属性,仅仅只能获取和设置行内的样式;
+21 // 然后学习的getComputedStyle和currentStyle,只能获取却不能设置;
+ 
+1 (1).获得CSSStyleSheet
+2 // CSSStyleSheet类型可以通过<link>元素和<style>元素包含的样式表;
+3     document.implementation.hasFeature('StyleSheet','2.0');      // 是否支持DOM2级样式表;
+4     document.getElementsByTagName('link')[0];                    // HTMLLinkElement;
+5     document.getElementsByTagName('style')[0];                   // HTMLStyleElement;
+6     // 这两个元素本身返回的是HTMLLinkElement和HTMLStyleElement类型;但CSSStyleSheet类型更加通用一些;
+7     // 得到这个类型非IE使用sheet属性,IE使用styleSheet;
+8     var link = document.getElementsByTagName('link')[0];
+9     var sheet = link.sheet || link.styleSheet;                   // 得到CSSStyleSheet;
+ 
+ 1 (2).CSSStyleSheet对象的属性和方法
+ 2            CSSStyleSheet属性或方法
+ 3 属性或方法                         说明
+ 4 disabled                 获取和设置样式表是否被禁用;
+ 5 href                     如果是通过<link>包含的,则样式表为URL,否则为null;
+ 6 media                    样式表支持的所有媒体类型的集合;
+ 7 ownerNode                指向拥有当前样式表的指针;
+ 8 parentStyleSheet         @import导入的情况下,得到父CSS对象;
+ 9 title                    ownerNode中title属性的值;
+10 type                     样式表类型字符串;
+11 cssRules                 样式表包含样式规则的集合,IE不支持;  IE为rules;12 ownerRule                @import导入的情况下,指向表示导入的规则,IE不支持;
+13 deleteRule(index)        删除cssRules集合中指定位置的规则,IE不支持;
+14 insertRule(rule,index)   向cssRules集合中指定位置插入rule字符串,IE不支持;
+15 
+16     sheet.disabled;                     // false; 可设置为true;
+17     sheet.href;                         // css的URL;
+18     sheet.media;                        // MediaList,集合;
+19     sheet.title;                        // 得到title属性的值;
+20     sheet.cssRules;                     // CSSRuleList,样式表规则集合;
+21     sheet.deleteRule(0);                // 删除第一个样式规则;
+22     sheet.insertRule("body {background-color:red}",0);      // 在第一个位置添加一个样式规则;
+23 
+24     // PS:IE中不支持的属性和方法,IE有替代版本;
+25     sheet.rules;                        // 代替cssRules的IE版本;
+26     sheet.removeRule(0);                // 代替deleteRule的IE版本;
+27     sheet.addRule("body","{background-color:red",0);        // 代替insertRule的IE版本;
+28 
+29 // 除了刚才的方法可以得到CSSStyleSheet类型,还有一种方法是通过document的styleSheets属性来获取;
+30     document.styleSheets;                // StyleSheetList,集合;
+31     var sheet = docuemnt.styleSheets[0]; // CSSStyleSheet,第一个样式表对象;
+ 
+ 1 // 添加CSS规则,并兼容所有浏览器函数;
+ 2     var sheet = docuemnt.styleSheets[0];
+ 3     insertRule(sheet,"body","background-color:red;",0);
+ 4     function insertRule(sheet,selectorText,cssText,postion){
+ 5         // 如果是非IE;
+ 6         if(sheet.insertRule){
+ 7             sheet.insertRule(selectorText+"{"+cssText+"}",postion);
+ 8         // 如果是IE
+ 9         }else if(sheet.addRule){
+10             sheet.addRule(selectorText,cssText,postion);
+11         }
+12     }
+ 
+ 1 // 删除CSS规则,并兼容所有浏览器函数;
+ 2     var sheet = document.styleSheets[0];
+ 3     deleteRule(sheet,0);
+ 4     function deleteRule(sheet,index){
+ 5         // 如果是非IE;
+ 6         if(sheet.deleteRule){
+ 7             sheet.deleteRule(index);
+ 8         // 如果是IE;
+ 9         }else if(sheet.removeRule){
+10             sheet.removeRule(index);
+11         }
+12     }
+ 
+ 1 (3).CSSRules样式表规则集合列表;
+ 2 // 通过CSSRules属性(非IE)和rules属性(IE),我们可以获得样式表的规则集合列表;
+ 3 // 这样我们就可以对每个样式进行具体的操作了;
+ 4     var sheet = docuemnt.styleSheets[0];            // CSSStyleSheet;
+ 5     var rules = sheet.cssRules || sheet.rules;      // CSSRuleList,样式表的规则集合列表;
+ 6     var rule = rules[0];                            // CSSStyleRule,样式表的第一个规则;
+ 
+ 7         CSSRules的属性
+ 8 属性                         说明
+ 9 cssText             获取当前整体规则对应的文本,IE不支持;
+10 parentRule          @import导入的,返回规则或null,IE不支持;
+11 parentStyleSheet    当前规则的样式表,IE不支持;
+12 selectorText        获取当前规则的选择符文本;
+13 style               返回CSSStyleDeclaration对象,可以获取和设置样式;
+14 type                表示规则的常量值,对于样式规则,值为1,IE不支持;
+15     
+16     rule.cssText;                                   // 当前规则的样式文本;
+17     rule.selectorText;                              // #box;样式的选择符;
+18     rule.style.color;                               // red;得到具体样式值;
+19     rule.style.backgroundColor = "green";           // 修改某一条规则的样式信息;
+ 
+三 总结
+1 // DOM2级样式模块主要针对操作元素的样式信息而开发的,其特性如下:
+2 // (1).每个元素都有一个关联的style对象,可以用来确定和修改行内的样式;
+3 // (2).要确定某个元素的计算样式(包括应用给它的所有CSS规则),可以使用getComputedStyle()方法;
+4 // (3).IE支持类似的方法currentStyle();
+5 // (4).可以通过document.styleSheets集合访问样式表;
+6 // (5).样式表规则集合列表CSSRules;
+1 // 三种操作CSS的方法:
+2 // 第一种style行内,可读可写;
+3 // 第二种行内/内联和链接,使用getComputedStyle或currentStyle,可读不可写;
+4 // 第三种内联和连接,使用cssRules或rules,可读可写; 

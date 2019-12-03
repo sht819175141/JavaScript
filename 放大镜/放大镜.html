@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        #box {
+            width: 1000px;
+            height: 600px;
+            border: 1px solid #ccc;
+        }
+
+        #min {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            float: left
+        }
+
+        b {
+            width: 200px;
+            height: 200px;
+            background: blue;
+            opacity: 0.5;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: none;
+        }
+
+        #max {
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            float: right;
+            position: relative;
+            display: none;
+        }
+
+        #imgs {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="min">
+        <img src="images/min.jpg">
+        <b></b>
+    </div>
+    <div id="max">
+        <img src="images/max.jpg" id="imgs">
+    </div>
+</div>
+<script>
+    var box = document.getElementById("box")
+    var min = document.getElementById("min");
+    var max = document.getElementById("max");
+    var b = document.getElementsByTagName("b")[0];
+    var imgs = document.getElementById("imgs");
+    min.onmousemove = function (event) {
+        max.style.display = "block";
+        b.style.display = "block";
+        var evt = window.event || event;
+
+        var L = evt.clientX - min.offsetLeft - b.clientWidth / 2;
+        var T = evt.clientY - min.offsetTop - b.clientHeight / 2;
+
+        if (L < 0) L = 0;
+        if (L > min.clientWidth - b.clientWidth) L = min.clientWidth - b.clientWidth;
+
+        if (T < 0) T = 0;
+        if (T > min.clientHeight - b.clientHeight) T = min.clientHeight - b.clientHeight;
+
+        b.style.left = L + "px";
+        b.style.top = T + "px";
+        imgs.style.left = -L * 2 + "px";
+        imgs.style.top = -T * 2 + "px";
+    }
+
+    min.onmouseout = function () {
+        max.style.display = 'none';
+        b.style.display = 'none';
+    }
+</script>
+</body>
+</html>

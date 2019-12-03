@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+
+/*
+function box(){
+
+	var num = 10;
+
+	return function(){
+
+		alert(num);
+
+	}
+
+
+}
+
+box()();*/
+
+
+
+function box(){
+
+	var num = 10;
+
+	return function(){
+
+		num++;
+		return num;
+
+	}
+
+}
+
+var obj = box();
+
+alert(obj())
+
+alert(obj())
+
+alert(obj())
+
+alert(obj())
+
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+*{margin:0;padding: 0}
+ul{list-style: none;}
+ul li{width:200px;height: 150px;background: red;float:left;margin:15px;opacity: 0.3;filter:alpha(opacity:30);}
+</style>
+<body>
+	
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+<script>
+var lis = document.getElementsByTagName("li");
+for(var i =0;i<lis.length;i++){
+	lis[i].Alpha=30;
+	lis[i].time = null;
+	lis[i].onmouseover = function(){
+
+		startMove(this,100);
+
+	}
+	lis[i].onmouseout = function(){
+
+		startMove(this,30);
+
+	}
+
+}
+//var time = null;
+//var Alpha = 30;
+function startMove(obj,end){
+	clearInterval(obj.time);
+	obj.time = setInterval(function(){
+		var speed = 0;
+		if(obj.Alpha>end){
+			speed = -10;
+		}else{
+			speed = 10;
+		}
+		if(obj.Alpha==end){
+			clearInterval(obj.time);
+		}else{
+			obj.Alpha+=speed;
+			obj.style.opacity = obj.Alpha/100;
+			obj.style.filter="opacity:"+obj.Alpha+"";
+		}
+	},50)
+}
+</script>
+
+</body>
+</html>

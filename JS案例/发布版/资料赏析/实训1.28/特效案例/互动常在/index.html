@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="css/reset.css">
+		<title></title>
+		
+		<title></title>
+		<style>
+			html,body{
+				width: 100%;
+				height: 100%;
+				background: #e2e2e2 url(http://ossweb-img.qq.com/images/up/2015/invitation/body.jpg) no-repeat;
+  				background-size: cover;
+  				overflow: hidden;
+			}
+			
+			@font-face {
+				font-family: newText ;
+				src: url(./font/fzdsb.woff);
+			}
+			#wrap > div{
+				width: 100%;
+				height: 100%;
+			}
+			#wrap,.page{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.page{
+				overflow: hidden;
+			}
+			
+			/**
+			 * loading{
+			 */
+				#loading{
+					width: 100%;
+					height: 100%;
+					overflow: hidden;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: #e2e2e2;
+					z-index: 100;
+				}
+				#loading .loadingImg{
+					  width: 30%;
+					  padding-top: 50%;
+					  position: relative;
+					  left: 40%;
+				}
+				#loading .loadingText{
+					  width: 100%;
+					  text-align: center;
+					  display: block;
+					  
+				}
+			/**
+			 * }loading
+			 */
+			
+			
+			/**
+			 * page1{
+			 */
+			 .page1{
+			 	display: -webkit-box;
+			 	-webkit-box-align: center;
+			 	-webkit-box-pack: center;
+			 }
+			 .page1-text{
+			 	  width: 20px;
+			 	  padding: 0.8rem;
+				  margin: 0 auto;
+				  border: 1px solid #999;
+				  opacity: 0;
+				  font-family: newText;
+				  font-size: 26px;
+				  color: #4D4D4D;
+				  line-height: 1;
+				  -webkit-transition: all .5s ease;
+			 }
+			 .dot3-r{
+			 	-webkit-transform: rotate(-180deg);
+				display: block;
+				margin: 0 0 .6rem 1rem;
+			 }
+			 .wuyong{
+			 	 font-family: newText;
+				  font-size: 26px;
+				  color: #4D4D4D;
+				  line-height: 1;
+				  display: block;
+				 
+			 }
+			 
+			 .page1.active p{
+			 	opacity: 1;
+			 }
+			 .page1.active .wuyong{
+			 	-webkit-transform-origin: left top; 
+				-webkit-animation: diao 1s ease .5s forwards,bai 1s ease 1.5s infinite alternate;
+			 }
+			 @-webkit-keyframes diao{
+			 	from{ -webkit-transform: rotate(0deg); }
+			 	to{ -webkit-transform: rotate(20deg); }
+			 }
+			 
+			 @-webkit-keyframes bai{
+			 	from{ -webkit-transform: rotate(20deg); }
+			 	to{ -webkit-transform: rotate(15deg); }
+			 }
+			/**
+			 * }page1
+			 */
+			
+			
+			
+			/**
+			 * page2{
+			 */
+				.page2{
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-box-align: center;
+				}
+				.page2-text{
+					display: -webkit-box;
+					
+				}
+				.page2-text li{
+					display: block;
+					width: 20px;
+				}
+				.page2-text li.swaptext0{
+					-webkit-transition: all .5s linear 0; 
+				}
+				.page2-text li.swaptext1{
+					-webkit-transition: all .5s linear .2s; 
+				}
+				.page2-text li.swaptext2{
+					-webkit-transition: all .5s linear .4s; 
+				}
+				.page2-text li.swaptext3{
+					-webkit-transition: all .5s linear .6s; 
+				}
+				.page2-text li.swaptext4{
+					-webkit-transition: all .5s linear .8s; 
+				}
+				.page2-text li{
+					opacity: 0;
+				}
+				.page2.active .page2-text li{
+				 	opacity: 1;
+				 }
+				.img-zhong{
+					width: 40%;
+					margin: 0 auto;
+  					position: relative;
+  					margin-top: 10%;
+				}
+				.zhong1{
+					  display: block;
+				  width: 100%;
+				}
+				.zhen{
+					  position: absolute;
+					  width: 20%;
+					  z-index: 20;
+					    left: 47%;
+						top: 37%;
+						  -webkit-transform-origin: 14% 87%;
+						-webkit-animation: biao 60s linear infinite;
+				}
+				.zhong2{
+					    position: absolute;
+					    width: 10%;
+					  top: 18%;
+					  left: 45%;
+					  -webkit-transform-origin:50% 100%;
+					  -webkit-animation: imgzhong1 .1s linear infinite alternate;
+				}
+				
+				@-webkit-keyframes biao{
+					from{-webkit-transform: rotate(0deg);}
+					to{-webkit-transform: rotate(360deg);}
+				}
+				
+				@-webkit-keyframes imgzhong1{
+				    0% {-webkit-transform: rotate(-30deg);}
+				    100%{-webkit-transform: rotate(30deg);}
+				}
+			/**
+			 * }page2
+			 */
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript" src="js/zepto.min.js" ></script>
+		<div id="loading">
+			<img src="images/loading.png" class="loadingImg" />
+			<span class="loadingText">20</span>
+		</div>
+		<div id="wrap">
+			<div>
+			<section class="page page1">
+				<p class="titlefont bigfont page1-text">
+					致另一个
+					<img class="dot3-l" width="40%" src="./images/dot3.png">
+					无
+					<i class="wuyong">用</i>
+					<img class="dot3-r" width="40%" src="./images/dot3.png">
+					的我
+					<i class="arr"></i>
+				</p>
+			</section>
+			<section class="page page2">
+				<div class="img-zhong">
+					<img src="images/zhong1.png" class="zhong1" />
+					<img src="images/zhen.png" class="zhen" />
+					<img src="images/zhong2.png" class="zhong2" />
+				</div>
+				<ul class="pagestextbox page2-text">
+					<li class="ctext norfont swaptext4">世界已陷入忙乱</li>
+					<li class="ctext norfont swaptext3">新年才刚刚开始</li>
+					<li class="ctext norfont swaptext2">下班路上的路灯替代了夕阳</li>
+					<li class="ctext norfont swaptext1">记不得已经有多久</li>
+					<li class="titlefont bigfont swaptext0">你总是很忙乱</li>
+				</ul>
+				
+			</section>
+			<section class="page page3">
+				<div class="img-jj">
+					<img class="img-jj-bg" width="100%" src="./images/gs1.png">
+				</div>
+			</section>
+			</div>
+		</div>
+		
+		<script>
+			var imgs = [
+				"./images/bg1.png",
+				"./images/bg2.png",
+				"./images/bg3.png",
+				"./images/bg4.png",
+				"./images/bg5.png",
+				"./images/bg6.png",
+				"./images/bg7.png",
+				"./images/bg8.png",
+				"./images/bg9.png",
+				"./images/bg10.png",
+				"./images/bg11.png",
+				"./images/bg12.png",
+				"./images/bg13.png",
+				"./images/bg14.png",
+				"./images/bg15.png",
+				"./images/bg16.png",
+				"./images/bg17.png",
+				"./images/bg18.png",
+				"./images/bg19.png",
+				"./images/bg20.png"
+			];
+			
+			var audios = {
+				"bg" : {
+					dom : "",
+					src : "./Media/bg.mp3"
+				},
+				
+				"book" : {
+					dom : "",
+					src : "./Media/book.mp3"
+				},
+				
+				"glass" : {
+					dom : "",
+					src : "./Media/glass.mp3"
+				},
+				
+				"ling" : {
+					dom : "",
+					src : "./Media/ling.mp3"
+				},
+				
+				"qiu" : {
+					dom : "",
+					src : "./Media/qiu.mp3"
+				},
+				
+				"shui" : {
+					dom : "",
+					src : "./Media/shui.mp3"
+				}
+				
+				
+			
+			}
+			
+			
+			var spriteAnimate = function( animateDom,options ){
+				var def = {
+					loop : true,
+					_tagetDom : "",
+					name : "",
+					frameLength : 0
+				};
+				
+				$.extend( def, options);
+				
+				this.frames = []; //帧数组
+				for( var i=1; i<= def.frameLength; i++){
+					this.frames.push( "images/"+def.name+i+".png" )
+					
+				}
+				console.log( this.frames  );
+				
+				this.framesIndex = 0; //当前播放帧数
+				this.fps = 1000;
+				this.time = ""; //定时器
+				this._tagetDom = animateDom;
+				this.loop = def.loop; // true||false
+				
+			};
+			
+			spriteAnimate.prototype.gotoFrame = function( index ){
+				
+				$( this._tagetDom ).find("img").attr("src",this.frames[index]);
+			}
+			
+			/**
+			 * 更新方法
+			 */
+			spriteAnimate.prototype._updata = function(){
+				this.framesIndex++;
+				if( this.loop && this.framesIndex >= this.frames.length ){
+					this.framesIndex = 0
+				}else if( this.framesIndex >= this.frames.length ){
+					return false;
+				}
+				this.gotoFrame( this.framesIndex );
+				return true;
+			}
+			
+			/**
+			 * 播放方法
+			 */
+			spriteAnimate.prototype.onPlay = function(){
+				var that = this;
+				that.framesIndex = 0;
+				this.time = setInterval(function(){
+					if( !that._updata() ){
+						clearInterval( that.time );
+					}
+					console.log( that.framesIndex )
+				},this.fps)
+			}
+			
+			/**
+			 * 暂停方法
+			 */
+			spriteAnimate.prototype.onStop = function(){
+				clearInterval( this.time );
+			}
+			
+			function loadImg( imgSrc,callback ){
+				var img = new Image;
+				img.src = imgSrc;
+				img.onload = function(){
+					callback()
+				}
+			}
+			
+			
+			/**
+		     * 加载数组图片
+		     * @param {Object} imgArray  图片数组
+		     * @param {Function} every   每一次加载图片的回调函数
+		     * @param {Function} callback  所有图片加载完成后的回调函数
+		     */
+		    function loadImages( imgArray, every, callback,count){
+		        var _count = count || 0;
+		        loadImg( imgArray[_count],function(){
+		        	_count++;
+		        	every(_count)
+		        	if( _count == imgArray.length ){
+		        		callback()
+		        	}else{
+		        		loadImages( imgArray,every,callback,_count )
+		        	}
+		        	
+		        })
+		        
+		    }
+			function creatAudio(){
+				for( key in audios ){
+					var audio = $("<audio></audio>")
+					audio.attr( "src",audios[key].src );
+					
+					audios[key].dom = audio[0];
+					$( audios[key].dom ).attr( "loop",true )
+					$( "body" ).append( audios[key].dom )
+				}
+			}
+			creatAudio()
+			
+			loadImages( imgs,function(index){
+				$(".loadingText").text( Math.floor(index/imgs.length*100 )+"%")
+			},function(){
+				setTimeout(function(){
+					$( '#loading' ).hide();
+					$( ".page1" ).addClass("active")
+					
+					audios["bg"].dom.play();
+					
+				},1000)
+				
+			})
+			
+			
+			$( "#wrap" ).swipeUp(function(){
+				
+				var showPage = $(this).find( ".active" ),
+					showPageIndex = showPage.index();
+					
+				showPageIndex++;
+				
+				if( showPageIndex >= $(this).find(".page").length ){
+					return false;
+				}
+				
+				$(this).children("div").animate({
+					"translateY" : -showPageIndex*100+"%"
+				},500,function(){
+					$(this).find( ".page" ).eq(showPageIndex).addClass("active").siblings().removeClass("active");
+				})
+				playAudio( showPageIndex )
+			}).swipeDown(function(){
+				
+				var showPage = $(this).find( ".active" ),
+					showPageIndex = showPage.index();
+					
+				showPageIndex--;
+				
+				if( showPageIndex < 0 ){
+					return false;
+				}
+				
+				$(this).children("div").animate({
+					"translateY" : -showPageIndex*100+"%"
+				},500,function(){
+					$(this).find( ".page" ).eq(showPageIndex).addClass("active").siblings().removeClass("active");
+				})
+				
+				playAudio( showPageIndex )
+			})
+			var panzhi = new spriteAnimate( ".img-jj",{
+				name : "gs",
+				frameLength : 10,
+				loop : false
+			});
+			
+			function playAudio( pageType ){
+				audios["ling"].dom.pause();
+				audios["book"].dom.pause();
+				audios["glass"].dom.pause();
+				audios["qiu"].dom.pause();
+				audios["shui"].dom.pause();
+				panzhi.onStop();
+				switch( pageType ){
+					
+					case  1 :
+						$( audios["ling"].dom ).attr( "loop",true )
+						$( audios["ling"].dom ).attr( "autoplay",true )
+						audios["ling"].dom.play();
+						console.log("a")
+						
+					break;
+					case 2 : 
+						audios["glass"].dom.play();
+						panzhi.onPlay();
+					break;
+					
+					case 3 : 
+						audios["qiu"].dom.play();
+					break;
+					
+					case 4 : 
+						audios["book"].dom.play();
+					break;
+					
+					case 5 : 
+						audios["shui"].dom.play();
+					break;
+					
+				}
+				
+				//audios["bg"].dom.play();
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,463 @@
+<meta charset="utf-8">
+
+call和apply两者的区别：
+两者实现的功能是调用一个对象的一个方法，以另一个对象替换当前对象
+，只是参数传递方式不一样，
+call是将各个参数以逗号（,）隔开，而
+apply是将所有参数组成一个数组进行传递。
+
+面向对象的方法,       
+1.将普通方法中的 公共变量 作为对象中的 this 下面的属性（将变量换
+成this的属性）
+2.将具体的功能函数 以 对象.protype.方法 的形式展示
+3.修改方法中this的指向
+
+DOM节点操作：
+
+
+    1、插入节点
+        appendChild()末端追加
+        insertBefore(添加子节点,位置节点)在指定位置前插入子节点
+        
+     注意：对于已存在的节点，通过插入节点方法实现移动效果
+
+    2、创建节点
+        元素节点document.createElement("标签")
+        文本节点document.createTextNode("文本内容")
+        2.1为节点设置HTML内容  innerHTML
+        2.2为节点添加属性  元素.html属性名=值;
+    3、删除节点
+        removeChild()
+    4、复制节点
+        被复制的节点.cloneNode([true])
+        加true的话连事件一起复制，不加只复制元素
+    5、替换节点
+        replaceChild(新，旧)
+
+        方法                  描述
+        getElementById()    返回带有指定 ID 的元素。
+        getElementsByTagName()                                                              返回包含带有指定标签名称的所有元素的节点列表（集合/节点数组）。
+        getElementsByClassName()                                                               返回包含带有指定类名的所有元素的节点列表。
+        appendChild()       把新的子节点添加到指定节点。
+        removeChild()       删除子节点。
+        replaceChild()      替换子节点。
+        insertBefore()      在指定的子节点前面插入新的子节点。
+        createAttribute()   创建属性节点。
+        createElement()     创建元素节点。
+        createTextNode()    创建文本节点。
+        getAttribute()      返回指定的属性值。
+        setAttribute()      把指定属性设置或修改为指定的值。
+
+        比较重要的节点类型有：
+        元素类型    NodeType
+        元素           1
+        属性           2
+        文本           3
+        注释           8
+        文档           9
+
+    nodeName 属性规定节点的名称。
+    nodeName 是只读的
+
+    元素节点的 nodeName 与标签名相同
+    属性节点的 nodeName 与属性名相同
+    文本节点的 nodeName 始终是 #text
+    文档节点的 nodeName 始终是 #document
+    注释：nodeName 始终包含 HTML 元素的大写字母标签名
+
+    nodeValue 属性规定节点的值。
+
+    元素节点的 nodeValue 是 undefined 或 null
+    文本节点的 nodeValue 是文本本身
+    属性节点的 nodeValue 是属性值
+
+
+    以不同的方式来访问 HTML 元素：
+
+    通过使用 getElementById() 方法
+    通过使用 getElementsByTagName() 方法
+    通过使用 getElementsByClassName() 方法
+
+    例：
+    ID选择            document.getElementById("id");
+    通过标签名选择    document.getElementsByTagName("tagname");[加0的话选择第一个元素]
+    通过class名选择   document.getElementsByClassName();[加0效果与上相同]
+    getElementsByClassName() 在 Internet Explorer 5,6,7,8 中无效。【不推荐使用】
+
+    改变元素内容            document.getElementById("p1").innerHTML="New text!";
+    改变一个段落的HTML样式  document.getElementById("p2").style.color="blue";
+    创建新的 HTML 元素 
+    <div id="d1">
+    <p id="p1">This is a paragraph.</p>
+    <p id="p2">This is another paragraph.</p>
+    </div>
+
+    var para=document.createElement("p");
+    var node=document.createTextNode("This is new.");
+    para.appendChild(node);
+
+    var element=document.getElementById("d1");
+    element.appendChild(para);
+
+    例子：
+    http://www.w3school.com.cn/htmldom/dom_elements.asp
+
+    原型链：
+    http://www.nowamagic.net/librarys/veda/detail/1648
+
+    7、闭包是什么，它有什么作用。
+    答：闭包就是能够读取其他函数内部变量的函数。
+    作用：1）读取函数内部的变量 。
+          2）变量的值始终保持在内存中。
+
+    8、AJAX是什么，有什么优点和缺点。
+    答：Ajax就是一个页面向远程服务器发送http请求，并抓取数据，实现局部刷新。
+    优点：
+    1、页面无刷新，用户的体验非常好。 
+    2、使用异步方式与服务器通信，具有更加迅速的响应能力。 
+    3、可以把以前一些服务器负担的工作转嫁到客户端，利用客户端闲置的能力来处理，减轻服务器和带宽的负担，节约空间和宽带租用成本。并且减轻服务器的负担，ajax的原则是“按需取数据”，可以最大程度的减少冗余请求，和响应对服务器造成的负担。 
+    4、基于标准化的并被广泛支持的技术，不需要下载插件或者小程序。
+    缺点：
+      1、ajax不支持浏览器back按钮。   2、安全问题 AJAX暴露了与服务器交互的细节。   3、对搜索引擎的支持比较弱。   4、破坏了程序的异常机制。   5、不容易调试。
+
+    9、PROTOTYPE是什么，有什么作用。
+    答：在JavaScript中，prototype对象是实现面向对象的一个重要机制。每个函数就是一个对象（Function），函数对象都有一个子对象prototype对象，类是以函数的形式来定义的。prototype表示该函数的原型，也表示一个类的成员的集合。在通过new创建一个类的实例对象的时候，prototype对象的成员都成为实例化对象的成员。
+    1、该对象被类所引用，只有函数对象才可引用； 
+    2、在new实例化后，其成员被实例化，实例对象方可调用。 同时，函数是一个对象，函数对象若直接声明成员，不用被实例化即可调用。
+
+    10、详细说明addEventListenr各个参数，以及事件触发过程。
+    答：addEventListener（eventName,functionName,true/false,int,true/false）;
+    动作，函数名，动作捕抓流活动状态，优先级，不需要时是否在内存清掉
+
+
+    35、实现js继承。
+    答：
+    js继承有5种实现方式：
+    1、继承第一种方式：对象冒充
+       function Parent(username){
+       this.username = username;
+       this.hello = function(){
+       alert(this.username);
+       }
+      }
+      function Child(username,password){G
+    //通过以下3行实现将Parent的属性和方法追加到Child中，从而实现继承
+    //第一步：this.method是作为一个临时的属性，并且指向Parent所指向的对象，
+    //第二步：执行this.method方法，即执行Parent所指向的对象函数
+    //第三步：销毁this.method属性，即此时Child就已经拥有了Parent的所有属性和方法
+    this.method = Parent;
+    this.method(username);//最关键的一行
+    delete this.method;
+
+    this.password = password;
+    this.world = function(){
+    alert(this.password);
+    }
+    }
+    var parent = new Parent("zhangsan");
+    var child = new Child("lisi","123456");
+    parent.hello();
+    child.hello();
+    child.world();
+    2、继承第二种方式：call()方法方式
+    call方法是Function类中的方法
+    call方法的第一个参数的值赋值给类(即方法)中出现的this
+    call方法的第二个参数开始依次赋值给类(即方法)所接受的参数
+
+    function test(str){
+    alert(this.name + " " + str);
+    }
+    var object = new Object();
+    object.name = "zhangsan";
+    test.call(object,"langsin");//此时，第一个参数值object传递给了test类(即方法)中出现的this，而第二个参数"langsin"则赋值给了test类(即方法)的str
+
+    function Parent(username){
+    this.username = username;
+    this.hello = function(){
+    alert(this.username);
+    }
+    }
+    function Child(username,password){
+    Parent.call(this,username);
+
+    this.password = password;
+    this.world = function(){
+    alert(this.password);
+    }
+    }
+    var parent = new Parent("zhangsan");
+    var child = new Child("lisi","123456");
+    parent.hello();
+    child.hello();
+    child.world();
+    3、继承的第三种方式：apply()方法方式
+    apply方法接受2个参数，
+    A、第一个参数与call方法的第一个参数一样，即赋值给类(即方法)中出现的this
+    B、第二个参数为数组类型，这个数组中的每个元素依次赋值给类(即方法)所接受的参数
+
+    function Parent(username){
+    this.username = username;
+    this.hello = function(){
+    alert(this.username);
+    }
+    }
+    function Child(username,password){
+    Parent.apply(this,new Array(username));
+
+    this.password = password;
+    this.world = function(){
+    alert(this.password);
+    }
+    }
+    var parent = new Parent("zhangsan");
+    var child = new Child("lisi","123456");
+    parent.hello();
+    child.hello();
+    child.world();
+
+    4、继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承
+    function Person(){
+    }
+    Person.prototype.hello = "hello";
+    Person.prototype.sayHello = function(){
+    alert(this.hello);
+    }
+    function Child(){
+    }
+    Child.prototype = new Person();//这行的作用是：将Parent中将所有通过prototype追加的属性和方法都追加到Child，从而实现了继承
+    Child.prototype.world = "world";
+    Child.prototype.sayWorld = function(){
+    alert(this.world);
+    }
+
+    var c = new Child();
+    c.sayHello();
+    c.sayWorld();
+
+    5、继承的第五种方式：混合方式
+    混合了call方式、原型链方式
+
+    function Parent(hello){
+    this.hello = hello;
+    }
+    Parent.prototype.sayHello = function(){
+    alert(this.hello);
+    }
+
+    function Child(hello,world){
+    Parent.call(this,hello);//将父类的属性继承过来
+    this.world = world;//新增一些属性
+    }
+
+    Child.prototype = new Parent();//将父类的方法继承过来
+
+    Child.prototype.sayWorld = function(){//新增一些方法
+    alert(this.world);
+    }
+
+    var c = new Child("zhangsan","lisi");
+    c.sayHello();
+    c.sayWorld();
+
+html5:
+
+内核
+    -webkit chrome   -o opera  
+    -moz   firefox   -mz ie
+新增语义化标签：
+header nav section articel(文章区) asize(侧边栏) footer(底部)
+新增了自定义属性:data-*定义
+新增了form类型：http://www.ithao123.cn/content-5185437.html;
+新增API： canvas画图 本地存储 离线应用 媒体audio video 地理位置 拖动上传文件  
+
+transform:translate/scale/skew/rotate
+translate:用于位移的 px rem
+scale:    用于缩放的 num
+skew:     用于倾斜的 deg
+rotate：  用于旋转的 px rem
+后面加上3D的话开启手机硬件加速
+
+transform-origin:x y  px % center
+用于定义rotate旋转 skew和scale时的中心单
+
+transition：name duration easing delay
+用于实现过渡动画
+name：    要添加动画的属性 为all的是过度所有将发生改变的属性 过度多个属性时用，隔开
+duration：动画的速度，单位s or ms
+easing:   动画曲线
+delay：   延时
+
+animation与transition的区别
+    transition需要事件触发animation不需要
+animation:
+animation-name              规定需要绑定到选择器的 keyframe 名称。。
+animation-duration          规定完成动画所花费的时间，以秒或毫秒计。
+animation-timing-function   规定动画的速度曲线。
+animation-delay             规定在动画开始之前的延迟。
+animation-iteration-count   规定动画应该播放的次数。infinite无限
+animation-direction         规定是否应该轮流反向播放动画。alternate无缝
+http://www.w3school.com.cn/cssref/pr_animation.asp
+
+keyframes
+
+通过 @keyframes 规则，您能够创建动画。
+创建动画的原理是，将一套 CSS 样式逐渐变化为另一套样式。
+在动画过程中，您能够多次改变这套 CSS 样式。
+以百分比来规定改变发生的时间，或者通过关键词 "from" 和 "to"，等价于 0% 和 100%。
+0% 是动画的开始时间，100% 动画的结束时间。
+为了获得最佳的浏览器支持，始终定义 0% 和 100% 选择器。
+
+例子：
+@-webkit-keyframes mymove
+{
+    0%   {top:0px;}
+    25%  {top:200px;}
+    50%  {top:100px;}
+    75%  {top:200px;}
+    100% {top:0px;}
+}
+
+
+http://www.w3school.com.cn/cssref/pr_keyframes.asp
+
+
+
+7、请使用javascript语言创建一个对象代表一个学生,学生主要有以下属性:姓名Jeriy(字符串类型)/年龄22(整型)/三个朋友:Li、Chen、Zhang（数组）/会踢足球(类型为方法),并且调用Jeriy踢足球(弹出football字符串即可)。要求使用构造函数和原型组合方法。（30分）
+
+
+
+
+function xs(name,age,friend){
+    this.name=name;
+    this.age=age;
+    this.friend=friend;
+}
+    xs.prototype.play=function(){
+    alert(“football”)
+}
+var s = new xs(“Jeriy”,22,[“li”,”chen”,”zhang”]);
+s.play();
+
+
+10、 简述javascript的封装
+对象的定义；对象的继承；单例模式；私有属性、私有方法、公有属性、公有方
+
+12、 如何解决ajax的跨域问题
+JSONP
+
+
+16、 call和apply的区别
+（1）call方法
+调用一个对象的一个方法，以另一个对象替换当前对象。
+call([thisObj[,arg1[, arg2[,   [,.argN]]]]])
+
+参数
+thisObj  可选项。将被用作当前对象的对象。
+arg1, arg2,  , argN 可选项。将被传递方法参数序列。
+  
+说明
+call 方法可以用来代替另一个对象调用一个方法。call 方法可将一个函数的对象上下文从初始的上下文改变为由thisObj指定的新对象。
+
+如果没有提供 thisObj 参数，那么 Global 对象被用作 thisObj。
+
+（2）apply方法
+官方（JavaScript手册）：
+
+应用某一对象的一个方法，用另一个对象替换当前对象。
+apply([thisObj[,argArray]])
+
+参数
+thisObj  可选项。将被用作当前对象的对象。
+argArray 可选项。将被传递给该函数的参数数组。
+
+说明
+如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。
+如果 没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。
+
+两者的区别：
+两者实现的功能是完全一样的，只是参数传递方式不一样，call是将各个参数以逗号（,）隔开，而apply是将所有参数组成一个数组进行传递。
+
+
+17、 写一个让b继承a的方法
+function A( age, name ){ 
+  this.age = age; 
+  this.name = name; 
+} 
+
+A.prototype.show = function(){ 
+  alert('父级方法'); 
+} 
+
+function B(age,name,job){ 
+  A.apply( this, arguments ); 
+  this.job = job; 
+} 
+B.prototype = new A();
+var b = new A(14,'侠客行'); 
+var a = new B(15,'狼侠','侠客'); 
+a.show();
+
+2、简述Ajax的实现步骤
+要完整实现一个AJAX异步调用和局部刷新,通常需要以下几个步骤:
+(1)创建XMLHttpRequest对象,也就是创建一个异步调用对象.
+(2)创建一个新的HTTP请求,并指定该HTTP请求的方法、URL.
+(3)设置响应HTTP请求状态变化的函数.
+(4)发送HTTP请求.
+(5)获取异步调用返回的数据.
+(6)使用JavaScript和DOM实现局部刷新.
+
+
+3、同步和异步的区别
+举个例子：普通B/S模式（同步）AJAX技术（异步）
+同步：提交请求->等待服务器处理->处理完毕返回 这个期间客户端浏览器不能干任何事
+异步: 请求通过事件触发->服务器处理（这是浏览器仍然可以作其他事情）->处理完毕
+
+看看open方法的几个参数。
+.open (http-method, url, async, userID, password)
+（后面是帐号和密码，在禁止匿名访问的http页面中，需要用户名和口令）
+
+其中async是一个布尔值。如果是异步通信方式(true)，客户机就不等待服务器的响应；如果是同步方式(false)，客户机就要等到服务器返回消息后才去执行其他操作。我们需要根据实际需要来指定同步方式，在某些页面中，可能会发出多个请求，甚至是有组织有计划有队形大规模的高强度的request，而后一个是会覆盖前一个的，这个时候当然要指定同步方式：flase。
+
+
+4、post和get的区别
+(1)、Get是用来从服务器上获得数据，而Post是用来向服务器上传递数据。 
+(2)、Get将表单中数据的按照variable=value的形式，添加到action所指向的URL后面，并且两者使用“?”连接，而各个变量之间使用“&”连接；Post是将表单中的数据放在form的数据体中，按照变量和值相对应的方式，传递到action所指向URL。 
+(3)、Get是不安全的，因为在传输过程，数据被放在请求的URL中。Post的所有操作对用户来说都是不可见的。 
+(4)、Get传输的数据量小，这主要是因为受URL长度限制(GET方式提交的数据最多只能有1024字节，而POST则没有此限制)；而Post可以传输大量的数据，所以在上传文件只能使用Post。
+(5)、Get限制Form表单的数据集的值必须为ASCII字符；而Post支持整个ISO10646字符集。默认是用ISO-8859-1编码。
+(6)、Get是Form的默认方法。
+
+
+
+
+7、Js中怎么定义对象的构造函数，怎么体现js的继承关系，举例说明
+function A( age, name ){ 
+  this.age = age; 
+  this.name = name; 
+} 
+
+A.prototype.show = function(){ 
+  alert('父级方法'); 
+} 
+
+function B(age,name,job){ 
+  A.apply( this, arguments ); 
+  this.job = job; 
+} 
+
+var b = new A(14,'侠客行'); 
+var a = new B(15,' 狼侠','侠客'); 
+a.show();
+
+
+17、请举例出一个匿名函数的典型案例
+;(function($) {
+  // Code goes here
+})(jQuery);
+
+
+24、解释下什么是web语义化，举出具体的实例，并说明语义化后有什么好处
+HTML的每个标签都有其特定含义（语义），Web语义化是指使用语义恰当的标签，使页面有良好的结构，页面元素有含义，能够让人和搜索引擎都容易理解。
+使用这样结构写出的网页其语义显而易见。在有些面试的时候会问到类似strong 和font-weight: bold有什么区别，这时候就可以从语义化的角度解答了。
+
+

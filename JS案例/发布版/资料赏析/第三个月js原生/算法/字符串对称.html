@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+
+        function isSymmetry(str)
+        {
+
+                for (var i = 0; i < str.length/2; i++) {
+
+                    var char1 = str.charAt(i);
+                    var char2 = str.charAt(str.length - 1 - i);
+                    if (char1 != char2) return false;
+                }
+                        
+            return true;
+
+        }
+
+        alert(isSymmetry("aoowbbwooa"))
+        alert(isSymmetry("aoowbabwooa"))
+
+
+
+        100  10  2   39   57   13  18
+        13                     18  100  
+        </script>
+</body>
+</html>

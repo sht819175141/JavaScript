@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id='btn'>单击</button>
+	<script>
+      var btn=document.getElementById('btn');
+      btn.onclick=function(e){
+     	var event=e || window.event;
+      	var target=event.target || event.srcElement
+      }
+
+      function stopPropagation(e){
+            if(e.stopPropagation){
+      	     e.stopPropagation();
+            }else{
+      		e.cancelBubble=true;
+      	}
+      }
+
+      function  preventDefault(e){
+      	if(e.preventDefault){
+      		 e.preventDefault();
+      	}else{
+      		e.returnValue=false;
+      	}
+
+      }
+
+   
+
+
+	</script>
+</body>
+</html>

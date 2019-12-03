@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+       var ans1="D,A,A,A,D,B,D,C,A,A,B,B,C,A,A,C,C,D,D,D,A,A,B,B,C,B,AD,AC,ABD,BD,ABC,BC,ACD,AC,AD,ACD,offset(),removerclass(),addclass(),css(),slideDown(),slideUp(),val(),trim(),5400px,click,scrollLeft,border-radius,keypoint-1,keypoint+1";
+
+        var ans = "C,A,A,A,D,C,D,B,B,B,A,B,C,A,A,C,C,B,D,A,A,D,B,B,C,B,ABD,AC,ABCD,BD,ABC,AB,ACD,BC,BCD,ABCD,offset,removeClass,addClass,attr,slideDown,slideUp,val,trim,4500,animate,scrollLeft,border-radius,keypoint-1,keypoint+1";
+
+        var score = 0;
+        ans1= ans1.replace(/\(\)/g, "");
+    
+        for (var i = 0, max = ans.split(",").length; i < max; i++)
+        {
+          
+            if (ans1.split(",")[i] == ans.split(",")[i])
+            {
+                score += 2;
+            }
+
+        }
+   
+        alert("武帅鹏的得分是:"+score)
+     </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" value="开始" id="kai"/>
+<input type="text" value="" id="shu"/>
+<script>
+    var kai = document.getElementById('kai');
+    var shu = document.getElementById('shu');
+    kai.onclick = function () {
+        kai.disabled = true;
+        time = setInterval(dao, 500);
+
+        function dao() {
+            shu.value -= 1;
+            if (shu.value <= 0) {
+                kai.disabled = false;
+                shu.value = "";
+                clearInterval(time);
+            }
+        }
+    }
+</script>
+</body>
+</html>

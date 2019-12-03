@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Person(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		Person.prototype.info=function(){
+			return this.name+","+this.age;
+		}
+		function Student(name,age,school){
+			Person.call(this,name,age);
+			this.school=school;
+		}
+		/*if(Object.create){
+			Student.prototype=Object.create(Person.prototype);
+		}
+		else
+		{*/
+			function F(){};
+			F.prototype=Person.prototype;
+			Student.prototype=new F();
+		/*}*/
+		Student.prototype.constructor=Student;
+		var s=new Student("zs",17,"bw");
+		alert(s.info());
+	</script>
+</body>
+</html>

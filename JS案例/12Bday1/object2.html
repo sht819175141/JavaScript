@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+   <script>
+   	var obj={
+		 	 name:"zs",
+		 	 age1:16
+		 };
+	Object.defineProperty(obj,"_age",{
+		set:function(n){
+			if(n<100){
+				this.age1=n;
+			}
+			else
+			{
+				alert("error");
+			}
+		},
+		get:function(){
+			return this.age1;
+		}
+	})
+	obj._age=20;
+	alert(obj._age);
+   </script>
+	
+</body>
+</html>

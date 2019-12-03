@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input type="text" id="txt" name="txt"><span></span>
+<script>
+   var txt=document.getElementById("txt");
+   var tspan=document.getElementsByTagName("span")[0];
+  /*  if(window.XMLHttpRequest){
+	var xml=new XMLHttpRequest();
+    }
+    else
+    {
+       var 	xml=new ActiveXObject("Microsoft.XMLHTTP");
+    }*/
+    try
+    {
+    	var xml=new XMLHttpRequest();
+    }catch(e){
+    	var 	xml=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    //хдДчРЖч╝УхнШ
+
+    //xml.open("get","a.txt?"+new Date().getTime(),true); //true х╝Вцне falseхРМцне
+    txt.onblur=function(){
+	xml.open("get","b.asp?mz="+this.value+"&"+new Date().getTime(),true); 
+	xml.send();
+}
+	
+    xml.onreadystatechange=function(){
+    	if(xml.readyState==4 && xml.status==200){
+    	var v=(xml.responseText);
+    	alert(v);
+    	if(v=="1"){
+    		tspan.innerHTML="用户名已经存在";
+    	}
+    	else
+    	{
+    		tspan.innerHTML="ok";
+    	}
+
+       }
+    }
+   
+	
+
+</script>
+	
+</body>
+</html>

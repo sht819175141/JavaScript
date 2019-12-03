@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<select name="LessonName" id="Lesson"></select>
+	<select name="subLessonName" id="subLesson"></select>
+	<script>
+	function Laction(Lesson,subLesson){
+		this.Lesson=document.getElementById(Lesson);
+		this.subLesson=document.getElementById(subLesson);
+		this.data=[['qd','js','div','css'],['ui','ps','wui']];
+		this.addLesson();
+		this.change();
+	}
+	
+	Laction.prototype.addLesson=function(){
+		for(var i=0;i<this.data.length;i++){
+		this.Lesson.options[this.Lesson.options.length]=new Option(this.data[i][0]);
+		}
+	}
+	
+	Laction.prototype.change=function(){
+		var _this=this;
+		_this.Lesson.onchange=function(){
+			_this.Action(this)
+		};
+		_this.Lesson.onchange()
+	}
+
+	Laction.prototype.Action=function(index){
+		this.subLesson.options.length=0;
+		for(var j=1;j<this.data[index.selectedIndex].length;j++){
+			this.subLesson.options.add(new Option(this.data[index.selectedIndex][j]))
+			}
+	}
+	new Laction('Lesson','subLesson')
+	
+	</script>
+</body>
+</html>

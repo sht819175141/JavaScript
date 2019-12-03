@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<table border="1" width="400" id="tab">
+    <thead>
+    <tr>
+        <td>
+            歌曲排行榜
+        </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox" name="che"></td>
+        <td>五环之歌</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="che"></td>
+        <td>希望的田野上</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="che"></td>
+        <td>野草</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="che"></td>
+        <td>月亮之上</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td><input type="checkbox" id="btn1">全选</td>
+        <td><input type="button" value="删除" id="remove"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="添加" id="insert">
+            <input type="text" id="txt">
+        </td>
+    </tr>
+    </tfoot>
+</table>
+<script>
+    var btn1 = document.getElementById("btn1");
+    var che = document.getElementsByName("che");
+    var remove = document.getElementById("remove");
+    var tab = document.getElementById("tab");
+    var insert = document.getElementById("insert");
+    var txt = document.getElementById("txt");
+    insert.onclick = function () {
+        var tr = document.createElement("tr");
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        td1.innerHTML = "<input type='checkbox' name='che'>";
+        td2.innerHTML = txt.value;
+        tab.tBodies[0].appendChild(tr);
+        for (var i = 0; i < che.length; i++) {
+            che[i].index = i;
+            che[i].onclick = function () {
+                //alert(i);//i的值是结果
+                change(this.index)
+            }
+        }
+    }
+    btn1.onclick = function () {
+        for (var i = 0; i < che.length; i++) {
+            che[i].checked = btn1.checked;
+            change(i);
+        }
+    }
+    for (var i = 0; i < che.length; i++) {
+        che[i].index = i;
+        che[i].onclick = function () {
+            //alert(i);//i的值是结果
+            change(this.index)
+        }
+    }
+    remove.onclick = function () {
+        for (var j = che.length - 1; j >= 0; j--) {
+            if (che[j].checked) {
+                tab.tBodies[0].removeChild(che[j].parentNode.parentNode)
+            }
+        }
+    }
+
+    function change(num) {
+        if (che[num].checked) {
+            che[num].parentNode.parentNode.style.background = 'blue';
+        } else {
+            che[num].parentNode.parentNode.style.background = '';
+        }
+    }
+</script>
+</body>
+</html>

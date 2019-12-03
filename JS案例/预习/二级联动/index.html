@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+var arr = []; 
+
+arr["山西"]=["太原","大同","临汾"];
+
+arr["山东"]=["德州","济南","威海"];
+
+ 
+
+
+window.onload = function(){
+
+
+// op==放入option 
+
+	var op = document.getElementById("op");
+	for(time in arr){
+
+		op.add(new Option(time,time));
+
+	}
+
+
+
+}
+ 
+
+function setCity(){
+
+	var city = document.getElementById("city");
+	var op = document.getElementById("op").value;
+
+	city.options.length =1;
+
+	if(op==""){
+		return "";
+	}
+ 
+	for(var i=0;i<arr[op].length;i++){
+
+
+		city.add(new Option(arr[op][i],arr[op][i]));
+
+ 
+	}
+
+
+
+	 
+
+}
+
+ 
+
+</script>
+<body>
+	
+<select name="" id="op" onChange="setCity()">
+	<option value="">--请选择省--</option>
+</select>
+
+
+<select name="" id="city">
+	<option value="">--请选择市--</option>
+</select>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">点击</button>
+	<script>
+		var kc;
+		function fun(r){
+			str="八维学员："+kc+":";
+			for(var t in r){
+				str+=" "+r[t]
+			}
+			alert(str);
+		}
+		var btn=document.getElementById('btn')
+		btn.onclick=function(){
+			kc=prompt("请输入");
+			var osrc=document.createElement("script");
+			osrc.src="http://localhost:8088/json.php?kc="+kc;
+			document.body.appendChild(osrc);
+			//document.body.removeChild(osrc);
+		}	
+	</script>
+</body>
+</html>

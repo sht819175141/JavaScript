@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div
+		{
+			background:rgb(125,125,125);
+		}
+	</style>
+</head>
+<body>
+	<div>abc</div>
+	<input type="range" min="0" max="2" step="0.01" value="1" />
+	<script type="text/javascript">
+		var objDiv=document.getElementsByTagName("div")[0];
+		var objRange=document.getElementsByTagName("input")[0];
+		var arr=getComputedStyle(objDiv,null).background.match(/\d+/g);  // r,g,b
+		alert(arr);
+		objRange.onmousemove=function(){
+
+			var v=objRange.value;
+			//0-255  125,125,125
+		    var r=Math.min(arr[0]*v,255)<=0?0:Math.min(arr[0]*v,255); // 颜色值不大于255,不小于0
+		     var g=Math.min(arr[1]*v,255)<=0?0:Math.min(arr[1]*v,255);
+		     var b=Math.min(arr[2]*v,255)<=0?0:Math.min(arr[2]*v,255);
+
+		     objDiv.style.background="rgb("+r+","+g+","+b+")";
+		}
+		
+
+
+	</script>
+</body>
+</html>

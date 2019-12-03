@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*function Person(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		Person.prototype.info=function(){
+			return this.name+","+this.age
+		}
+		var p=new Person("张三",22)
+
+		function Student(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		Student.prototype=new Person()
+		Student.prototype.constructor=Student
+		var s=new Student('李四',23)
+		alert(s.info())*/
+		//console.log() 
+
+		/*function Person(name,age){
+			this.name=name;
+			this.age=age;
+			this.friends=["aa"]
+		}
+		function Student(name,age){
+			Person.call(this,name,age)
+			/*this.name=name;
+			this.age=sge;*/
+		//}
+		/*Student.prototype=new Person()
+		var s=new Student('李四',23)
+		alert(s.info);*/
+0
+		/*function Person(name,age){
+			this.name=name;
+			this.age=age;
+			this.friendes=['aa'];
+		}
+		function Student(name,age){
+     			Person.call(this,name,age)
+			this.name=name;
+			this.age=age;
+			this.friendes=['aa'];
+		}
+		Student.prototype=new Person();
+		var s=new Student('ls',11)
+		var s1=new Student('zs',22)
+		s.friendes.push('bb')
+		alert(s.friendes)
+		alert(s1.friendes);*/
+//
+	function Person(name,age){
+		this.name=name;
+		this.age=age;		
+	}
+	function Student(name,age,school){
+		Person.call(this,name,age)
+		this.school=school
+	}
+	Student.prototype.info=function(){
+		return this.name+' '+this.age+' '+this.school
+	}
+	var s=new Student('zs',11,'bw');
+	var s1=new Student('ls',22,'qh');
+	alert(s.info())
+	alert(s1.info())
+	var p=new Person('aa',44)
+	alert(p.name+" "+p.age)
+	</script>
+</body>
+</html>

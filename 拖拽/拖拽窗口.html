@@ -1,0 +1,134 @@
+<!doctype html>
+0
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        #box {
+            height: 270px;
+            width: 400px;
+            border: 1px solid #000;
+            position: absolute;
+            border-radius: 20px;
+        }
+
+        ul {
+            float: right;
+        }
+
+        ul li {
+            list-style: none;
+            padding: 10px 15px;
+            float: left;
+        }
+
+        .li1 {
+            background: url(images/tool.png) no-repeat -29px -29px;
+            cursor: pointer;
+        }
+
+        .li2 {
+            background: url(images/tool.png) no-repeat -60px -29px;
+            cursor: pointer;
+        }
+
+        .li3 {
+            background: url(images/tool.png) no-repeat -118px -29px;
+            cursor: pointer;
+        }
+
+        .li4 {
+            background: url(images/tool.png) no-repeat -89px -29px;
+            cursor: pointer;;
+        }
+
+        h1 {
+            font-size: 22px;
+            float: left;
+            padding: 10px 10px 0 10px;
+            width: 250px;
+        }
+
+        ol li {
+            clear: both;
+            line-height: 20px;
+        }
+
+        ol {
+            margin: 50px 0 0 50px;
+        }
+
+        body {
+            background: url(images/bg.jpg);
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <h1>这是一个可以拖动的窗口</h1>
+    <ul id="uls">
+        <li class="li1"></li>
+        <li class="li2"></li>
+        <li class="li3"></li>
+        74
+        <li class="li4"></li>
+    </ul>
+    <ol>
+        <li>1、窗口可以拖动</li>
+        <li>2、窗口可以最小化</li>
+        <li>3、限制窗口最小高度/宽度</li>
+    </ol>
+</div>
+<script>
+    var box = document.getElementById("box");
+    var uls = document.getElementById("uls");
+    var lis = uls.getElementsByTagName("li");
+    box.style.left = (document.documentElement.clientWidth - box.offsetWidth) / 2 + 'px'
+    box.style.top = (document.documentElement.clientHeight - box.offsetHeight) / 2 + 'px'
+
+    lis[0].onclick = function () {
+        box.style.display = "none";
+    }
+    lis[1].onclick = function () {
+        box.style.width = document.documentElement.clientWidth + 'px';
+        box.style.height = document.documentElement.clientHeight + 'px';
+        box.style.left = 0;
+        box.style.top = 0;
+    }
+    lis[2].onclick = function () {
+        box.style.width = 400 + "px";
+        box.style.height = 270 + "px";
+        box.style.left = (document.documentElement.clientWidth - box.offsetWidth) / 2 + 'px'
+        box.style.top = (document.documentElement.clientHeight - box.offsetHeight) / 2 + 'px'
+    }
+
+    box.onmousedown = function (e) {
+        var event = e || window.event;
+        var L = event.clientX - box.offsetLeft;
+        var T = event.clientY - box.offsetTop;
+        document.onmousemove = function (e) {
+            var event = e || window.event;
+            var left = event.clientX - L;
+            var top = event.clientY - T;
+            var maxW = document.documentElement.clientWidth - box.offsetWidth;
+            var maxH = document.documentElement.clientHeight - box.offsetHeight;
+            if (left < 0) left = 0;
+            if (top < 0) top = 0;
+            if (left > maxW) left = maxW;
+            if (top > maxH) top = maxH;
+            box.style.left = left + "px";
+            box.style.top = top + "px";
+        }
+    }
+    box.onmouseup = function () {
+        document.onmousemove = null;
+    }
+</script>
+</body>
+</html>

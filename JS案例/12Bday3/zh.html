@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Person(name,age)
+		{
+			this.name=name;
+			this.age=age;
+			
+		}
+		Person.prototype.info=function(){
+			return this.name+","+this.age;
+		}
+
+		function Student(name,age,school){
+			Person.call(this,name,age); //继承了父类的所有属性，解决了父类构造函数的实例上引用数据被共享的问题
+			this.school=school;
+		}
+		Student.prototype=new Person();
+		//主要拿过来的是Person的原型上的方法
+		Student.prototype.info=function(){
+			return Person.prototype.info.call(this)+" "+this.school;
+		}
+		Student.prototype.exam=function(){
+			return this.info()+"ok";
+		}
+
+        var ss=new Student("zs",15,"八维");
+        alert(s.exam());
+        
+        //var s1=new Student("ls",16,"清华");
+       /* s.friends.push("ccc");
+        alert(s.friends);
+        alert(s1.friends);*/
+        //alert(s.info());
+       // alert(s1.info());
+
+        //var p=new Person("aaa",17);
+       // alert(p.name+"  "+p.age);
+
+       // alert(s instanceof Person);
+       // alert(s instanceof Object);
+        //alert(s instanceof Student);
+        alert(s.info());
+       // alert(p instanceof Student);
+       // alert(p instanceof Person);
+       // alert(p instanceof Object);
+		
+	</script>
+</body>
+</html>

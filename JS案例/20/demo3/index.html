@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+<script>
+document.write(isNaN(NaN));
+
+function reverse(fn){
+
+	return function(value){
+		
+		return !fn(value);  // !isNaN(NaN)
+	}
+
+}
+
+var isNot = reverse(isNaN);
+
+document.write(isNot(NaN));
+
+
+</script>
+	
+</body>
+</html>

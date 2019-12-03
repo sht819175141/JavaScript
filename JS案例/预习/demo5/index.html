@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+
+document.write("<br />-----^-----<br />");
+
+
+var reg = /^\d{2,4}/;
+
+
+document.write(reg.test("11111111d"));
+
+
+
+document.write("<br />-----$-----<br />");
+
+var reg1 = /\d$/;
+
+
+document.write(reg1.test("da"));
+
+
+
+document.write("<br />-------开始和结束-----<br />");
+
+
+
+//数字开头  ___%*   数字结束
+
+
+var str = "1aa(*(**)*)*a1";
+
+var reg2 = /^\d.+\d$/;
+
+alert(reg2.test(str));
+
+
+
+</script>
+	
+</body>
+</html>

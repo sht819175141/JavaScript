@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Android上常见度量单位【xdpi、hdpi、mdpi、ldpi】解读 - grass_dcm - 博客园</title>
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=gdNkSiQMyBMkpTeO1ex9qW-60UbMszQItnCUpBAT3LQ1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="http://common.cnblogs.com/Skins/white/style.css?id=20140415"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/cmduan/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/cmduan/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/cmduan/wlwmanifest.xml"/>
+<script src="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'cmduan', cb_enable_mathjax=false;</script>
+<script src="/bundles/blog-common.js?v=15gzXd7pJ_PNpSlGpVykf0EBaNg79HWL7oD5vVw0NGA1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="banner">
+	
+<div class="header">
+	<div>
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/cmduan/">grass_dcm</a>
+	</div>
+	<div>
+		
+	</div>
+</div>
+</div>
+<div id="leftcontent">
+	
+		
+<h1 class = "listtitle">导航</h1>
+<ul class = "list">
+			<li class = "listitem"><a id="MyLinks1_HomeLink" class="listitem" href="http://www.cnblogs.com/">博客园</a></li>
+			<li class = "listitem"><a id="MyLinks1_MyHomeLink" class="listitem" href="http://www.cnblogs.com/cmduan/">首页</a></li>
+			<li class = "listitem"><a id="MyLinks1_NewPostLink" class="listitem" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+			<li class = "listitem"><a id="MyLinks1_ContactLink" accesskey="9" class="listitem" rel="nofollow" href="http://space.cnblogs.com/msg/send/grass_dcm">联系</a></li>
+			<li class = "listitem"><a id="MyLinks1_Syndication" class="listitem" href="http://www.cnblogs.com/cmduan/rss">订阅</a><a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/cmduan/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>
+			<li class = "listitem"><a id="MyLinks1_Admin" class="listitem" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+		
+<div class = "listtitle">公告</div>
+	<ul class = "list">
+		<li class = "listitem">
+			<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+	</li>
+</ul>
+		
+		<h1 class = "listtitle">随笔分类</h1>
+		
+				<ul class = "list">
+			
+				<li class = "listitem"><a id="ArchiveLinks1_Categories_CatList_LinkList_0_Link_0" class="listitem" href="http://www.cnblogs.com/cmduan/category/258599.html">Android(26)</a> </li>
+			
+				<li class = "listitem"><a id="ArchiveLinks1_Categories_CatList_LinkList_0_Link_1" class="listitem" href="http://www.cnblogs.com/cmduan/category/406387.html">asp.net</a> </li>
+			
+				</ul>
+			
+	
+		<h1 class = "listtitle">随笔档案</h1>
+		
+				<ul class = "list">
+			
+				<li class = "listitem"><a id="ArchiveLinks1_Categories_CatList_LinkList_1_Link_0" class="listitem" href="http://www.cnblogs.com/cmduan/archive/2012/05.html">2012年5月 (1)</a> </li>
+			
+				<li class = "listitem"><a id="ArchiveLinks1_Categories_CatList_LinkList_1_Link_1" class="listitem" href="http://www.cnblogs.com/cmduan/archive/2012/03.html">2012年3月 (8)</a> </li>
+			
+				<li class = "listitem"><a id="ArchiveLinks1_Categories_CatList_LinkList_1_Link_2" class="listitem" href="http://www.cnblogs.com/cmduan/archive/2011/06.html">2011年6月 (12)</a> </li>
+			
+				<li class = "listitem"><a id="ArchiveLinks1_Categories_CatList_LinkList_1_Link_3" class="listitem" href="http://www.cnblogs.com/cmduan/archive/2010/09.html">2010年9月 (4)</a> </li>
+			
+				<li class = "listitem"><a id="ArchiveLinks1_Categories_CatList_LinkList_1_Link_4" class="listitem" href="http://www.cnblogs.com/cmduan/archive/2010/08.html">2010年8月 (1)</a> </li>
+			
+				</ul>
+			
+	
+
+
+	
+</div>
+<div id="centercontent">
+	
+
+<div class = "singlepost">
+	<div class = "posttitle">
+		<a id="cb_post_title_url" class="singleposttitle" href="http://www.cnblogs.com/cmduan/archive/2012/03/09/2388345.html">Android上常见度量单位【xdpi、hdpi、mdpi、ldpi】解读</a>
+	</div>
+	
+	<div id="cnblogs_post_body"><p><strong><strong>术语和概念 </strong><br /> <span style="color: #ff0000;">屏幕尺寸</span> <br /> </strong>屏幕的物理尺寸，以屏幕的对角线长度作为依据（比如 2.8寸， 3.5寸）。 <br /> 简而言之， Android把所有的屏幕尺寸简化为三大类：大，正常，和小。 <br /> 程序可以针对这三种尺寸的屏幕提供三种不同的布局方案，然后系统会负责把你的布局方案以合适的方式渲染到对应的屏幕上，这个过程是不需要程序员用代码来干预的。</p>
+<p><strong><span style="color: #ff0000;">屏幕长宽比</span> <br /> </strong>屏幕的物理长度与物理宽度的比例。程序可以为制定长宽比的屏幕提供制定的素材，只需要用系统提供的资源分类符long和 notlong。</p>
+<p><span style="color: #ff0000;"><strong>分辨率</strong></span> <br /> 屏幕上拥有的像素的总数。注意，虽然大部分情况下分辨率都被表示为&ldquo;宽度&times;长度&rdquo;，但分辨率并不意味着屏幕长宽比。在 Android系统中，程序一般并不直接处理分辨率。</p>
+<p><span style="color: #ff0000;"><strong>密度</strong></span> <br /> 以屏幕分辨率为基础，沿屏幕长宽方向排列的像素。 <br /> 密度较低的屏幕，在长和宽方向都只有比较少的像素，而高密度的屏幕通常则会有很多 &mdash;&mdash;甚至会非常非常多&mdash;&mdash;像素排列在同一区域。屏幕的密度是非常重要的，举个例子，长宽以像素为单位定义的界面元素（比如一个按钮），在低密度的屏幕上会 显得很大，但在高密度的屏幕上则会显得很小。</p>
+<p><span style="color: #ff0000;"><strong>密度无关的像素（ DIP ）</strong></span> <br /> 指一个抽象意义上的像素，程序用它来定义界面元素。它作为一个与实际密度无关的单位，帮助程序员构建一个布局方案（界面元素的宽度，高度，位置）。 <br /> 一个与密度无关的像素，在逻辑尺寸上，与一个位于像素密度为 160DPI的屏幕上的像素是一致的，这也是Android平台所假定的默认显示设备。在运行的时候，平台会以目标屏幕的密度作为基准，&ldquo;透明地&rdquo;处理所 有需要的DIP缩放操作。要把密度无关像素转换为屏幕像素，可以用这样一个简单的公式： pixels = dips * (density / 160)。举个例子，在 DPI为 240的屏幕上， 1个 DIP等于 1.5个物理像素。我们强烈推荐你用 DIP来定义你程序的界面布局，因为这样可以保证你的 UI在各种分辨率的屏幕上都可以正常显示。</p>
+<p><strong>为了简化程序员面在对各种分辨率时的困扰，也为了具备各种分辨率的平台都可以直接运行这些程序， Android平台将所有的屏幕以<span style="color: #ff0000;">密度和分辨率</span>为分类方式，各自分成了三类： </strong><br /><strong> &middot;三种主要的尺寸：大，正常，小； </strong><br /><strong> &middot;三种不同的密度：高（ hdpi），中（ mdpi）和低（ ldpi）。 </strong><span style="color: #993300;">【DPI是&ldquo;dot per inch&rdquo;的缩写，每英寸像素数。】</span><br /><strong> 如果需要的话，程序可以为各种尺寸的屏幕提供不同的资源（主要是布局），也可以为 各种密度的屏幕提供不同的资源（主要是位图）。除此以外，程序不需要针对屏幕的尺寸或者密度作出任何额外的处理。在执行的时候，平台会根据屏幕本身的尺寸 与密度特性，自动载入对应的资源，并把它们从逻辑像素（ DIP，用于定义界面布局）转换成屏幕上的物理像素。</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="blog_title">
+<h3><a href="http://xiechengfa.iteye.com/blog/1122359">关于Android的nodpi,xhdpi,hdpi,mdpi,ldpi</a> <em class="actions"> </em></h3>
+<strong></strong></div>
+<p style="font-size: 1.05em;">首先是几个基本概念：</p>
+<p style="font-size: 1.05em;"><span style="color: #ff0000;">1.屏幕尺寸Screen size</span></p>
+<p style="font-size: 1.05em;">即显示屏幕的实际大小，按照屏幕的对角线进行测量。</p>
+<p style="font-size: 1.05em;">为简单起见，Android把所有的屏幕大小分为四种尺寸：小，普通，大，超大(分别对应：small, normal, large, and extra large).</p>
+<p style="font-size: 1.05em;">应用程序可以为这四种尺寸分别提供不同的自定义屏幕布局-平台将根据屏幕实际尺寸选择对应布局进行渲染，这种选择对于程序侧是透明的。</p>
+<p style="font-size: 1.05em;"><span style="color: #ff0000;">2.屏幕长宽比Aspect ratio</span></p>
+<p style="font-size: 1.05em;">长宽比是屏幕的物理宽度与物理高度的比例关系。应用程序可以通过使用限定的资源来为指定的长宽比提供屏幕布局资源。</p>
+<p style="font-size: 1.05em;"><span style="color: #ff0000;">3.屏幕分辨率Resolution</span></p>
+<p style="font-size: 1.05em;">在屏幕上显示的物理像素总和。需要注意的是：尽管分辨率通常用宽x高表示，但分辨率并不意味着具体的屏幕长宽比。</p>
+<p style="font-size: 1.05em;">在Andorid系统中，应用程序不直接使用分辨率。</p>
+<p style="font-size: 1.05em;"><span style="color: #ff6600;">4.密度Density</span></p>
+<p style="font-size: 1.05em;">根据像素分辨率，在屏幕指定物理宽高范围内能显示的像素数量。</p>
+<p style="font-size: 1.05em;">在同样的宽高区域，低密度的显示屏能显示的像素较少，而高密度的显示屏则能显示更多的像素。</p>
+<p style="font-size: 1.05em;">屏幕密度非常重要，因为其它条件不变的情况下，一共宽高固定的UI组件（比如一个按钮）在在低密度的显示屏上显得很大， 而在高密度显示屏上看起来就很小。</p>
+<p style="font-size: 1.05em;">为简单起见，Android把所有的屏幕分辨率也分为四种尺寸：小，普通，大，超大(分别对应：small, normal, large, and extra large).</p>
+<p style="font-size: 1.05em;">应用程序可以为这四种尺寸分别提供不同的资源-平台将透明的对资源进行缩放以适配指定的屏幕分辨率。</p>
+<p style="font-size: 1.05em;"><span style="color: #ff6600;">5.设备独立像素Density-independent pixel (dp)</span></p>
+<p style="font-size: 1.05em;">应用程序可以用来定义UI组件的虚拟像素单元，通过密度无关的方式来描述布局尺寸和位置。</p>
+<p style="font-size: 1.05em;">一个设备独立像素相当于一个160 dpi屏幕上的物理像素。</p>
+<p style="font-size: 1.05em;">在程序运行时，系统根据屏幕的实际密度透明的处理任何需要缩放的设备独立像素单元，设备独立像素转换成屏幕实际像素的换算很简单：pixels = dps * (density / 160).</p>
+<p style="font-size: 1.05em;">例如在240 dpi的屏幕上，1个设备独立像素等于1.5物理像素.为确保UI组件在不同的屏幕都能合适的展示，强烈建议使用设备独立像素单元来定义你的应用程序UI。</p>
+<p style="font-size: 1.05em;"><span style="color: #ff6600;">四种屏幕尺寸分类</span>：: small, normal, large, and xlarge</p>
+<p style="font-size: 1.05em;"><span style="color: #ff6600;">四种密度分类</span>: ldpi (low), mdpi (medium), hdpi (high), and xhdpi (extra high)</p>
+<p style="font-size: 1.05em;">需要注意的是: xhdpi是从<span class="Apple-converted-space">&nbsp;</span> <a class="st_tag internal_tag" style="color: #0066cc; text-decoration: none;" title="标签 Android 下的日志" href="http://618119.com/tag/android">Android</a> <span class="Apple-converted-space">&nbsp;</span> 2.2 (API Level 8)才开始增加的分类.</p>
+<p style="font-size: 1.05em;">xlarge是从Android 2.3 (API Level 9)才开始增加的分类.</p>
+<p style="font-size: 1.05em;"><span style="color: #993300;">DPI是&ldquo;dot per inch&rdquo;的缩写，每英寸像素数。</span></p>
+<p style="font-size: 1.05em;">一般情况下的普通屏幕：ldpi是120，mdpi是160，hdpi是240，xhdpi是320。</p>
+<p style="font-size: 1.05em;">参考：<a style="color: #0066cc; text-decoration: none;" href="http://developer.android.com/images/screens_support/screens-ranges.png">http://developer.android.com/images/screens_support/screens-ranges.png</a></p>
+<p style="font-size: 1.05em;">两种获取屏幕分辨率信息的方法：</p>
+<p style="font-size: 1.05em;">DisplayMetrics metrics = new DisplayMetrics();</p>
+<p style="font-size: 1.05em;">Display display = activity.getWindowManager().getDefaultDisplay();</p>
+<p style="font-size: 1.05em;">display.getMetrics(metrics);</p>
+<p style="font-size: 1.05em;">//这里得到的像素值是设备独立像素dp</p>
+<p style="font-size: 1.05em;">//DisplayMetrics metrics=activity.getResources().getDisplayMetrics(); 这样获得的参数信息不正确，不要使用这种方式。</p>
+<p style="font-size: 1.05em;">不能使用android.content.res.Resources.getSystem().getDisplayMetrics()。这个得到的宽和高是空的。</p>
+<div class="cnblogs_code">
+<pre>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span> initResolutionStr(Context context) {<br />        <span style="color: #0000ff;">if</span> (ApiConfig.getResolutionStr() == <span style="color: #0000ff;">null</span> || ApiConfig.getResolutionStr().equals("")) {<br />            WindowManager winMgr = (WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);<br />            Display display = winMgr.getDefaultDisplay();<br />            <span style="color: #0000ff;">int</span> height = display.getHeight();<br />            <span style="color: #0000ff;">int</span> width = display.getWidth();<br />            String resolution = height &gt; width ? height + "x" + width : width + "x" + height;<br />            ApiConfig.setResolutionStr(resolution);<br />            <span style="color: #008000;">//</span><span style="color: #008000;"> densityDpi = 120dpi is ldpi, densityDpi = 160dpi is mdpi,<br />            </span><span style="color: #008000;">//</span><span style="color: #008000;"> densityDpi = 240dpi is hdpi, densityDpi = 320dpi is xhdpi</span><span style="color: #008000;"><br /></span>            DisplayMetrics dm = <span style="color: #0000ff;">new</span> DisplayMetrics();<br />            getWindowManager().getDefaultDisplay().getMetrics(dm);<br />            <span style="color: #0000ff;">int</span> densityDpi = dm.densityDpi;<br />            ApiConfig.setDensityDpi(densityDpi);<br />        }<br />    }</pre>
+</div>
+<p style="font-size: 1.05em;"><br />&nbsp;</p>
+<p style="font-size: 1.05em;">&nbsp;</p>
+<p style="font-size: 1.05em;">如果需要为Android pad定制资源文件，则res目录下的目录可能为：</p>
+<p style="font-size: 1.05em;">drawable</p>
+<p style="font-size: 1.05em;">drawable-ldpi</p>
+<p style="font-size: 1.05em;">drawable-mdpi</p>
+<p style="font-size: 1.05em;">drawable-hdpi</p>
+<p style="font-size: 1.05em;">drawable-xhdpi</p>
+<p style="font-size: 1.05em;">drawable-<a class="st_tag internal_tag" style="color: #0066cc; text-decoration: none;" title="标签 nodpi 下的日志" href="http://618119.com/tag/nodpi">nodpi</a></p>
+<p style="font-size: 1.05em;">drawable-nodpi-1024&times;600</p>
+<p style="font-size: 1.05em;">drawable-nodpi-1280&times;800</p>
+<p style="font-size: 1.05em;">drawable-nodpi-800&times;480</p>
+<p style="font-size: 1.05em;">values</p>
+<p style="font-size: 1.05em;">values-ldpi</p>
+<p style="font-size: 1.05em;">values-mdpi</p>
+<p style="font-size: 1.05em;">values-hdpi</p>
+<p style="font-size: 1.05em;">values-xhdpi</p>
+<p style="font-size: 1.05em;">values-nodpi</p>
+<p style="font-size: 1.05em;">values-nodpi-1024&times;600</p>
+<p style="font-size: 1.05em;">values-nodpi-1280&times;800</p>
+<p style="font-size: 1.05em;">values-nodpi-800&times;480</p>
+<p><span style="color: #993300;"><strong>Android上常见度量单位：</strong></span><br /><span style="color: #993300;"> 　　px（像素）：屏幕上的点，绝对长度，与硬件相关。</span><br /><span style="color: #993300;"> 　　in（英寸）：长度单位。</span><br /><span style="color: #993300;"> 　　mm（毫米）：长度单位。</span><br /><span style="color: #993300;"> 　　pt（磅）：1/72英寸，point。</span><br /><span style="color: #993300;"> 　　dp（与密度无关的像素）：一种基于屏幕密度的抽象单位。在每英寸160点的显示器上，1dp = 1px。</span><br /><span style="color: #993300;"> 　　dip：Density-independent pixel,同dp相同。</span><br /><span style="color: #993300;"> 　　sp：在dp的基础上，还与比例无关，个人理解为是一个矢量图形单位。</span></p>
+<p><span style="color: #993300;"><strong>引入dp/dip的原因： </strong><br /> 　　过去，程序员通常以像素为单位设计计算机用户界面。例如，定义一个宽度为300像素的表单字段，列之间的间距为5个像素，图标大小为16&times;16像素 等。这样处理的问题在于，如果在一个每英寸点数（dpi）更高的新显示器上运行该程序，则用户界面会显得很小。在有些情况下，用户界面可能会小到难以看清 内容。与分辨率无关的度量单位可以解决这一问题。<br /> <br /> <strong>如何计算密度</strong>(请参照原帖：<a href="http://www.devdiv.com/thread-28610-1-1.html" target="_blank">http://www.devdiv.com/thread-28610-1-1.html</a>)；<br /> 1.标准是240*320画在1.5*2平方inch上。那么像每平方英寸有240*320/(1.5*2)=25600点，也就是一平方英寸的像素点为25600，所以dpi取为它的平方根160;如果你的dpi是120，那么它的密度就是0.75.<br /> 2.密度不只是与width有关，还与height有关，所以不管width是1.8还是1.3，它的密度都有可能是1；比如width是1.8，只要它 的height是3/1.8的话，如果pixel为240*320的话，它的密度仍旧是1；同样如果width为1.3，只要它的 height为3/1.3的话，像素点为240*320，则密度也是1.<br /> 3.320*480/(1.5*2)得到单位平方英寸的点为51200，所以单位平方英寸是240*320画在1.5*2屏幕的2倍。但是这是平方英寸啊，算密度的时候要开平方的啊，所以应该是2开平方，是1.414吧，大致密度为1.5。<br /> <br /> <strong>如何做到与密度无关：</strong><br /> 　　如果屏幕密度为160，这时dp和sp和px是一样的。1dp=1sp=1px，但如果使用px作单位，如果屏幕大小不变（假设还是3.2寸），而屏 幕密度变成了320。那么原来TextView的宽度设成160px，在密度为320的3.2 寸屏幕里看要比在密度为160的3.2寸屏幕上看短了一半。但如果设置成160dp或160sp的话。系统会自动将width属性值设置成320px的。 也就是160 * 320 / 160。其中320 / 160可称为密度比例因子。也就是说，如果使用dp和sp，系统会根据屏幕密度的变化自动进行转换。官方文档总结的计算公式为：pixels = dps * (density /160).<br /> <br /> <br /> <strong>附：</strong><br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;传说iPhone/Mac的设计从一开始就考虑到对任意分辨率的支持，iOS的所有介面元素用的都已经是矢量化了的图片，UI界面是系统级别的与密度无关；而Android虽然支持任意分辨率，但不是系统全局的，求证。</span></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+	<div class = "itemdesc">
+		posted on <span id="post-date">2012-03-09 22:00</span> <a href='http://www.cnblogs.com/cmduan/'>grass_dcm</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="http://i.cnblogs.com/EditPosts.aspx?postid=2388345" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2388345);return false;">收藏</a>
+	</div>
+
+</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=74801,cb_entryId=2388345,cb_blogApp=currentBlogApp,cb_blogUserGuid='3c6fce3c-6aa8-df11-8eb9-001cf0cd104b',cb_entryCreatedDate='2012/3/9 22:00:00';loadViewCount(cb_entryId);</script>
+	
+<a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_blank" title="程序员的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_blank" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_blank" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a><a href="http://job.cnblogs.com/" target="_blank">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_blank">知识库</a></div>
+<div id="ad_under_post_holder"></div>
+<script type="text/javascript">
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+fixPostBodyFormat();
+loadAdUnderPost();
+</script>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+loadBlogSignature();
+LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+</script>
+<script type="text/javascript">
+    $.ajax({ url: 'http://counter.cnblogs.com/blog/post/' + cb_entryId, type: 'get', dataType: 'script', cache: true });
+</script>
+</div>
+
+	
+<div class="footer">
+	Powered by: 
+	<br />
+	
+	<a id="Footer1_Hyperlink3" NAME="Hyperlink1" href="http://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br />
+	Copyright &copy; grass_dcm
+</div>
+</div>
+<div id="rightcontent">
+	
+		
+<h1 class = "listtitle">统计</h1>
+<ul class = "list">
+		<li class = "listitem">随笔 - 26
+		<li class = "listitem">文章 - 2
+		<li class = "listitem">评论 - 10
+		<li class = "listitem">引用 - 0
+	</li>
+</ul>
+		
+
+
+	
+</div>
+
+
+</body>
+</html>

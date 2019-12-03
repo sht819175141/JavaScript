@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	var url='http://www.baidu.com?user=张三&city=北京&p_id=18';
+
+	//封装一个函数 user  张三   city  北京   p_id  18
+
+	 function getString(name){
+	  	var reg=new RegExp("(\\?|&)"+name+"=[\\w\\u4e00-\\u9fa5]+","g")
+     	//var reg=/(\?|&)name=[\w\u4e00-\u9fa5]+/ 
+     	var arr=  url.match(reg)  ;
+     	var temp=arr[0].split('=')
+    	// var  val=  arr[0].slice(arr[0].indexOf('=')+1)
+      	console.log(temp[1]);
+	 }
+	 getString('p_id')
+
+
+	 
+	</script>
+</body>
+</html>

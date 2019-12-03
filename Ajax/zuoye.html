@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<h2></h2>
+	<div id="wrap">
+		
+	</div>
+	<script>
+		window.onload=function(){
+			var btn=document.getElementById("btn")
+			function creatXMLHttpRequest(){
+				try{
+					return new XMLHttpRequest();
+				}catch(e){
+					try{
+						return new ActiveXOject("Msxml2.XMLHTTP")
+					}catch(e){
+						try{
+							return new ActiveXOject("Microsoft.XMLHTTP")
+						}catch(e){		
+							alert("浏览器应用不正确")
+						}
+					}
+				}
+			}
+			var wrap=document.getElementById("wrap");
+			var xhr=creatXMLHttpRequest();
+			var hh=document.getElementsByTagName("h1")[0];
+			xhr.open("get","zuoye.json",true);
+			xhr.send(null);
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){	
+					var txt=xhr.responseText;
+					var data=eval("("+txt+")")
+					var hh=document.createElement("h2")
+					for(i in data){
+						
+						hh.innerHTML+="编号"+i;
+						wrap.appendChild(hh);
+						for(t in data[i]){
+							var pp=document.createElement("p");
+							pp.innerHTML=t+">="+data[i][t];
+							pp.style.marginLeft="50px";
+							hh.appendChild(pp);
+						}
+					}
+
+				}
+			}
+		}	
+	</script>
+</body>
+</html>

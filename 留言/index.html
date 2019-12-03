@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<h1>留言板</h1>
+
+<input type="text" id='txt'>
+
+<button id="btn1">留言</button>
+
+
+<script>
+    var btn1 = document.getElementById("btn1");
+    var txt = document.getElementById("txt");
+    var ul = document.createElement("ul");
+    document.body.appendChild(ul);
+    btn1.onclick = function () {
+
+        var li = document.createElement("li");
+
+        var lis = document.getElementsByTagName("li");
+
+        li.innerHTML = txt.value + "<a href='javascript:;;'>删除</a>";
+
+        ul.insertBefore(li);
+
+        var oA = document.getElementsByTagName("a");
+
+        for (var i = 0; i < oA.length; i++) {
+
+            oA[i].onclick = function () {
+
+                ul.removeChild(this.parentNode);
+
+            }
+
+        }
+
+
+    }
+</script>
+
+</body>
+</html>

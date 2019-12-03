@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		var arr = ["张三", "李四", "王五"];
+
+		function each(fun, array) {
+			for (var i = 0; i < array.length; i++) {
+				fun(array[i])
+			}
+		}
+
+		function map(fun, array) {
+			var temp = [];
+			each(function (n) {
+				temp.push(fun(n))
+			}, array)
+			return temp;
+		}
+
+		function add(val) {
+			return "1412B" + val;
+		}
+		console.log(map(add, arr))
+	</script>
+</body>
+
+</html>

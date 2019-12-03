@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	/*	 var obj=new Object();
+		 obj.name="zs";
+		 obj.age=16;
+
+		 for(var t in obj){
+		 	console.log(t+":"+obj[t]);
+		 }*/
+		 var obj={
+		 	 name:"zs",
+		 	 age:16
+		 }
+		 function viewObj(obj){
+		  for(var t in obj){
+		 	console.log(t+":"+obj[t]);
+		 }
+		}
+		
+		//工厂方式创建对象：不能得到类型
+		 function createPerson(name,age){   
+		 	 //var obj=new Object();
+		 	 var obj={};
+		 	 obj.name=name;
+		 	 obj.age=age;
+		 	 obj.info=function(){
+		 	 	alert(age);
+		 	 	return age;
+		 	 };
+		 	 return obj;
+		 }
+		 var p=createPerson("ls",15);
+		
+          alert(p instanceof Object);
+		// alert(p.hasOwnProperty("toString"));
+		 //alert("toString" in p);
+		// alert(p.toString())
+		 function isPrototMethod(obj,name){
+		 	return !obj.hasOwnProperty(name) && (name in obj);
+		 }
+		 alert(isPrototMethod(p,"toString"));
+
+		 Object.defineProperty(p,"age",{
+		    
+		    enumerable:false,
+		    writable:false,
+		    configurable:false,
+		    value:50
+		 	
+		 });
+		 p.age=30;
+		 delete p.age;
+		 alert(p.age);
+		viewObj(p);
+	</script>
+
+</body>
+</html>

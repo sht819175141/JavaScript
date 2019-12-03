@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Test(from,to){  //from,to 局部变量  模拟私有变量
+
+			if(from>to){
+				throw new Error("数据错误");
+			}
+			function setFrom(n){
+				if(n>to){
+					throw new Error("数据错误");
+				}
+				from=n;
+			}
+			function setTo(n){
+				if(n<from){
+					throw new Error("数据错误");
+				}
+				to=n;
+			}
+			function getFrom(){
+				return from;
+			}
+			function getTo(){
+				return to;
+			}
+			Object.defineProperties(this,{
+				from:{
+					get:getFrom,set:setFrom   //共有方法
+				},
+				to:{
+					get:getTo,set:setTo
+				}
+			})
+
+		}
+
+			function myfreeze(o){
+
+			var props=Object.getOwnPropertyNames(o);
+			for(var i=0;i<props.length;i++){
+				Object.defineProperty(o,props[i],{
+					writable:false,enumerable:false,configurable:false
+				});
+			}
+			return o;
+		}
+		 Test.prototype=myfreeze({
+        	constructor:Test,
+        	 toString:function(){
+		  	   			return this.from+","+this.to;
+		  	  },
+		  	   
+		  	  isRange:function(x){
+		  	   		return x>=this.from && x<=this.to;
+		  	   	}
+        });
+		var t=new Test(10,15);
+		t.from=12;
+		alert(t);
+	</script>
+</body>
+</html>

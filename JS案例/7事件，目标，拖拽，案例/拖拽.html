@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{width:100px; height:100px; background: red; position: absolute;left:0;top:0; cursor: move;}
+	</style>
+</head>
+<body>
+	<div id='box'></div>
+	<script>
+	 var box=document.getElementById('box');
+	     //当鼠标在box上按下的时候
+	    	 //当鼠标移动的时候 mousemove  left  top
+	     //当鼠标释放的时候，停止拖拽
+
+   //当鼠标在盒子上按下的时候
+
+  
+
+      box.onmousedown=function(eve){
+         //获取事件对象
+      	var  event=eve || window.event;
+      	//获取鼠标距离盒子左边的距离=鼠标距离浏览器的距离-盒子距离浏览器的距离
+         var x= event.clientX-box.offsetLeft;
+         var y=event.clientY-box.offsetTop;
+      		document.onmousemove=function(e){
+      			//获取事件对象
+      			var event=e || window.event;
+      			//盒子的left=鼠标距离浏览器的距离-鼠标距离盒子的距离
+      			var left=event.clientX-x;
+      			var top=event.clientY-y;
+      			//最大值
+      			var maxW=document.documentElement.clientWidth-box.offsetWidth;
+      			var maxH=document.documentElement.clientHeight-box.offsetHeight;
+      			//条件判断四个方向不能出浏览器的可视区
+      			if(left<0)left=0;
+      			if(top<0)top=0;
+      			if(left>maxW)left=maxW;
+      			if(top>maxH)top=maxH;
+      			//赋值 lef top
+      			box.style.left=left+"px";
+      			box.style.top=top+'px';
+
+      		}
+      }
+
+ //当鼠标释放的时候
+
+     box.onmouseup=function(){
+     	//删除mousemove的事件
+     	 document.onmousemove=null;
+     }
+
+	</script>
+</body>
+</html>

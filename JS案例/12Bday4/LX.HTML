@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="mydiv">aaaa</div>
+	<button id="mybutton">aaa</button>
+	<a href="#" id="mylink">bbbb</a>
+	<script>
+	    function  ShowContent(objId)
+	    {
+	    	var ins=this;
+	    	this.obj=document.getElementById(objId);
+	    	this.obj.onclick=function(){
+	    		ins.myclick(this);
+	    	}
+
+	    }
+	    ShowContent.prototype.myclick=function(r){
+	    	alert(r.innerHTML)
+	    }
+	    var tags=document.getElementsByTagName("*");
+	    for(var i=0;i<tags.length;i++){
+
+        if(tags[i].id){
+	    new ShowContent(tags[i].id);
+	     }
+	   }
+		
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+ DOM的基本方法
+
+一.直接引用结点
+1.document.getElementById(id);
+      --在文档里面通过id来找结点
+2.document.getElementByTagName(tagName);
+      --返回一个数组，包含对这些结点的引用
+      --如：document.getElementByTagName("span");将返回所有类型为span的结点
+
+二.间接引用结点
+3.element.childNodes
+      --返回element的所有子结点,可以用element.childNodes[i]的方式来调用
+      --element.firstChild=element.childNodes[0];
+      --element.lastChild=element.childNodes[element.childNonts.length-1];
+4.element.parentNode
+      --引用父结点
+5.element.nextSibling;   //引用下一个兄弟结点
+   element.previousSibling;  //引用上一个兄弟结点
+
+三.获得结点信息
+6.nodeName属性获得结点名称
+      --对于元素结点返回的是标记名称,如：<a herf><a>返回的是"a"
+      --对于属性结点返回的是属性名称,如：class="test" 返回的是test
+      --对于文本结点返回的是文本的内容
+7.nodeType返回结点的类型
+      --元素结点返回1
+      --属性结点返回2
+      --文本结点返回3
+8.nodeValue返回结点的值
+      --元素结点返回null
+      --属性结点返回undefined
+      --文本结点返回文本内容
+9.hasChildNodes()判断是否有子结点
+10.tagName属性返回元素的标记名称
+      --这个属性只有元素结点才有，等同于元素结点的nodeName属性
+
+四.处理属性结点
+11.每个属性结点都是元素结点的一个属性，可以通过(元素结点.属性名称)访问
+12.利用setAttribute()方法给元素结点添加属性
+      --elementNode.setAttribute(attributeName,attributeValue);
+      --attributeName为属性的名称，attributeValue为属性的值
+13.使用getAttribute()方法获得属性值
+      --elementNode.getAttribute(attributeName);
+
+五.处理文本结点
+14.innerHTML和innerText属性，这两个方法相信大家都很熟悉,不介绍了,值得注意的是无论是ie还是firefox都容易把空格、换行、制表符等当成文本结点。所有一般通过element.childNodes[i]引用文本结点的时候，一般要处理：
+      <script language"javaScript" type="text/javascript">
+         function cleanWhitespace(element)
+         {
+            for(var i=0; i<element.childNotes.length; i++)
+            {
+               var node = element.childNodes[i];
+               if(node.nodeType == 3 && !/\S/.test(node.nodeValue))
+               {
+                  node.parentNode.removeChild(node);
+               }
+            }
+         }
+      </script>
+
+六.改变文档的层次结构
+15.document.createElement()方法创建元素结点
+      --如：document.createElement("Span");
+16.document.createTextNode()方法创建文本结点
+      --如：document.createTextNode("&nbsp;"); //注:他不会通过html编码，也就是说这里创建的不是空格，而是字符串&nbsp;
+17.使用appendChild()方法添加结点
+      --parentElement.appendChild(childElement);
+18.使用insertBefore()方法插入子节点
+      --parentNode.insertBefore(newNode,referenceNode);
+      --newNode为插入的节点，referenceNode为将插入的节点插入到这之前
+19.使用replaceChild方法取代子结点
+      --parentNode.replaceChild(newNode,oldNode);
+      --注：oldNode必须是parentNode的子结点,
+20.使用cloneNode方法复制结点
+      --node.cloneNode(includeChildren);
+      --includeChildren为bool，表示是否复制其子结点
+21.使用removeChild方法删除子结点
+      --parentNode.removeChild(childNode);
+
+七.表格的操作
+      --注：ie中无法直接将一个完整的表格结点插入到文档中
+22.添加行和单元格
+      var _table=document.createElement("table");   //创建表
+      table.insertRow(i);                  //在table的第i行插入行
+      row.insertCell(i);                     //在row的第i个位置插入单元格
+23.引用单元格对象
+      --table.rows[i].cells[i];
+24.删除行和单元格
+      --table.deleteRow(index);
+      --row.deleteCell(index);
+25.交换两行获得两个单元格的位置
+      node1.swapNode(node2);
+      --这个方法在firefox中将出错
+      通用方法：
+      function swapNode(node1,node2)
+      {
+         var _parent=node1.parentNode;
+         var _t1=node1.nextSubling;
+         var _t2=node2.nextSubling;
+         if(_t1)parent.insertBefore(node2,_t1);
+         else _parent.appendChild(node2);         
+         if(_t2)parent.insertBefore(node1,_t2);
+         else _parent.appendChild(node1);
+       }

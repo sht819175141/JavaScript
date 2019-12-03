@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+</head>
+<body>
+<table border="1" width="600" id="tab">
+    <tr>
+        <td>xh</td>
+        <td>xm</td>
+        <td>nl</td>
+        <td>cj</td>
+        <td>xf</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>zs</td>
+        <td>21</td>
+        <td>80</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>19</td>
+        <td>ls</td>
+        <td>19</td>
+        <td>85</td>
+        <td>50000</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>mmz</td>
+        <td>20</td>
+        <td>100</td>
+        <td>30000</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>ww</td>
+        <td>18</td>
+        <td>4</td>
+        <td>20000</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td>kk</td>
+        <td>3</td>
+        <td>75</td>
+        <td>15000</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>ee</td>
+        <td>16</td>
+        <td>4</td>
+        <td>3000</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td>rr</td>
+        <td>22</td>
+        <td>88</td>
+        <td>5000</td>
+    </tr>
+</table>
+<script>
+    var tab = document.getElementById("tab");
+    var lie = tab.rows;
+    var hang = lie[0].cells;
+    for (var i = 0; hang[i]; i++) {
+        hang[i].index = i;
+        hang[i].onclick = function () {
+            this.flag = !this.flag;
+            var arr = [];
+            for (var j = 1; lie[j]; j++) {
+                arr.push({
+                    value: lie[j].cells[this.index].innerHTML,
+                    row: lie[j]
+                })
+            }
+            if (this.flag) {
+                arr.sort(function (a, b) {
+                    return a.value - b.value
+                })
+            } else {
+                arr.sort(function (a, b) {
+                    return b.value - a.value
+                })
+            }
+            for (var j = 0; arr[j]; j++) {
+                tab.appendChild(arr[j].row)
+            }
+        }
+    }
+</script>
+</body>
+</html>

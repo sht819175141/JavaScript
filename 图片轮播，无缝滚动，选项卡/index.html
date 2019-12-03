@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    #box {
+        width: 300px;
+        height: 200px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    ul li {
+        line-height: 40px;
+        text-align: center;
+    }
+</style>
+
+<body>
+
+    <h1>js无缝滚动</h1>
+
+    <div id="box">
+        <div id="item1">
+            <ul>
+                <li style="color:red">30家会所转型</li>
+                <li>研究生被骗118万</li>
+                <li>周子瑜致歉</li>
+                <li>广州地铁砍人事件</li>
+                <li>刘强东告白奶茶妹</li>
+            </ul>
+        </div>
+        <div id="item2"></div>
+    </div>
+    <script>
+        var item1 = document.getElementById("item1");
+        var item2 = document.getElementById("item2");
+        var box = document.getElementById("box");
+        item2.innerHTML = item1.innerHTML;
+        var m = 0;
+
+        function change() {
+            m++;
+            box.scrollTop = m;
+            if (m >= box.offsetHeight) {
+                m = 0;
+            }
+        }
+
+        time = setInterval(change, 20);
+        box.onmouseover = function () {
+            clearInterval(time);
+        }
+        box.onmouseout = function () {
+            time = setInterval(change, 20);
+        }
+    </script>
+
+</body>
+
+</html>

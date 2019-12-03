@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var num=1;
+
+		 var json={
+		 	   num:5,
+		 	   dbl:function(){
+		 	   	    return this.num=this.num*2;
+		 	   }
+		 }
+
+//json.dbl();
+//var  fn=json.dbl;
+/*var fn=function(){
+	 return  this.num=this.num*2;
+}*/
+
+/*function  fn(){
+	return  this.num=this.num*2;
+}
+fn();*/
+function  a(c){
+
+	return c;
+}
+
+console.log(a(json.dbl)());
+
+
+
+
+	</script>
+</body>
+</html>

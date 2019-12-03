@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p class="aa bb cc">ccccc</p>
+	<script>
+
+		var objP=document.getElementsByTagName('p')[0];
+	/*	alert(objP.classList.contains("dd"));
+		objP.classList.add("dd");
+		alert(objP.classList.length);
+		objP.classList.toggle("aa");
+		alert(objP.classList.length);
+*/
+         function csslist(e){
+            if(e.classList){
+      	     return e.classList;
+      	}else{
+      	     return new CssList(e);
+            }
+         }
+      function CssList(e){
+      	this.e=e;
+      }
+      CssList.prototype.contains=function(c){
+            if(c.length==0 || c.indexOf(" ")!=-1){
+      	   throw new Error("无效的类名")
+      	}
+      	   var classes=this.e.className;
+      	   
+      	   if(classes==c) return true;//calss只有一个时的判断
+   
+      	   return classes.search("\\b"+c+"\\b")!=-1;//calss为多个时的判断
+      }
+      var p=new CssList(objP);
+      alert(p.contains("aa"))
+
+      CssList.prototype.add=function(c){
+      	   if(c.length==0 || c.indexOf(" ")!=-1){
+      	   	  throw new Error("无效的类名")
+      	   }
+      	   if(this.contains(c)) return;
+      	   var classes=this.e.className;
+      	    if(classes){
+      	    	classes+=" "+c;
+      	    }
+   
+      	   this.e.className=classes;
+      }
+    	csslist(objP).add("eee");
+    	alert(objP.className);
+	</script>
+	
+</body>
+</html>

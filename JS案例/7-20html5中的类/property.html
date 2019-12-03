@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var o={};
+		Object.defineProperties(o,{
+			name:{
+				value:"abc",
+				enumerable:false,
+				writable:true
+
+			},
+			_name:{
+				 set:function(name){
+				 	this.name=name;
+				 },
+				 get:function(){
+				 	return this.name;
+				 }
+			},
+			age:
+			{
+				value:12,
+				writable:true,
+				enumerable:true
+			},
+			_age:{
+				set:function(age){
+					if(age>=0 && age<=120)
+						this.age=age;
+					else
+						throw new Error("年龄不合法");
+				},
+				get:function(){
+					return this.age;
+				}
+			},
+			stuNo:{
+				get:getNo
+			}
+
+		});
+
+		function getNo()
+		{
+			if(!("customNo" in o))
+			{
+				Object.defineProperty(o,"customNo",{
+					value:123
+				})
+			}
+			return o.customNo;
+		}
+		for( var t in o){
+			console.log(t);
+		}
+
+		//alert(Object.getOwnPropertyDescriptor(o,"_name").configurable);
+		o._name="sun";
+		alert(o._name);
+		o._age=10;
+		alert(o._age);
+
+		alert(o.stuNo);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+</head>
+<body>
+<input type="text" value=""/>
+<input type="button" value="添加"/>
+<input type="button" value="删除"/>
+<ul>
+    <li>11111</li>
+    <li>22222</li>
+    <li>33333</li>
+    <li>44444</li>
+    <li>55555</li>
+</ul>
+<script>
+    var input = document.getElementsByTagName('input');
+    var uls = document.getElementsByTagName('ul');
+    var lis = document.getElementsByTagName('li');
+    var lisa = document.createElement("li");
+    lisa.innerHTML = "aaaaaa";
+
+    //封装：前置，追加判断处理
+    function weizhi(newNode, target) {
+        if (target.parentNode.lastChild == target) {
+            target.parentNode.appendChild(newNode);
+        } else {
+            target.parentNode.insertBefore(newNode, target.nextSibling);
+        }
+    }
+
+    weizhi(lisa, lis[1]);
+</script>
+</body>
+</html>

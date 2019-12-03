@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#cal{
+			width:360px;
+		}
+		#cal span
+		{
+			
+			float: left;
+			width:50px;
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="cal">
+         <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+
+	</div>
+	<script>
+	var arr=[31,28,31,30,31,30,31,31,30,31,30,31];
+	  var cal=document.getElementById("cal");
+	   var year=prompt("请输入年");
+	   var month=prompt("请输入月份");
+	   var myDate = new Date(year,month-1,1);
+       if((year%4==0 && year%100!=0) || (year%400==0))
+       {
+       	  
+       	  arr[1]=29;
+       } 
+	   var week= myDate.getDay();
+	   
+		for(var i=1;i<=42;i++){
+			var tspan=document.createElement("span");
+			tspan.innerHTML="&nbsp";
+			cal.appendChild(tspan);
+		}
+		var spans=cal.getElementsByTagName("span");
+	
+		for(i=1;i<=arr[month-1];i++){
+			spans[week+7].innerHTML=i;
+			week++;
+		}
+	</script>
+</body>
+</html>

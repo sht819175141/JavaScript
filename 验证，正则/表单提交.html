@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<form action="a.php" method="post">
+		<input type="text" id="user"/>
+		<input type="password" id="pass"/>
+		<input type="submit" value="提交"/>
+		<input type="button" value="登录"/>
+	</form>
+	<script>
+	var user=document.getElementById("user");
+	var pass=document.getElementById("pass");
+	var form=document.forms[0];
+	document.onkeyup=function(e){
+		var event=e || window.event
+		if(event.keyCode==13){
+			var flag=form.onsubmit();
+			if(flag){
+				form.submit();
+			}
+		}
+	}
+	form.onsubmit=function(){
+		if(user.value=""){
+			alert("用户名不能为空");
+			return false;
+		}
+		if(pass.value=""){
+			alert("密码不能为空");
+			return false;
+		}
+		return true;
+	}
+	function serial(){
+		var arr=[];
+		for (var i=0;i<form.elements.length;i++){
+			switch(form.elements[i].type){
+				case "reset"
+				case "submit"
+				break
+				default
+				if(form.elements.length.name){
+					for (var i=0;i<form.elements.length;i++){
+					
+					};
+				} 
+			}
+		};
+	}
+	
+	</script>
+</body>
+</html>

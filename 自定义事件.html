@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function MyEvent() {
+        this.handler = {};
+    };
+    MyEvent.prototype = {
+        constructor: MyEvent,
+        addEvent: function (type, event) {
+            if (typeof this.handler[type] == 'undefined') {
+                this.handler[type] = [];//将type的属性值设为一个空数组
+            }
+            ;
+            this.handler[type].push(event);
+        },
+
+        addFire: function (myevent) {	//myevent表示addFire里的整个对象
+            if (!myevent.target) {
+                myevent.target = this;
+            }
+            ;
+            var handlers = this.handler[myevent.type];//myevent.type表示addEvent里添加的所有函数
+
+            for (var i = 0; i < handlers.length; i++) {
+                return handlers[i](myevent);//handlers[i]表示addEvent里添加的某个函数，(myevent)将myevent作为参数传进前边的那个函数，并且执行此函数
+            }
+        },
+        removeEvent: function (type, func) {
+            if (this.handler[type] instanceof Array) {
+                var handlers = this.handler[type];
+                for (var j = 0; j < handlers.length; j++) {
+                    if (handlers[j] == func) {
+                        break;
+                    }
+                    ;
+                    this.handler[type].splice(j, 1)
+                }
+                ;
+            }
+        }
+    };
+
+    var me = new MyEvent();
+    me.addEvent('myaction', function (obj) {
+        return obj.my;
+    })
+    var p = me.addFire({type: 'myaction', my: '你好'});
+    alert(p);
+
+
+    me.removeEvent('myaction', function (obj) {
+        return obj.my;
+    });
+    var p = me.addFire({type: 'myaction', my: '你好'});
+    alert(p)
+</script>
+</body>
+</html>

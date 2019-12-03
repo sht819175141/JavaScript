@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function schoolStudent(name, age) {
+        this.name = name;
+        this.age = age;
+    };
+    schoolStudent.prototype.show = function () {
+        return this.name + ',' + this.age
+    };
+
+    function chuanStudent(name, age, Class) {
+        this.Class = Class;
+        schoolStudent.call(this, name, age);
+    };
+
+    chuanStudent.prototype = new schoolStudent();
+    chuanStudent.prototype.constructor = chuanStudent;
+    chuanStudent.prototype.show = function () {
+
+        return schoolStudent.prototype.show.call(this) + ',' + this.Class;
+    }
+    var c1 = new chuanStudent('zs', 18, 'js');
+    var s1 = new schoolStudent('ls', 30);
+    alert(s1.show());
+    alert(c1.show());
+
+</script>
+</body>
+</html>

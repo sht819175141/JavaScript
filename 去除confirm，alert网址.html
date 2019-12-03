@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+<a href="Delete.aspx" onClick="delete_confirm">删除</a>
+<span style="font-size:10px;">
+	
+	<script> 
+		//去除弹出框上边的网址
+        window.alert = function (name) {
+            var iframe = document.createElement("IFRAME");
+            iframe.style.display = "none";
+            iframe.setAttribute("src", 'data:text/plain,');
+            document.documentElement.appendChild(iframe);
+            window.frames[0].window.alert(name);
+            iframe.parentNode.removeChild(iframe);
+        };
+        //重写confirm
+        window.confirm = function (message) {
+            var iframe = document.createElement("IFRAME");
+            iframe.style.display = "none";
+            iframe.setAttribute("src", 'data:text/plain,');
+            document.documentElement.appendChild(iframe);
+            var alertFrame = window.frames[0];
+            var result = alertFrame.window.confirm(message);
+            iframe.parentNode.removeChild(iframe);
+            return result;
+        };
+
+        function delete_confirm(e) {
+            if (event.srcElement.outerText == "删除") {
+                event.returnValue = confirm("删除是不可恢复的，你确认要删除吗？");
+            }
+        }
+
+        document.onclick = delete_confirm;
+
+
+        if (confirm("该身份证号已被微信绑定，需第一绑定人授权！'确定' 申请，'取消' 返回!")) {
+            alert(111)
+        }
+    </script>
+</body>
+</html>

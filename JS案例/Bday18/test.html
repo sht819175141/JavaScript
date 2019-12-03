@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/myquery.js"></script>
+	<script src="js/move.js"></script>
+
+	<style>
+		#one
+		{
+			width:300px;
+			height: 300px;
+			background-color: red;
+			position: absolute;
+		}
+		#two
+		{
+			width:200px;
+			height: 200px;
+			background-color: blue;
+			position: absolute;
+		}
+		#three
+		{
+			width:100px;
+			height: 100px;
+			background-color: green;
+			position: absolute;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="one">
+		<div id="two">
+			<div id="three"></div>
+		</div>
+	</div>
+	<script>
+		/*$("div").click(function(){
+			
+			alert($(this).attr("id"));
+			return false;
+		});
+		$(document).bindEvent("contextmenu",function(){
+			alert("right");
+			return false;
+		});*/
+		
+		t=$("div").css("background","pink").extend.animate($("#one"),{"width":600,"height":600});
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+
+一，组合继承与原型继承相比，有什么优点：
+组合继承解决了原型继承：
+1、不方便传参
+2、属性共享等问题
+
+二，article，footer,nav,section：
+acticle:用于定义独立的内容块，例如一篇文章；footer:定义脚注标签，页面底部区块；nav:导航标签；section：定义HTML节标签，主要用于定义内容块（类似于div）
+三，domready与window.onload的区别：
+
+ window.onload必须等到页面内包括图片的所有元素加载完毕后才能执行，$(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完毕
+    window.onload不能同时编写多个，如果有多个window.onload方法，只会执行一个，$(document).ready()可以同时编写多个，并且都可以得到执行
+    window.onload没有简化写法，$(document).ready(function(){})可以简写成$(function(){})
+
+四，localstorage与sessionstorage的区别：
+localstorage：持久缓存（永久）
+sessionstorage：储存在客户端缓存，浏览器关闭，储存数据清除
+
+五。bind,on,delegate,live的区别：
+//肖艳飞
+bind() 
+   语法：bind/on('click,function(){}) 不支持事件代理，后添加的无效果，
+live()
+   只匹配元素的特定事件，动态添加的也有效果，支持事件代理，事件只能冒泡到document上（1.7版本支持）
+   语法：$('document').on('live',function(){});
+delegate()
+        语法：$( ' .box ').on( 'delegate' , 'li ', function ( ) { })
+        跟live相同，但优点是可以冒泡到指定父级
+on()
+ 语法：以上3中的都支持，兼容bind,live,delegate的有点，去除了他们的缺点
+
+//张前闯
+
+//.bind()是最直接的绑定方法 ，会绑定事件类型和处理函数到DOM element上, 这个方法是存在最久的，而且也很好的解决了浏览器在事件处理中的兼容问题。
+    //.live()方法用到了事件委托的概念来处理事件的绑定。它和用.bind()来绑定事件是一样的。.live()方法会绑定相应的事件到你所选择的元素的根元素上，即是document元素上。
+    //.delegate()有点像.live(),不同于.live()的地方在于，它不会把所有的event全部绑定到document,而是由你决定把它放在哪儿。而和.live()相同的地方在于都是用event delegation.
+    //.on其实.bind(), .live(), .delegate()都是通过.on()来实现的，.unbind(), .die(), .undelegate(),也是一样的都是通过.off()来实现的
+六。display的属性：
+none 	此元素不会被显示。
+block 	此元素将显示为块级元素，此元素前后会带有换行符。
+inline 	默认。此元素会被显示为内联元素，元素前后没有换行符。
+inline-block 	行内块元素。（CSS2.1 新增的值）
+list-item 	此元素会作为列表显示。
+run-in 	此元素会根据上下文作为块级元素或内联元素显示。
+compact 	CSS 中有值 compact，不过由于缺乏广泛支持，已经从 CSS2.1 中删除。
+marker 	CSS 中有值 marker，不过由于缺乏广泛支持，已经从 CSS2.1 中删除。
+table 	此元素会作为块级表格来显示（类似 <table>），表格前后带有换行符。
+inline-table 	此元素会作为内联表格来显示（类似 <table>），表格前后没有换行符。
+table-row-group 	此元素会作为一个或多个行的分组来显示（类似 <tbody>）。
+table-header-group 	此元素会作为一个或多个行的分组来显示（类似 <thead>）。
+table-footer-group 	此元素会作为一个或多个行的分组来显示（类似 <tfoot>）。
+table-row 	此元素会作为一个表格行显示（类似 <tr>）。
+table-column-group 	此元素会作为一个或多个列的分组来显示（类似 <colgroup>）。
+table-column 	此元素会作为一个单元格列显示（类似 <col>）
+table-cell 	此元素会作为一个表格单元格显示（类似 <td> 和 <th>）
+table-caption 	此元素会作为一个表格标题显示（类似 <caption>）
+inherit     规定应该从父元素继承 display 属性的值。
+
+从前在JavaScript王国里，有一个国王，他觉得世界上最美妙的声音就是鸭子的叫声，于是国王召集大臣，要组建一个1000只鸭子组成的合唱团。大臣们找遍了全国，终于找到999只鸭子，但是始终还差一只，最后大臣发现有一只非常特别的鸡，它的叫声跟鸭子一模一样，于是这只鸡就成为了合唱团的最后一员。
+
+
+这个故事告诉我们，国王要听的只是鸭子的叫声，这个声音的主人到底是鸡还是鸭并不重要。鸭子类型指导我们只关注对象的行为，而不关注对象本身
+

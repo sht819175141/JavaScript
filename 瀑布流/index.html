@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #main {
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .box {
+            padding: 15px 0 0 15px;
+            float: left;
+        }
+
+        .pic {
+            padding: 5px;
+            border: 1px solid red;
+            border-radius: 3px;
+        }
+
+        .pic img {
+            width: 165px;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+<script>
+    window.onload = function () {
+        //	//15+10+2+165=192
+        var main = document.getElementById('main');
+        var datasrc = {dataArt: [{"src": '1.jpg'}, {"src": '2.jpg'}, {"src": '3.jpg'}, {"src": '4.jpg'}, {"src": '5.jpg'}]}
+        console.log(datasrc.dataArt[1].src)
+
+        function getByClass(parent, clsName) {
+            var oElemes = parent.getElementsByTagName('*');
+            var arr = []
+            for (var i = 0; i < oElemes.length; i++) {
+                if (oElemes[i].className == 'box') {
+                    arr.push(oElemes[i])
+                }
+            }
+            return arr
+        }
+
+        //瀑布流
+
+        function waterfall() {
+            var boxs = getByClass(main, 'box');
+            //box的宽度
+            var w = boxs[0].offsetWidth
+            //可视区的宽度
+            var clientWidth = document.documentElement.clientWidth || document.body.clientWidth
+            //列
+            var cols = Math.floor(clientWidth / w)
+            console.log(cols)
+            main.style.width = cols * w + 'px';
+            //遍历所有的boxs 如果在第一行的时候,i<cols
+            var arr = []
+            for (var i = 0; i < boxs.length; i++) {
+                if (i < cols) {
+                    //把每一列的高度放入到数组里
+                    arr.push(boxs[i].offsetHeight)
+                } else {
+                    //找到数组里的最小高度
+                    var minHeight = Math.min.apply(Math, arr);
+                    //最小高度所在下标
+                    var index = arr.indexOf(minHeight)
+                    //BOX定位：　left top
+                    boxs[i].style.position = 'absolute';
+                    //  boxs[i].style.left=index*w+'px'
+                    boxs[i].style.top = minHeight + 'px';
+                    boxs[i].style.left = boxs[index].offsetLeft + 'px'
+                    //改变最小高度
+                    arr[index] = arr[index] + boxs[i].offsetHeight;
+                }
+
+            }
+
+
+        }
+
+        waterfall()
+
+        //当窗口的滚动条滚动的时候；判断最后一张图片距离顶部的距离+最后一张图片高度的一半<可视区的高度+滚动的高度，则追加照片
+
+        window.onscroll = function () {
+            var boxs = getByClass(main, 'box');
+            var lastH = boxs[boxs.length - 1].offsetTop + boxs[boxs.length - 1].offsetHeight / 2;
+
+            var cH = document.documentElement.clientHeight;
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+            if (lastH < cH + scrollTop) {
+                //	<div class='box'>
+                //<div class='pic'>
+                //	<img src="img/1.jpg" alt="">
+                //</div>
+                //</div>
+
+                for (var i = 0; i < datasrc.dataArt.length; i++) {
+                    var newBox = document.createElement('div');
+                    newBox.className = 'box';
+                    main.appendChild(newBox);
+                    var newPic = document.createElement('div');
+                    newPic.className = 'pic'
+                    newBox.appendChild(newPic);
+                    var newImg = document.createElement('img');
+                    newImg.src = "img/" + datasrc.dataArt[i].src
+                    newPic.appendChild(newImg);
+
+                }
+                waterfall()
+
+            }
+
+
+        }
+
+
+    }
+
+
+</script>
+<div id='main'>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/1.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/2.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/3.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/4.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/5.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/6.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/7.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/8.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/9.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/10.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/11.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/12.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/13.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/14.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/15.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/16.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/17.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/18.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/19.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/20.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/21.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/22.jpg" alt="">
+        </div>
+    </div>
+    <div class='box'>
+        <div class='pic'>
+            <img src="img/23.jpg" alt="">
+        </div>
+    </div>
+</div>
+</body>
+</html>

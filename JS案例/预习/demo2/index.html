@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+
+var reg = /[a]/;
+
+document.write(reg.test("b")+"<br />-----------<br />");
+
+
+var reg1 = /[2-9]/;
+
+document.write(reg1.test("1")+"<br />-----------<br />");
+
+
+var reg2 = /[a-z]/;
+
+
+document.write(reg2.test("A")+"<br />-----------<br />");
+
+
+var reg3 = /[0-9b-zA-Z]/;
+
+
+document.write(reg3.test("a")+"<br />-----------<br />");
+
+
+var reg4 = /[^0-9]/;
+
+
+document.write(reg4.test("#")+"<br />-----------<br />");
+
+
+var reg5 = /\d/;  //[0-9];
+
+document.write(reg5.test("4")+"<br />-----------<br />");
+
+
+var reg6 = /\D/;
+
+document.write(reg6.test("a")+"<br />-----------<br />");
+
+
+</script>
+	
+</body>
+</html>

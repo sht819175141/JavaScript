@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box {
+            height: 100px;
+            width: 300px;
+            background-color: red;
+            border: 10px solid #00f;
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var box = document.getElementById("box");
+    box.onmouseover = function () {
+        startMove(this, 1000)
+    }
+    box.onmouseout = function () {
+        startMove(this, 100)
+    }
+    var time = null;
+
+    function startMove(obj, end) {
+        clearInterval(obj.time);
+        obj.time = setInterval(function () {
+            var n = (end - parseInt(getStyle(obj, "width"))) / 8;
+            n = n > 0 ? Math.ceil(n) : Math.floor(n);
+            obj.style.width = parseInt(getStyle(obj, "width")) + n + "px";
+        }, 50)
+    }
+
+    function getStyle(obj, attr) {
+        if (obj.currentStyle) {
+            return obj.currentStyle[attr];
+        } else {
+            return getComputedStyle(obj, null)[attr];
+        }
+    }
+</script>
+</body>
+</html>

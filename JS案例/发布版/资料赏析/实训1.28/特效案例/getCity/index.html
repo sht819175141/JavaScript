@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div id="box"></div>
+		
+		
+		<div class="selectCityWrap">
+			<h1>热门城市 <small>（可直接输入城市或者城市拼音）</small></h1>
+			<div class="selectCity_nav">
+				<ul>
+					<li><a href="javascript:;">热门</a></li>
+					<li><a href="javascript:;">ABCD</a></li>
+					<li><a href="javascript:;">EFGH</a></li>
+					<li><a href="javascript:;">JKLM</a></li>
+					<li><a href="javascript:;">NPQR</a></li>
+					<li><a href="javascript:;">STWX</a></li>
+					<li><a href="javascript:;">YZ</a></li>
+				</ul>
+			</div>
+			<div class="selectCity_tab_content">
+				<div class="tab_content_page">
+					<div class="letters_item">
+						<h2></h2>
+						<ul>
+							<li><a href="javascript:;">北京</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="tab_content_page">
+					<div class="letters_item">
+						<h2>A</h2>
+						<ul>
+							<li><a href="javascript:;">北京</a></li>
+						</ul>
+					</div>
+					<div class="letters_item">
+						<h2>B</h2>
+						<ul>
+							<li><a href="javascript:;">北京</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="tab_content_page">
+					<div class="letters_item">
+						<h2></h2>
+						<ul>
+							<li><a href="javascript:;">北京</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="tab_content_page">
+					<div class="letters_item">
+						<h2></h2>
+						<ul>
+							<li><a href="javascript:;">北京</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="address.js"></script>
+		<script>
+			var html = "";
+			for(var key in hotel_hotData){
+				/*<div class="letters_item">
+					<span id="b">B</span>
+					<ul>
+						<li><a href="javascript:;">刘宇</a></li>
+						<li><a href="javascript:;">刘大</a></li>
+					</ul>
+				</div>*/
+				
+				html += '<div class="letters_item">';
+					html += '<span>'+key+'</span>';
+					html +=	'<ul>';
+					var cityArray = hotel_hotData[key].cntStr().split("@");
+					
+						for( var i=0; i<cityArray.length; i++){
+							html += '<li><a href="javascript:;">'+cityArray[i].split("|")[1]+'</a></li>'
+						}
+					html += '</ul>';
+				html += '</div>';
+				
+			}
+			document.getElementById("box").innerHTML = html;
+		</script>
+	</body>
+</html>

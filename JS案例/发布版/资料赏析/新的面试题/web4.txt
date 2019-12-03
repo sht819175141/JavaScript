@@ -1,0 +1,181 @@
+1. 看下面的代码，输出是什么?
+    //console.log(undefined==null)  //true
+    //console.log(2==true)   //false
+    //console.log(0==false);  //true
+    //console.log(0=="0")   //true
+    //console.log([]==false)  //true
+    //console.log("11"+2-"1")        //111
+//    console.log("hello" && "word" && 0 && 100)   //0
+    // console.log(undefined || 'word' || 0 || 100)  //word
+    console.log(3<4 && 4!=5 && 1>100 && 100)  //false
+
+2.驼峰
+/*    var str="get-element-id";
+    function toUpper(str){
+        var str=str.split("-");
+        var st=str[0];
+        for(var i=1;i<str.length;i++){
+            st+=str[i].charAt(0).toUpperCase()+str[i].substr(1);    //
+        }
+        return st;
+    }
+    console.log(toUpper(str))*/ 
+3.html5/css3新增的特性;
+html5:
+拖拽释放(Drag and drop) API 
+  语义化更好的内容标签（header,nav,footer,aside,article,section）
+  音频、视频API(audio,video)
+  画布(Canvas) API
+  地理(Geolocation) API
+  本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失；
+  sessionStorage 的数据在浏览器关闭后自动删除
+css3:
+CSS3实现圆角（border-radius），阴影（box-shadow），
+对文字加特效（text-shadow、），线性渐变（gradient），旋转（transform）
+transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//旋转,缩放,定位,倾斜
+增加了更多的CSS选择器  多背景 rgba 
+在CSS3中唯一引入的伪元素是::selection.
+媒体查询，多栏布局
+border-image
+5.写一个string扩展trim，清除字符串前后的空格（兼容所有的浏览器）
+     1.   function trim(str){
+        var reg=/(^\s*)|(\s*$)/g;
+        return str.replace(reg,'')
+    }
+    console.log(trim(' sdh dsjid '))
+
+    /*2.去掉前后的空格的方法?
+    String.prototype.trim=function(){
+        var reg=/(^\s*)|(\s*$)/g;//去掉前后的空格
+        //var reg=/\s+/g  //去掉所有的空格
+        //var reg=/^\s*/ //去掉左边的空格
+        //var reg=/\s*$/ //去掉右边的空格
+      /*  return this.replace(reg,'')
+    }
+    var str='  222   22  2    ';
+    console.log('a'+str.trim()+'a')*/
+6.
+有个 JSON类是专门干这事的  JSON.stringify({a:"a",b:"b"})  ，将对象转换成字符串
+JSON.parse("{a:\"a\"}")   ，将字符串转换成json对象
+
+8.如何判断某变量是否为数组类型：
+    1.var arr = [1,2,3,1]; 
+        alert(arr instanceof Array); // true 
+    2.Object.prototype.toString 
+Object.prototype.toString的行为：首先，取得对象的一个内部属性[[Class]]，然后依据这个属性，返回一个类似于"[object Array]"的字符串作为结果(看过ECMA标准的应该都知道，[[]]用来表示语言内部用到的、外部不可直接访问的属性，称为“内部属性”)。利用这 个方法，再配合call，我们可以取得任何对象的内部属性[[Class]]，然后把类型检测转化为字符串比较，以达到我们的目的。 
+复制代码代码如下:
+
+function isArrayFn (o) { 
+return Object.prototype.toString.call(o) === '[object Array]'; 
+} 
+var arr = [1,2,3,1]; 
+alert(isArrayFn(arr));// true 
+
+call改变toString的this引用为待检测的对象，返回此对象的字符串表示，然后对比此字符串是否是'[object Array]'，以判断其是否是Array的实例。
+
+
+13.伪类用于向某些选择器添加特殊的效果。
+伪元素用于将特殊的效果添加到某些选择器。
+
+伪类有：:first-child ，:link:，vistited，:hover，:active，:focus，:lang 
+伪元素有：:first-line，:first-letter，:before，:after  
+10.CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS3新增伪类有那些？
+
+   1.id选择器（ # myid）
+        2.类选择器（.myclassname）
+        3.标签选择器（div, h1, p）
+        4.相邻选择器（h1 + p）
+        5.子选择器（ul > li）
+        6.后代选择器（lia）
+        7.通配符选择器（ * ）
+        8.属性选择器（a[rel = "external"]）
+        9.伪类选择器（a: hover, li:nth-child）
+
+    *   可继承的样式： font-sizefont-familycolor, text-indent;
+
+    *   不可继承的样式：borderpaddingmarginwidthheight ;
+
+    *   优先级就近原则，同权重情况下样式定义最近者为准;
+
+    *   载入样式以最后载入的定位为准;
+
+优先级为:
+
+
+   !important >  id > class > tagimportant 比 内联优先级高,但内联比 id 要高
+
+CSS3新增伪类举例：
+
+p:first-of-type 选择属于其父元素的首个 <p> 元素的每个 <p> 元素。
+p:last-of-type  选择属于其父元素的最后 <p> 元素的每个 <p> 元素。
+p:only-of-type  选择属于其父元素唯一的 <p> 元素的每个 <p> 元素。
+p:only-child    选择属于其父元素的唯一子元素的每个 <p> 元素。
+p:nth-child(2)  选择属于其父元素的第二个子元素的每个 <p> 元素。
+:enabled:disabled 控制表单控件的禁用状态。
+:checked        单选框或复选框被选中。
+11.如何使用css3实现半透明效果，至少说出两种病进行比较。
+rgba()和opacity都能实现透明效果，但最大的不同是opacity作用于元素，以及元素内的所有内容的透明度，
+而rgba()只作用于元素的颜色或其背景色 
+
+
+7.ajax是什么?ajax的交互模式?同步和异步的区别?如何解决跨域问题?
+ajax:AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术。
+ajax的交互模式：
+(1)创建XMLHttpRequest对象,也就是创建一个异步调用对象.
+
+(2)创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息.
+
+(3)设置响应HTTP请求状态变化的函数.
+
+(4)发送HTTP请求.
+
+(5)获取异步调用返回的数据.
+
+(6)使用JavaScript和DOM实现局部刷新.
+同步与异步的区别：
+    同步：在同一时间内只干一件事情。
+    异步：在同一时间内能干多件事情。
+解决跨域问题：
+ jsonp、 document.domain+iframe、window.name、window.postMessage、服务器上设置代理页面
+
+jsonp的原理是动态插入script标签
+9.前端开发的优化行为：
+  （1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。
+
+  （2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
+
+  （3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。
+
+  （4） 当需要设置的样式很多时设置className而不是直接操作style。
+
+  （5） 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。
+
+  （6） 避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。
+
+  （7） 图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。
+12.使用css实现文字溢出使用省略号代替
+         .s{
+                text-overflow:ellipsis;
+                overflow:hidden;
+                white-space: nowrap;
+                width:"";
+        }
+14.
+css选择器中:first-child与:first-of-type的区别
+
+:first-child选择器是css2中定义的选择器，从字面意思上来看也很好理解，就是第一个子元素。比如有段代码：
+
+p:first-child  匹配到的是p元素,因为p元素是div的第一个子元素；
+h1:first-child  匹配不到任何元素，因为在这里h1是div的第二个子元素，而不是第一个；
+span:first-child  匹配不到任何元素，因为在这里两个span元素都不是div的第一个子元素；
+ 
+然后，在css3中又定义了:first-of-type这个选择器，这个跟:first-child有什么区别呢？还是看那段代码：
+
+p:first-of-type  匹配到的是p元素,因为p是div的所有类型为p的子元素中的第一个；
+h1:first-of-type  匹配到的是h1元素，因为h1是div的所有类型为h1的子元素中的第一个；
+span:first-of-type  匹配到的是第三个子元素span。这里div有两个为span的子元素，匹配到的是它们中的第一个。
+ 
+所以，通过以上两个例子可以得出结论：
+:first-child 匹配的是某父元素的第一个子元素，可以说是结构上的第一个子元素。
+:first-of-type 匹配的是某父元素下相同类型子元素中的第一个，比如 p:first-of-type，就是指所有类型为p的子元素中的第一个。这里不再限制是第一个子元素了，只要是该类型元素的第一个就行了。
+同样类型的选择器 :last-child  和 :last-of-type、:nth-child(n)  和  :nth-of-type(n) 也可以这样去理解。

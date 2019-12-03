@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function MyEvent(type){
+			this[type]=[];
+			this.ename=type;
+
+		}
+		MyEvent.prototype={
+			constructor:MyEvent,
+			addHandler:function(func){
+				this[this.ename].push(func);
+				
+			},
+			fire:function(obj){
+				var handlers=this[obj.type];
+				handlers[0](obj);
+			}
+		}
+
+		var m=new MyEvent("abc");
+		m.addHandler(function(obj){
+             alert(obj.school);
+		})
+		m.fire({type:"abc",school:"bw"});
+	</script>
+</body>
+</html>

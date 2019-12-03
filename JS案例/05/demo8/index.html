@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+#box{width:300px;height: 300px;background:red;}
+</style>
+<body>
+<div id="box"></div>	
+
+<script>
+var box = document.getElementById("box");
+box.onclick = function(event){
+	var evt = window.event || event;
+	alert(evt.button);
+/*	if(event.button==0){
+
+		alert(1);
+	}
+*/
+
+
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+</head>
+<body>
+<ul>
+    <li>3215614</li>
+    <li>5454654</li>
+    <li>4896456</li>
+    <li>6745864</li>
+</ul>
+<!-- <div id="box" class="bg" height="200" title="sdfas"></div>	 -->
+<script>
+    /*var box=document.getElementById("box");
+    console.log(box.setAttribute('title','北京'));*/
+
+    //先遍历一遍uls的所有子节点
+    //nodeType==》3  nodeName==>#text  nodeValue
+    var uls = document.getElementsByTagName("ul");
+    //console.log(uls[0].firstChild)==>#text
+    //console.log(uls[0].firstChild.nodeValue)==>null
+    for (var i = 0; i < uls[0].childNodes.length; i++) {
+        if (uls[0].childNodes[i].nodeType == 3 /*&& uls[0].childNodes[i].nodeValue==null*/) {
+            uls[0].removeChild(uls[0].childNodes[i])
+        }
+
+    }
+    //console.log(uls[0].childNodes)==>[text, li, text, li, text, li, text, li, text]
+    //console.log(uls[0].childNodes)==>[li,li,li,li]
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" id="btn" value="按钮">
+	<script>
+		function f(r){
+			alert(r);
+		}
+		function fun(r){
+			alert("默认处理"+":"+r);
+		}
+		var objBtn=document.getElementById("btn");
+		objBtn.onclick=function(){
+			var Oscr=document.createElement("script");
+			Oscr.src="http://localhost:8088/src.php";
+			document.body.appendChild(Oscr);
+			document.body.removeChild(Oscr);
+		}
+	</script>
+</body>
+</html>

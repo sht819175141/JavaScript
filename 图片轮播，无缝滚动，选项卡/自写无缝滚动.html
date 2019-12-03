@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		*{padding: 0;margin: 0;vertical-align: center}
+		#box{width: 490px; height: 170px; position: relative; margin: 100px;}
+		#odiv{width: 3920px;position: absolute;left: 0}
+		#box img{width: 490px; float: left;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="odiv">
+			<img src="images/img10.png"/>
+			<img src="images/img11.jpg"/>
+			<img src="images/img13.png"/>
+			<img src="images/img14.jpg"/>
+		</div>
+	</div>
+	<script>
+		function Scroll(id){
+			this.box=document.getElementById(id);
+			this.imgs=this.box.getElementsByTagName('img');	
+			this.append();
+			this.scrollPic();
+			this.time=null;
+		}
+		
+		Scroll.prototype.append=function(){		
+			for (var i=0,len=this.imgs.length;i<len; i++){
+				this.box.appendChild(this.imgs[i].cloneNode());
+			};	
+		}
+
+		Scroll.prototype.scrollPic=function(){
+			var that=this;
+			this.time=setInterval(function(){
+				if (that.box.offsetLeft<-1960){
+					that.box.style.left='0';
+				}
+ 				that.box.style.left=that.box.offsetLeft	-1+'px';
+			}, 30)
+		}
+		
+		function ScrollImg(id){
+			Scroll.call(this,id);
+			this.over();
+		}
+		
+		ScrollImg.prototype=Object.create(Scroll.prototype);
+		ScrollImg.prototype.constructor=ScrollImg;
+
+		ScrollImg.prototype.over=function(){
+			var that=this;
+			this.box.onmouseover=function(){
+				clearInterval(that.time)
+			}
+			this.box.onmouseout=function(){
+				that.scrollpic()
+			}
+		}
+		var t=new ScrollImg('odiv');
+	</script>
+</body>
+</html>

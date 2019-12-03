@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box {
+            height: 300px;
+            width: 600px;
+            background-color: #ccc;
+            margin: 0 auto;
+        }
+
+        #box table tr {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <table width="600">
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" id=
+                    "txt"></td>
+            <td><p style="display:none">用户名必须为4--16位的英文字母或数字</p></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" id="pas"></td>
+            <td><p style="display:none">密码必须为6--16位</p></td>
+        </tr>
+        <tr>
+            <td>确认密码</td>
+            <td><input type="password" id="pass"></td>
+            <td><p style="display:none">两次密码输入要一致</p></td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td><input type="text" id="you"></td>
+            <td><p style="display:none">Email格式要正确</p></td>
+        </tr>
+        <tr>
+            <td>昵称</td>
+            <td><input type="text" id="ni"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="注册"></td>
+            <td><input type="button" value="我有账号，我要登陆"></td>
+        </tr>
+    </table>
+</div>
+<script>
+    var txt = document.getElementById("txt");
+    var box = document.getElementById("box");
+    var pass = document.getElementById("pass");
+    var pas = document.getElementById("pas");
+    var you = document.getElementById("you");
+    var ni = document.getElementById("ni");
+    var p = document.getElementsByTagName("p");
+    txt.onfocus = function () {
+        var reg = /^(\w){4,16}$/
+        txt.onkeyup = function () {
+            if (reg.test(txt.value)) {
+                p[0].style.display = "none"
+            } else {
+                p[0].style.display = "block"
+            }
+        }
+    }
+
+    pas.onfocus = function () {
+        var reg = /^[0-9a-zA-Z]{4,16}$/;
+        pas.onkeyup = function () {
+            if (reg.test(pas.value)) {
+                p[1].style.display = "none"
+            } else {
+                p[1].style.display = "block"
+            }
+        }
+    }
+
+    pass.onblur = function () {
+        if (pas.value == pass.value) {
+
+        } else {
+            p[2].style.display = "block"
+        }
+    }
+
+    you.onblur = function () {
+        var reg = /^(\w{1,})@(qq|sina|163)\.(com|cn.com|.net)$/;
+        if (reg.test(you.value)) {
+            p[3].style.display = "none";
+        } else {
+            p[3].style.display = "block";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>html5离线应用application cache_银光中国网</title>
+<meta name="keywords" content="html5,application cache" />
+<meta name="description" content="一、应用场景 我们通常使用浏览器缓存在用户磁盘上存储web单页，在用户再次浏览的时候已节省带宽，但即便这样，依然无法在没有Internet的情况下访问Web。为了让web应用程序在离线状态也能被访问。html5通过application cache API提供离线存储功能。前提是你需要访问的web页面至少被在线访问过一次。 离线本地存储和传统的" />
+<link href="/templets/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+	function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+	}
+	function checkSubmit(){
+		if(document.feedback.msg.value!='') document.feedback.submit();
+		else alert("评论内容不能为空！");
+	}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+	DedeXHTTP = null;
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+	DedeXHTTP = null;
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+
+-->
+</script>
+</head>
+<body class="articleview">
+<div class="header">
+    <div class="top w960 center">
+      <div class="title">
+        <h1> <a href="http://www.silverlightchina.net">银光中国网</a> </h1>
+      </div>
+      <!-- /title -->
+      <div class="banner"><a href="http://www.silverlightchina.net/"><img src="/templets/images/banner.gif" /></a>
+</div>
+      <!-- /banner -->
+      <div class="rlink">
+        <ul>
+          <li class="r1"><a href="/member">会员中心</a></li>
+          <li class="r2"><a href="/tags.php">TAG标签</a></li>
+          <li class="r3"><a href="/data/sitemap.html">网站地图</a></li>
+          <li class="r4"><a href="/data/rssmap.html">RSS订阅</a></li>
+        </ul>
+      </div>
+      <!-- /banner -->
+    </div>
+    <!-- /top -->
+    <div class="nav mt1">
+      <div class="w960 center">
+        <ul>
+          <li><a href='/'>主页</a></li>
+          
+          <li><a href='/html/news/'>银光动态</a></li>
+          <li><a href='/html/study/'>Silverlight</a></li>
+          <li><a href='/html/windows8/'>Windows 8</a></li>
+          <li><a href='/html/wp7/'>Windows Phone</a></li>
+          <li><a href='/html/WPFStudy/'>WPF</a></li><li class='thisclass'><a href='/html/html5/'>HTML 5</a> </li>
+          <li><a href='/html/zhuantixilie/'>应用专题</a></li>
+          <li><a href='/html/works/'>作品展示</a></li>
+           <li><a href='http://bbs.silverlightchina.net' target="_blank" >开发者论坛</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- /nav -->
+    <div class="search">
+      <div class="w960 center">
+      <form action="/plus/search.php" name="formsearch">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="keyword" type="text" class="search-keyword" id="search-keyword" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="titlekeyword" selected='1'>智能模糊搜索</option>
+               <option value="title">仅搜索标题</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <!-- /form -->
+        <div class="tags">
+          <h4>热门标签</h4>
+          <ul>
+          <li><a href='/tags.php?/%CA%E9%BC%AE/'>书籍</a></li>
+          <li><a href='/tags.php?/%D7%F7%C6%B7%D5%B9%CA%BE/'>作品展示</a></li>
+          <li><a href='/tags.php?/behavior/'>behavior</a></li>
+          <li><a href='/tags.php?/html+5/'>html 5</a></li>
+          <li><a href='/tags.php?/%C6%F3%D2%B5%D3%A6%D3%C3/'>企业应用</a></li>
+          <li><a href='/tags.php?/Silverlight+4/'>Silverlight 4</a></li>
+          
+          </ul>
+        </div>
+        <!-- /tags -->
+      </div>
+    </div>
+    <!-- /search -->
+  </div>
+<!-- /header -->
+<!-- /header -->
+
+<div class="channel-nav w960 center clear">
+	<ul>
+              <li class='thisclass'><a href='/html/HTML_5/study/'><span>HTML 5学习教程</span></a> </li>
+          <li><a href='/html/HTML_5/resource/'><span>HTML 5资源下载</span></a></li>
+	</ul>
+	<span class="back">
+		<a href="/">返回首页</a>
+	</span>
+</div><!-- /channel-nav -->
+
+<div class="w960 center clear mt1">
+	<div class="pleft">
+		<div class="place">
+			<strong>当前位置:</strong> <a href='http://www.silverlightchina.net/'>主页</a> > <a href='/html/html5/'>HTML 5</a> > <a href='/html/HTML_5/study/'>HTML 5学习教程</a> > 
+		</div><!-- /place -->
+		<div class="viewbox">
+			<div class="title">
+				<h2>html5离线应用application cache</h2>
+			</div><!-- /title -->
+			<div class="info">
+				<small>时间:</small>2011-11-28 23:10<small>来源:</small>博客园 <small>作者:</small>happyjlq <small>点击:</small><script src="/plus/count.php?view=yes&aid=12118&mid=3842" type='text/javascript' language="javascript"></script>次</div><!-- /info -->
+
+            	<div class="intro">一、应用场景 我们通常使用浏览器缓存在用户磁盘上存储web单页，在用户再次浏览的时候已节省带宽，但即便这样，依然无法在没有Internet的情况下访问Web。为了让web应用程序在离线状态也能被访问。html5通过application cache API提供离线存储功能。前提是你需要访问的web页面至少被在线访问过一次。 离线本地存储和传统的</div>
+			<div class="content">
+			　　<p>　　一、应用场景</p>
+<p>　　我们通常使用浏览器缓存在用户磁盘上存储web单页，在用户再次浏览的时候已节省带宽，但即便这样，依然无法在没有Internet的情况下访问Web。为了让web应用程序在离线状态也能被访问。html5通过application cache API提供离线存储功能。前提是你需要访问的web页面至少被在线访问过一次。</p>
+<p>　　离线本地存储和传统的浏览器缓存有什么不同呢?</p>
+<p>　　1、浏览器缓存主要包含两类：</p>
+<p>　　a.缓存协商：Last-modified,Etag</p>
+<p>　　浏览器向服务器询问页面是否被修改过，如果没有修改就返回304，浏览器直接浏览本地缓存文件。否则服务器返回新内容。</p>
+<p>　　b.彻底缓存：cache-control,Expires</p>
+<p>　　通过Expires设置缓存失效时间，在失效之前不需要再跟服务器请求交互。</p>
+<p>　　2、离线存储为整个web提供服务，浏览器缓存只缓存单个页面;</p>
+<p>　　3、离线存储可以指定需要缓存的文件和哪些文件只能在线浏览，浏览器缓存无法指定;</p>
+<p>　　4、离线存储可以动态通知用户进行更新。</p>
+<p>　　二、如何实现</p>
+<p>　　离线存储是通过manifest文件来管理的，需要服务器端的支持，不同的服务器开启支持的方式也是不同的。</p>
+<pre>
+CACHE MANIFEST<span style="color: #008000">//</span><span style="color: #008000">必须以这个开头</span><span style="color: #008000"><br /></span>version 1.0 <span style="color: #008000">//</span><span style="color: #008000">最好定义版本，更新的时候只需修改版本号</span><span style="color: #008000"><br /></span>CACHE:<br />    m.png<br />    test.js<br />    test.css<br />NETWORK:<br />    *<br />FALLBACK<br />    online.html offline.html</pre>
+<p>　　CACHE指定需要缓存的文件;NETWORK指定只有通过联网才能浏览的文件，*代表除了在CACHE中的文件;FALLBACK每行分别指定在线和离线时使用的文件</p>
+<p>　　要让manifest管理存储，还需要在html标签中定义manifest属性，如下：</p>
+<pre><span style="color: #0000ff">&lt;!</span><span style="color: #ff00ff">DOCTYPE HTML</span><span style="color: #0000ff">&gt;</span><br /><span style="color: #0000ff">&lt;</span><span style="color: #800000">html </span><span style="color: #ff0000">lang</span><span style="color: #0000ff">=&quot;en&quot;</span><span style="color: #ff0000"> manifest</span><span style="color: #0000ff">='test.manifest'</span><span style="color: #0000ff">&gt;</span><br /><span style="color: #0000ff">&lt;</span><span style="color: #800000">head</span><span style="color: #0000ff">&gt;</span><br />    <span style="color: #0000ff">&lt;</span><span style="color: #800000">meta </span><span style="color: #ff0000">charset</span><span style="color: #0000ff">=&quot;UTF-8&quot;</span><span style="color: #0000ff">&gt;</span><br />    <span style="color: #0000ff">&lt;</span><span style="color: #800000">title</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">title</span><span style="color: #0000ff">&gt;</span><br /><span style="color: #0000ff">&lt;/</span><span style="color: #800000">head</span><span style="color: #0000ff">&gt;</span><br /><span style="color: #0000ff">&lt;</span><span style="color: #800000">body</span><span style="color: #0000ff">&gt;</span><br />    <br /><span style="color: #0000ff">&lt;/</span><span style="color: #800000">body</span><span style="color: #0000ff">&gt;</span><br /><span style="color: #0000ff">&lt;/</span><span style="color: #800000">html</span><span style="color: #0000ff">&gt;</span></pre>
+<p>　　最后别忘了，这些应用需要服务器支持。</p>
+<p>　　Apache服务器开启支持的方式是：在conf/mime.types中添加一段代码：</p>
+<p>　　test/cache-manifest manifest</p>
+<p>　　IIS服务器开启方式：</p>
+<p>　　右键--HTTP---MIME映射下，单击文件类型---新建---扩展名输入manifest，类型中输入test/cache-manifest</p>
+<p>　　三、通过JS动态控制更新</p>
+<p>　　applicationCache对象提供个了一些方法和事件，管理离线存储的交互过程。通过在firefox8.0的控制台中输入window.applicationCache可以看到这个对象的所</p>
+<p>　　有属性和事件方法。</p>
+<pre>
+applicationCache.onchecking = <span style="color: #0000ff">function</span>(){<br />   <span style="color: #008000">//</span><span style="color: #008000">检查manifest文件是否存在</span><span style="color: #008000"><br /></span>}<br /><br />applicationCache.ondownloading = <span style="color: #0000ff">function</span>(){<br />   <span style="color: #008000">//</span><span style="color: #008000">检查到有manifest或者manifest文件</span><span style="color: #008000"><br /></span>   <span style="color: #008000">//</span><span style="color: #008000">已更新就执行下载操作</span><span style="color: #008000"><br /></span>   <span style="color: #008000">//</span><span style="color: #008000">即使需要缓存的文件在请求时服务器已经返回过了</span><span style="color: #008000"><br /></span>}<br /><br />applicationCache.onnoupdate = <span style="color: #0000ff">function</span>(){<br />   <span style="color: #008000">//</span><span style="color: #008000">返回304表示没有更新，通知浏览器直接使用本地文件</span><span style="color: #008000"><br /></span>}<br /><br />applicationCache.onprogress = <span style="color: #0000ff">function</span>(){<br />   <span style="color: #008000">//</span><span style="color: #008000">下载的时候周期性的触发，可以通过它</span><span style="color: #008000"><br /></span>   <span style="color: #008000">//</span><span style="color: #008000">获取已经下载的文件个数</span><span style="color: #008000"><br /></span>}<br /><br />applicationCache.oncached = <span style="color: #0000ff">function</span>(){<br />   <span style="color: #008000">//</span><span style="color: #008000">下载结束后触发，表示缓存成功</span><span style="color: #008000"><br /></span>}<br /><br />application.onupdateready = <span style="color: #0000ff">function</span>(){<br />   <span style="color: #008000">//</span><span style="color: #008000">第二次载入，如果manifest被更新</span><span style="color: #008000"><br /></span>   <span style="color: #008000">//</span><span style="color: #008000">在下载结束时候触发</span><span style="color: #008000"><br /></span>   <span style="color: #008000">//</span><span style="color: #008000">不触发onchched</span><span style="color: #008000"><br /></span>   alert(&quot;本地缓存正在更新中。。。&quot;);<br />   <span style="color: #0000ff">if</span>(confirm(&quot;是否重新载入已更新文件&quot;)){<br />       applicationCache.swapCache();<br />       location.reload();<br />   }<br />}<br /><br />applicationCache.onobsolete = <span style="color: #0000ff">function</span>(){<br />   <span style="color: #008000">//</span><span style="color: #008000">未找到文件，返回404或者401时候触发</span><span style="color: #008000"><br /></span>}<br /><br />applicationCache.onerror = <span style="color: #0000ff">function</span>(){<br />   <span style="color: #008000">//</span><span style="color: #008000">其他和离线存储有关的错误</span><span style="color: #008000"><br /></span>}</pre>
+<p>　　四、浏览器与服务器的交互</p>
+<p>　　曾经有面试题是这样的：&quot;描述在浏览器的地址栏中输入:http://www.baidu.com 后发生了什么?&quot;。</p>
+<p>　　1、服务端返回baidu页面资源，浏览器载入html</p>
+<p>　　2、浏览器开始解析</p>
+<p>　　3、发现link，发送请求载入css文件</p>
+<p>　　4、浏览器渲染页面</p>
+<p>　　5、发现图片，发送请求载入图片，并重新渲染</p>
+<p>　　6、发送请求js文件，阻塞渲染。如果js对dom进行了操作，则会进行rerender</p>
+<p>　　对于支持离线存储的页面，浏览器和服务器的交互又是如何呢?</p>
+<p>　　首次载入页面：</p>
+<p>　　1-6 ： 同上</p>
+<p>　　7：请求页面中需要缓存的页面和数据，就算在之前的步骤中已经请求过(这是个耗能的地方)</p>
+<p>　　8：服务器返回所有请求文件，浏览器进行本地存储</p>
+<p>　　再次载入页面：</p>
+<p>　　1：发送请求</p>
+<p>　　2：使用本地存储的离线文件</p>
+<p>　　3：解析页面</p>
+<p>　　4：请求服务端的manifest文件，判断是否有改变，返回304则表示没有改变进入步骤5，否则进入步骤6</p>
+<p>　　5：进入首次载入页面的7-8</p>
+<p>　　6：使用本地存储，不重新请求</p>
+<p>　　本文来自happyjlq的博客，原文地址:http://www.cnblogs.com/svage/archive/2011/11/24/2261365.html</p>
+			</div><!-- /content -->
+                                <div class="content">
+			　　<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3420821615963371";
+/* buttomContent */
+google_ad_slot = "5651106679";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+			</div><!-- /contentAD -->
+			<div class="dede_pages">
+				<ul class="pagelist">
+                    
+				</ul>
+			</div><!-- /pages -->
+			<div class="newdigg" id="newdigg">
+				<div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',12118)">
+					<div class="digg_act">顶一下</div>
+					<div class="digg_num">(0)</div>
+					<div class="digg_percent">
+						<div class="digg_percent_bar"><span style="width:0%"></span></div>
+						<div class="digg_percent_num">0%</div>
+					</div>
+				</div>
+				<div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',12118)">
+					<div class="digg_act">踩一下</div>
+					<div class="digg_num">(0)</div>
+					<div class="digg_percent">
+						<div class="digg_percent_bar"><span style="width:0%"></span></div>
+						<div class="digg_percent_num">0%</div>
+					</div>
+				</div>
+			</div>
+			 <script language="javascript" type="text/javascript">getDigg(12118);</script>
+			<div class="boxoff">
+				<strong>------分隔线----------------------------</strong>
+			</div>
+			<div class="handle">
+				<div class="context">
+					<ul>
+						<li>上一篇：<a href='/html/HTML_5/study/2011/1128/12117.html'>html5 WebWorkers 防止浏览器假死</a> </li>
+						<li>下一篇：<a href='/html/HTML_5/study/2011/1128/12119.html'>html5 navigator.geolocation基于浏览器获取地理位置</a> </li>
+					</ul>
+				</div><!-- /context -->
+				<div class="actbox">
+					<ul>
+						<li id="act-fav"><a href="/plus/stow.php?aid=12118" target="_blank">收藏</a></li>
+						<li id="act-err"><a href="/plus/erraddsave.php?aid=12118&title=html5离线应用application cache" target="_blank">挑错</a></li>
+						<li id="act-pus"><a href="/plus/recommend.php?aid=12118" target="_blank">推荐</a></li>
+						<li id="act-pnt"><a href="#" onClick="window.print();">打印</a></li>
+					</ul>
+				</div><!-- /actbox -->
+			</div><!-- /handle -->
+		</div><!-- /viewbox -->
+
+		<div class="mt1">
+			<dl class="tbox">
+				<dt>
+					<strong>最新评论</strong>
+					<span class="more"><a href="/plus/feedback.php?aid=12118">查看所有评论</a></span>
+				</dt>
+				<dd>
+					<div class="dede_comment">
+                    <script language='javascript' type='text/javascript' src="/plus/feedback_js.php?aid=12118"></script>
+					</div><!-- /dede_comment -->
+				</dd>
+			</dl>
+		</div><!-- /comment -->
+<div class="mt1">
+		<dl class="tbox">
+			<dt>
+				<strong>发表评论</strong>
+				<span class="more"><a href="/plus/feedback.php?aid=12118">查看所有评论</a></span>
+			</dt>
+			<dd>
+				<div class="dede_comment_post">
+          <form action="/plus/feedback.php" method="post" name="feedback">
+          <input type="hidden" name="action" value="send" />
+          <input type="hidden" name="comtype" value="comments">
+          <input type="hidden" name="aid" value="12118" />
+          <input type="hidden" name="isconfirm" value="yes" />
+                    <div class="dcmp-title">
+						<small>请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。</small>
+					</div><!-- /dcmp-title -->
+					<div class="dcmp-stand">
+						<strong>评价:</strong>
+							<input type="radio" name="feedbacktype" checked="1" value="feedback" id="dcmp-stand-neu" /><label for="dcmp-stand-neu"><img src="/templets/images/cmt-neu.gif" />中立</label>
+							<input type="radio" name="feedbacktype" value="good" id="dcmp-stand-good" /><label for="dcmp-stand-good"><img src="/templets/images/cmt-good.gif" />好评</label>
+							<input type="radio" name="feedbacktype" value="bad" id="dcmp-stand-bad" /><label for="dcmp-stand-bad"><img src="/templets/images/cmt-bad.gif" />差评</label>
+					</div><!-- /dcmp-stand -->
+					<div class="dcmp-content">
+						<textarea cols="60" name="msg" rows="5" class="ipt-txt"></textarea>
+					</div><!-- /dcmp-content -->
+
+					<div class="dcmp-mood">
+						<strong>表情:</strong>
+						<ul>
+								<li><input type="radio" name='face' value='6' checked="1" /><img src="/templets/images/mood/ico-mood-6.gif" /></li>
+								<li><input type="radio" name='face' value='4'/><img src="/templets/images/mood/ico-mood-4.gif" /></li>
+								<li><input type="radio" name='face' value='3'/><img src="/templets/images/mood/ico-mood-3.gif" /></li>
+								<li><input type="radio" name='face' value='5'/><img src="/templets/images/mood/ico-mood-5.gif" /></li>
+								<li><input type="radio" name='face' value='2'/><img src="/templets/images/mood/ico-mood-2.gif" /></li>
+								<li><input type="radio" name='face' value='1'/><img src="/templets/images/mood/ico-mood-1.gif" /></li>
+								<li><input type="radio" name='face' value='7'/><img src="/templets/images/mood/ico-mood-7.gif" /></li>
+						</ul>
+					</div><!-- /dcmp-mood -->
+					<div class="dcmp-post"><!--未登陆-->
+							<div class="dcmp-userinfo" id="_ajax_feedback">
+								用户名:<input type="text" name="username" size="16" class="ipt-txt" />
+								密码:<input name="pwd" type="password" size="16" class="ipt-txt" />
+								验证码:<input type="text" name="validate" size="4" class="ipt-txt" /><img src="/include/vdimgck.php" />
+                                <input type="checkbox" name="notuser" id="dcmp-submit-guest" /><label for="dcmp-submit-guest"> 匿名? </label>
+							</div>
+                             <script language="javascript" type="text/javascript">CheckLogin();</script>
+							<div class="dcmp-submit">
+								<button type="button" onClick='checkSubmit()'>发表评论</button>
+							</div>
+						</div>
+                    </form>
+				</div><!-- /dede_comment_post -->
+			</dd>
+		</dl>
+	</div>
+
+	</div><!-- /pleft -->
+
+	<div class="pright">
+    	<div class="infos_userinfo">
+ 			
+   	 	</div>
+
+		<div class="commend mt1">
+			<dl class="tbox">
+				<dt><strong>推荐内容</strong></dt>
+				<dd>
+					<ul class="d4">
+           
+					</ul>
+				</dd>
+			</dl>
+		</div><!-- /commend -->
+
+		<div class="hot mt1">
+			<dl class="tbox">
+				<dt><strong>热点内容</strong></dt>
+				<dd>
+					<ul class="c1 ico2">
+                    <li><a href="/html/HTML_5/study/2012/0227/14091.html">基于html5 WebSocket和WebRTC实</a></li>
+<li><a href="/html/HTML_5/study/2012/0227/14092.html">基于html5 WebSocket和WebRTC实</a></li>
+<li><a href="/html/HTML_5/study/2012/0304/14220.html">突袭HTML5之WebSocket入门1 - We</a></li>
+<li><a href="/html/HTML_5/study/2011/1018/11066.html">CSS3 应用01 - 文本阴影效果（兼</a></li>
+<li><a href="/html/HTML_5/study/2012/0109/13203.html">HTML5在PhoneGap框架下开发IOS应</a></li>
+<li><a href="/html/HTML_5/study/2011/1123/11975.html">全解HTML 5在移动Web应用的优劣</a></li>
+<li><a href="/html/HTML_5/study/2012/0108/13171.html">html5山寨版愤怒的小鸟</a></li>
+<li><a href="/html/HTML_5/study/2011/1121/11925.html">利用HTML5将现有网页转成mobile</a></li>
+<li><a href="/html/HTML_5/study/2011/1021/11170.html">HTML5学习笔记（1）——canvas绘</a></li>
+<li><a href="/html/HTML_5/study/2011/1018/11053.html">支持Html5的Jquery表单验证</a></li>
+
+					</ul>
+				</dd>
+			</dl>
+		</div>
+
+                	<div class="hot mt1">
+			<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3420821615963371";
+/* contentAd */
+google_ad_slot = "9815882252";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+		</div>
+		
+	</div><!-- /pright -->
+</div>
+
+<div class="footer w960 center mt1 clear">
+	<p class="copyright">
+		Copyright &copy; 2002-2010 DedeCMS. 织梦科技 版权所有<br />
+  </p>
+</div>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fbd104b46db0dd3f3dc8727bf93a67c28' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!-- /footer -->
+
+</body>
+</html>

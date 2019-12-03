@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div></div>
+	<input type="text" id="txt"/>
+	<script>
+	//创建post发送方式
+	var divs=document.getElementsByTagName('div');
+	var txt=document.getElementById("txt");
+	var xml=new XMLHttpRequest();
+	//点击函数
+	txt.onblur=function(){
+		//申请
+		xml.open("post","Ajax1.asp",true);
+		//申请据头
+		xml.setRequestHeader("content-type","application/x-www-form-urlencoded");
+		//发送
+		xml.send("mz="+txt.value);
+		//发送状态
+		xml.onreadystatechange=function(){
+			//4和200两种状态
+			if(this.readyState==4 && xml.status==200){
+				var a=this.responseText;
+				if(a=="1"){
+					divs[0].innerHTML="用户名已存在";
+				}else{
+					divs[0].innerHTML="ok"
+				}		
+			}
+		}
+	}
+	</script>
+</body>
+</html>
+

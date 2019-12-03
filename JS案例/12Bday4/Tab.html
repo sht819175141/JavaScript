@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	   #header a
+	   {
+	   	  text-decoration: none;color:#000;
+	   }
+	   #header a.cura
+	   {
+	   	 background: red;
+	   }
+	   #content div
+	   {
+	   	display: none;
+	   	  width:200px;height:180px;border:1px solid red;
+	   }
+	   #content div.cur
+	   {
+	   	 display: block;
+	   }
+	</style>
+</head>
+<body>
+	<div id="header">
+		<a href="#" class="cura">aa</a>
+		<a href="#">bb</a>
+		<a href="#">cc</a>
+		<a href="#">dd</a>
+	</div>
+	<div id="content">
+		<div class="cur">aa content</div>
+		<div>bb content</div>
+		<div>cc content</div>
+		<div>dd content</div>
+	</div>
+	<script>
+	    function Tab(hId,cId){
+	    	this.timer=null;
+	    	this.index=0; //现在展示的div的下标
+			this.objHeader=document.getElementById(hId);
+			this.links=this.objHeader.getElementsByTagName("a");
+			this.objContent=document.getElementById(cId);
+			this.divs=this.objContent.getElementsByTagName("div");
+			this.init();
+	    }
+	    Tab.prototype.init=function(){
+	    	var ins=this;
+	    	for(var i=0;i<this.links.length;i++){
+			  this.links[i].index=i;
+			  this.links[i].onclick=function(){
+			  	clearInterval(ins.timer);
+			  	ins.index=this.index;
+			  	ins.aclick(this.index);
+			  }
+			}
+	    }
+		
+		Tab.prototype.aclick=function(r){
+			     
+			 	 for(var j=0;j<this.links.length;j++){
+			 	 	this.links[j].className="";
+			 	 	this.divs[j].className="";
+			 	 }
+			 	 this.links[r].className="cura";
+			 	 this.divs[r].className="cur";
+			
+		}
+		function AdvTab(hId,cId){
+			Tab.call(this,hId,cId);
+			this.auto();
+			this.mouseout();
+		}
+		function F(){};
+		F.prototype=Tab.prototype;
+		AdvTab.prototype=new F();
+		AdvTab.prototype.constructor=AdvTab;
+		AdvTab.prototype.auto=function(){
+			var _this=this;
+			this.timer=setInterval(function(){
+				   
+					_this.index++;
+					if(_this.index==_this.links.length)
+					{
+						_this.index=0;
+					}
+					_this.aclick(_this.index);
+			},2000);
+			
+		}
+		AdvTab.prototype.mouseout=function(){
+			var _this=this;
+			this.objHeader.onmouseout=function(){
+				clearInterval(_this.timer);
+				_this.auto();
+			}
+		}
+		new AdvTab("header","content");
+
+	</script>
+</body>
+</html>

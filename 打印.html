@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<button id="print1">打印全部</button>
+<!--startprint-->
+<img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png">
+<!--endprint-->
+<button id="print2" onclick="doPrint()">打印指定部分(以打印图片为例)</button>
+<script src="jquery.min.js"></script>
+<script>
+    $('#print1').click(function () {
+        window.print();
+    });
+
+    function doPrint() {
+        bdhtml = window.document.body.innerHTML;
+        sprnstr = "<!--startprint-->"; //开始打印标识字符串有17个字符
+        eprnstr = "<!--endprint-->"; //结束打印标识字符串
+        prnhtml = bdhtml.substr(bdhtml.indexOf(sprnstr) + 17); //从开始打印标识之后的内容
+        prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr)); //截取开始标识和结束标识之间的内容
+        window.document.body.innerHTML = prnhtml; //把需要打印的指定内容赋给body.innerHTML
+        window.print(); //调用浏览器的打印功能打印指定区域
+        window.document.body.innerHTML = bdhtml; // 最后还原页面
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+(1)作为元素树的文档
+1、firstElementChild			第一个子元素节点
+2、lastElementChild			最后一个子元素节点
+3、nextElementSibling			下一个兄弟元素节点
+4、previousElementSibling		前一个兄弟元素节点
+5、childElementCount			子元素节点个数量
+
+
+
+
+
+
+六、文档结构和遍历
+(1)作为节点数的文档
+1、parentNode	获取该节点的父节点
+2、childNodes	获取该节点的子节点数组
+3、firstChild	获取该节点的第一个子节点
+4、lastChild	获取该节点的最后一个子节点
+5、nextSibling	获取该节点的下一个兄弟元素
+6、previoursSibling	获取该节点的上一个兄弟元素
+7、nodeType	节点的类型，9代表Document节点，1代表Element节点，3代表Text节点，8代表Comment节点，11代表DocumentFragment节点
+8、nodeVlue	Text节点或Comment节点的文本内容
+9、nodeName	元素的标签名(如P,SPAN,#text(文本节点),DIV)，以大写形式表示
+
+注意，以上6个方法连元素节点也算一个节点。
+
+
+search() ===>模糊搜索
+
+toLowerCase()  回顾
+
+

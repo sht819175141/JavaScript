@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var ff=function(n){
+			if(n==1){
+				n=1;
+			}else{
+				return n*fn(n-1) 
+			}
+		}
+
+		/*var a=ff;
+			ff=null;*/
+
+
+	function num(txt){
+		if(txt==1){
+			return 1;
+		}else{
+			return txt+num(txt-1);
+		}
+	}
+	var demo = num(5);
+	alert(demo); 
+
+	function factorial(num){
+		if (num <= 1){
+			return 1;
+		} else {
+			return num * factorial(num-1);
+		}
+	}    
+	arguments.callee 是一个指向正在执行的函数的指针，因此可以用它来实现对函数
+的递归调用
+	function factorial(num){
+		if (num <= 1){
+			return 1;
+		} else {
+			return num * arguments.callee(num-1);
+		}
+	}
+
+	var factorial = (function f(num){
+		if (num <= 1){
+			return 1;
+		} else {
+			return num * f(num-1);
+		}
+	});
+	</script>
+</body>
+</html>

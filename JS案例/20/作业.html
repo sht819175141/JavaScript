@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>111111111</li>
+		<li>22222222</li>
+		<li>33333333</li>
+		<li>44444444</li>
+	</ul>
+	<script>
+   //DOM
+   //事件
+   //阻止冒泡和默认行为
+   //hasClass getByClass
+   //闭包
+/*
+   var  lis=document.getElementsByTagName('li');
+
+    for(var i=0;i<lis.length;i++){
+
+    		lis[i].onclick=(function(num){
+    			return function(){
+    				console.log(this)
+    			} 			
+    		})(i)
+
+    }*/
+json={}
+  var  url='http://www.baidu.com/?user=张三&pwd=123&sex=男'
+  var  reg=/(\?|&)\w+=[\w\u4e00-\u9fa5]+/g 
+  var  arr=     url.match(reg)
+  console.log(arr)
+  for(var i=0;i<arr.length;i++){
+  	    arr[i]=arr[i].substring(1)
+  }
+
+console.log(arr[0])
+for(var i=0;i<arr.length;i++){
+	 var temp=arr[i].split('=')
+	 console.log(temp)
+	 json[temp[0]]=temp[1]
+}
+
+console.log(json)
+
+/*  json={
+  	user:'张三',
+  	pwd：123,
+  	sex:男
+  }*/
+
+ var  url='http://www.baidu.com/?user=张三&pwd=123&sex=男'
+
+   function   getURL(name){
+   		var reg=new RegExp("(\\?|&)"+name+'=[\\w\\u4e00-\\u9fa5]+','g')
+   		var arr=url.match(reg)
+   		var  index=arr[0].indexOf('=')
+   		 return  arr[0].substring(index+1)
+   }
+   console.log(getURL('sex'))
+
+   for(var i=1;i<=3;i++){
+   	 setTimeout(function(){
+   	 	console.log(i)
+   	 },0)
+   }
+
+	</script>
+</body>
+</html>

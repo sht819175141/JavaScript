@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div>csdsdd</div>
+<div>iillhkuiy</div>
+<div>53452454</div>
+	<script>
+		var divs=document.getElementsByTagName("div")
+		var xml=new XMLHttpRequest();
+		xml.open("get","index.asp?mz="+encodeURI("北京八维研修学院睡在我上铺的兄弟"),true);
+		xml.send();
+		xml.onreadystatechange=function(){
+			if(xml.readyState==4 && xml.status==200){
+				//alert(xml.responseText)
+				divs[0].innerHTML=xml.responseText
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box ul li {
+            height: 50px;
+            width: 200px;
+            background-color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li style="display:block">123</li>
+        <li>456</li>
+        <li>789</li>
+        <li>147</li>
+    </ul>
+</div>
+<input type="button" value="出国"/>
+<input type="button" value="回国"/>
+<input type="button" value="教育"/>
+<input type="button" value="教导"/>
+<script>
+    var box = document.getElementById("box");
+    var inp = document.getElementsByTagName("input");
+    var li = box.getElementsByTagName("li");
+
+    time = setInterval(shi, 1000)
+    //自动播放
+    var num = 0;
+
+    function shi() {
+        num++;
+        if (num > inp.length - 1) {
+            num = 0;
+        }
+        for (var i = 0; i < inp.length; i++) {
+            li[i].style.display = "none";
+            inp[i].style.background = "";
+        }
+        li[num].style.display = "block";
+        inp[num].style.background = "yellow";
+    }
+
+    //滑过效果，滑过后显示
+    for (var i = 0; i < inp.length; i++) {
+        inp[i].index = i;
+        inp[i].onmouseover = function () {
+            for (var j = 0; j < inp.length; j++) {
+                li[j].style.display = "none";
+                inp[j].style.background = "";
+            }
+            li[this.index].style.display = "block";
+            inp[this.index].style.background = "yellow";
+        }
+
+    }
+</script>
+</body>
+</html>

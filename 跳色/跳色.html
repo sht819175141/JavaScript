@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<table border="1" width="400" id="tab">
+    <thead>
+    <tr>
+        <td>学号</td>
+        <td>姓名</td>
+        <td>年龄</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>53132</td>
+        <td>张三</td>
+        <td>18</td>
+    </tr>
+    <tr>
+        <td>256454</td>
+        <td>李四</td>
+        <td>54</td>
+    </tr>
+    <tr>
+        <td>545445</td>
+        <td>王五</td>
+        <td>35</td>
+    </tr>
+    <tr>
+        <td>51421</td>
+        <td>刘能</td>
+        <td>65</td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    var tab = document.getElementById("tab");
+    for (var i = 0; i < tab.tBodies[0].rows.length; i++) {
+        if (i % 2) {
+            tab.tBodies[0].rows[i].style.background = "red";
+        }
+        tab.tBodies[0].rows[i].onmouseover = function () {
+            div = this.style.background;
+            this.style.background = "pink";
+        }
+        tab.tBodies[0].rows[i].onmouseout = function () {
+            this.style.background = div;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+    <p id="abc" data-id="my"></p>
+	<script>
+	       function setAttr(obj,value){
+	       	   obj.setAttribute("data-id",value);
+	       }
+	       setAttr(document.getElementById("abc"),"555");
+	       
+	</script>
+</body>
+</html>

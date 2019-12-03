@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #shu {
+            height: 300px;
+            width: 300px;
+            background-color: #ccc;
+            font-size: 80px;
+            color: red;
+        }
+
+        input {
+            height: 25px;
+            width: 80px;
+            background-color: #ccc;
+        }
+    </style>
+
+</head>
+<body>
+<input type="button" value="发送验证码" id="fa"/>
+<input type="button" value="暂停" id="ting"/>
+<div id="shu"></div>
+<script>
+    var fa = document.getElementById("fa");
+    fa.onclick = function () {
+        fa.disabled = true;
+        time = setInterval(dong, 100);
+
+    }
+    ting.onclick = function () {
+        fa.disabled = false;
+        clearInterval(time);
+    }
+
+    function dong() {
+        var con = [];
+        for (j = 0; j < 6; j++) {
+            var i = Math.floor(Math.random() * 10);
+            con += i;
+        }
+        shu.innerHTML = con;
+    }
+</script>
+</body>
+</html>

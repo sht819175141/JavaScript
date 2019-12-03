@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" id="btn" value="按钮">
+	<script>
+		var kc;
+		/*function f(r){
+			var str=kc+":";
+			for(var t in r){
+				str+=" "+r[t];
+			}
+			alert(str);
+		}*/
+
+		function fun(r){
+			str="五组成员："+kc+":";
+			for(var t in r){
+				str+=" "+r[t]
+			}
+			alert(str);
+		}
+
+		var btn=document.getElementById("btn");
+		btn.onclick=function(){
+			kc=prompt("请输入姓名");
+			var Oscr=document.createElement("script");
+			Oscr.src="http://localhost:8000/lx.php?kc="+kc;
+			document.body.appendChild(Oscr);
+			document.body.removeChild(Oscr);
+		}
+	</script>
+</body>
+</html>

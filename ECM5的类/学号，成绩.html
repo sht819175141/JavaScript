@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	     
+		  function Student(mz){	  	   		
+		  	var cj;		  		
+        function setCj(n){
+          if(n>=0 && n<=100){
+            cj=n;
+          }
+        }
+        function getCj(){                	
+          if(typeof cj=="undefined"){                    	
+            return "成绩不合法";
+          }
+          else
+          return cj;
+        }
+				Object.defineProperties(this,{
+				 	xh:{
+				 		value:this.no[0]++
+				 	},
+				 	xm:{
+				 		value:mz
+				 	},
+				 	cj:{
+				 		set:setCj,
+				 		get:getCj
+				 	}
+			 });
+		  }
+		  Student.prototype.no=[1];
+        var p = new Student("zhangsan");
+        alert(p.xh+","+p.xm);
+        p.cj=70;
+        alert(p.cj);
+        for(var t in p){
+       	  console.log(t+","+p[t]);
+        }
+        var p1 = new Student("lishi");      
+        alert(p1.xh+","+p1.xm);
+        var p2 = new Student("lishi");       
+        alert(p2.xh+","+p2.xm);
+	</script>
+</body>
+</html>

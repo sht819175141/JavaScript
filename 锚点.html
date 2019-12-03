@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body style="height:5000px">s
+<button id="btn">go bottosm</button>
+<a href="#bottom">go bottom</a>
+<div style="height:4500px"></div>
+<div id="bottom">aaa bottom</div>
+<a href="#">go top</a>
+<script>
+    var btn = document.getElementById('btn');
+    btn.onclick = function () {
+        location.hash = "#bottom"
+    }
+    location.href = "锚点.html"
+</script>
+</body>
+</html>

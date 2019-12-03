@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>CSS3 Media Query实现响应布局 - DIV+CSS教程 - 魔客吧 </title>
+<meta name="keywords" content="CSS3 Media Query实现响应布局" />
+<meta name="description" content="讲到响应式布局， 相信大家都有一定的了解，响应式布局是今年很流行的一个设计理念，随着移动互联网的盛行，为解决如今各式各样的浏览器分辨率以及不同移动设备的显示效果， 设计师提出了响应式布局的设计方案。今天 ... ,魔客吧" />
+<meta name="MSSmartTagsPreventParsing" content="True" />
+<meta http-equiv="MSThemeCompatible" content="Yes" />
+<base href="http://www.moke8.com/" /><link rel="stylesheet" type="text/css" href="data/cache/style_12_common.css?MbK" /><link rel="stylesheet" type="text/css" href="data/cache/style_12_portal_view.css?MbK" /><script type="text/javascript">var STYLEID = '12', STATICURL = 'static/', IMGDIR = 'static/image/common', VERHASH = 'MbK', charset = 'gbk', discuz_uid = '0', cookiepre = 'hHeW_2132_', cookiedomain = '', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'login|newthread|reply', creditnotice = '1|威望|,2|金币|,3|贡献|,4|魔币|', defaultstyle = '', REPORTURL = 'aHR0cDovL3d3dy5tb2tlOC5jb20vYXJ0aWNsZS01NjU3LTEuaHRtbA==', SITEURL = 'http://www.moke8.com/', JSPATH = 'static/js/';</script>
+<script src="static/js/common.js?MbK" type="text/javascript"></script>
+    <script src="moke8/js/jquery.js" type="text/javascript"></script>
+    <script src="moke8/js/header.js" type="text/javascript"></script>
+
+         <script src="moke8/js/index.js" type="text/javascript"></script>
+    <script language="javascript">
+    <!--
+    window.onerror=function(){return true;}
+    // -->
+    </script> 
+
+
+</head>
+
+
+
+<body id="nv_portal" class="pg_view" onkeydown="if(event.keyCode==27) return false;">
+
+<div id="append_parent"></div><div id="ajaxwaitid"></div>
+
+<!--[if lte IE 6]>
+<style>
+/*ie6提示*/
+#ie6-warning{width:100%;background:#ffffe1;padding:5px 0;font-size:12px}
+#ie6-warning p{width:1100px;margin:0 auto;}
+</style>
+<div id="ie6-warning" class="cl wp"><p>您正在使用 Internet Explorer 6，您的IE浏览器版本过低，在本页面的显示效果可能有差异。建议您升级到 <a href="http://www.microsoft.com/china/windows/internet-explorer/" target="_blank">Internet Explorer 8</a> 或以下浏览器：
+<a href="http://www.mozillaonline.com/">Firefox</a> / <a href="http://www.google.com/chrome/?hl=zh-CN">Chrome</a> / <a href="http://www.apple.com.cn/safari/">Safari</a> / <a href="http://www.operachina.com/">Opera</a></p></div>
+<![endif]-->
+      <div class="addhead" style="height: 80px; display: none;"></div>
+            <div class="head">
+<div class="head-con">
+                <h1>
+<a href="http://www.moke8.com/" title="魔客吧-模板交流平台" class="logo">网站模板</a>
+</h1>
+        <div class="nav-mo clearfix">
+           
+            <div class="nav-home">
+<a href="./" class="n-c">首页</a>
+            </div>
+            <div class="nav-home">
+            <a rel="nofollow" class="n-c" href="/goodmoban/">原创</a>
+            <i style="display: inline;" class="hot-ico"></i>
+            </div>
+<div class="nav-lis">
+<a href="/moban/" class="n-c">模板</a>
+<ul>
+<li><a href="http://www.moke8.com/discuzx/">discuz模板</a></li>
+                    <li><a href="http://www.moke8.com/dedecms/">dedecms模板</a></li>
+                    <li><a href="http://www.moke8.com/phpwind/">phpwind模板</a></li>
+                    <li><a href="http://www.moke8.com/wordpress/">wordpress模板</a></li>
+                    <li><a href="http://www.moke8.com/phpcms/">phpcms模板</a></li>
+                    <li><a href="http://www.moke8.com/ecms/">帝国cms模板</a></li>
+                    <li><a href="http://www.moke8.com/ecshop/">ecshop模板</a></li>
+                    <li><a href="http://www.moke8.com/shopex/">shopex模板</a></li>
+                    <li><a href="http://www.moke8.com/html/">网页模板</a></li>
+</ul>
+</div>
+<div class="nav-lis">
+<a href="http://www.moke8.com/sucai/" class="n-c">素材<i class="sucai-ico"></i></a>
+<ul>
+<li><a href="http://www.moke8.com/psd/">PSD素材</a></li>
+                                        <li><a href="http://www.moke8.com/shiliang/">矢量素材</a></li>
+<li><a href="http://www.moke8.com/daima/">网页特效</a></li>
+                                        <li><a href="http://www.moke8.com/ico/">图标</a></li>
+</ul>
+</div>
+            <div class="nav-lis">
+<a href="http://www.moke8.com/cmsjiaocheng/" class="n-c">教程</a>
+<ul>
+
+                 <li><a href="http://www.moke8.com/cmsjiaocheng/discuz/">discuz教程</a></li>
+                 <li><a href="http://www.moke8.com/cmsjiaocheng/phpwind/">phpwind教程</a></li>
+                 <li><a href="http://www.moke8.com/cmsjiaocheng/dedecms/">dedecms教程</a></li>
+                 <li><a href="http://www.moke8.com/cmsjiaocheng/phpcms/">phpcms教程</a></li>
+                 <li><a href="http://www.moke8.com/cmsjiaocheng/ecms/">帝国cms教程</a></li>
+                 <li><a href="http://www.moke8.com/cmsjiaocheng/wordpress/">wordpress教程</a></li>
+                 <li><a href="http://www.moke8.com/cmsjiaocheng/ecshop/">ecshop教程</a></li>
+                 <li><a href="http://www.moke8.com/cmsjiaocheng/shopex/">shopex教程</a></li>
+   
+</ul>
+</div>
+           
+             <div class="nav-home">
+<a href="/special/xinshou/" class="n-c" rel="nofollow">新手</a>
+                <i class="new-ico" style="display: inline;"></i>
+</div>
+             <div class="nav-lis">
+<a href="/article-2321-1.html" target="_blank" class="n-c">更多</a>
+<ul>
+                    <li><a href="http://www.moke8.com/bbs/">站长广场</a></li>
+                    <li><a href="http://www.moke8.com/goodmoban/">原创商业</a></li>
+<li><a href="http://www.moke8.com/chajian/">程序插件</a></li>
+                    <li><a href="http://www.moke8.com/code/">网站源码</a></li>
+<li><a href="http://www.moke8.com/webproduction/">网页制作</a></li>
+<li><a href="http://www.moke8.com/webbiz/">网站运营</a></li>
+                    <li><a href="http://www.moke8.com/biancheng/">网络编程</a></li>
+                    <li><a href="http://www.moke8.com/news/">行业资讯</a></li>
+                    <li><a href="http://www.moke8.com/mobile/">移动互联</a></li>
+                    <li><a href="http://www.moke8.com/collection/">淘贴</a></li>
+</ul>
+</div>
+</div>
+<div class="search" id="header_search">
+<form id="scbar_form" method="post" autocomplete="off" onsubmit="searchFocus($('scbar_txt'))" action="search.php?searchsubmit=yes" target="_blank">
+<input type="hidden" name="mod" value="forum" />
+<input type="hidden" name="formhash" value="1c620d06" />
+<input type="hidden" name="srhfid" value="0" />
+<input type="hidden" name="srhlocality" value="portal::view" />
+        <label>
+        <em>搜索模板,插件,素材</em>
+        <input name="srchtxt" type="text" class="seatext" autocomplete="off" maxlength="100" value="" autocomplete="off" x-webkit-speech speech />
+        </label>
+<input type="submit" value="" class="seabutton">
+<div class="about-ser">
+        
+        </div>
+
+</form>
+
+
+           
+</div>
+
+                <div class="user-ed ">
+<a href="member.php?mod=moke8reg" rel="nofollow">免费注册</a><span class="ml10 mr10">|</span><a href="member.php?mod=logging&amp;action=login" rel="nofollow">登录</a><br>
+            <a class="qq" href="connect.php?mod=login&amp;op=init&amp;referer=index.php&amp;statfrom=login_simple" rel="nofollow">QQ登录</a>
+            <a class="wb" href="javascript:;" rel="nofollow">微博登录</a></div>        
+ 
+        </div>
+</div>
+
+
+
+
+
+
+    <div class="moke-main">
+    <div id="wp" class="wp banner">
+    <div class="a_mu"> <iframe width="1150" scrolling="no" height="90" frameborder="0" style="border: 0; vertical-align: bottom; margin:0px; display: block;" marginwidth="0" marginheight="0" allowtransparency="true" hspace="0" vspace="0" src="/moke8/banner/topbanner.htm"></iframe></div>    </div>
+<div id="wp" class="wp">
+    
+   <!--[name]魔客吧2013-文章内容页[/name]-->
+
+<script src="static/js/forum_viewthread.js?MbK" type="text/javascript"></script>
+<script type="text/javascript">zoomstatus = parseInt(1), imagemaxwidth = '850', aimgcount = new Array();</script>
+<div id="pt" class="bm cl">
+<div class="z">
+<a href="http://www.moke8.com/" class="nvhm" title="网站模板">网站模板</a> <em>&rsaquo;</em><a href="http://www.moke8.com/webproduction/">网页制作</a><em>&rsaquo;</em>
+<a href="http://www.moke8.com/webproduction/divcss/">DIV+CSS教程</a> <em>&rsaquo;</em>
+查看内容
+</div>
+</div>
+
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+<div id="ct" class="ct2 wp cl">
+<div class="mn ctl">
+<div class="bm vw">
+<div class="h hm">
+                <div class="bbda ph" style="border-bottom:0px;">
+<h1>CSS3 Media Query实现响应布局 </h1>
+                </div>
+<p class="xg1">
+2012-11-20 11:10 <span class="pipe">|</span>
+发布者: moke <span class="pipe">|</span>
+                    栏目：<a href="http://www.moke8.com/webproduction/divcss/" class="c4095CE">DIV+CSS教程</a>
+                    
+</p>
+</div>
+
+<!--[diy=diysummarytop]--><div id="diysummarytop" class="area"></div><!--[/diy]-->
+
+
+<!--[diy=diysummarybottom]--><div id="diysummarybottom" class="area"></div><!--[/diy]-->
+
+<div class="d">
+
+<!--[diy=diycontenttop]--><div id="diycontenttop" class="area"></div><!--[/diy]-->
+
+<table cellpadding="0" cellspacing="0" class="vwtb"><tr><td id="article_content"><p>讲到响应式布局， 相信大家都有一定的了解，响应式布局是今年很流行的一个设计理念，随着移动互联网的盛行，为解决如今各式各样的浏览器分辨率以及不同移动设备的显示效果， 设计师提出了响应式布局的设计方案。今天就和大家来讲讲响应式布局这件小事，包含什么是响应式布局、响应式布局的优点和缺点以及响应式布局该怎么设计（通 过CSS3 Media Query实现响应布局）。</p><p style="TEXT-ALIGN: center"><img class="wp-image-489 size-full aligncenter" title="Response type design" alt="响应式布局这件小事" src="data/attachment/portal/201211/20/110950inqnrrfygsr99fns.jpg" border="0" height="400" width="550"></p><p><strong>一、什么是响应式布局？</strong></p><p>响应式布局是Ethan Marcotte在2010年5月份提出的一个概念，简而言之，就是一个网站能够兼容多个终端——而不是为每个终端做一个特定的版本。这个概念是为解决移动互联网浏览而诞生的。</p><p>响应式布局可以为不同终端的用户提供更加舒适的界面和更好的用户体验，而且随着目前大屏幕移动设备的普及，用大势所趋来形容也不为过。随着越来越多的设计师采用这个技术，我们不仅看到很多的创新，还看到了一些成形的模式。</p><p><strong>二、响应式布局有哪些优点和缺点？</strong></p><p><strong>优点：</strong></p><p>面对不同分辨率设备灵活性强</p><p>能够快捷解决多设备显示适应问题</p><p><strong>缺点：</strong></p><p>兼容各种设备工作量大，效率低下</p><p>代码累赘，会出现隐藏无用的元素，加载时间加长</p><p>其实这是一种折衷性质的设计解决方案，多方面因素影响而达不到最佳效果</p><p>一定程度上改变了网站原有的布局结构，会出现用户混淆的情况</p><p><strong>三、响应式布局该怎么设计？</strong></p><p>我们在上面了解了什么是响应式布局，那在我们的实际项目中应该怎么去设计呢？在以往我们设计网站的时候都会受到不同浏览器的兼容性的困扰，现在还要来个不同尺寸设备，我们该怎么淡定下来呢？有需求就会有解决方案，呵呵，说到响应式布局，就不得不提起CSS3中的Media Query（媒介查询），这可是个好东西，易用、强大、快捷……Media Query是制作响应式布局的一个利器，使用这个工具，我们可以非常方便快捷的制造出各种丰富的实用性强的界面。接下来就一起来深入的了解Media Query。</p><p>1、CSS中的Media Query（媒介查询）是什么？</p><p>通过不同的媒体类型和条件定义样式表规则。媒体查询让CSS可以更精确作用于不同的媒体类型和同一媒体的不同条件。媒体查询的大部分媒体特性都接受min和max用于表达”大于或等于”和”小与或等于”。如：width会有min-width和max-width媒体查询可以被用在CSS中的@media和@import规则上，也可以被用在HTML和XML中。通过这个标签属性，我们可以很方便的在不同的设备下实现丰富的界面，特别是移动设备，将会运用更加的广泛。</p><p>2、media query能够获取哪些值？</p><p>设备的宽和高device-width，device-heigth显示屏幕/触觉设备。</p><p>渲染窗口的宽和高width，heigth显示屏幕/触觉设备。</p><p>设备的手持方向，横向还是竖向orientation（portrait|lanscape）和打印机等。</p><p>画面比例aspect-ratio点阵打印机等。</p><p>设备比例device-aspect-ratio-点阵打印机等。</p><p>对象颜色或颜色列表color，color-index显示屏幕。</p><p>设备的分辨率resolution。</p><p>3、语法结构及用法</p><blockquote><p>@media 设备名 only （选取条件） not （选取条件） and（设备选取条件），设备二{sRules}</p></blockquote><p>示例一：在link中使用@media：</p><blockquote><p>&lt;link rel=“stylesheet” type=“text/css” media=“only screen and （max-width： 480px），only screen and （max-device-width： 480px）” href=“link.css”/&gt;</p></blockquote><p>上面使用中only可省略，限定于计算机显示器，第一个条件max-width是指渲染界面最大宽度，第二个条件max-device-width是指设备最大宽度。</p><p>示例二：在样式表中内嵌@media：</p><blockquote><p>@media （min-device-width:1024px） and （max-width:989px），screen and （max-device-width:480px），（max-device-width:480px） and （orientation:landscape），（min-device-width:480px） and （max-device-width:1024px） and （orientation:portrait） {srules}</p></blockquote><p>在示例二中，设置了电脑显示器分辨率（宽度）大于或等于1024px（并且最大可见宽度为989px）；屏宽在480px及其以下手持设备；屏宽在480px以及横向（即480尺寸平行于地面）放置的手持设备；屏宽大于或等于480px小于1024px以及垂直放置设备的css样式。</p><p>从上面的例子可以看出，字符间以空格相连，选取条件包含在小括号内，srules为兼容设置的样式表，包含在中括号里面。only（限定某种设备，可省略），and（逻辑与），not（排除某种设备）为逻辑关键字，多种设备用逗号分隔，这一点继承了css基本语法。</p><p>4、可用设备名参数：</p><p style="TEXT-ALIGN: center"><img style="TEXT-ALIGN: center; LINE-HEIGHT: 24px; TEXT-INDENT: 28px; COLOR: rgb(51,51,51); FONT-SIZE: 13.63px" alt="" src="data/attachment/portal/201211/20/1109509fbdqqqq2nbnqrob.png" border="0"></p><p>5、逻辑关键字：</p><p style="TEXT-ALIGN: center"><img alt="" src="data/attachment/portal/201211/20/110951qp1s1ybp6iyssy3y.png" border="0"></p><p>6、可用设备名参数：</p><p style="TEXT-ALIGN: center"><a class="bPic" href="data/attachment/portal/201211/20/1109530ixrjck42c2xkr2k.png"><img style="WIDTH: 600px; HEIGHT: auto" alt="" src="data/attachment/portal/201211/20/1109530ixrjck42c2xkr2k.png" border="0"></a></p><p><strong>7、测试Media Queries</strong></p><p>最后，我们需要对我们刚刚设计的Media Queries进行测试，想要在不同设备上测试Media Queries的效果，可以使用一个浏览工具来检验不同尺寸屏幕下的显示效果，在这里为大家介绍一个不错的在线工具 – Responsivator，它可以模拟iPhone等各种不同设备，并且还可以自定义不同尺寸屏幕的显示效果，只需要输入一个url甚至是本地的一个url（如：http://127.0.0.1/），就可以看到网站在不同尺寸屏幕下的显示效果。</p><p><strong>8、通过Media Queries实现响应式布局设计</strong></p><p>好了，我们明白了什么是Media Query，那我们一起来运用到响应式布局的设计项目中去。设计思路很简单，首先先定义在标准浏览器下的固定宽度（假如标准浏览器的分辨率为1024px，那么我们设置宽为980px），然后用Media Query来监测浏览器的尺寸变化，当浏览器的分辨率小于1024px的时候，则通过Media Query预设的样式表来将页面的宽度设置为百分比显示，这样子页面的结构元素就会根据浏览器的的尺寸来进行相对应的调整。同理，当浏览器的可视区域改变到某个值（假如为650px）的时候，页面的结构元素根据Media Query预设的层叠样式表来进行相对应的调整。看看我们的例子：</p><blockquote><p>/* 当浏览器的可视区域小于980px */</p><p>@media screen and （max-width： 980px） {</p><p>#wrap {width： 90%; margin:0 auto;}</p><p>#content {width： 60%;padding： 5%;}</p><p>#sidebar {width： 30%;}</p><p>#footer {padding： 8% 5%;margin-bottom： 10px;}</p><p>}</p><p>/* 当浏览器的可视区域小于650px */</p><p>@media screen and （max-width： 650px） {</p><p>#header {height： auto;}</p><p>#searchform {position： absolute;top： 5px;right： 0;}</p><p>#content {width： auto; float： none; margin： 20px 0;}</p><p>#sidebar {width： 100%; float： none; margin： 0;}</p><p>}</p></blockquote><p>通过上面我们就可以监测浏览器的可视区域变化的是时候我们的页面结构元素也会相对应的变化，当然你可以再多设置几个尺寸的监测层叠样式表，这样子就可以根据不同尺寸设备来进行响应式的布局。为了更好的显示效果，我们往往还要格式化一些CSS属性的初始值：</p><blockquote><p>/* 禁用iPhone中Safari的字号自动调整 */</p><p>html {</p><p>-webkit-text-size-adjust： none;</p><p>}</p><p>/* 设置HTML5元素为块 */</p><p>article， aside， details， figcaption， figure， footer， header， hgroup， menu， nav， section {</p><p>display： block;</p><p>}</p><p>/* 设置图片视频等自适应调整 */</p><p>img {</p><p>max-width： 100%;</p><p>height： auto;</p><p>width： auto\9; /* ie8 */</p><p>}</p><p>.video embed， .video object， .video iframe {</p><p>width： 100%;</p><p>height： auto;</p><p>}</p></blockquote><p>最后要注意的是在页面的头部&lt;head&gt;&lt;/head&gt;之间加上下面这句∶</p><blockquote><p>&lt;meta name=“viewport” content=“width=device-width; initial-scale=1.0”&gt;</p></blockquote><p>meta viewport这个属性是在移动设备上设置原始大小显示和是否缩放的声明。</p><p>参数设置∶</p><p>width – viewport的宽度</p><p>height – viewport的高度</p><p>initial-scale – 初始的缩放比例</p><p>minimum-scale – 允许用户缩放到的最小比例</p><p>maximum-scale – 允许用户缩放到的最大比例</p><p>user-scalable – 用户是否可以手动缩放</p><p>最后对于在IE浏览器中不支持media query的情况，我们可以使用Media Query JavaScript来解决，只需要在页面头部引用css3-mediaqueries.js即可。示例：</p><blockquote><p>&lt;！--［if lt IE 9］&gt;</p><p>&lt;script src=“http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js”&gt;</p><p>&lt;/script&gt; &lt;！［endif］--&gt;</p></blockquote><p>好了，响应式布局的小事就这么多，如你有好的补充意见或不同的见解，可以联系我，我们一起探讨这件小事……</p>                      <!--广告-->
+                                <!--广告end-->
+
+
+
+	
+</td></tr></table>
+                
+<!--[diy=diycontentbottom]--><div id="diycontentbottom" class="area"></div><!--[/diy]-->
+
+
+                
+                 <!-- 将此标记放在您希望显示like按钮的位置 -->
+<div class="bdlikebutton" style="text-align:center; margin:10px auto;"></div>
+
+<!-- 将此代码放在适当的位置，建议在body结束前 -->
+<script id="bdlike_shell"></script>
+<script>
+var bdShare_config = {
+"type":"large",
+"color":"blue",
+"uid":"488109"
+};
+document.getElementById("bdlike_shell").src="http://bdimg.share.baidu.com/static/js/like_shell.js?t=" + new Date().getHours();
+</script>
+        <div class="cl" style=" border-top:1px dashed #DFDFDF; padding-top:10px;">
+        <div class="share cl">
+        <em>分享到</em>
+        <!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+        <a class="bds_qzone"></a>
+        <a class="bds_tsina"></a>
+        <a class="bds_tqq"></a>
+        <a class="bds_renren"></a>
+        <span class="bds_more">更多</span>
+<a class="shareCount"></a>
+    </div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=488109" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>
+<!-- Baidu Button END -->
+        </div>
+                
+                <div class="contxt">
+                本文地址：<a href="http://www.moke8.com/article-5657-1.html">http://www.moke8.com/article-5657-1.html</a>
+                <br />
+                文章标题：<a href="http://www.moke8.com/article-5657-1.html">CSS3 Media Query实现响应布局</a>
+                </div>
+                </div>
+                
+
+<!--[diy=diycontentclickbottom]--><div id="diycontentclickbottom" class="area"></div><!--[/diy]-->
+
+</div>
+
+<div class="o cl ptm pbm">
+<a href="http://www.moke8.com/home.php?mod=spacecp&amp;ac=favorite&amp;type=article&amp;id=5657&amp;handlekey=favoritearticlehk_5657" id="a_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" class="oshr ofav">收藏</a>
+<a href="misc.php?mod=invite&amp;action=article&amp;id=5657" id="a_invite" onclick="showWindow('invite', this.href, 'get', 0);" class="oshr oivt">邀请</a>
+</div>
+
+</div>
+
+<!--[diy=diycontentrelatetop]--><div id="diycontentrelatetop" class="area"></div><!--[/diy]-->        
+         <div id="related_article" class="bm">
+<div class="bm_h clrel mb10" style="border-top:1px solid #dcdcdc;">
+<strong>最新分享资源</strong>
+</div>
+<div class="cl"><div class="col_208">
+		<div class="projects">	
+			<div class="projects-thumbnail">	
+                <a href="http://www.moke8.com/wordpress/m49987/" target="_blank">
+				<img src="data/attachment/block/67/67b144822d790c742866d835ec129add.jpg" width="206" height="160" alt="Profitplus 多用途 wordpress模板" />
+				<span class="project-thumbnail-overlay"></span>
+				<p class="project-to-detail" ></p>
+                </a>
+			</div>
+			<div class="project-desc">
+				<p class="nofont"><a href="http://www.moke8.com/wordpress/m49987/" target="_blank">Profitplus 多用途 wordpress模板</a></p>
+			</div>
+				<div class="project-tax"><a href="http://www.moke8.com/wordpress/" title="wordpress模板" target="_blank">wordpress模板</a> by moke8</div>
+		</div>
+	</div><div class="col_208">
+		<div class="projects">	
+			<div class="projects-thumbnail">	
+                <a href="http://www.moke8.com/wordpress/m49986/" target="_blank">
+				<img src="data/attachment/block/ac/acf608b3db2e3068a6587de0fb451ddf.jpg" width="206" height="160" alt="Pheno墨蓝单页视差wordpress主题" />
+				<span class="project-thumbnail-overlay"></span>
+				<p class="project-to-detail" ></p>
+                </a>
+			</div>
+			<div class="project-desc">
+				<p class="nofont"><a href="http://www.moke8.com/wordpress/m49986/" target="_blank">Pheno墨蓝单页视差wordpress主题</a></p>
+			</div>
+				<div class="project-tax"><a href="http://www.moke8.com/wordpress/" title="wordpress模板" target="_blank">wordpress模板</a> by moke8</div>
+		</div>
+	</div><div class="col_208">
+		<div class="projects">	
+			<div class="projects-thumbnail">	
+                <a href="http://www.moke8.com/html/m49985/" target="_blank">
+				<img src="data/attachment/block/8c/8cbd8774d2f8f5a75885398468fdf1ab.jpg" width="206" height="160" alt="蓝色高端简约科技公司psd网页模板" />
+				<span class="project-thumbnail-overlay"></span>
+				<p class="project-to-detail" ></p>
+                </a>
+			</div>
+			<div class="project-desc">
+				<p class="nofont"><a href="http://www.moke8.com/html/m49985/" target="_blank">蓝色高端简约科技公司psd网页模板</a></p>
+			</div>
+				<div class="project-tax"><a href="http://www.moke8.com/html/" title="网页模板" target="_blank">网页模板</a> by moke8</div>
+		</div>
+	</div><div class="col_208">
+		<div class="projects">	
+			<div class="projects-thumbnail">	
+                <a href="http://www.moke8.com/html/m49984/" target="_blank">
+				<img src="data/attachment/block/b9/b94727ffc7c7a1a4601672027ce516a5.jpg" width="206" height="160" alt="深蓝色全屏大气扁平企业html模板" />
+				<span class="project-thumbnail-overlay"></span>
+				<p class="project-to-detail" ></p>
+                </a>
+			</div>
+			<div class="project-desc">
+				<p class="nofont"><a href="http://www.moke8.com/html/m49984/" target="_blank">深蓝色全屏大气扁平企业html模板</a></p>
+			</div>
+				<div class="project-tax"><a href="http://www.moke8.com/html/" title="网页模板" target="_blank">网页模板</a> by moke8</div>
+		</div>
+	</div></div>
+ </div>
+
+<!--[diy=diycontentrelate]--><div id="diycontentrelate" class="area"></div><!--[/diy]-->
+
+
+<!--[diy=diycontentcomment]--><div id="diycontentcomment" class="area"></div><!--[/diy]-->
+
+
+</div>
+    
+<div class="ctr">
+        
+        <div style="height:8px;"></div>
+                          
+
+<div>
+<div class="tab cl">
+<p>相关分类</p>
+</div>
+<div class="bm_c2">
+<ul class="xl xl2 cl"><li><a href="http://www.moke8.com/webproduction/design/">网页设计</a></li>
+<li><a href="http://www.moke8.com/webproduction/divcss/">DIV+CSS教程</a></li>
+<li><a href="http://www.moke8.com/webproduction/flash/">Flash教程</a></li>
+<li><a href="http://www.moke8.com/webproduction/fireworks/">Fireworks教程</a></li>
+<li><a href="http://www.moke8.com/webproduction/dreamweaver/">Dreamweaver教程</a></li>
+<li><a href="http://www.moke8.com/webproduction/photoshop/">photoshop教程</a></li>
+</ul>
+</div>
+</div>
+
+          
+         <div class="cl">
+    <div class="cl tab rel">
+<p>每周精品推荐</p>
+</div>
+<div class="bm_c2"><div class="col_190">
+		<div class="projects">	
+			<div class="projects-thumbnail">	
+                <a href="http://www.moke8.com/discuzx/m49007/" target="_blank">
+				<img src="data/attachment/block/da/da4a9e2c29ea29424597e3c71dd01e41.jpg" width="188" height="150" alt="dz大气集团企业discuz模板" />
+				<span class="project-thumbnail-overlay"></span>
+				<p class="project-to-detail" ></p>
+                </a>
+			</div>
+			<div class="project-desc">
+				<p class="nofont"><span class="jh">精华</span> <a href="http://www.moke8.com/discuzx/m49007/" target="_blank">dz大气集团企业discuz模板</a></p>
+			</div>
+				<div class="project-tax"><a href="http://www.moke8.com/discuzx/" title="discuz模板" target="_blank">discuz模板</a> by moke</div>
+		</div>
+	</div></div>
+         </div>
+         
+         <div>
+    <div class="cl tab rel">
+<p>VIP专享资源</p>
+</div>
+<div class="bm_c2 "><div class="col_190">
+		<div class="projects">	
+			<div class="projects-thumbnail">	
+                <a href="http://www.moke8.com/discuzx/m46932/" target="_blank">
+				<img src="data/attachment/block/79/798d057a578b4c5a68d7370823089f19.jpg" width="188" height="150" alt="时尚地方门户discuz模板" />
+				<span class="project-thumbnail-overlay"></span>
+				<p class="project-to-detail" ></p>
+                </a>
+			</div>
+			<div class="project-desc">
+				<p class="nofont"><span class="vip">极品</span> <a href="http://www.moke8.com/discuzx/m46932/" target="_blank">时尚地方门户discuz模板</a></p>
+			</div>
+				<div class="project-tax"><a href="http://www.moke8.com/discuzx/" title="discuz模板" target="_blank">discuz模板</a> by moke</div>
+		</div>
+	</div></div>
+         </div>
+         
+         <div>
+            <div class="cl tab rel">
+<p>原创商业模板</p>
+</div>
+<div class="bm_c2"><div class="col_190">
+		<div class="projects">	
+			<div class="projects-thumbnail">	
+                <a href="http://www.moke8.com/goodmoban/m46012/" target="_blank">
+				<img src="data/attachment/block/0e/0eff8b5b70765e9f4c36c73d3bc88cb0.jpg" width="188" height="150" alt="多配色创意metro风格企业" />
+				<span class="project-thumbnail-overlay"></span>
+				<p class="project-to-detail" ></p>
+                </a>
+			</div>
+			<div class="project-desc">
+				<p class="nofont"><span><b>200</b>魔币</span> <a href="http://www.moke8.com/goodmoban/m46012/" target="_blank">多配色创意metro风格企业</a></p>
+			</div>
+				
+		</div>
+	</div></div>
+         </div>
+         
+         <div>
+    <div class="cl tab rel">
+<p>资源下载排行</p>
+</div>
+<div class="bm_c2 listm list31 rank" >
+<ul><li class="top"><em>01</em><a href="http://www.moke8.com/discuzx/m49844/" target="_blank">蓝色简约资讯discuz模板</a></li><li class="top"><em>02</em><a href="http://www.moke8.com/dedecms/m49854/" target="_blank">红色白酒企业整站dedecms模板</a></li><li class="top"><em>03</em><a href="http://www.moke8.com/dedecms/m49847/" target="_blank">dede织梦模板后台管理精美五</a></li><li><em>04</em><a href="http://www.moke8.com/wordpress/m49888/" target="_blank">80h-tv影视制作wordpress模板</a></li><li><em>05</em><a href="http://www.moke8.com/dedecms/m49865/" target="_blank">漂亮会员中心dedecms模板</a></li><li><em>06</em><a href="http://www.moke8.com/code/m49885/" target="_blank">一款淘宝API自动发货系统</a></li><li><em>07</em><a href="http://www.moke8.com/wordpress/m49886/" target="_blank">456Shop购物商城wordpress模</a></li><li><em>08</em><a href="http://www.moke8.com/discuzx/m49953/" target="_blank">图片素材ZCOOL类型discuz论坛</a></li></ul>
+</div>
+         </div>
+         
+         <div>
+    <div class="cl tab rel">
+<p>资源分类</p>
+</div>
+<div class="bm_c2 fenlei" >
+<a href="http://www.moke8.com/collection/1/" target="_blank">企业网站模板</a>
+                <a href="http://www.moke8.com/collection/15/" target="_blank">企业网站源码</a>
+                <a href="http://www.moke8.com/collection/2/" target="_blank">个人网站模板</a>
+                <a href="http://www.moke8.com/collection/12/" target="_blank">个人网页模板</a>
+                <a href="http://www.moke8.com/collection/5/" target="_blank">div+css模板</a>
+                <a href="http://www.moke8.com/collection/7/" target="_blank">门户网站模板</a>
+                <a href="http://www.moke8.com/collection/14/" target="_blank">商业源码</a>
+                <a href="http://www.moke8.com/collection/13/" target="_blank">淘宝客程序</a>
+</div>
+         </div><div class="drag">
+<!--[diy=diy2]--><div id="diy2" class="area"></div><!--[/diy]-->
+</div>
+
+
+</div>
+</div>
+
+
+<div class="wp mtn">
+<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+<input type="hidden" id="portalview" value="1">	</div>
+    </div>
+
+
+<script src="http://js.touclick.com/js.touclick?b=7d5ac972-7bc7-45e6-9a3b-73cae5322ff6&v=v3-0&pf=discuz" type="text/javascript"></script><script type="text/javascript">var touclick_clientname='';var touclick_clientid=0;document.cookie="hHeW_2132_check_key=";document.cookie="hHeW_2132_check_address=";function succeedhandle_touclick(handle,codeid){var the_form = $(handle);var oldsubmit = the_form.onsubmit;window.TouClick.Start({website_key: '7d5ac972-7bc7-45e6-9a3b-73cae5322ff6',position_code: codeid,args: {'_this': the_form },onSuccess: function (args, check_obj){document.cookie="hHeW_2132_check_key="+check_obj.check_key;document.cookie="hHeW_2132_check_address="+check_obj.check_address;postpt=0;oldsubmit.call(args._this);}});}</script>    <div class="footer">
+<div id="ft" class="wp cl">
+
+<p>
+<a target="_blank" href="/article-1470-1.html" rel="nofollow">联系我们</a> | <a target="_blank" href="/article-1466-1.html" rel="nofollow">关于我们</a> | <a target="_blank" href="/article-1467-1.html" rel="nofollow">招商加盟</a> | <a target="_blank" href="/article-1468-1.html" rel="nofollow">版权声明</a> | <a target="_blank" href="/help/" rel="nofollow">帮助中心</a> | <a target="_blank" href="/article-1469-1.html" rel="nofollow">广告服务</a> | <a href="/misc.php?mod=stat" rel="nofollow">站点统计</a> | <a onclick="showWindow('miscreport', 'misc.php?mod=report&url='+REPORTURL);return false;" href="javascript:;" rel="nofollow">举报投诉</a> | <a target="_blank" href="/article-2321-1.html" rel="nofollow">网站地图</a>
+</p>
+<span>
+            欢迎浏览魔客吧提供的<strong>CSS3 Media Query实现响应布局</strong>信息，若本站中的<strong>CSS3 Media Query实现响应布局</strong>信息侵犯了您的权益，请与本站管理员联系
+            </span>
+<p>
+            Copyright @ 2010-2013 <a href="http://www.moke8.com" target="_blank">魔客吧</a> 版权所有 
+            蜀ICP备09014119号&nbsp;&nbsp;<span id="tcss"></span><script type="text/javascript" src="http://tcss.qq.com/ping.js?v=1MbK" charset="utf-8"></script><script type="text/javascript" reload="1">pgvMain({"discuzParams":{"r2":"5238379","ui":0,"rt":"portal","pn":1,"qq":"000"},"extraParams":""});</script></p></div>
+    </div>
+
+<div id="g_upmine_menu" class="tip tip_3" style="display:none;">
+<div class="tip_c">
+积分 0, 距离下一级还需  积分
+</div>
+<div class="tip_horn"></div>
+</div>
+<script src="home.php?mod=misc&ac=sendmail&rand=1398087717" type="text/javascript"></script>
+<span id="scrolltop" onclick="window.scrollTo('0','0')">回顶部</span>
+<script type="text/javascript">_attachEvent(window, 'scroll', function(){showTopLink();});</script>
+			<div id="discuz_tips" style="display:none;"></div>
+			<script type="text/javascript">
+				var discuzSId = '5238379';
+				var discuzVersion = 'X2.5';
+				var discuzRelease = '20130426';
+				var discuzApi = '0.6';
+				var discuzIsFounder = '';
+				var discuzFixbug = '25000004';
+				var discuzAdminId = '0';
+				var discuzOpenId = '';
+				var discuzUid = '0';
+				var discuzGroupId = '7';
+				var ts = '1398087717';
+				var sig = 'efe420bed4c23965a581db3f68540e92';
+				var discuzTipsCVersion = '2';
+			</script>
+			<script src="http://discuz.gtimg.cn/cloud/scripts/discuz_tips.js?v=1" type="text/javascript" charset="UTF-8"></script></body>
+</html>

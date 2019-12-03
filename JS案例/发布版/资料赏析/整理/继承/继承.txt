@@ -1,0 +1,150 @@
+     
+
+				继承
+许多面向对象都支持两种继承方式：接口继承和实现继承。ECMAScript只支持实现继承，而且其实现继承主要是依靠原型链来实现的。
+１.原型链：是实现继承的主要方法，其基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法。
+SubType.Prototype=new superType();
+子类的原型=父类的实例
+原型链最主要的问题来自包含引用类型值得原型；另一个问题是，它在创建子类型的实例时，不能向超类型的构造函数中传递参数。
+２.借用构造函数：在子类型构造函数的内部调用超类型构造函数。因此通过apply（）和call（）方法调用超类。
+Function SubType（）{
+SubType．call（ｔｈｉｓ）
+}
+最大的优点是在子类中可以向超类传参。
+３.组合继承：将原型链与借用构造函数组合起来使用，发挥二者之长，是ＪＳ中最常用的继承模式。
+４.原型式继承：
+５.寄生式继承：是与原型式继承紧密相关的一种思路。寄生式继承的思路与寄生构造函数和工厂模式类似。
+Function  createAnother(original){
+Var clone=object(original);
+clone.sayHi=function(){
+Alert(‘hi’);
+}
+Return clone;
+}
+在主要考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式。
+缺点：使用寄生式继承来为对象添加函数，会由于不能做到函数复用而降低效率。
+
+CSS 哪些属性默认会继承, 哪些不会继承?
+	不可继承的：display、margin、border、padding、background、height、min-height、max-height、width、min-width、max-width、overflow、position、left、right、top、bottom、z-index、float、clear、table-layout、vertical-align、page-break-after、page-bread-before和unicode-bidi。
+	所有元素可继承：visibility和cursor。
+	内联元素可继承：letter-spacing、word-spacing、white-space、line-height、color、font、font-family、font-size、font-style、font-variant、font-weight、text-decoration、text-transform、direction。
+	终端块状元素可继承：text-indent和text-align。
+	列表元素可继承：list-style、list-style-type、list-style-position、list-style-image。
+
+
+call和apply的区别
+	没有太多的区别，
+	主要是就是参数传参的区别。
+	call(this,arg1,arg2.arg3....)
+	apple(this,[arg1,arg2,arg3])
+
+    
+ 1.什么是继承？
+	子类继承父类
+          2.继承的作用？
+	继承就是子类对父类的继承.包含父类的方法,还可以添加自己独有的
+          3.继承的方法？
+            1．使用对象冒充实现继承
+            	    实现原理：让父类的构造函数成为子类的方法，然后调用该子类的方法，通过this关键字给所有的属性和方法赋值
+            2．采用原型链的方法实现继承
+	    实现原理：使子类原型对象指向父类的实例以实现继承，即重写类的原型，弊端是不能直接实现多继承
+            3．采用混合模式实现继承
+
+            4.结合实例：继承的应用。
+为何需要利用javascript实现继承
+早期pc机器的性能确实不敢恭维，所有的压力全在服务器端，客户端浏览器纯属摆设。再加上那时流行的table布局以及电话线的上网方式导致浏览一 个网页十分的卡；而今互联网时代飞速发展，个人电脑硬件得到了极大提升，客户端浏览器的性能也十分的酸爽，web开发的模式也在悄悄改变：服务端不再像以 前那样“辛苦”，取而代之的是尽可能的让浏览器承担更多的任务，如此一来，压力分摊到每个客户端上，企业不但节省成本，随之也让web前端开发变的更加有 趣－－越来越多的前端框架层出不穷，甚至出现了许多前端的MVC框架。在这种背景下，javascript的角色已经绝对不是只做一些简单的验证，发送一 些请求或者操作一些DOM，更多的需要担任类似前端路由和业务层的角色，并且javascript需要做大量的逻辑性任务，这里面就包括前台数据的抽离 （即model），而只有运用面向对象的思维才能很好的对抽离数据进行处理，因此继承就在这里显得举足轻重。
+从一个简单的需求开始
+现从前台抽离一个model名为Person，其有基本属性name和age，默认每个人都会说话，因此将说话的功能say放在了原型对象上，以供每个实例享用。现在对于Man来说，它需要继承Person的基本属性，并且在此基础上添加自己特有的属性。
+function Person (name, age) {
+    this.name = name;
+    this.age = age;
+}
+Person.prototype.say = function(){
+    console.log('hello, my name is ' + this.name);
+};
+function Man() {
+    //my own properties
+}
+下面介绍几种主流的继承方式。
+1.原型链继承
+function Person (name, age) {
+    this.name = name;
+    this.age = age;
+}
+Person.prototype.say = function(){
+    console.log('hello, my name is ' + this.name);
+};
+function Man() {
+}
+Man.prototype = new Person('pursue');
+var man1 = new Man();
+man1.say(); //hello, my name is pursue
+var man2 = new Man();
+console.log(man1.say === man2.say);//true
+console.log(man1.name === man2.name);//true
+这种继承方式很直接，为了获取Person的所有属性方法(实例上的和原型上的)，直接将父类的实例new Person('pursue')赋给了子类的原型，其实子类的实例man1,man2本身是一个完全空的对象，所有的属性和方法都得去原型链上去找，因而找到的属性方法都是同一个。 
+所以直接利用原型链继承是不现实的。
+2.利用构造函数继承
+function Person (name, age) {
+    this.name = name;
+    this.age = age;
+}
+Person.prototype.say = function(){
+    console.log('hello, my name is ' + this.name);
+};
+function Man(name, age) {
+    Person.apply(this, arguments);
+}
+//Man.prototype = new Person('pursue');
+var man1 = new Man('joe');
+var man2 = new Man('david');
+console.log(man1.name === man2.name);//false
+man1.say(); //say is not a function
+这里子类的在构造函数里利用了apply去调用父类的构造函数，从而达到继承父类属性的效果，比直接利用原型链要好的多，至少每个实例都有自己那一 份资源，但是这种办法只能继承父类的实例属性，因而找不到say方法，为了继承父类所有的属性和方法，则就要修改原型链，从而引入了组合继承方式。
+3.组合继承
+function Person (name, age) {
+    this.name = name;
+    this.age = age;
+}
+Person.prototype.say = function(){
+    console.log('hello, my name is ' + this.name);
+};
+function Man(name, age) {
+    Person.apply(this, arguments);
+}
+Man.prototype = new Person();
+var man1 = new Man('joe');
+var man2 = new Man('david');
+console.log(man1.name === man2.name);//false
+console.log(man1.say === man2.say);//true
+man1.say(); //hello, my name is joe
+需要注意的是man1和man2的实例属性其实是覆盖了原型属性，但是并没要覆盖掉原型上的say方法（因为它们没有），所以这里man1.say === man2.say依然返回true，因而需要十分小心没有覆盖掉的原型属性，因为它是所有实例共有的。
+4.寄生组合继承
+说实话我真不知道下面的这种形式叫这名字，但是它确实是最流行，最经典的javascript的继承方式。其实，只需要明白原型对象的结构即可：
+function Person (name, age) {
+            this.name = name;
+            this.age = age;
+        }
+Person.prototype.say = function(){
+    console.log('hello, my name is ' + this.name);
+};
+function Man(name, age) {
+    Person.apply(this, arguments);
+}
+Man.prototype = Object.create(Person.prototype);//a.
+Man.prototype.constructor = Man;//b.
+var man1 = new Man('pursue');
+var man2 = new Man('joe');
+console.log(man1.say == man2.say);
+console.log(man1.name == man2.name);
+其实寄生组合继承和上面的组合继承区别仅在于构造子类原型对象的方式上（a.和b.），这里用到了Object.creat(obj)方法，该方法会对传入的obj对象进行浅拷贝，类似于：
+
+
+
+这些是css样式里能继承的属性！
+
+font-family,font-size,font-style,font-variant,font-weight,font,letter-spacing,line-height，text-align,text-indent,text-transform,word-spacing列表相关属性：list-style-image,list-style-position,list-style-type,list-style还有一个属性比较重要，color属性。
+
+
+
+

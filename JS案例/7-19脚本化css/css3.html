@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{color:red;}
+		p{color:green;}			
+		span{color:blue;}	
+	</style>
+	<style>
+	   body{margin:0; } 
+	</style>
+</head>
+<body>
+	<div class="cur">aaa</div>
+	<p class="a">bbb</p>
+	<span id="my">ccc</span>
+	<script type="text/javascript">
+	   console.log(document.styleSheets[1].rules.length);
+		//cssRules  ie rules
+		//document.styleSheets[0].disabled=false;
+
+		var one=document.styleSheets[0];
+		var rules=one.cssRules?one.cssRules:one.rules;
+       	console.log(rules);
+		for(var i=0;i<rules.length;i++){
+			console.log(rules[i].selectorText+","+rules[i].style.cssText);		
+		}
+		/*one.insertRule(".a{font-size:24px;}",rules.length);*/
+		one.addRule(".a","font-size:24px;",rules.length);
+       	console.log("delete red");
+		one.removeRule(0);
+		//one deleteRule(0);
+
+		var myhead=document.getElementsByTagName('head')[0];
+		var mysheet=document.createElement("style");
+		myhead.appendChild(mysheet);
+		var m=document.styleSheets[document.styleSheets.length-1];
+		//mysheet.innerHTML="*{font-weight:bold;}";
+
+		var mys={ "#my":".cur{background:blue}" }
+		console.log(mys["#my"]);
+		m.insertRule(mys["#my"],0);
+		console.log(document.styleSheets.length);
+
+
+		//添加非行间样式的样式
+	function addStyle(name,element,style,position){
+		if(name.addRule){
+			name.addRule(element,style,position);  
+		}else{
+			name.insertRule(element+"{"+style+"}",position); 
+		}
+	}
+
+	//删除非行间样式的内容
+	function removeStyle(element,num){
+		if(element.deleteRule){
+			element.deleteRule(num);
+		}else if(element.removeRule){
+			element.removeRule(num);
+		}
+	}
+	</script>
+</body>
+</html>

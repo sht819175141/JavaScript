@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//构造函数
+		function Person(name,age){
+			this.name=name;
+			this.age=age;
+			if(!this.info){
+				Person.prototype.info=function(){
+					return this.name+","+this.age;
+			  	}
+			}
+			
+		}
+		var p=new Person("zs",15);
+		var p1=new Person("ls",18);
+		alert(p.info());
+		alert(p.info==p1.info);   //==>true
+	</script>
+</body>
+</html>

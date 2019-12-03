@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<select id="op1" onChange="city()">
+    <option value="">--请选择省--</option>
+</select>
+<select id="op2">
+    <option value="">--请选择市--</option>
+</select>
+<script>
+    var arr = [];
+    arr["山西"] = ["太原", "运城", "大同", "晋城"];
+    arr["河北"] = ["张家口", "石家庄", "衡水", "廊坊"];
+    var op1 = document.getElementById("op1");
+    var op2 = document.getElementById("op2");
+    for (on in arr) {
+        op1.add(new Option(on, on));
+    }
+
+    function city() {
+        var op1 = document.getElementById("op1").value;
+        op2.options.length = 1;
+        if (op1 == "") {
+            return "";
+        }
+        for (var i = 0; i < arr[op1].length; i++) {
+            op2.add(new Option(arr[op1][i], arr[op1][i]));
+        }
+    }
+</script>
+</body>
+</html>

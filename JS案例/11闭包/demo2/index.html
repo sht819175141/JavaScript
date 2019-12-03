@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+#nav{width:55px;height: 55px;}
+#list{display: none;}
+</style>
+<body>
+<div id="nav">菜单</div>
+<ul id="list">
+		<li>买家</li>
+		<li>卖家</li>
+		<li>投诉</li>
+		<li>商店</li>
+</ul>
+<script>
+function box(){ 
+	this.arr = [];
+	this.getId = function(element){
+		this.arr.push(document.getElementById(element));
+		return this;
+	}
+
+	this.hover = function(over,out){
+
+		this.arr[0].onmouseover = over;
+		this.arr[0].onmouseout = out;
+		return this;
+	}
+
+	this.show = function(){
+		this.arr[1].style.display = "block";
+		return this;
+	}
+
+	this.hide = function(){
+		this.arr[1].style.display = "none";
+		return this;
+	}
+
+	this.css = function(style,value){
+		this.arr[0].style[style] = value;
+		return this;
+	}
+}
+
+var obj = new box();
+obj.getId("nav").css("background","red").hover(function(){
+
+	var lists = obj.getId("list");
+	lists.show();
+	
+},function(){
+	var lists = obj.getId("list");
+	lists.hide();
+
+});
+
+</script>
+	
+</body>
+</html>

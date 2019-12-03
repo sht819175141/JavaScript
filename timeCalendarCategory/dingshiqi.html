@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div id="box">
+</div>
+<input type="button" value="发送验证码" id="fa"/>
+<script>
+
+    /*var num=0;
+    var box=document.getElementById("box");
+   function a(){
+       box.innerHTML= num;
+       num+=10;
+       if(num>900){
+           num=0
+       }
+       box.style.marginLeft=num+"px";
+   }
+   var time=setInterval(a,100);
+   box.onclick=function(){
+       clearInterval(time)
+   }*/
+
+    var fa = document.getElementById("fa");
+    fa.onclick = function () {
+        var num = 60;
+        fa.value = num;
+        fa.disabled = true;
+        var time = setInterval(a, 1000)
+
+        function a() {
+            num -= 1;
+            if (num == 0) {
+                clearInterval(time);
+                fa.disabled = false;
+                fa.value = "发送验证码";
+            } else {
+                fa.value = num + "秒后重新发送";
+            }
+        }
+
+    }
+    time = setInterval(a, 1000)
+</script>
+</body>
+</html>

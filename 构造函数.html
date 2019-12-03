@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*function person(name,age){
+        this.name=name;
+        this.age=age;
+        info=function(){
+            return this.name+","+this.age
+        }
+    }
+    var p=new person("张三",20)
+    var p=(info())
+    console.log(p.name,p.age)*/
+    //
+    function person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.friends = ["a", "b"];
+    }
+
+    person.prototype.info = function () {
+        return this.name + "," + this.age + "," + this.friends;
+    }
+    var p = new person("张三", 22);
+    p.friends.push("cc");
+    console.log(p.info());
+    p.name = "李四";
+    console.log(p.name);
+</script>
+</body>
+</html>

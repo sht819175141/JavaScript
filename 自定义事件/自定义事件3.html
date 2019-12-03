@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+		function MyEvent(){
+			this.obj={}
+		}
+		MyEvent.prototype.addEvent=function(eventName,fun){
+			if(typeof this.obj[eventName]=='undefined'){
+				this.obj[eventName]=[];
+			}
+			this.obj[eventName].push(fun)
+		}
+		MyEvent.prototype.doEvent=function(event){
+			var arr=this.obj[event.name];
+			if(arr instanceof Array){
+				for(var i=0;i<arr.length;i++){
+					arr[i]()
+				}
+			}
+		}
+
+		MyEvent.prototype.removeEvent=function(str,func){
+			if(this.obj[str] instanceof Array){
+				for(var i=0;i<this.obj[str].length;i++){
+					if(this.obj[str][i]==func){
+						this.obj[str].splice(i,1);
+						break;
+					}
+				}
+			}
+		}
+		function f1(){
+			alert('1')
+		}
+		function f2(){
+			alert('2')
+		}
+		var e=new MyEvent();
+		e.addEvent('abc',f1)
+		e.addEvent('abc',f2)
+		//e.doEvent({name:'abc',age:'bcd'})
+		e.removeEvent('abc',f1)
+		e.doEvent({name:'abc',age:'bcd'})
+		function person(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		function F(){};
+		
+	</script>
+</body>
+</html>

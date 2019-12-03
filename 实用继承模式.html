@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    Person.prototype.info = function () {
+        return this.name + "  " + this.age + " " + this.school;
+    }
+
+    function Student(name, age, school) {
+        Person.call(this, name, age);
+        this.school = school;
+    }
+
+    //复制==>方法
+    if (Object.create) {
+        //Student.prototype=复制的(Person.prototype);
+        Student.prototype = Object.create(Person.prototype);
+    } else {
+        function F() {
+        };
+        F.prototype = Person.prototype;
+        Student.prototype = new F();
+    }
+    Student.prototype.constructor = Student;
+    var s = new Student("张三", 17, "八维");
+    alert(s.info());
+</script>
+</body>
+</html>

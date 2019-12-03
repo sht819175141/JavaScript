@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		Object.prototype.info=function(){
+			console.log(this.toString());
+		}
+
+        var arr=[1,2,3];
+
+		"hello".info();
+
+ 		Array.prototype.toString=function(){
+ 			str="八维数组显示专用\n";
+ 			for(var i=0;i<this.length;i++){
+ 				str+=this[i]+"\n ";
+
+ 			}
+ 			return str;
+ 		}
+ 		alert(arr);
+
+ 		String.prototype.toCamel=function(){
+ 			var reg=/-(\w)/g;
+ 			return this.replace(reg,function(){
+ 				console.log(arguments);
+ 				return arguments[1].toUpperCase();
+ 			})
+ 		}
+ 		alert("hello-world-javascript".toCamel());
+
+ 	
+	</script>
+</body>
+</html>

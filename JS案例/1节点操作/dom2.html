@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<ul>
+    <li>1111111<a href="#">删除</a></li>
+    <li>2222222<a href="#">删除</a></li>
+    <li>3333333<a href="#">删除</a></li>
+    <li>44444444<a href="#">删除</a></li>
+</ul>
+<p>
+    <span></span>
+</p>
+<script>
+    var newLi = document.createElement('li'),
+        uls = document.getElementsByTagName('ul'),
+        lis = document.getElementsByTagName('li');
+
+    newLi.innerHTML = 'aaaaa';
+    //uls[0].insertBefore(newLi,lis[0])
+    uls[0].insertBefore(lis[1], lis[3])
+
+    //封装一个函数 追加节点
+    function insertAfter(newNode, target) {
+        if (target.parentNode.lastChild == target) {
+            target.parentNode.appendChild(newNode);
+        } else {
+            target.parentNode.insertBefore(newNode, target.nextSibling)
+        }
+
+    }
+
+    insertAfter(newLi, lis[1])
+</script>
+</body>
+</html>

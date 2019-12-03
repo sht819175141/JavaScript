@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<!--   请写一个字符串转成右边的方法？       
+例如：border-bottom-color  -> borderBottomColor
+
+查找字符串中出现最多的字符和个数？  
+例如：sdjksssfssscfssdd  -> 字符最多的是s，出现了9次
+
+如何给数字加千分符？        
+例如：3562123761  -> 3,562,123,761-->
+
+
+ <!--   <script>
+
+
+        //+	重复一次或更多次
+        //\w	匹配字母或数字或下划线或汉字
+        //\b	匹配单词的开始或结束
+        var str="border-bottom-color";
+        var re=/\b\w+\b/g;
+        str=str.replace(re,function(t){
+            return t.substring(0,1).toUpperCase()+t.substring(1);
+        }).replace(/-/g, "");
+
+        alert(str)
+    </script>
+
+    <script language="javascript">
+        var str = "abc-123-d3-efg";
+        var reg = /\w+/g;
+        var arr = str.match(reg);
+        if (arr != null) {
+            for (var i = 0; i < arr.length; i++) {
+                document.write(arr[i] + "<br />");
+            }
+        }
+</script>-->
+
+    <script>
+
+     
+        function maxChars(str){
+            var str = str.split(''),
+            obj = {}, maxChar, count = 0;
+            for(var i=0,item,c; item=str[i]; i++){
+                c = (obj[item]||0)+1;
+                c > count && (maxChar=item,count=c);
+                obj[item] = c;
+            }
+    
+            return '出现最多的字符是'+maxChar+', 次数是'+count;
+        }
+
+
+        alert(maxChars("sdjksssfssscfssdd"))
+        //题二 
+    // var xx=   "border-bottom-color".replace(/\-(\w)/g, function(w){return w.slice(1).toUpperCase()});
+        var xx = "border-bottom-color".replace(/\-\w/g, function (w) { return w.toUpperCase() })
+
+        var xxxx=xx.replace("/b(w)|s(w)/g", function (w) { return w.toUpperCase() });
+        //题三
+   var xxx=     "123456789.01".replace(/(\d{1,3})(?=(\d{3})+(?:$|\.))/g, "$1,");
+
+   alert(xxxx)
+        alert(xxx)
+
+
+        str.toUpperCase
+
+    </script>
+
+    <script type="text/javascript">
+        function replaceReg(str) {
+            var reg = /\b(\w)|\s(\w)/g;
+            str = str.toLowerCase();
+            return str.replace(reg, function (m) { return m.toUpperCase() })
+        }
+        var reg = /b(w)|s(w)/g;
+        var str = 'blue idea';
+        var str2 = 'BLUE IDEA';
+        var str3 = 'Test n str is no good!';
+        var str4 = 'final test';
+        document.write(replaceReg(str) + '<br />');
+        document.write(replaceReg(str2) + '<br />');
+        document.write(replaceReg( str3) + '<br />');
+        document.write(replaceReg( str4) + '<br />');
+ </script>
+</body>
+</html>

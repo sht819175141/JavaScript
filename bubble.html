@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #container div {
+            background: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+
+</div>
+<script>
+    data = [800, 900, 1000, 1, 3, 5, 66, 88, 22, 100, 10, 200, 500, 35, 69, 88, 77];
+    var objContainer = document.getElementById("container");
+
+    function bubble(data, j) {
+        //for(var j=0;j<data.length-1;j++){  //比较的轮数
+        for (var i = 0; i < data.length - 1 - j; i++) {  //每两个无序数比较
+            if (data[i] > data[i + 1]) {
+                tem = data[i];
+                data[i] = data[i + 1];
+                data[i + 1] = tem;
+            }
+        }
+        //}
+        return data;
+    }
+
+    var index = 0;
+    var timer = setInterval(function () {
+        if (index < data.length - 1) {
+            data = bubble(data, index);
+        } else {
+            clearInterval(timer);
+        }
+        index++;
+        objContainer.innerHTML = ""
+        for (var i = 0; i < data.length; i++) {
+            oDiv = document.createElement("div");
+            oDiv.style.width = data[i] + "px";
+            oDiv.style.height = "20px";
+            objContainer.appendChild(oDiv);
+        }
+    }, 1000);
+</script>
+</body>
+</html>

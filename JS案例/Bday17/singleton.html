@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var obj={
+			name:"zs",
+			age:18
+		}
+		var a=obj;
+		var b=obj;
+	/*	alert(a==b);*/
+	function Person(){
+		if(Person.ins!==undefined){
+			return Person.ins;
+		}
+		this.name="zs";
+		this.age=18;
+		Person.ins=this;
+	}
+	var p=new Person();
+	var p1=new Person();
+	/*alert(p==p1);*/ 
+	Singleton=(function(){
+		  var ins;
+		  function init(){
+		  	  return{
+		  	  	 "test":"hello javascipt"
+		  	  }
+		  }
+		  return{
+		  	getIns:function(){
+		  		 if(!ins){
+		  		 	ins=init();
+		  		 }
+		  		 return ins;
+		  	}
+
+		  }
+	})();
+
+	alert(Singleton.getIns()==Singleton.getIns());
+	</script>
+</body>
+</html>

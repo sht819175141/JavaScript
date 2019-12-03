@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+        #box {
+            height: 200px;
+            width: 200px;
+            border: 1px solid #ccc;
+        }
+
+        img {
+            height: 30px;
+            width: 30px;
+        }
+
+        #faces {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<button>red</button>
+<button>blue</button>
+<button>yellow</button>
+<button>faces</button>
+<button>B</button>
+<button id="view">view code</button>
+<textarea name="" id="code" cols="30" rows="10"></textarea>
+<select name="" id="fontsize">
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+</select>
+<div id="faces">
+    <img src="images/6.bmp"/>
+    <img src="images/2.jpg"/>
+    <img src="images/8.jpg"/>
+    <img src="images/3.jpg"/>
+</div>
+<div id="box" contenteditable="true">
+
+</div>
+<script>
+    var btns = document.getElementsByTagName("button");
+    var imgs = document.getElementsByTagName('img');
+    var faces = document.getElementById("faces");
+    var box = document.getElementById("box");
+    var fontsize = document.getElementById("fontsize");
+    var view = document.getElementById("view");
+    var code = document.getElementById("code");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].onclick = function () {
+            document.execCommand("Forecolor", false, this.innerHTML)
+        }
+    }
+    btns[3].onclick = function () {
+        faces.style.display = "block";
+        for (var j = 0; j < imgs.length; j++) {
+            imgs[j].onclick = function () {
+                box.focus();
+                document.execCommand('insertImage', false, this.src);
+                faces.style.display = "none";
+            }
+        }
+    }
+    btns[4].onclick = function () {
+        if (getSelection().toString().length = 0) {
+            alert("no select!!!")
+            return;
+        }
+        /*if(document.queryCommandState("bold")){
+            this.src=""
+        }else{
+            this.src=""
+        }*/
+        document.execCommand("bold");
+        document.execCommand("italic");
+        document.execCommand("underline");
+        document.execCommand("justifyCenter")
+    }
+    fontsize.onchange = function () {
+        if (getSelection().toString().length = 0) {
+            alert("no select!!!")
+            return;
+        }
+        document.execCommand("fontsize", false, this.value);
+    }
+    view.onclick = function () {
+        code.value = box.innerHTML;
+    }
+    code.onblur = function () {
+        box.innerHTML = code.value;
+    }
+</script>
+</body>
+</html>

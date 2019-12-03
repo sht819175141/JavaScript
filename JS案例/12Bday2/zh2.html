@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+		//构造函数法
+		function Person(name,age){
+			this.name=name;
+			this.age=age;
+			this.friends=["a","b"];
+			this.info=myinfo;
+		}
+		function myinfo(){
+			return this.name+","+this.age+","+this.friends;
+		}
+		var p=new Person("zs",16);
+		
+		p.friends.push("cc");
+		alert(p.info());
+		var p1=new Person("ls",18);
+		alert(p1.info());
+		alert(p.info==p1.info);
+		</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	 //setter getter 使对象属性的访问更安全，更合法
+		var p={
+			name:"zs",
+			age:3
+		}
+		Object.defineProperty(p,"setAge",{
+			set:function(n){
+				alert("set");
+				if(n>80){
+					throw new Error("very old");
+				}
+				else
+				{
+					this.age=n;
+				}
+			}
+		});
+		Object.defineProperty(p,"getAge",{
+
+				get:function(){
+				alert("get");
+				return this.age;
+			}
+		
+		});
+		p.setAge=15;
+		alert(p.getAge);
+		/*delete p.age;
+		alert(p.age);*/
+		/*p.setAge=10;
+		//alert(p.getAge);
+		alert(JSON.stringify(p)); //对象的序列化
+		var d=new Date();
+		function isPrototMethod(obj,name){
+		 	return !obj.hasOwnProperty(name) && (name in obj);
+		 }
+		alert(d.toLocaleString());
+		alert(isPrototMethod(d,"toLocaleString"));*/
+	</script>
+</body>
+</html>

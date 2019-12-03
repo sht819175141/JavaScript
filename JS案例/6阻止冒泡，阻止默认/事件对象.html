@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id='btn'>单击</button>
+	<script>
+	//全局对象
+	//window
+	//js内置对象
+	//string array  math  date 
+	//属性和方法
+	//trim  toUpperCase toLowerCase  indexOf substring  substr  slice split
+	//push unshift  shift pop splice  slice join  reverse sort concat
+	//自定义对象
+	//json={ }   obj=new Object()
+	//事件对象 event  ：事件类型  鼠标的位置   事件的目标等等
+	//DOM标准浏览器里：作为函数的第一个参数存在
+	//IE里：(6 7 8 )  window.event
+ 
+ //属性 和方法
+//三个属性:
+/*1.事件的类型type
+     事件对象.type
+  2.事件目标   : 不一定是绑定事件的对象 ，而是你实际操作的那个对象
+  event.target  DOM
+  event.srcElement IE
+  target=event.target || event.srcElement;
+  事件委托：利用的是冒泡的原理，把事件加在父级元素上。
+  解决问题： 占用内存过多的问题。
+  事件委托的事件类型： click dbclick  mousedown mouseup  mousemove keydown keypress keyup
+  //不适合用的是：mouseover  mouseout
+ 3、鼠标位置
+  event.clientX   鼠标距离浏览器的左边的距离
+  event.clientY   鼠标距离浏览器的上边的距离
+  event.screenX   鼠标距离屏幕的左边的距离
+  event.screenY   鼠标距离屏幕的上边的距离
+
+方法2：
+
+1\阻止冒泡
+ //dom event.stopPropagation() 
+ //IE  event.cancelBubble=true;
+//跨浏览器的兼容
+ function  stopPropagation(e){
+	if(e.stopPropagation){
+	 	e.stopPropagation();   //DOM
+	 }else{
+		e.cancelBubble=true;   //IE
+	 }
+ }
+
+stopPropagation(event)
+
+2、阻止默认行为
+//event.preventDefault();//event.阻止默认  DOM
+//event.returnValue=false;// event.返回值=false IE
+//return false //IE 
+         
+//跨浏览器兼容	
+	function  preventDefault(e){
+		if(e.preventDefault){
+			e.preventDefault();   //DOM
+		}else{
+			e.returnValue=false;  //IE
+		}
+	}
+		
+	var btn=document.getElementById('btn');
+	    btn.onmouseover=function(event){
+	   	alert('你好');
+   	  /*console.log(e)
+	   	console.log(window.event);*/
+	   	var   event=event  || window.event;  //DOM  IE 
+	   	console.log(event);
+	  //console.log(event.type);
+	/*  console.log(event.target)  //DOM
+	  console.log(event.srcElement)  //IE*/
+	  var target=event.target || event.srcElement; 
+	  console.log(target) 
+	</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p class="aa bb cc"></p>
+	<script>
+		 var objP=document.getElementsByTagName('p')[0];
+		// alert(objP.classList.length);
+		//objP.classList.add("ee");
+		objP.classList.toggle("aa");  //标准浏览器才能用
+		alert(objP.className);
+		objP.classList.toggle("aa");
+		alert(objP.className);
+	</script>
+</body>
+</html>

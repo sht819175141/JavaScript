@@ -1,0 +1,81 @@
+.wrap {
+  width: 1300px;
+  height: 8345px;
+  margin: 0 auto;
+  position: relative;
+}
+.wrap .m_nav {
+  width: 32px;
+  height: 440px;
+  position: fixed;
+  left: 5px;
+  top: 105px;
+}
+.wrap .m_nav ul {
+  width: 32px;
+}
+.wrap .m_nav ul li {
+  width: 32px;
+  height: 39px;
+  overflow: hidden;
+  background: #F4F4F4;
+  border-top: 1px #ddd solid;
+}
+.wrap .m_nav ul li a.before {
+  display: block;
+  width: 32px;
+  height: 39px;
+  background-image: url(../img/icon.png);
+  background-repeat: no-repeat;
+  background-size: 70%;
+}
+.wrap .m_nav ul li.hover a.after,
+.wrap .m_nav ul li.on a.after {
+  opacity: 1;
+}
+.wrap .m_nav ul li.hover a.before,
+.wrap .m_nav ul li.on a.before {
+  display: none;
+}
+.wrap .m_nav ul li a.after {
+  display: block;
+  opacity: 0;
+  width: 32px;
+  height: 39px;
+  text-align: center;
+  padding-top: 3px;
+  box-sizing: border-box;
+}
+.wrap .m_nav ul li.f1 a.before {
+  background-position: center top;
+}
+.wrap .m_nav ul li.f2 a.before {
+  background-position: center -40px;
+}
+.wrap .m_nav ul li.f3 a.before {
+  background-position: center -78px;
+}
+.wrap .m_nav ul li.f4 a.before {
+  background-position: center -114px;
+}
+.wrap .m_nav ul li.f5 a.before {
+  background-position: center -153px;
+}
+.wrap .m_nav ul li.f6 a.before {
+  background-position: center -192px;
+}
+.wrap .m_nav ul li.f7 a.before {
+  background-position: center -230px;
+}
+.wrap .m_nav ul li.f8 a.before {
+  background-position: center -267px;
+}
+.wrap .m_nav ul li.f9 a.before {
+  background-position: center -305px;
+}
+.wrap .m_nav ul li.f10 a.before {
+  background-position: center -345px;
+}
+.wrap .m_nav ul li.f11 a.before {
+  background-position: center -383px;
+}

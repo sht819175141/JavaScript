@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li class='tb   bg  text'></li>
+		<li  class='bg'></li>
+		<li class='bg eee'></li>
+		<li class='cc'></li>
+ 	</ul>
+	<script>
+	var  lis=document.getElementsByTagName('li');
+	//var   reg=/\bbg\b/ 
+	//var reg=/(^|\s+)bg($|\s+)/g          
+       
+   //   console.log(lis[0].className.match(reg))
+    //  console.log( reg.test(lis[0].className))
+
+	 function  hasClass(elem,className){
+	 	var reg=new RegExp("\\b"+className+"\\b");
+	 	return  elem.className.match(reg)   //null  []
+            
+	 }
+	  console.log(hasClass(lis[0],'bg'))
+   
+    function  addClass(elem,className){
+    	if(!hasClass(elem,className)){
+    		elem.className=elem.className+" "+className;
+    	}
+    }
+
+    function  removeClass(elem,className){
+         var reg=new  RegExp("(^|\\s+)"+className+"(\\s+|$)")
+    	if(hasClass(elem,className)){ //[] null
+          elem.className=elem.className.replace(reg,' ')
+    	}
+    }
+    //removeClass(lis[0],'tb')
+ 
+  
+    function  getClass(tag,className){
+    	var reg=new RegExp("\\b"+className+"\\b");
+    	var elems=document.getElementsByTagName(tag);
+    	var arr=[]
+    		for(var i=0;i<elems.length;i++){
+    				if(reg.test(elems[i].className)){
+    					arr.push(elems[i])
+    				}
+    		}
+
+    	return  arr		
+    }
+
+   console.log(getClass("li",'tb'))      
+  
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<table border="1" width="240" id="tab">
+    <thead>
+    <tr>
+        <th colspan="2">歌曲排行榜</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox" "checked"="checked" name="che"/></td>
+        <td>小酒窝</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" "checked"="checked" name="che"/></td>
+        <td>匆匆那年</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" "checked"="checked" name="che"/></td>
+        <td>青花瓷</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" "checked"="checked" name="che"/></td>
+        <td>菊花台</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td><input type="checkbox" id="quan"/>全选</td>
+        <td><input type="button" id="shan" value="删除"/></td>
+    </tr>
+    <tr>
+        <td colspan="2"><input type="button" value="添加" id="tian"/>
+            <input type="text" id="txt" placeholder="歌曲名"></td>
+    </tr>
+    </tfoot>
+</table>
+<script>
+    var quan = document.getElementById("quan");
+    var shan = document.getElementById("shan");
+    var tian = document.getElementById("tian");
+    var che = document.getElementsByName("che");
+    var txt = document.getElementById("txt");
+    var tab = document.getElementById("tab");
+    quan.onclick = function () {
+        for (var i = 0; i < che.length; i++) {
+            che[i].checked = quan.checked;
+            huan(i);
+        }
+    }
+
+    function huan(num) {
+        if (che[num].checked) {
+            che[num].parentNode.parentNode.style.background = "blue";
+        } else {
+            che[num].parentNode.parentNode.style.background = "";
+        }
+    }
+
+    for (var i = 0; i < che.length; i++) {
+        che[i].index = i;
+        che[i].onclick = function () {
+            huan(this.index)
+        }
+    }
+    shan.onclick = function () {
+        for (var j = che.length - 1; j >= 0; j--) {
+            if (che[j].checked) {
+                tab.tBodies[0].removeChild(che[j].parentNode.parentNode)
+            }
+        }
+    }
+    tian.onclick = function () {
+        var tr = document.createElement("tr");
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+
+        td1.innerHTML = "<input type='checkbox' name='che'/>";
+        td2.innerHTML = txt.value;
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tab.tBodies[0].appendChild(tr);
+
+        for (var i = 0; i < che.length; i++) {
+            che[i].index = i;
+            che[i].onclick = function () {
+                huan(this.index)
+            }
+        }
+    }
+</script>
+</body>
+</html>

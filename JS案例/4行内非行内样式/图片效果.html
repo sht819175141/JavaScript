@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin:0; padding:0;}
+    .mark{background: #000; opacity: 0.6;
+    	position: absolute;left:0; top:0;}
+     .img{position: fixed;}
+	</style>
+</head>
+<body>
+	<!-- <div style='height:3130px'> -->
+	<img src="pic/bj.png" alt="" height=3130px >
+	<!-- </div> -->
+	<!-- <div id='mark'></div>
+	<img src="pic/t_five_sian.png" alt="" class='img'> -->
+	<script>
+	//width+border+padding
+
+function  auto(){
+	 	var  newDiv=document.createElement('div'),
+	 		 img=document.getElementsByTagName('img');
+	 	     newDiv.className='mark';	
+	 	     newDiv.style.width=document.documentElement.clientWidth+'px';
+	 	     newDiv.style.height=document.body.offsetHeight+'px';
+	 	     document.body.appendChild(newDiv);
+	 	var  newImg=document.createElement('img');
+	 		 newImg.className='img';
+	 		 newImg.src='pic/t_five_sian.png';
+	 		 newImg.style.left=(document.documentElement.clientWidth-461)/2+'px';
+	 		 newImg.style.top=(document.documentElement.clientHeight-433)/2+"px";
+	 		  document.body.appendChild(newImg);
+
+	 		  newImg.onclick=function(){
+	 		  	 document.body.removeChild(newImg);
+	 		  	 document.body.removeChild(newDiv);
+	 		  }
+
+ }
+
+ setTimeout(auto,3000)
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box {
+            height: 100px;
+            width: 600px;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 100px;
+            font-size: 50px;
+            margin: 10px auto;
+        }
+
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<input type="button" value="机选一注" id="ji"/>
+<input type="button" value="清空" id="qing"/>
+<script>
+    var box = document.getElementById("box");
+    var ji = document.getElementById("ji");
+    var qing = document.getElementById("qing");
+    ji.onclick = function () {
+        ji.disabled = true;
+        time = setInterval(shi, 100)
+    }
+    qing.onclick = function () {
+        ji.disabled = false;
+        clearInterval(time);
+    }
+
+    function shi() {
+        var acc = [];
+        for (var j = 0; j < 7; j++) {
+            var i = Math.floor(Math.random() * 100)
+            if (i <= 9) {
+                acc += "0" + i + " ";
+            } else {
+                acc += i + " "
+            }
+        }
+        box.innerHTML = acc;
+    }
+</script>
+</body>
+</html>

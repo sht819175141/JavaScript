@@ -1,0 +1,46 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<base target="_blank">
+<title>魔发镜</title>
+<style>
+body, div, ul, li, a { margin:0; padding:0 }
+body { font: 14px/1.5 "microsoft yahei", "\5FAE\8F6F\96C5\9ED1", tahoma, arial; color:#444; background:#fff }
+ul { list-style:none }
+img { border:0; display:block }
+.fn-clear:after { visibility:hidden; display:block; font-size:0; content:""; clear:both; height:0 }
+.fn-clear { zoom:1 }
+.magic { position: relative; margin-top:19px; position: relative; height: 143px; background: url(magic.jpg) repeat-x; width: 278px; padding: 13px 15px 13px 1px; }
+.magic_tit { font-size: 18px; color: black; font-weight:600; text-indent:2px }
+.magic_list { width:160px; margin:4px 0 0 0 }
+.magic_list li { float:left; width:50px; height:58px; overflow:hidden; text-align:center; }
+.magic_pic { width:133px; height:199px; position:absolute; top:-19px; left:167px; }
+.magic_pic li { display:none }
+</style>
+</head>
+<body>
+<div class="magic fn-clear">
+  <div class="magic_tit">魔发镜</div>
+  <ul class="magic_list fn-clear" id="magic_list">
+    <li><a href="http://magic.lady8844.com/hair/"><img src="m1.png" /></a></li>
+    <li><a href="http://magic.lady8844.com/hair/"><img src="m2.png" /></a></li>
+    <li><a href="http://magic.lady8844.com/hair/"><img src="m3.png" /></a></li>
+    <li><a href="http://magic.lady8844.com/hair/"><img src="m4.png" /></a></li>
+    <li><a href="http://magic.lady8844.com/hair/"><img src="m5.png" /></a></li>
+    <li><a href="http://magic.lady8844.com/hair/"><img src="m6.png" /></a></li>
+  </ul>
+  <ul class="magic_pic" id="magic_pic">
+    <li style="display:block"><img src="m1.jpg" /></li>
+    <li><img src="m2.jpg" /></li>
+    <li><img src="m3.jpg" /></li>
+    <li><img src="m4.jpg" /></li>
+    <li><img src="m5.jpg" /></li>
+    <li><img src="m6.jpg" /></li>
+  </ul>
+</div>
+<script type="text/javascript">
+var a=document.getElementById("magic_list"),b=document.getElementById("magic_pic"),c=a.getElementsByTagName("li"),d=b.getElementsByTagName("li");for(var i=0;i<6;i++){c[i].index=i;c[i].onmouseover=function(){for(var i=0;i<6;i++){d[i].style.display="none"}d[this.index].style.display="block"}}
+</script>
+</body>
+</html>

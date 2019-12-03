@@ -1,0 +1,1133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>你了解IE的haslayout（拥有布局）吗？ -- 简明现代魔法</title>
+<meta name='keywords' content='IE,haslayout,渲染引擎,你了解IE的haslayout（拥有布局）吗？' /> 
+<meta name='description' content='我们那知道浏览器有bug，而且Windows上的lE的bug 似乎比太多数浏览器都多。IE/Win的表现与其他浏览器不同的原因之一是，显示引擎使用一个称为布局(layout)的内部概念。因为布均是一个专门针对显示引擎内部工作方式的概念，所以一般悄况下不需要了解它。但是，布局问题是许多IE/Win显示bug的根源，所以理解这个概念以及它如何影响CSS是有悟助的。' /> 
+<link rel="stylesheet" href="http://www.nowamagic.net/librarys/application/views/veda/css/jd.gallery.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://www.nowamagic.net/librarys/application/views/veda/css/MenuMatic.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="shortcut icon" href="http://www.nowamagic.net/images/favicon.gif" />
+<link href="http://www.nowamagic.net/librarys/application/views/veda/style.css?20130507" rel="stylesheet" type="text/css" />
+<script src="http://www.nowamagic.net/librarys/application/views/veda/scripts/mootools-1.2.1-core-yc.js" type="text/javascript"></script>
+<script src="http://www.nowamagic.net/librarys/application/views/veda/scripts/mootools-1.2-more.js" type="text/javascript"></script>
+<script src="http://www.nowamagic.net/librarys/application/views/veda/scripts/jd.gallery.js" type="text/javascript"></script>
+<script src="http://www.nowamagic.net/librarys/application/views/veda/scripts/jd.gallery.transitions.js" type="text/javascript"></script>
+<!--[if lt IE 7]>
+	<link rel="stylesheet" href="http://www.nowamagic.net/librarys/application/views/veda/css/MenuMatic-ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+<!-- Load the MenuMatic Class -->
+<script src="http://www.nowamagic.net/librarys/application/views/veda/js/MenuMatic_0.68.3.js" type="text/javascript" charset="utf-8"></script>
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.nowamagic.net/librarys/veda/feed/" />
+<link rel="alternate" type="text/xml" title="RSS .92" href="http://www.nowamagic.net/librarys/veda/feed/" />
+<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://www.nowamagic.net/librarys/veda/feed/" />
+<link rel="pingback" href="http://www.nowamagic.net/librarys/veda/" />
+<meta name="generator" content="www.nowamagic.net" />
+</head>
+<body>
+
+		
+
+<div id="wrapper">
+	<div id="top_area">
+		<div id="top_area_content">
+			<div class="left">
+				<ul>
+					<li><a href="http://www.nowamagic.net/">网站首页</a></li>
+					<li><a href="http://www.nowamagic.net/librarys/veda/">Veda 原型</a></li>
+					<li><a href="http://www.nowamagic.net/librarys/news/">互联网资讯</a></li>
+					<li><a href="http://www.nowamagic.net/librarys/">魔法图书馆</a></li>
+					<li><a href="http://www.nowamagic.net/librarys/eight/">晚上八点</a></li>
+				</ul>
+			</div>
+			<div class="right">
+				<ul>
+					<li><a href="http://www.nowamagic.net/librarys/veda/feed/" target="_blank">订阅</a></li>
+					<li><a href=" ">邮件</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="header">
+		<div id="header_content">
+			<div id="logo">
+				<h1><a href="http://www.nowamagic.net/librarys/veda/">Veda 原型</a></h1>
+				<h2>成功，唯有积累，没有奇迹</h2>
+			</div>
+			<div id="search_box">
+				<!--
+				<form action="http://www.google.com/search" method="get" target="_blank">
+					<input name="q" id="search" alt="Search" class="inputbox" type="text" size="20" value="要搜东西?"  onblur="if(this.value=='') this.value='要搜东西?';" onfocus="if(this.value=='要搜东西?') this.value='';" />
+					    <input name="sitesearch" value="www.nowamagic.net" type="hidden" />
+				</form>
+				-->
+				<form action="http://www.nowamagic.net/librarys/veda/gsearch/" id="cse-search-box">
+				  <div>
+					<input type="hidden" name="cx" value="partner-pub-3908995730077629:6454794035" />
+					<input type="hidden" name="cof" value="FORID:10" />
+					<input type="hidden" name="ie" value="UTF-8" />
+					<input type="text" name="q" size="22" class="inputbox" />
+					<!-- <input type="submit" name="sa" value="Search" /> -->
+				  </div>
+				</form>
+				
+			</div>
+		</div>
+	</div>
+	<div id="navigation_area">
+		<ul id="nav">
+			<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/channel/ProgrammingLanguage">编程语言</a> 
+				<ul class='children'> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/PHP">PHP服务器脚本</a></li> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/Python">Python程序设计</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/">Java编程语言</a></li> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/C">C/C++编程语言</a></li> 
+				</ul> 
+			</li> 
+			<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/channel/FrontEnd">前端设计</a>
+				<ul class='children'> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/HTML">HTML超文本标记语言</a></li> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/CSS">CSS层叠样式表</a></li> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/JavaScript">JavaScript</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/JQuery">JQuery</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/Ajax">Ajax技术</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/ActionScript">Flex/ActionScript</a></li>
+				</ul> 
+			</li>
+			<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/channel/ComputerBased">计算机基础</a>
+				<ul class='children'> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/DataStructures">数据结构</a></li> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/Algorithm">计算机算法</a></li>
+					<!-- <li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/Agile">敏捷开发</a></li> -->
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/Program">编程思想</a></li> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/OOP">面向对象技术</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/ComputerMath">计算机数学与基础</a></li>
+				</ul> 
+			</li>
+			<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/channel/BeautyOfData">数据之美</a>
+				<ul class='children'> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/MySQL">数据库技术</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/WebDesign">Web设计理念</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/SoftwareArchitecture">软件架构技术</a></li>
+				</ul> 
+			</li>
+			<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/channel/OpenSource">开源与工具</a>
+				<ul class='children'> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/OpenTools">开源项目与工具</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/InformationSecurity">信息安全</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/SEO">搜索引擎优化</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/WebOperations">网站运维</a></li>
+				</ul> 
+			</li>
+			<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/channel/MobileDevelopment">移动开发</a>
+				<ul class='children'> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/iOS/">iOS开发</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/Android">Android开发</a></li>
+				</ul> 
+			</li>
+			<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/channel/ProgramAndLife">程序与生活</a>
+				<ul class='children'> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/ProgramLife">IT人家</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/IntellectualDevelopment">智力开发</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/Internet">互联网时代</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/cate/Game">游戏 享受与创造</a></li>
+				</ul> 
+			</li>
+			<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/blognav/" rel="nofollow">友情链接</a>
+				<ul class='children'> 
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/blognav/">博客导航</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/special_lsit/">专题列表</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/books/">计算机书籍推荐</a></li>
+					<li class="cat-item"><a href="http://www.nowamagic.net/librarys/veda/about/">关于本站</a></li>
+				</ul> 
+			</li>
+		</ul>
+	</div>
+	<div id="content_area">
+		<div id="content_area_content">
+			<div id="left_content">
+			<div class="fullbox" id="post- ">
+				<div class="fullbox_header"></div>
+				<div class="fullbox_content">
+					<div class="breadcrumb"> 
+						<a href="http://www.nowamagic.net/librarys/veda/">首页</a>
+						<img src="http://www.nowamagic.net/librarys/application/views/veda/images/arrow.png" alt=""  />
+						<a href="http://www.nowamagic.net/librarys/veda/cate/CSS">CSS</a>
+						<img src="http://www.nowamagic.net/librarys/application/views/veda/images/arrow.png" alt=""  /> 
+						<a href="http://www.nowamagic.net/librarys/veda/detail/1395">你了解IE的haslayout（拥有布局）吗？</a>
+					</div>
+					<h1><a href="http://www.nowamagic.net/librarys/veda/detail/1395" rel="bookmark">你了解IE的haslayout（拥有布局）吗？</a></h1>
+					<span class="vicetitle">haslayout是IE渲染引擎的一个内部组成部分</span>
+					<div class="post_info">
+						<div class="post_info_left">在 2011年03月15日 那天写的 &nbsp;&nbsp;&nbsp; 已经有 4124 次阅读了</div>
+						<div class="post_info_right"> 
+							<!-- <a href="#respond" class="post_comment"></a> -->
+							感谢 <a href='http://www.nowamagic.net/librarys/veda/detail/1395'>参考或原文</a>						</div>
+					</div>
+					<div class="post_meta"></div>
+					<div class="top_ads" style="font-size:12px; color:#666; ">
+服务器君一共花费了15.208 ms进行了2次数据库查询，努力地为您提供了这个页面。
+					</div>
+					<div class="top_ads">
+<script type="text/javascript">
+<!--
+google_ad_client = "ca-pub-3908995730077629";
+/* 468 × 60 Veda */
+google_ad_slot = "5222916030";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+					</div>
+					<div class="top_ads" style="margin:14px 14px 0 0; text-align:right">
+<span>试试阅读模式？希望听取您的建议</span>
+<input type="button" value="阅读模式" onclick="readmood()" />
+<input type="button" value="普通模式" onclick="normalmood()" />
+<div id="outputDiv"></div>
+					</div>
+					<div class="post_content readmood" id="defend_10">
+						  	<p>我们那知道浏览器有bug，而且Windows上的lE的bug 似乎比太多数浏览器都多。IE/Win的表现与其他浏览器不同的原因之一是，显示引擎使用一个称为布局(layout)的内部概念。因为布均是一个专门针对显示引擎内部工作方式的概念，所以一般悄况下不需要了解它。但是，布局问题是许多IE/Win显示bug的根源，所以理解这个概念以及它如何影响CSS是有捂助的。</p>
+  
+  	<p>haslayout 是Windows Internet Explorer渲染引擎的一个内部组成部分。在Internet Explorer中，一个元素要么自己对自身的内容进行计算大小和组织，要么依赖于父元素来计算尺寸和组织内容。为了调节这两个不同的概念，渲染引擎采用了 hasLayout 的属性，属性值可以为true或false。当一个元素的 hasLayout 属性值为true时，我们说这个元素有一个布局（layout）。</p>
+    
+    <p>当一个元素有一个布局时，它负责对自己和可能的子孙元素进行尺寸计算和定位。简单来说，这意味着这个元素需要花更多的代价来维护自身和里面的内容，而不是依赖于祖先元素来完成这些工作。因此，一些元素默认会有一个布局。当我们说一个元素"拥有layout"或"得到layout"，或者说一个元素"has layout" 的时候，我们的意思是指它的微软专有属性 hasLayout 被设为了 true 。一个"layout元素"可以是一个默认就拥有 layout 的元素或者是一个通过设置某些 CSS 属性得到 layout 的元素。如果某个HTML元素拥有 haslayout 属性，那么这个元素的 haslayout 的值一定只有 true，haslayout 为只读属性 一旦被触发，就不可逆转。通过 IE Developer Toolbar 可以查看 IE 下 HTML 元素是否拥有haslayout，在 IE Developer Toolbar 下，拥有 haslayout 的元素，通常显示为"haslayout = -1"。</p>
+  
+  	<p>负责组织自身内容的元素将默认有一个布局，主要包括以下元素（不完全列表）：</p>
+	
+<pre class="brush: css;">
+* body and html
+* table, tr, th, td
+* img
+* hr
+* input, button, file, select, textarea, fieldset
+* marquee
+* frameset, frame, iframe
+* objects, applets, embed
+</pre>
+    
+    <p>对于并非所有的元素都默认有布局，微软给出的主要原因是"性能和简洁"。如果所有的元素都默认有布局，会对性能和内存使用上产生有害的影响。</p>
+    
+    <p>大部分的 IE 显示错误，都可以通过激发元素的 haslayout 属性来修正。可以通过设置 css 尺寸属性(width/height)等来激发元素的 haslayout，使其"拥有布局"。如下所示，通过设置以下 css 属性即可。</p>
+	
+<pre class="brush: css;">
+* display: inline-block
+* height: (任何值除了auto)
+* float: (left 或 right)
+* position: absolute
+* width: (任何值除了auto)
+* writing-mode: tb-rl
+* zoom: (除 normal 外任意值)
+</pre>
+  
+  	<p>Internet Explorer 7 还有一些额外的属性(不完全列表)：</p>
+	
+<pre class="brush: css;">
+* min-height: (任意值)
+* max-height: (除 none 外任意值)
+* min-width: (任意值)
+* max-width: (除 none 外任意值)
+* overflow: (除 visible 外任意值)
+* overflow-x: (除 visible 外任意值)
+* overflow-y: (除 visible 外任意值)
+* position: fixed
+</pre>
+    
+    <p>其中 overflow-x 和 overflow-y 是 css3 盒模型中的属性，目前还未被浏览器广泛支持。</p>
+  
+  	<p>对于内联元素(默认即为内联的元素，如 span，或 display:inline; 的元素)，width 和 height 只在 IE5.x 下和 IE6 或更新版本的 quirks 模式下触发 hasLayout 。而对于 IE6，如果浏览器运行于标准兼容模式下，内联元素会忽略 width 或 height 属性，所以设置 width 或 height 不能在此种情况下令该元素具有 layout。zoom 总是可以触发 hasLayout，但是在 IE5.0 中不支持。</p>
+    
+    <p>具有"layout" 的元素如果同时 display: inline ，那么它的行为就和标准中所说的 inline-block 很类似了：在段落中和普通文字一样在水平方向和连续排列，受 vertical-align 影响，并且大小可以根据内容自适应调整。这也可以解释为什么单单在 IE/Win 中内联元素可以包含块级元素而少出问题，因为在别的浏览器中 display: inline 就是内联，不像 IE/Win 一旦内联元素拥有 layout 还会变成 inline-block。</p>
+	
+	<p>当网页在 IE 中有异常表现时，可以尝试激发 haslayout 来看看是不是问题所在。常用的方法是给某元素 css 设定 zoom:1 。使用 zoom:1 是因为大多数情况下，它能在不影响现有环境的条件下激发元素的 haslayout。而一旦问题消失，那基本上就可以判断是 haslayout 的原因。然后就可以通过设定相应的 css 属性来对这个问题进行修正了。建议首先要考虑的是设定元素的 width/height 属性，其次再考虑其他属性。</p>
+    
+    <p>对 IE6 及更早版本来说，常用的方法被称为霍莉破解(Holly hack)，即设定这个元素的高度为 1% (height:1%;)。需要注意的是，当这个元素的 overflow 属性被设置为 visible 时，这个方法就失效了。或者使用 IE 的条件注释。</p>
+    
+    <p>对 IE7 来说，最好的方法时设置元素的最小高度为 0 (min-height:0;)。</p>
+  
+  	<p>haslayout 问题引起的常见 bug：</p>
+	
+	<ul>
+		
+		<li>IE6 及更低版本的双空白边浮动 bug。bug 修复: display:inline;</li>
+		
+		<li>IE5-6/win 的 3 像素偏移 bug。bug 修复: _height:1%;</li>
+		
+		<li>E6 的躲躲猫(peek-a-boo) bug。bug 修复: _height:1%;</li>
+		
+	</ul>
+    
+    <h4>常见bug及其修复方法</h4>
+  
+  	<p>CSS 开发人员最重要的技能之一是发现常见浏览器bug的能力。通过了解导致这些bug 的各种元索，可以在它们造成问题之前发现并且修复它们。</p>
+    
+    <p>双空白边浮动bug：最常见且最容易发现的bug 之一是IE6和更低版本中的双空白边浮动bug。顾名思义，这个Windows bug使任何浮动元素上的空白边加倍。</p>
+	
+	<p>这个bug 很容易修复，将元素的display 属性设置为inline 就行了.因为元素是浮动的，将display 属性设置为inline 实际上不会影响显示方式。但是，这似乎会阻止Windows 上的IE6和更低版本将所有空白地加倍。这是一个非常容易发现和修复的bug : 每当对具有水平空白边的元素进行浮动时，都应该很自然地将display 属性设置为inline。</p>
+    
+    <p>3像素文本偏移bug：另一个非常常见的I E 5-61Win bug 是3像素文本偏移bug。当文本与二个浮动元示相邻时，这个bug 就会表现出来。例如，假设将-个元素向左浮动，并且不希望相邻段落中的文本围绕浮动元素。你可能会在段落上应用一个左空白边，其宽度等于浮动元素的宽度:</p>
+	
+<pre class="brush: css;">
+.myFloat { float: left; width: 200px; }
+p { margin-left: 200px; }
+</pre>
+    
+    <p>如果这么做，在文本和浮动元素之间就会出现一个莫名其妙的3像素间隙。</p>
+  
+  	<p>修复这个bug 需要双管齐下。首先，给包含文本的元素设置任意的高度。这会迫使元素拥有布局，这在表面上会消除文本偏移。因为Windows 上的IE6和更低版本将height作为min-height那样对待，所以设置一个小的高度并不会影响元素在这些浏览器巾的实际尺寸。但是，这会影响其他浏览器，所以要使用Holly招数对除了Windows 上的IE6 和更低版本之外的所有其他浏览器隐藏这个规则，</p>
+    
+<pre class="brush: css;">
+/* Hide from IE5-Mac. Only IE-Win sees this. \*/
+* html p { height: 1%; }
+/* End hide from IE5/Mac */
+</pre>
+	
+    <p>不幸的是，这么做会导致另一个问题。正如在前面学到的，拥有布局的元素被限制为矩形的，并且出现在浮动元索的旁边而不是它们的下面。添加200像素的空白边实际上会在IE 5-6/Win 中在浮动元素和段落之间产生200像素的间隙。为了边免这个问隙，需要将IE 5-6/Win 上的空白边重新设置为零:</p>
+  
+<pre class="brush: css;">
+/* Hide from IE5-Mac. Only IE-Win sees this. \*/
+* html p { height: 1%; margin-left: 0; }
+/* End hide from IE5/Mac */
+</pre>
+  
+  	<p>文本偏移被修复了，但是现在另一个3像亲间隙出现了，这一次是在浮动元素上。为了去掉这个问隙，需要在浮动元素上设置一个负值的3像素右空白边：</p>
+    
+<pre class="brush: css;">
+/* Hide from IE5-Mac. Only IE-Win sees this. \*/
+* html p { height: 1%; margin-left: 0; }
+* html .myFloat { margin-right: -3px; }
+/* End hide from IE5/Mac */
+</pre>
+	
+    <p>如果浮动元素是除了图像之外的任何其他东西，那么这个问题己经修复了。但是，如果浮动元旦在是图像，那么还有放后一个问题需要解决。 IE 5.x/Win在图像的左右都添加3像亲的间隙。而IE6不改变图像的空白边。因此，需要用另一个招术在IE 5.x/Win 上去掉3 像素的问隙:</p>
+	
+<pre class="brush: css;">
+/* Hide from IE5-Mac. Only IE-Win sees this. \*/
+* html p { height: 1%; margin-left: 0; }
+* html img.myFloat { margin: 0 -3px; ma\rgin: 0; }
+/* End hide from IE5/Mac */
+</pre>
+	
+	<p>这会解决问题，但是采用的方式很难看而且太复杂。因此，如果可能的话，最好将这些规则分别放进单独的浏览器特定的样式表中。如果这样做，用于Windows 上的lE 5.x的样式表如下：</p>
+	
+<pre class="brush: css;">
+p { height: 1%; margin-left: 0; }
+img.myFloat { margin: 0 -3px; }
+</pre>
+    
+    <p>用于IE 6的样式表如下:</p>
+	
+<pre class="brush: css;">
+p { height: 1%; margin-left: 0; }
+img.myFloat { margin: 0; }
+</pre>
+    
+    <p>IE 6躲躲猫bug：另一个奇怪而且很烦人的 bug 是IE6 的躲躲猫(peek-a-boo) bug，之所以起这个名称是因为在某些条件下文本看起来消失了，只有在前新装载页面时才再度出现。出现这个bug 的条件是:一个浮动元素后面跟着一些非浮动元素，然后是一个清理元素，所有这些元素都包含在一个设置了背景颜色或阅像的父元束中。如果清理元素碰到了浮动元素，那么中间的作浮动元素看起来消失了，隐藏到了父元素的背景颜色或图像后面，只有在刷新页面时才重新出现。</p>
+  
+  	<p>我要讨论的段后一个主要浏览器bug涉及相对定位容器中的绝对定位元素。在前面的章节中你学到将绝对定位的元素嵌套在相对容器中是多么有用。但是，IE 6和更低版本在使用这种技术时有许多bug。</p>
+    
+    <p>这些bug 的原因在于相对定位的元素没有获得IE/Win 的内部hasLayout 属性。因此，它们不创建新的定位上下文，所有绝对定位元素相对于窗口进行定位。</p>
+  
+  	<p>为了使Windows 上的IE 6和更低版本的表现正确。需要迫使相对应位的容器拥有布局。一种方法是在容器上显式地设置width 和height。但是，常常希望在不知道容器的width 和height的况下，或者在需要这些属性保持灵活的情况下使用这种技术。</p>
+    
+    <p>可以使用Holly 招数为容器提供一个的高度。这会让容器拥有布局。但是因为IE 6和更低版本中的元素会不正确地扩展以适应它们的内容，所以设置小的高度不会影响实际高度。</p>
+	
+<pre class="brush: css;">
+/* Hides from IE-Mac \*/
+* html .container { height: 1%; }
+/* End hide from IE-Mac */
+</pre>
+	
+	<h4>不要抱怨 IE</h4>
+    
+    <p>IE 并不足惟一一种有bug 的浏览器，所以你可能会奇怪我为什么只关注IE bug。 不必担心，我找并不是专门和微软过不去，这么做是有理由的。</p>
+	
+	<p>首先， IE 目前占有最大的浏览器市场份额。因为有许多人在使用IE，IE bug 往往很快被发现而且很好地记录下来。当在IE中发现一个重大的CSS bug时，许多开发人员会尝试寻找修复方法或解决方案。由于IE的流行程度，被记录并修复的IE bug比其他任何浏览器都要多。</p>
+    
+    <p>另一个主要问题是开发的节奏。Firefox、Safari和Opera等浏器不断地进行更新，新版本以非常高的频率出现。 bug 几乎一经发现就被修复了，并且发布浏览器的新版本.因此，现在讨论的任何Firefox或Safari bug 可能已经被下一个修订版修复了。</p>
+	
+	<p>如此高的开发节奏确实很棒，但是也有自己的问题。开发人员要应付的浏览器版本不是两三个，而是20或30个。你无法确定用户是否使用最新的版本，这使测试变得极其困难。另一方面，IE差不多5年没有发布主要修订版了。因此，bug 有更多的时间可以暴露出来，开发人员也有更强的寻找修复方法的动力。</p>
+    
+    <p>幸运的是，IE 7承诺将成为更符合标准的浏览器。许多著名的IE bug 已经被解决，而且对高级CSS 2.1 选择器（比如子选择器和属性选择器）的支持也在增加。与所有浏览器一样，新的bug也会出现，IE 7远不是完美的。但是，人们越快地升级到IE 7和Firefox 等现代浏览器，IE 5.0等老式浏览器就会越快地退役。在这个过渡时期，可以考虑使用Dean Edwards 的IE 7 补丁。这是一系列JavaScript 文件，它们使IE 5-6/Win 能够接近IE 7的水平.这包括改进的选择器实现和许多bug 修复。</p>												<p class="imageElement">本文地址：<a href="http://www.nowamagic.net/librarys/veda/detail/1395">http://www.nowamagic.net/librarys/veda/detail/1395</a>，欢迎访问原出处。</p>
+					</div>
+					
+					<div class="fav_area">
+						<div class="options wrnleft">
+							<a title="我喜欢这篇文章" id="favor" class="fav" onclick="add_fav();"> 我喜欢</a>
+							<!-- <span class="fav_count" id="p_favor_count">有 8 人喜欢</span> -->
+						</div>
+						<div class="options wrnright">
+							<a class="myfav" href="http://www.nowamagic.net/librarys/topics/favorites/" target="_blank">我的收藏夹</a>
+						</div>
+						<script type="text/javascript" charset="utf-8">
+(function(){
+  var _w = 90 , _h = 24;
+  var param = {
+    url:location.href,
+    type:'2',
+    count:'1', /**是否显示分享数，1显示(可选)*/
+    appkey:'', /**您申请的应用appkey,显示分享来源(可选)*/
+    title:'', /**分享的文字内容(可选，默认为所在页面的title)*/
+    pic:'', /**分享图片的路径(可选)*/
+    ralateUid:'2809746632', /**关联用户的UID，分享微博会@该用户(可选)*/
+    language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+    dpc:1
+  }
+  var temp = [];
+  for( var p in param ){
+    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+  }
+  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://service.weibo.com/staticjs/weiboshare.html?' + temp.join('&') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+})()
+</script>
+						<div class="clear"></div>
+					</div>
+					
+					<div class="ika_fen_out">
+						<div class="ika_fen">
+<div class="shop-rating" id="total_fen">
+    <span class="title">不打个分吗？ </span>
+    <ul class="rating-level" id="stars1">
+        <li><a class="one-star" star:value="20" href="#">20</a></li>
+        <li><a class="two-stars" star:value="40" href="#">40</a></li>
+        <li><a class="three-stars" star:value="60" href="#">60</a></li>
+        <li><a class="four-stars" star:value="80" href="#">80</a></li>
+        <li><a class="five-stars" star:value="100" href="#">100</a></li>
+    </ul>
+    <span class="result" id="stars1-tips"></span>
+    <input type="hidden" id="stars1-input" name="a" value="" size="2" />
+	<span>	</span>
+</div>
+
+
+<script src="http://www.nowamagic.net/librarys/application/views/veda/js/single.js" type="text/javascript"></script>
+<script type="text/javascript">
+var Stars1 = new Stars("stars1",{nowClass:"current-rating",tipsTxt:["20分 - 写得很差","40分 - 写得不怎么好","60分 - 写得一般吧","80分 - 写得不错","100分 - 写得非常好"]})
+//var Stars2 = new Stars("stars2");
+
+function teststars(){
+	alert(document.getElementById("stars1-input").value )
+}
+
+function scoring(score){  
+	//var url = document.getElementById("url").value;  
+	var url = 'test';
+	var pingRequest = new Request({  
+    	method: "post",  
+     	url:    "http://www.nowamagic.net/librarys/veda/scoring/",  
+		data:	score, 
+  		onSuccess:  function(responseText){  
+          	if(responseText=="success"){  
+          		//alert(responseText);
+          	}  
+          	else{  
+          		//alert(responseText);
+       		}  
+     	},  
+  		onFailure:  function(){  
+       		//alert(responseText);
+   		}  
+    });  
+  	pingRequest.send("url="+ url +"&score=" + score + "&id=" + 1395);  
+}
+
+function add_fav( ){  
+	//alert('http://www.nowamagic.net/librarys/topics/add_fav/');
+	var url = "http://www.nowamagic.net/librarys/topics/add_fav/";
+	var uid = "AIfeeJvhZies";
+	var pid = "1395";
+	var cate = "veda";
+	var fav_request = new Request({  
+    	method: "post",  
+     	url: "http://www.nowamagic.net/librarys/topics/add_fav/",  
+		//data: data, 
+  		onSuccess:  function(responseText){  
+        	alert(responseText);
+     	},  
+  		onFailure:  function(){  
+       		//alert(responseText);
+   		}  
+    });  
+	//alert(url);
+  	fav_request.send("url="+ url + "&art_id=" + pid +"&u_id=" + uid +"&cate=" + cate );  
+}
+
+</script>
+
+						</div>
+					</div>
+					
+					<div class="wrn">
+						<div class="wrnleft"><img src="http://www.nowamagic.net/librarys/images/wrn.jpg" /></div>
+						<div class="wrnright">
+							<p>转载随意，但请带上本文地址：</p>
+							<p><a href="http://www.nowamagic.net/librarys/veda/detail/1395">http://www.nowamagic.net/librarys/veda/detail/1395</a></p>
+						</div>
+						<div class="clear"></div>
+					</div>
+					
+					<div class="baidu_ads">
+					</div>
+					
+					<div class="post_social_bookmark">
+						<strong>如果你认为这篇文章值得更多人阅读，欢迎使用下面的分享功能。</strong><br />
+					</div>
+					<div class="post_tags">
+						<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<span class="bds_more">分享到：</span>
+<a class="bds_tsina">新浪微博</a>
+<a class="bds_tqq">腾讯微博</a>
+<a class="bds_qzone">QQ空间</a>
+<a class="bds_renren">人人网</a>
+<a class="bds_douban">豆瓣网</a>
+<a class="bds_mshare">一键分享</a>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=4016554" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</script>
+<!-- Baidu Button END -->					</div>
+					
+					<div class="tips">
+						<div>小提示：您可以按快捷键 Ctrl + D，或点此 <a href="javascript:window.external.addFavorite('http://www.nowamagic.net','简明现代魔法')">加入收藏</a>。</div>
+					</div>
+					
+				</div>
+				<div class="fullbox_footer"></div>
+			</div>
+			
+			<!-- 评论 -->
+<div class="comment_area">
+	<div class="comment_top"></div>
+	<h2>大家都在看</h2>
+	<div class="comment_box">
+		<div class="comment_details">
+			<div class="left">
+				<ol>
+										<li>
+						<span>[ 95 分 ] </span>
+						<span>[ 64 <a class="ilike_icon">&nbsp;</a>]</span>
+						<a href="http://www.nowamagic.net/librarys/veda/detail/2583">从知乎上看到“全栈开发者”讨论之后的自黑</a> 
+					</li>
+										<li>
+						<span>[ 93 分 ] </span>
+						<span>[ 45 <a class="ilike_icon">&nbsp;</a>]</span>
+						<a href="http://www.nowamagic.net/librarys/veda/detail/2598">十年学会程序设计</a> 
+					</li>
+										<li>
+						<span>[ 94 分 ] </span>
+						<span>[ 30 <a class="ilike_icon">&nbsp;</a>]</span>
+						<a href="http://www.nowamagic.net/librarys/veda/detail/2589">Web研发模式演变史</a> 
+					</li>
+										<li>
+						<span>[ 92 分 ] </span>
+						<span>[ 50 <a class="ilike_icon">&nbsp;</a>]</span>
+						<a href="http://www.nowamagic.net/librarys/veda/detail/2608">人生真的是一场马拉松吗？</a> 
+					</li>
+										<li>
+						<span>[ 85 分 ] </span>
+						<span>[ 27 <a class="ilike_icon">&nbsp;</a>]</span>
+						<a href="http://www.nowamagic.net/librarys/veda/detail/2588">从软件开发的特性看程序员的职业生涯路线</a> 
+					</li>
+										<li>
+						<span>[ 96 分 ] </span>
+						<span>[ 21 <a class="ilike_icon">&nbsp;</a>]</span>
+						<a href="http://www.nowamagic.net/librarys/veda/detail/2614">乱弹之数字42，数学以及宇宙</a> 
+					</li>
+										<li>
+						<span>[ 93 分 ] </span>
+						<span>[ 48 <a class="ilike_icon">&nbsp;</a>]</span>
+						<a href="http://www.nowamagic.net/librarys/veda/detail/2582">你有没有意识到，计算时代已经悄然降临</a> 
+					</li>
+										<li>
+						<span>[ 90 分 ] </span>
+						<span>[ 38 <a class="ilike_icon">&nbsp;</a>]</span>
+						<a href="http://www.nowamagic.net/librarys/veda/detail/2600">使用CSS3线性渐变实现图片闪光划过效果</a> 
+					</li>
+										<li>
+						<span>[ 96 分 ] </span>
+						<span>[ 8 <a class="ilike_icon">&nbsp;</a>]</span>
+						<a href="http://www.nowamagic.net/librarys/veda/detail/2606">Python图像处理库(PIL)的安装与简单使用</a> 
+					</li>
+										<li>
+						<span>[ 100 分 ] </span>
+						<span>[ 7 <a class="ilike_icon">&nbsp;</a>]</span>
+						<a href="http://www.nowamagic.net/librarys/veda/detail/2616">我们究竟为了什么而活着？</a> 
+					</li>
+									</ol>
+			</div>
+			<div class="right">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3908995730077629";
+/* eight */
+google_ad_slot = "3234186240";
+google_ad_width = 250;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+						
+	<div class="comment_bottom"></div>
+</div>
+
+			<!-- 协会 -->
+<div class="comment_area">
+	<div class="comment_top"></div>
+	<h2>现代魔法研究协会欢迎你</h2>
+	<div class="comment_box">
+		<div class="comment_details">
+			<div class="left" style="width:60%">
+				<ol>
+											<li>
+						<span> <a href="http://www.nowamagic.net/librarys/topics/detail/347" target="_blank">哦呵呵呵呵，我目前告白失敗次數已達到6次了（認真的三次元攻略T T</a>  </span>
+						<span> 365 views </span>
+					</li>
+							
+											<li>
+						<span> <a href="http://www.nowamagic.net/librarys/topics/detail/358" target="_blank">八卦一下威锋网被封的事</a>  </span>
+						<span> 290 views </span>
+					</li>
+							
+											<li>
+						<span> <a href="http://www.nowamagic.net/librarys/topics/detail/349" target="_blank">=。=程序猿里很多动漫爱好者么</a>  </span>
+						<span> 277 views </span>
+					</li>
+							
+											<li>
+						<span> <a href="http://www.nowamagic.net/librarys/topics/detail/338" target="_blank">聊聊一个重要的问题……如何长肉？</a>  </span>
+						<span> 254 views </span>
+					</li>
+							
+											<li>
+						<span> <a href="http://www.nowamagic.net/librarys/topics/detail/354" target="_blank">一个令人悲伤的故事，老程序员的下场</a>  </span>
+						<span> 246 views </span>
+					</li>
+							
+											<li>
+						<span> <a href="http://www.nowamagic.net/librarys/topics/detail/346" target="_blank">新配的眼镜戴上头晕，看近处东西很小，怎么回事？</a>  </span>
+						<span> 244 views </span>
+					</li>
+							
+											<li>
+						<span> <a href="http://www.nowamagic.net/librarys/topics/detail/352" target="_blank">来谈谈对你影响最大的编程书籍</a>  </span>
+						<span> 232 views </span>
+					</li>
+							
+											<li>
+						<span> <a href="http://www.nowamagic.net/librarys/topics/detail/343" target="_blank">看到主頁右上角的話簡直惡意慢慢啊</a>  </span>
+						<span> 231 views </span>
+					</li>
+							
+											<li>
+						<span> <a href="http://www.nowamagic.net/librarys/topics/detail/341" target="_blank">话说 马航为啥消失了呢？</a>  </span>
+						<span> 220 views </span>
+					</li>
+							
+											<li>
+						<span> <a href="http://www.nowamagic.net/librarys/topics/detail/355" target="_blank">感觉学习之路好迷茫啊QAQ</a>  </span>
+						<span> 167 views </span>
+					</li>
+							
+										</ol>
+			</div>
+			<div class="right" style="width:38%">
+				<div align="center">
+					<a href="http://www.nowamagic.net/librarys/nmra/" target="_blank"><img src="http://www.nowamagic.net/librarys/application/views/veda/images/nmra_ad.jpg" style=" border:none" /></a>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+							
+	<div class="comment_bottom"></div>
+</div>	
+<div class="comment_area">
+	<div class="comment_top"></div>
+	<h2>阅读一百本计算机著作吧，少年</h2>
+	<div class="comment_box">
+		<div class="comment_details">
+						<div class="post_content">
+				<div class="books">
+					<p>很多人觉得自己技术进步很慢，学习效率低，我觉得一个重要原因是看的书少了。多少是多呢？起码得看3、4、5、6米吧。给个具体的数量，那就100本书吧。很多人知识结构不好而且不系统，因为在特定领域有一个足够量的知识量+足够良好的知识结构，系统化以后就足以应对大量未曾遇到过的问题。</p>
+					<p>奉劝自学者：构建特定领域的知识结构体系的路径中再也没有比学习该专业的专业课程更好的了。如果我的知识结构体系足以囊括面试官的大部分甚至吞并他的知识结构体系的话，读到他言语中的一个词我们就已经知道他要表达什么，我们可以让他坐“上位”毕竟他是面试官，但是在知识结构体系以及心理上我们就居高临下。</p>
+					<p>所以，阅读一百本计算机著作吧，少年！</p>
+				</div>
+				<img src="http://www.nowamagic.net/librarys/application/views/veda/images/arrow.png" /> 
+				<a href="http://www.amazon.cn/gp/product/B0011425T8/ref=as_li_qf_sp_asin_tl?ie=UTF8&tag=nowa-23&linkCode=as2&camp=536&creative=3200&creativeASIN=B0011425T8" rel="nofollow" target="_blank">《C程序设计语言(第2版新版)》</a>  克尼汉 (作者), 等 (作者, 译者), 徐宝文 (译者)				<div class="books">
+					<a href="http://www.amazon.cn/gp/product/B0011425T8/ref=as_li_qf_sp_asin_tl?ie=UTF8&tag=nowa-23&linkCode=as2&camp=536&creative=3200&creativeASIN=B0011425T8" rel="nofollow" target="_blank"><img src="http://www.nowamagic.net/librarys/images/books/book_004.jpg"  /></a>
+					
+					<p>《C程序设计语言》(第2版新版)是由C语言的设计者Brian W.Kernighan和Dennis M.Ritchie编写的一部介绍标准C语言及其程序设计方法的权威性经典著作。全面、系统地讲述了C语言的各个特性及程序设计的基本方法，包括基本概念，类型和表达式、控制流、函数与程序结构、指针与数组、结构、输入与输出、UNIX系统接口、标准库等内容。</p>
+					<p><a href="http://www.nowamagic.net/librarys/veda/books/" target="_blank">更多计算机宝库...</a></p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+							
+	<div class="comment_bottom"></div>
+</div>
+
+	<!--
+<div class="comment_area">
+	<div class="comment_top"></div>
+		<h2>3 Responses to “Visual effects shoot for realism in explosive Terminator Salvation”</h2>
+		<div id="comment-5" class="comment_box">
+			<div class="comment_header">
+				<a class="url" rel="external nofollow" href="http://improvememory.gwazh.com">Strive</a> | <a title="" href="#comment-5">June 13th, 2009 at 1:35 am</a>
+			</div>
+			<div class="comment_details">
+				<div class="comment_avatar">
+					<img width="50" height="50" alt="commenter" src="http://www.gravatar.com/avatar.php?gravatar_id=5cf0808bc4da7c155d45977af039dba9&amp;size=50&amp;default=http%3A%2F%2Fwww.technologytricks.com%2Fthemes%2Ftechified%2Fwp-content%2Fthemes%2Ftechified%2Fimages%2Favatar.jpg">
+				</div>
+				<div class="comment_comment"> 
+					<p>Nice theme</p>
+<p><a rel="nofollow" href="http://improvememory.gwazh.com">Improve Your Memory</a></p>
+				</div>
+			</div>
+		</div>
+							
+		<div class="comment_bottom"></div>
+	</div>
+	
+	-->
+			
+			</div>
+<style type="text/css">
+#box{float:left;position:relative;width:295px;}
+.div1{}
+.div2{position:fixed;_position:absolute;top:0px;z-index:295;}
+</style>
+
+<div id="sidebar">
+	<div id="sidebar_top">
+		<div class="box">
+			<h3>邮件订阅</h3>
+			<div class="box_content">
+				<div class="rss_box">输入您的邮箱地址，将会收到本站的文章更新信息，赶紧订阅吧。</div>
+				<form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri= ', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true" id="rss_form">
+					<input type="text" name="email" id="email_rss" value="输入您的 email" onblur="if (this.value == '') {this.value = '输入您的 email';}"  onfocus="if (this.value == '输入您的 email') {this.value = '';}" />
+					<input type="submit" name="subscribe_email_btn" id="subscribe_email_btn" value="" />
+					<input type="hidden" value=" " name="uri"/>
+					<input type="hidden" name="loc" value="en_US"/>
+				</form>
+				<ul>
+					<li>RSS 
+					<a href="https://www.google.com/reader/view/feed/http://www.nowamagic.net/librarys/veda/feed/" target="_blank" rel="nofollow">Google</a> 
+					<a href="http://www.xianguo.com/subscribe.php?url=http://http://www.nowamagic.net/librarys/veda/feed/" target="_blank" rel="nofollow">鲜果</a> 
+					<a href="http://www.zhuaxia.com/add_channel.php?url=http://www.nowamagic.net/librarys/veda/feed/" target="_blank" rel="nofollow">抓虾</a> 
+					<a href="http://9.douban.com/reader/subscribe?url=http://www.nowamagic.net/librarys/veda/feed/" target="_blank" rel="nofollow">九点</a> 
+					<a href="http://reader.youdao.com/b.do?url=http://www.nowamagic.net/librarys/veda/feed/" target="_blank" rel="nofollow">有道</a> 
+					<a href="http://inezha.com/add?url=http://www.nowamagic.net/librarys/veda/feed/" target="_blank" rel="nofollow">哪吒</a> 
+					<a href="http://mail.qq.com/cgi-bin/feed?u=http://www.nowamagic.net/librarys/veda/feed/" target="_blank" rel="nofollow">QQ邮箱</a> 
+					</li>
+				</ul>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+		
+		<div class="box">
+			<h3>栏目最新博文</h3>
+			<div class="box_content">
+				<ul>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/2600" target="_blank">使用CSS3线性渐变实现图片闪光划过效果</a> <span> 2,907 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/2513" target="_blank">可以尝试用Google Font API来摆脱网页字体的单调</a> <span> 6,016 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/2182" target="_blank">常见的浏览器Hack技巧总结</a> <span> 9,395 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/2137" target="_blank">活泼的CSS 3动态气泡按钮制作</a> <span> 7,647 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/2097" target="_blank">如何组织与管理CSS文件</a> <span> 6,915 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/1880" target="_blank">最优的浮动清除方案之一推荐</a> <span> 5,295 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/2328" target="_blank">收藏一个很有爱的CSS背景设计</a> <span> 4,981 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/2183" target="_blank">IE 6最小最大宽度与高度的写法</a> <span> 4,483 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/1950" target="_blank">CSS让图片垂直居中的几种技巧</a> <span> 10,412 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/1599" target="_blank">用CSS3可以很简单地实现文字渐变效果</a> <span> 3,858 views </span></li>
+									</ul>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+		
+		<div class="box">
+			<h3>栏目博文推荐</h3>
+			<div class="box_content">
+				<ul>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/2328" target="_blank">收藏一个很有爱的CSS背景设计</a> <span> 4,971 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/1222" target="_blank">IE6支持!important吗？</a> <span> 3,167 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/675" target="_blank">CSS强大的选择器利器</a> <span> 1,876 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/595" target="_blank">一道页面布局的前端面试题</a> <span> 2,205 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/892" target="_blank">CSS3不遥远，几个特性你要知道</a> <span> 1,814 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/715" target="_blank">CSS实现垂直居中的一个技巧</a> <span> 1,380 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/890" target="_blank">CSS一个解决浮动问题的hack</a> <span> 1,648 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/708" target="_blank">CSS的inline-block属性分析</a> <span> 2,075 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/1599" target="_blank">用CSS3可以很简单地实现文字渐变效果</a> <span> 3,849 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/detail/2183" target="_blank">IE 6最小最大宽度与高度的写法</a> <span> 4,475 views </span></li>
+									</ul>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+		
+		<div class="box">
+			<h3>ADS</h3>
+			<div class="box_content">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3908995730077629";
+/* eight */
+google_ad_slot = "3234186240";
+google_ad_width = 250;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>			</div>
+			<div class="box_bottom"></div>
+		</div>
+		
+		<div class="box">
+			<h3>大音声稀</h3>
+						<div class="box_content" style="color:#333">
+				正因为难，所以才超凡脱俗。			</div>
+			<div class="box_bottom"></div>
+		</div>
+		
+		<div class="box">
+			<h3>晚八点</h3>
+			<div class="box_content">
+				<ul>
+										<li><a href="http://www.nowamagic.net/librarys/eight/posts/2617" target="_blank">那些让你此生难成大器的致命伤</a> <span> 1,102 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/eight/posts/2613" target="_blank">睡前放松自己以获得高质量睡眠的方法</a> <span> 965 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/eight/posts/2615" target="_blank">选择打工，还是选择创业？</a> <span> 790 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/eight/posts/2618" target="_blank">为什么倾听会这么难？</a> <span> 98 views </span></li>
+										<li><a href="http://www.nowamagic.net/librarys/eight/posts/2619" target="_blank">活着却没有心苦，才是真正的胜者</a> <span> 82 views </span></li>
+									</ul>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+		
+		<div class="box">
+			<h3>我的微博</h3>
+			<div class="box_content">
+				<a href="http://t.qq.com/gonnsai" rel="nofollow" target="_blank"><img src="http://www.nowamagic.net/librarys/images/t.jpg" width="305" border="0" /></a>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+		
+	</div>
+	
+	<div id="sidebar_left">
+	
+		<div class="box">
+			<h3>文章分类</h3>
+			<div class="box_content">
+				<ul>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/PHP">PHP服务器脚本</a> <span>( 470 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/ProgramLife">IT人家</a> <span>( 274 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/JavaScript">JavaScript</a> <span>( 259 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/DataStructures">数据结构</a> <span>( 148 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/Internet">互联网时代</a> <span>( 128 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/WebDesign">Web设计理念</a> <span>( 117 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/Algorithm">计算机算法</a> <span>( 94 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/IntellectualDevelopment">智力开发</a> <span>( 91 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/MySQL">数据库技术</a> <span>( 81 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/Program">编程思想</a> <span>( 68 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/SEO">搜索引擎优化</a> <span>( 66 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/OpenTools">开源项目与工具</a> <span>( 60 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/C">C/C++编程语言</a> <span>( 58 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/CSS">CSS</a> <span>( 56 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/SoftwareArchitecture">软件架构技术</a> <span>( 42 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/JQuery">JQuery</a> <span>( 31 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/HTML">HTML</a> <span>( 24 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/ComputerMath">计算机数学与基础</a> <span>( 22 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/Ajax">Ajax技术</a> <span>( 15 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/WebOperations">网站运维</a> <span>( 14 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/Android">Android</a> <span>( 14 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/ActionScript">Flex/ActionScript</a> <span>( 10 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/InformationSecurity">信息安全</a> <span>( 10 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/OOP">面向对象技术</a> <span>( 9 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/Python">Python程序设计</a> <span>( 4 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/cate/iOS">iOS开发</a> <span>( 1 )</span></li>
+									</ul>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+		
+		<div class="box">
+			<h3>专题推荐</h3>
+			<div class="box_content">
+				<ul>
+										<li><a href="http://www.nowamagic.net/librarys/veda/special/心智模式" target="_blank">心智模式</a> <span>( 9 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/special/PHP内核探索" target="_blank">PHP内核探索</a> <span>( 90 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/special/PHP面向对象之旅" target="_blank">PHP面向对象之旅</a> <span>( 31 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/special/独立思考者模型" target="_blank">独立思考者模型</a> <span>( 7 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/special/快速排序里的学问" target="_blank">快速排序里的学问</a> <span>( 8 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/special/数据结构物语卷二" target="_blank">数据结构物语卷二</a> <span>( 27 )</span></li>
+									</ul>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+		
+		<div class="box">
+			<h3>其它</h3>
+			<div class="box_content">
+				<ul>
+					<li><a href="http://www.nowamagic.net/academy/donation/" rel="nofollow" target="_blank">捐助本站</a></li>
+					<li><a href="http://www.nowamagic.net/librarys/veda/books/" rel="nofollow" target="_blank">计算机书籍推荐</a></li>
+				</ul>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+
+	</div>
+	
+	<div id="sidebar_right">
+	
+		<div class="box">
+			<h3>按月归档</h3>
+			<div class="box_content">
+				<ul>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2014-03">2014-03</a> <span>( 1 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2014-02">2014-02</a> <span>( 4 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2014-01">2014-01</a> <span>( 5 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2013-12">2013-12</a> <span>( 2 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2013-11">2013-11</a> <span>( 3 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2013-10">2013-10</a> <span>( 2 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2013-09">2013-09</a> <span>( 3 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2013-08">2013-08</a> <span>( 5 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2013-07">2013-07</a> <span>( 8 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2013-06">2013-06</a> <span>( 7 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2013-05">2013-05</a> <span>( 3 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2013-04">2013-04</a> <span>( 3 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2013-03">2013-03</a> <span>( 4 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2013-02">2013-02</a> <span>( 6 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2013-01">2013-01</a> <span>( 8 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2012-12">2012-12</a> <span>( 10 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2012-11">2012-11</a> <span>( 13 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2012-10">2012-10</a> <span>( 20 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2012-09">2012-09</a> <span>( 36 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2012-08">2012-08</a> <span>( 55 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2012-07">2012-07</a> <span>( 58 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2012-06">2012-06</a> <span>( 67 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2012-05">2012-05</a> <span>( 86 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2012-04">2012-04</a> <span>( 73 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2012-03">2012-03</a> <span>( 100 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2012-02">2012-02</a> <span>( 100 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2012-01">2012-01</a> <span>( 113 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2011-12">2011-12</a> <span>( 135 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2011-11">2011-11</a> <span>( 199 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2011-10">2011-10</a> <span>( 163 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2011-09">2011-09</a> <span>( 150 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2011-08">2011-08</a> <span>( 163 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2011-07">2011-07</a> <span>( 128 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2011-06">2011-06</a> <span>( 97 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2011-05">2011-05</a> <span>( 59 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2011-04">2011-04</a> <span>( 4 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2011-03">2011-03</a> <span>( 121 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2011-02">2011-02</a> <span>( 32 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2011-01">2011-01</a> <span>( 46 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2010-08">2010-08</a> <span>( 1 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2010-02">2010-02</a> <span>( 30 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2010-01">2010-01</a> <span>( 11 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2009-12">2009-12</a> <span>( 5 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2009-11">2009-11</a> <span>( 1 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2009-08">2009-08</a> <span>( 5 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2009-07">2009-07</a> <span>( 20 )</span></li>
+										<li><a href="http://www.nowamagic.net/librarys/veda/achive/2009-06">2009-06</a> <span>( 1 )</span></li>
+									</ul>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+		<!--
+		<div class="box">
+			<h3>链接</h3>
+			<div class="box_content">
+				<ul>
+					<li><a href="http://www.nowamagic.net/librarys/veda/">博客首页</a></li>
+					<li><a href="http://www.nowamagic.net/librarys/veda/special_lsit/" target="_blank">专题列表</a></li>
+					<li><a href="http://www.nowamagic.net/librarys/veda/books/" target="_blank">计算机书籍推荐</a></li>
+					<li><a href="http://www.nowamagic.net/librarys/news/" target="_blank">互联网资讯</a></li>
+					<li><a href="http://www.nowamagic.net/librarys/eight/" target="_blank">晚上八点</a></li>
+				</ul>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+        --》
+        
+		<!--
+		<div class="box">
+			<h3>功能</h3>
+			<div class="box_content">
+				<ul>
+          			<li>暂待开发</li>
+				</ul>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+		-->
+		 
+	</div>
+	
+	<div id="box">
+		<div id="float" class="div1">
+			<div style="display:none;" id="hide_content">
+			<!-- 隐藏部分 -->
+	<div id="sidebar_top">
+		<div class="box">
+			<h3>热门博文</h3>
+			<div class="box_content">
+				<ul>
+												<li><a href="http://www.nowamagic.net/librarys/veda/detail/124">使用PHP CURL的POST数据</a> <span> 64,964 views </span></li>
+												<li><a href="http://www.nowamagic.net/librarys/veda/detail/2576">浏览器User-agent String里的历史故事</a> <span> 28,838 views </span></li>
+												<li><a href="http://www.nowamagic.net/librarys/veda/detail/639">MySQL exists的用法介绍</a> <span> 35,569 views </span></li>
+												<li><a href="http://www.nowamagic.net/librarys/veda/detail/374">JSON对象转字符串的一些方法</a> <span> 32,471 views </span></li>
+												<li><a href="http://www.nowamagic.net/librarys/veda/detail/2044">MySQL CAST与CONVERT 函数的用法</a> <span> 25,750 views </span></li>
+												<li><a href="http://www.nowamagic.net/librarys/veda/detail/216">如何处理JSON中的特殊字符</a> <span> 26,972 views </span></li>
+												<li><a href="http://www.nowamagic.net/librarys/veda/detail/2504">再谈PHP、Python与Ruby</a> <span> 17,382 views </span></li>
+												<li><a href="http://www.nowamagic.net/librarys/veda/detail/2031">鸟哥谈PHP的架构与未来发展</a> <span> 20,655 views </span></li>
+												<li><a href="http://www.nowamagic.net/librarys/veda/detail/224">JSONP跨域的原理解析</a> <span> 23,172 views </span></li>
+												<li><a href="http://www.nowamagic.net/librarys/veda/detail/188">MFC中CString转int/double/TCHAR*类型</a> <span> 23,575 views </span></li>
+										</ul>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+	</div>
+
+			</div>
+		</div>
+	</div>
+	
+</div>
+<script type="text/javascript">
+(function(){
+    var oDiv=document.getElementById("float");
+	var hide_content=document.getElementById("hide_content");
+    var H=0,iE6;
+    var Y=oDiv;
+    while(Y){H+=Y.offsetTop;Y=Y.offsetParent};
+    iE6=window.ActiveXObject&&!window.XMLHttpRequest;
+    if(!iE6){
+        window.onscroll=function()
+        {
+            var s=document.body.scrollTop||document.documentElement.scrollTop;
+            if(s>H){
+				oDiv.className="div1 div2";
+				//console.log("1");
+				hide_content.style.display = "block";
+				if(iE6){oDiv.style.top=(s-H)+"px";}
+			}
+            else{
+				oDiv.className="div1";
+				//console.log("2");
+				hide_content.style.display = "none";
+			}    
+        };
+    }
+})();
+</script>			
+			</div>
+			
+<script type="text/javascript" src="http://www.nowamagic.net/includes/syntaxhighlighter_2.1.364/scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="http://www.nowamagic.net/includes/syntaxhighlighter_2.1.364/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="http://www.nowamagic.net/includes/syntaxhighlighter_2.1.364/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'http://www.nowamagic.net/includes/syntaxhighlighter_2.1.364/scripts/clipboard.swf';
+	SyntaxHighlighter.all();
+</script><script type="text/javascript" src="http://www.nowamagic.net/includes/syntaxhighlighter_2.1.364/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="http://www.nowamagic.net/includes/syntaxhighlighter_2.1.364/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="http://www.nowamagic.net/includes/syntaxhighlighter_2.1.364/scripts/shBrushJScript.js"></script>			
+		</div>
+	</div>
+	<div id="footer_area">
+		<div id="footer_area_content">
+
+			<div class="box">
+				<h3>最近发布</h3>
+				<div class="box_content">
+					<ol>
+											<li><a href="http://www.nowamagic.net/librarys/veda/detail/2614" target="_blank">乱弹之数字42，数学以及宇宙</a> </li>
+											<li><a href="http://www.nowamagic.net/librarys/veda/detail/2608" target="_blank">人生真的是一场马拉松吗？</a> </li>
+											<li><a href="http://www.nowamagic.net/librarys/veda/detail/2606" target="_blank">Python图像处理库(PIL)的安装与简单使用</a> </li>
+											<li><a href="http://www.nowamagic.net/librarys/veda/detail/2600" target="_blank">使用CSS3线性渐变实现图片闪光划过效果</a> </li>
+											<li><a href="http://www.nowamagic.net/librarys/veda/detail/2598" target="_blank">十年学会程序设计</a> </li>
+											<li><a href="http://www.nowamagic.net/librarys/veda/detail/2589" target="_blank">Web研发模式演变史</a> </li>
+											<li><a href="http://www.nowamagic.net/librarys/veda/detail/2588" target="_blank">从软件开发的特性看程序员的职业生涯路线</a> </li>
+											<li><a href="http://www.nowamagic.net/librarys/veda/detail/2583" target="_blank">从知乎上看到“全栈开发者”讨论之后的自黑</a> </li>
+										</ol>
+				</div>
+			</div>
+
+			<div class="box">
+				<h3>最热文章</h3>
+				<div class="box_content">
+					<ol>
+											<li><a href="http://www.nowamagic.net/librarys/veda/detail/2614" target="_blank">乱弹之数字42，数学以及宇宙</a> </li>
+										</ol>
+				</div>
+			</div>
+						
+			<div class="box">
+				<h3>关于网站与作者</h3>
+				<div class="box_content">
+					<p>互联网信息太多太杂，各互联网公司不断推送娱乐花边新闻，SNS，微博不断转移我们的注意力。但是，我们的时间和精力却是有限的。这里是互联网浩瀚的海洋中的一座宁静与美丽的小岛，供开发者歇息与静心潜心修炼（愿景）。<br />
+					“Veda”的本义是知识、启示，希望这里能为开发者提供充足的技术资料。<br />
+					我的电子邮件gonnsai(at)163.com，<br />腾讯微博：<a href="http://t.qq.com/gonnsai" rel="nofollow" target="_blank">t.qq.com/gonnsai</a>，欢迎与我联系。</p>
+				 </div>
+			</div>
+			
+			<div class="box">
+				<h3>图赏</h3>
+				<img src="http://www.nowamagic.net/librarys/images/veda/rand_4.jpg" />
+			</div>
+			
+		</div>
+	</div>
+	
+	<div id="footer_bottom">
+		<div id="footer_bottom_content"> Copyright &copy; 2014. All rights reserved. &nbsp;&nbsp; 本站由 <a href="http://www.nowamagic.net/">简明现代魔法</a> 纯手工打造  &nbsp;&nbsp;  <!-- <a href="http://www.miibeian.gov.cn" rel="nofollow" target="_blank">粤ICP备13030662号</a> -->
+		</div>
+	</div>
+
+</div>
+	
+<script type="text/javascript">
+	window.addEvent('domready', function() {	
+		//alert("11");		
+		var myMenu = new MenuMatic();
+	});	
+</script>
+
+<script type="text/javascript">
+<!--
+if (top.location != self.location)top.location=self.location;
+// -->
+</script>
+
+<script type="text/javascript">
+if (document.domain != 'nowamagic.net' && document.domain != 'www.nowamagic.net'){
+	window.location.href='http://www.nowamagic.net/librarys/veda/';
+}
+</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15029466-1");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F455016d55845a0327f490f4814b7d329' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+</body>
+</html>

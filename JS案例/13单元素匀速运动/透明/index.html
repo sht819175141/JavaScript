@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+#box{width:300px;height: 300px;background: red;opacity: 0.3;filter: alpha(opacity:30)}
+</style>
+<body>
+<div id="box"></div>	
+<script>
+var box = document.getElementById("box");
+box.onmouseover = function(){
+	startMove(100);
+}
+
+box.onmouseout = function(){
+	startMove(30);
+}
+
+var time = null;
+var Alpha = 30;
+function startMove(end){ //目标值
+var box = document.getElementById("box");	
+	clearInterval(time);
+	time = setInterval(function(){
+		var speed = 0;
+		if(Alpha>end){   
+			speed=-10;
+		}else{
+			speed=10;
+		}
+
+		if(Alpha==end){
+			clearInterval(time);
+		}else{
+			Alpha+=speed;
+			box.style.opacity = Alpha/100;  //谷歌  火狐支持
+			box.style.filter = "opacity:"+Alpha+"";
+		}
+	},50)
+}
+</script>
+</body>
+</html>

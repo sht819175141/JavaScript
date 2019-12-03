@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//组合模式
+	//属性放在实例上，方法放在原型上
+		function Person(name,age){
+			this.name=name;
+			this.age=age;
+			this.friends=["a","b"];
+		}
+		Person.prototype.info=function(){
+			return this.name+","+this.age+","+this.friends;
+		}
+		var p=new Person("zs",16);
+		
+		p.friends.push("cc");
+		alert(p.info());
+		var p1=new Person("ls",18);
+		p1.friends.push("dd","ee");
+		alert(p1.friends.length);
+		alert(p1.info());
+		alert(p.info==p1.info);
+
+		
+	</script>
+</body>
+</html>

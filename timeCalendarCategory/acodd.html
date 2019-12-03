@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    #cal {
+        width: 350px;
+        height: 350px;
+        border: 1px solid blue;
+    }
+
+    #cal span {
+        float: left;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+    }
+</style>
+<body>
+<div id='cal'>
+    <span>一</span>
+    <span>二</span>
+    <span>三</span>
+    <span>四</span>
+    <span>五</span>
+    <span>六</span>
+    <span>日</span>
+</div>
+<script>
+    var m = prompt('请输入月份');
+    var cal = new Date(2016, m - 1, 2).getDay();
+    var ocal = document.getElementById('cal');
+    var blockCount = [6, 0, 1, 2, 3, 4, 5];
+    var days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    for (var i = 0; i < 42; i++) {
+        var newSpan = document.createElement('span');
+        ocal.appendChild(newSpan)
+    }
+    var spans = ocal.getElementsByTagName('span');
+    for (var i = 1; i <= days[m - 1]; i++) {
+        spans[7 + blockCount[cal] + i - 1].innerHTML = i
+    }
+
+</script>
+</body>
+</html>

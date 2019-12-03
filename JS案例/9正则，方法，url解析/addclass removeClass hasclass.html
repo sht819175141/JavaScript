@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+  <ul>
+		<li class='text'>11111111</li>
+		<li class='bb text c'>222222</li>
+		<li class='atext'>2233333333</li>
+		<li>4444444</li>
+		<li class='dd text'>555555</li>
+	</ul>
+	<div class="bb text c" id="box"></div>
+	<script>
+	var lis=document.getElementsByTagName("li");    
+	/*function hasClass(elem,Name){
+		var reg=/(^|\s+)Name(\s+|$)/;
+		for(var i=0;i<elem.length;i++){
+			if(reg.test(elem.className)){
+				elem.style.background='red';
+			}
+		}
+	}
+	hasClass(lis[1],"text")*/
+	var box=document.getElementById("box");
+	/*function hasClass(elem,className){
+		var reg=/(^|\s+)className(\s+|$)/;
+		//var arr=elem.className.split(/\s+/);
+		//for(var i=0;i<arr.length;i++){
+			if(reg.test(elem.className)){
+				return i;
+				break;
+			}
+		//}
+		return -1
+	}
+	hasClass(box,"text");*/
+
+	function removeClass(elem,className){	
+		var reg=/(^|\s+)className(\s+|$)/
+		if(reg.test(elem.className)){
+			var arr=elem.className.split(/\s+/);
+			arr.splice(index,1);
+			elem.className=arr.join(' ')
+		}
+	}
+	</script>
+</body>
+</html>

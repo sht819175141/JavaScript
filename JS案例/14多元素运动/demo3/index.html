@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+*{margin:0;padding: 0}
+ul{list-style: none}
+ul li{width:300px;height: 100px;background: blue;margin-top: 50px;border:5px solid red;}
+</style>
+<body>
+
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+<script>
+//多物体运动 ===》开始定时器|停止定时器,  必须都是当前的
+//所有值   ===》不能公用
+var lis = document.getElementsByTagName("li");
+for(var i =0;i<lis.length;i++){
+   // lis[i].aaaa = i;
+    lis[i].time = null;
+	lis[i].onmouseover = function(){
+      //alert(this.aaaa);
+		startMove(this,600);
+	}
+	lis[i].onmouseout = function(){
+	  	startMove(this,300);
+	}
+}
+var time = null;
+function startMove(obj,end){	
+	clearInterval(obj.time);
+	obj.time = setInterval(function(){
+		var speed=(end-parseInt(getStyle(obj,"width")))/8;
+		speed = speed>0?Math.ceil(speed):Math.floor(speed);
+		obj.style.width = parseInt(getStyle(obj,"width")) + speed +"px";
+	},50)
+}
+function getStyle(obj,attr){
+	if(obj.currentStyle){
+		return obj.currentStyle[attr];
+	}else{
+		return getComputedStyle(obj,null)[attr];
+	}
+}
+</script>
+
+</body>
+</html>

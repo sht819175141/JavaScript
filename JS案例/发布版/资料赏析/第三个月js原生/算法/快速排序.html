@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+   <script type="text/javascript">
+       //document.write("<br />----------快速排序,号称目前已知的，最快的方法-------平均时间复杂度为nlogn------<br />");
+       //
+  
+       function sortArray(array) {
+           return quickSort(array, 0, array.length - 1);
+       }
+       function quickSort(array, low, high) {
+           if (low < high) {
+               //进行一趟快速排序，并且返回key的index
+               var keypoint = QuickSortHelp(array, low, high);
+               quickSort(array, low, keypoint - 1);
+               quickSort(array, keypoint + 1, high);
+           }
+           return array;
+       }
+     
+     
+       function QuickSortHelp(array, low, high) {
+           while (low < high) {
+               //key array[low]
+               while (low < high && array[low] <= array[high]) {
+                   high--;
+               }
+               var temp = array[low];
+               array[low] = array[high];
+               array[high] = temp;
+
+               //key  array[high]
+               while (low < high && array[low] <= array[high]) {
+                   low++
+               }
+               temp = array[low];
+               array[low] = array[high];
+               array[high] = temp;
+           }
+           return low;
+       }
+
+      
+       var array = [11111, 12, 25, 32, 16, 18, 27, 59, 69, 36];
+
+
+       //key
+       //经过了一趟快速排序之后
+       //比key大的都在key的右边
+       //比key小的都在key的左边
+
+
+</script>
+</body>
+</html>
