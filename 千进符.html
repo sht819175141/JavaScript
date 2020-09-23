@@ -1,28 +1,30 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
 </head>
 <body>
-	<script>
- 	t=function(num){
-            reg=/(\d)(?=(\d{3})+$)/g; 
-            return num.replace(reg,function(r){
-                return r+",";
-            });
-        }
-        alert(t("13545634"));
+<script>
+    t = function (num) {
+        reg = /(\d)(?=(\d{3})+$)/g;
+        return num.replace(reg, function (r) {
+            return r + ",";
+        });
+    }
+    alert(t("13545634"));
 
-        function endstar(r){
-        	return /abc$/.test(r)
-        }
-        alert(endstar("adasdsaabc"))
+    function endstar(r) {
+        return /abc$/.test(r)
+    }
 
-        function ennewdstar(r){
-        	return /abc$/.test(r)
-        }
-        alert(endstar("adasdsaabc"))
-	</script>
+    alert(endstar("adasdsaabc"))
+
+    function ennewdstar(r) {
+        return /abc$/.test(r)
+    }
+
+    alert(endstar("adasdsaabc"))
+</script>
 </body>
 </html>

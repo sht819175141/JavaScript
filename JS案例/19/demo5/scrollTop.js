@@ -1,5 +1,0 @@
-extend.prototype.scrollTop = function(){
-
-
-	
-}
